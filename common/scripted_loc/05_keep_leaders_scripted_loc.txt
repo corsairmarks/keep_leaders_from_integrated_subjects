@@ -1,0 +1,22 @@
+defined_text = { # scope with species
+	name = GetSpeciesUnitDrone
+	text = {
+		trigger = {
+			is_hive_species = yes
+		}
+		localization_key = getunitdrone_unit
+	}
+	text = {
+		trigger = {
+			is_robotic_species = yes
+		}
+		localization_key = getunitdrone_drone
+	}
+	text = {	# fallback if not hive/machine
+		trigger = {
+			is_hive_species = no
+			is_robotic_species = no
+		}
+		localization_key = getunitdrone_leader
+	}
+}

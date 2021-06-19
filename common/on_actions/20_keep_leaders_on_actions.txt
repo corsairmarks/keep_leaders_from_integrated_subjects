@@ -1,0 +1,41 @@
+# fires when the game starts
+on_game_start = {
+	events = {
+		keep_leaders.13 # flag mod as installed
+	}
+}
+
+# no scope, like on_game_start
+on_monthly_pulse = {
+	events = {
+		keep_leaders.13 # flag mod as installed, just in case this mod was added after game start
+	}
+}
+
+# fires as a leader has died
+# THIS = country
+# FROM = leader
+on_leader_death = {
+	events = {
+		keep_leaders.100
+	}
+}
+
+# fires when a country finishes being integrated
+# THIS = overlord
+# FROM = subject
+on_subject_integrated = {
+	events = {
+		keep_leaders.1
+	}
+}
+
+# fires when a country is destroyed
+# THIS = destroyed country
+# FROM = optional, destroyer (country)
+on_country_destroyed = {
+	events = {
+		# TODO: this probably catches covert_infiltration (observation mission)
+		keep_leaders.4
+	}
+}

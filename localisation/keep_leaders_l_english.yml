@@ -1,0 +1,107 @@
+﻿l_english:
+ keep_leaders.1.title: "Disposition of Leaders from [From.GetName]"
+ keep_leaders.1.desc.integration: "Following the successful integration of [From.GetName] into our empire, their leadership is at our disposal. What shall we do with them?"
+ keep_leaders.1.desc.inflitration: "Following the successful infiltration and subsequent integration of [From.Capital_Scope.GetName], our agents that posed as [From.GetSpeciesNamePlural] are available for reassignment. What shall we do with them?" # TODO: special case - option to 'keep their cover' and join the pool or join the leader pool as the main species
+ keep_leaders.1.desc.conquest: "Following our successful conquest of the primitives on [From.Capital_Scope.GetName], their leadership is at our disposal. What shall we do with them?"
+
+ # don't keep any leaders
+ keep_leaders.1.a: "Then \"dispose\" of them."
+ keep_leaders.1.a.tooltip: "All leaders from [From.GetName] are executed."
+ keep_leaders.1.a.pur: "Purify them."
+ keep_leaders.1.a.swarm: "Eat them."
+ keep_leaders.1.a.swarm.tooltip: "All leaders from [From.GetName] are eaten."
+ keep_leaders.1.a.term: "Terminate them."
+
+ # don't keep any leaders, but be nice
+ keep_leaders.1.b: "Retire them."
+ keep_leaders.1.b.tooltip: "All leaders from [From.GetName] are forced to retire."
+ keep_leaders.1.b.serv: "Send them all to the sanctuaries."
+ keep_leaders.1.b.serv.tooltip: "All leaders from [From.GetName] are released to our organic sanctuaries."
+ keep_leaders.1.b.gest.exclusive: "They will serve better as drones."
+ keep_leaders.1.b.gest.exclusive.tooltip: "All semi-autonomous [From.GetUnitDronePlural] from [From.GetName] are reassigned to standard drone duties."
+
+ # integrate machines only (+cyborgs if applicable) (target has both)
+ keep_leaders.1.c: "Reprogram the machines to the serve us. Execute the rest."
+ keep_leaders.1.c.tooltip: "§Y$ROBOT$§! leaders from [From.GetName] are programmed for loyalty to our empire, but the untrustworthy §Y$BIOLOGICAL$§! leaders are executed."
+ keep_leaders.1.c.term: "Integrate the hardware, terminate the organics."
+ keep_leaders.1.c.term.tooltip: "§Y$MACHINE$§! and §Y$ROBOT$§! leaders from [From.GetName] are integrated, §Y$BIOLOGICAL$§! leaders are executed."
+ keep_leaders.1.c.mach: "Integrate the hardware, discard the organic components."
+ keep_leaders.1.c.mach.tooltip: "§Y$MACHINE$§! and §Y$ROBOT$§! leaders from [From.GetName] are integrated, §Y$BIOLOGICAL$§! leaders are discarded."
+ keep_leaders.1.c.cyb.tooltip: "§Y$MACHINE$§!, §Y$ROBOT$§!, and §Y$trait_cybernetic$§! leaders from [From.GetName] are integrated, §Y$BIOLOGICAL$§! leaders are discarded."
+ keep_leaders.1.c.mach.exclusive: "Integrate the units. Waste is inefficient."
+ keep_leaders.1.c.mach.exclusive.tooltip: "§Y$MACHINE$§! and §Y$ROBOT$§! leaders from [From.GetName] are integrated."
+ keep_leaders.1.c.cyb.exclusive.tooltip: "§Y$MACHINE$§!, §Y$ROBOT$§!, and §Y$trait_cybernetic$§! leaders from [From.GetName] are integrated."
+
+ # integrate machines only, but be nice (target has both)
+ keep_leaders.1.d: "Allow the machines to the join us. Retire the organics."
+ keep_leaders.1.d.tooltip: "§Y$ROBOT$§! leaders from [From.GetName] are allowed to join our empire, but the untrustworthy §Y$BIOLOGICAL$§! leaders are forced to retire."
+ keep_leaders.1.d.serv: "Send the organics to the sanctuaries, but integrate any compatible machines."
+ keep_leaders.1.d.serv.tooltip: "§Y$BIOLOGICAL$§! leaders from [From.GetName] are released to the care of our organic sanctuaries, but the §Y$MACHINE$§! and §Y$ROBOT$§! leaders are integrated."
+
+ # keep organics only (target has both)
+ keep_leaders.1.e: "Allow the organics to the join us. Recycle the robots."
+ keep_leaders.1.e.tooltip: "§Y$BIOLOGICAL$§!, §Ynon-$trait_hive_mind$§! leaders from [From.GetName] are integrated into our empire, but §Y$MACHINE$§! and §Y$ROBOT$§! leaders are recycled."
+ keep_leaders.1.e.spir: "Allow the organics to the join us. Cleanse the abominable thinking machines."
+ keep_leaders.1.e.ai: "Allow the organics to the join us. Retire the robots."
+ keep_leaders.1.e.ai.tooltip: "§Y$BIOLOGICAL$§!, §Ynon-$trait_hive_mind$§! leaders from [From.GetName] are allowed to join our empire, but §Y$MACHINE$§! and §Y$ROBOT$§! leaders are forced to retire."
+
+ # keep same species (target has both)
+ keep_leaders.1.g: "Allow any [Root.GetSpeciesNamePlural] to join us. Execute the rest."
+ keep_leaders.1.g.tooltip: "Leaders of our species are retained, §YXeno§! and §Y$ROBOT$§! leaders are executed."
+ keep_leaders.1.g.pur: "Grant a pardon to any [Root.GetSpeciesNamePlural]. Purify the taint of the rest."
+ keep_leaders.1.g.pur.tooltip: "Leaders of our species are graciously pardoned for their criminal association with Xenos. All others are purged to protect us from their taint."
+
+ # keep same species, but be nice (target has both)
+ keep_leaders.1.h: "Allow any [Root.GetSpeciesNamePlural] to join us. Retire the rest."
+ keep_leaders.1.h.tooltip: "Leaders of our species are retained, §YXeno§! and §Y$ROBOT$§! leaders are forced to retire (or recycled, based on whether we allow $ai_full_rights_name$)."
+
+ # hive (non-DS) can keep hive
+ keep_leaders.1.i.hive: "We welcome their Mind to our Mind. Any non-Minded shall nourish us."
+ keep_leaders.1.i.hive.tooltip: "§Y$BIOLOGICAL$§!, §Y$trait_hive_mind$§! leaders from [From.GetName] are integrated into the Mind, any others are used to fuel the growth of the Hive."
+ keep_leaders.1.i.hive.exclusive: "We welcome their Mind to our Mind."
+ keep_leaders.1.i.hive.exclusive.tooltip: "The §Y$trait_hive_mind$§! leaders from [From.GetName] are integrated into the Mind."
+
+ # keep as much as possible with no changes
+ keep_leaders.1.j: "Send them for assignment."
+ keep_leaders.1.j.tooltip: "Species rights for §Y$SPECIES_RIGHT_CITIZENSHIP$§!, §Y$SPECIES_RIGHT_LIVING_STANDARDS$§!, and §Y$SPECIES_RIGHT_MILITARY_SERVICE$§Y! for the species of each retained leader will be set to allow for their appropriate service level regardless of the $DEFAULT_RIGHTS$. §Y$ROBOT$§! leaders are retained if we allow $ai_full_rights_name$."
+ keep_leaders.1.j.civilian: "Send the governors and scienists for assignment."
+ keep_leaders.1.j.military: "Send the admirals and generals for assignment."
+ keep_leaders.1.j.pur: "The pure should not be wasted."
+ keep_leaders.1.j.pur.tooltip: "We bring the [Root.GetSpeciesNamePlural] back into the fold."
+
+ # assimilate options (all require at least one leader that could be assimilated)
+ keep_leaders.1.k.hive: "They shall become one with the Mind."
+ keep_leaders.1.k.hive.tooltip: "§Y$BIOLOGICAL$§! leaders from [From.GetName] are assimilated into the Mind. Their corresponding species are also set to §Y$living_standard_ego_assimilation$§!.\n\n§Y$MACHINE$§! or §Y$ROBOT$§! leaders are recycled."
+ keep_leaders.1.k.unhive: "Awaken their individuality."
+ keep_leaders.1.k.unhive.tooltip: "§Y$trait_hive_mind$§! leaders from [From.GetName] are disassociated from their Hive Mind. Their corresponding species are also set to §Y$living_standard_deassimilation$§!.\n\n§Y$ROBOT$§! leaders are retained if we allow $ai_full_rights_name$."
+ keep_leaders.1.k.psi: "Open their minds to the Shroud."
+ keep_leaders.1.k.psi.tooltip: "§Y$BIOLOGICAL$§!, §Ynon-$trait_cybernetic$§!, §Ynon-$trait_hive_mind$§! leaders from [From.GetName] have their psionic potential awakened. Their corresponding species are also set to §Y$living_standard_psi_assimilation$§!.\n\n§Y$trait_cybernetic$§! species cannot be awakened and are left with §Y$DEFAULT_RIGHTS$§!.\n\n§Y$ROBOT$§! leaders are retained if we allow $ai_full_rights_name$."
+ keep_leaders.1.k.synth: "Replace their obsolete biological forms."
+ keep_leaders.1.k.synth.tooltip: "§Y$BIOLOGICAL$§!, §Ynon-$trait_hive_mind$§! leaders from [From.GetName] have their organic bodies replaced with new synthetic [Root.GetSpeciesName] bodies. Their corresponding species are also set to §Y$living_standard_tech_assimilation$§!.\n\n§Y$ROBOT$§! and §Y$MACHINE$§! leaders are retained - they are already compatible with our society."
+ keep_leaders.1.k.cyb: "Mandatory enhancements."
+ keep_leaders.1.k.cyb.tooltip: "§Y$BIOLOGICAL$§!, §Ynon-$trait_hive_mind$§! leaders from [From.GetName] have their organic bodies augmented with cybernetics. Their corresponding species are also set to §Y$living_standard_tech_assimilation$§!.\n\n§Y$ROBOT$§! and §Y$MACHINE$§! leaders are retained if we allow $ai_full_rights_name$."
+ keep_leaders.1.k.assim: "Integrate them."
+ keep_leaders.1.k.assim.tooltip: "§Y$BIOLOGICAL$§!, §Ynon-$trait_hive_mind$§! leaders from [From.GetName] have their organic bodies augmented with cybernetics and are integrated into the collective. Their corresponding species are also set to §Y$living_standard_ego_assimilation$§!.\n\n§Y$trait_cybernetic$§!, §Y$MACHINE$§!, and §Y$ROBOT$§! leaders and species are immediately integrated into the collective."
+ keep_leaders.1.k.necro: "Necrophage them."
+ keep_leaders.1.k.necro.tooltip: "§Y$BIOLOGICAL$§! leaders from [From.GetName] are necrophaged into [Root.GetSpeciesName]. If we have $purge_allowed_name$ (or they were $trait_hive_mind$), their corresponding species are also set to §Y$purge_necrophage$§!.\n\n§Y$ROBOT$§! leaders are retained if we allow $ai_full_rights_name$."
+ keep_leaders.101.title: "[From.GetName] Re-emerges"
+ keep_leaders.101.desc: "Despite [From.GetHerHis] apparent death over a month ago, a previously-unremarkable [From.GetSpeciesName] [From.GetSpeciesUnitDrone] has come forward and identified [From.GetHerHim]sel[From.GetFVes] as the subsequent form of [From.GetName]. It seems that perhaps the [From.GetSpeciesNamePlural] have remained more interconnected than previously understood."
+ keep_leaders.101.a.tooltip: "§Y[From.GetName]§! returns to the §YLeader§! pool."
+
+ # custom fail text
+ keep_leaders.1.serv.fail_text: "$TRIGGER_FAIL$We would never harm organics!"
+ keep_leaders.1.pur.fail_text: "$TRIGGER_FAIL$Some of the leaders are foul §Yxenos§! that must be purged."
+ keep_leaders.1.term.fail_text: "$TRIGGER_FAIL$Some of the leaders are §Yorganics§! that must be terminated."
+ keep_leaders.1.mach.fail_text: "$TRIGGER_FAIL$Some of the leaders are independent §Yorganics§! that are incompatible with our society."
+ keep_leaders.1.b.hive.fail_text: "$TRIGGER_FAIL$Some of the leaders are not §Y$trait_hive_mind$§! - they are incompatible with our society."
+ keep_leaders.1.swarm.fail_text: "$TRIGGER_FAIL$We have no interest in allowing the Mind of prey weaken us."
+ keep_leaders.1.k.bio.fail_text: "$TRIGGER_FAIL$We lack the necessary understanding of §Y$ap_evolutionary_mastery$§!."
+ keep_leaders.1.k.psionic.fail_text: "$TRIGGER_FAIL$We lack the necessary understanding of psionic §Y$ap_transcendence$§!."
+ keep_leaders.1.k.cyb1.fail_text: "$TRIGGER_FAIL$We must embrace §Y$ap_the_flesh_is_weak$§!."
+ keep_leaders.1.k.cyb2.fail_text: "$TRIGGER_FAIL$We must complete the project §Y$FLESH_IS_WEAK_PROJECT$§!."
+ keep_leaders.1.k.synth1.fail_text: "$TRIGGER_FAIL$We must fully commit to §Y$ap_synthetic_evolution$§!."
+ keep_leaders.1.k.synth2.fail_text: "$TRIGGER_FAIL$We must complete the project §Y$SYNTHETIC_EVOLUTION_PROJECT$§!."
+ keep_leaders.1.k.mach.fail_text: "$TRIGGER_FAIL$We have no interest in assimilating §Yorganics§!."
+ keep_leaders.1.phobe.fail_text: "$TRIGGER_FAIL§YXenos§! cannot serve in leadership roles."
+ keep_leaders.1.necro.fail_text: "$TRIGGER_FAIL$We do not deign to allow others to serve in leadership roles."
+ keep_leaders.former_ruler_name: "[This.GetName], §LFormer [This.GetTitle] of [This.GetOwnerName]§!"
