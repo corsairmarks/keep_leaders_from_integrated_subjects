@@ -63,7 +63,7 @@
 
  # keep as much as possible with no changes
  keep_leaders.1.j: "Send them for assignment."
- keep_leaders.1.j.tooltip: "Species rights for §Y$SPECIES_RIGHT_CITIZENSHIP$§!, §Y$SPECIES_RIGHT_LIVING_STANDARDS$§!, and §Y$SPECIES_RIGHT_MILITARY_SERVICE$§Y! for the species of each retained leader will be set to allow for their appropriate service level regardless of the $DEFAULT_RIGHTS$. §Y$ROBOT$§! leaders are retained if we allow $ai_full_rights_name$."
+ keep_leaders.1.j.tooltip: "Species rights for §Y$SPECIES_RIGHT_CITIZENSHIP$§!, §Y$SPECIES_RIGHT_LIVING_STANDARDS$§!, and §Y$SPECIES_RIGHT_MILITARY_SERVICE$§! for the species of each retained leader will be set to allow for their appropriate service level regardless of the $DEFAULT_RIGHTS$. §Y$ROBOT$§! leaders are retained if we allow $ai_full_rights_name$."
  keep_leaders.1.j.civilian: "Send the governors and scienists for assignment."
  keep_leaders.1.j.military: "Send the admirals and generals for assignment."
  keep_leaders.1.j.pur: "The pure should not be wasted."
@@ -88,20 +88,22 @@
  keep_leaders.101.desc: "Despite [From.GetHerHis] apparent death over a month ago, a previously-unremarkable [From.GetSpeciesName] [From.GetSpeciesUnitDrone] has come forward and identified [From.GetHerHim]sel[From.GetFVes] as the subsequent form of [From.GetName]. It seems that perhaps the [From.GetSpeciesNamePlural] have remained more interconnected than previously understood."
  keep_leaders.101.a.tooltip: "§Y[From.GetName]§! returns to the §YLeader§! pool."
 
- # custom fail text
- keep_leaders.1.serv.fail_text: "$TRIGGER_FAIL$We would never harm organics!"
- keep_leaders.1.pur.fail_text: "$TRIGGER_FAIL$Some of the leaders are foul §Yxenos§! that must be purged."
- keep_leaders.1.term.fail_text: "$TRIGGER_FAIL$Some of the leaders are §Yorganics§! that must be terminated."
- keep_leaders.1.mach.fail_text: "$TRIGGER_FAIL$Some of the leaders are independent §Yorganics§! that are incompatible with our society."
- keep_leaders.1.b.hive.fail_text: "$TRIGGER_FAIL$Some of the leaders are not §Y$trait_hive_mind$§! - they are incompatible with our society."
- keep_leaders.1.swarm.fail_text: "$TRIGGER_FAIL$We have no interest in allowing the Mind of prey weaken us."
- keep_leaders.1.k.bio.fail_text: "$TRIGGER_FAIL$We lack the necessary understanding of §Y$ap_evolutionary_mastery$§!."
- keep_leaders.1.k.psionic.fail_text: "$TRIGGER_FAIL$We lack the necessary understanding of psionic §Y$ap_transcendence$§!."
- keep_leaders.1.k.cyb1.fail_text: "$TRIGGER_FAIL$We must embrace §Y$ap_the_flesh_is_weak$§!."
- keep_leaders.1.k.cyb2.fail_text: "$TRIGGER_FAIL$We must complete the project §Y$FLESH_IS_WEAK_PROJECT$§!."
- keep_leaders.1.k.synth1.fail_text: "$TRIGGER_FAIL$We must fully commit to §Y$ap_synthetic_evolution$§!."
- keep_leaders.1.k.synth2.fail_text: "$TRIGGER_FAIL$We must complete the project §Y$SYNTHETIC_EVOLUTION_PROJECT$§!."
- keep_leaders.1.k.mach.fail_text: "$TRIGGER_FAIL$We have no interest in assimilating §Yorganics§!."
- keep_leaders.1.phobe.fail_text: "$TRIGGER_FAIL§YXenos§! cannot serve in leadership roles."
- keep_leaders.1.necro.fail_text: "$TRIGGER_FAIL$We do not deign to allow others to serve in leadership roles."
- keep_leaders.former_ruler_name: "[This.GetName], §LFormer [This.GetTitle] of [This.GetOwnerName]§!"
+ # custom event fail text
+ keep_leaders.1.serv.fail_text: "We would never harm organics!"
+ keep_leaders.1.pur.fail_text: "Some of the leaders are foul §Yxenos§! that must be purged."
+ keep_leaders.1.term.fail_text: "Some of the leaders are §Yorganics§! that must be terminated."
+ keep_leaders.1.mach.fail_text: "Some of the leaders are independent §Yorganics§! that are incompatible with our society."
+ keep_leaders.1.b.hive.fail_text: "Some of the leaders are not §Y$trait_hive_mind$§! - they are incompatible with our society."
+ keep_leaders.1.swarm.fail_text: "We have no interest in allowing the Mind of prey weaken us."
+ keep_leaders.1.k.bio.fail_text: "We lack the necessary understanding of §Y$ap_evolutionary_mastery$§!."
+ keep_leaders.1.k.psionic.fail_text: "We lack the necessary understanding of psionic §Y$ap_transcendence$§!."
+ keep_leaders.1.k.cyb1.fail_text: "We must embrace §Y$ap_the_flesh_is_weak$§!."
+ keep_leaders.1.k.cyb2.fail_text: "We must complete the project §Y$FLESH_IS_WEAK_PROJECT$§!."
+ keep_leaders.1.k.synth1.fail_text: "We must fully commit to §Y$ap_synthetic_evolution$§!."
+ keep_leaders.1.k.synth2.fail_text: "We must complete the project §Y$SYNTHETIC_EVOLUTION_PROJECT$§!."
+ keep_leaders.1.k.mach.fail_text: "We have no interest in assimilating §Yorganics§!."
+ keep_leaders.1.phobe.fail_text: "§YXenos§! cannot serve in leadership roles."
+ keep_leaders.1.necro.fail_text: "We do not deign to allow others to serve in leadership roles."
+
+ # former ruler name formatting
+ keep_leaders.former_ruler_name: "[This.GetRegnalName], §LFormer [This.GetTitle] of the [integrated_country.GetRealName]§!"
