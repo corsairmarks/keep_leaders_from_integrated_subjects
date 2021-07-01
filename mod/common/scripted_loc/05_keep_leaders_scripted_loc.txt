@@ -12,7 +12,7 @@ defined_text = { # scope with species
 		}
 		localization_key = getunitdrone_drone
 	}
-	text = {	# fallback if not hive/machine
+	text = { # fallback if not hive/machine
 		trigger = {
 			is_hive_species = no
 			is_robotic_species = no
