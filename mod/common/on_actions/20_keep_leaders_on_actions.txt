@@ -29,6 +29,6 @@ on_subject_integrated = {
 on_country_destroyed = {
 	events = {
 		# TODO: this probably catches covert_infiltration (observation mission)
-		keep_leaders.4
+		keep_leaders.2
 	}
 }
