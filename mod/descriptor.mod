@@ -1,4 +1,4 @@
-name="Keep Leaders from Integrated Subjects"
+name="Retain Leaders from Integrated Subjects"
 dependencies={
 	"Enable All Eligible Species Traits for Leaders"
 }
@@ -9,4 +9,4 @@ tags={
 }
 version="1.0.0"
 picture="thumbnail.png"
-supported_version="3.0.3"
+supported_version="3.0.*"
