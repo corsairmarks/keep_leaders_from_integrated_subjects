@@ -1,7 +1,4 @@
 name="Retain Leaders from Integrated Subjects"
-dependencies={
-	"Enable All Eligible Species Traits for Leaders"
-}
 tags={
 	"Events"
 	"Gameplay"

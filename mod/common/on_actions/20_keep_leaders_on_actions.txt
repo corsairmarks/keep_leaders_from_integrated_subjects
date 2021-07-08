@@ -5,15 +5,6 @@ on_game_start = {
 	}
 }
 
-# fires as a leader has died
-# THIS = country
-# FROM = leader
-on_leader_death = {
-	events = {
-		keep_leaders.100
-	}
-}
-
 # fires when a country finishes being integrated
 # THIS = overlord
 # FROM = subject
@@ -28,7 +19,25 @@ on_subject_integrated = {
 # FROM = optional, destroyer (country)
 on_country_destroyed = {
 	events = {
-		# TODO: this probably catches covert_infiltration (observation mission)
 		keep_leaders.2
+	}
+}
+
+# fires as a leader has died
+# THIS = country
+# FROM = leader
+on_leader_death = {
+	events = {
+		keep_leaders.100
+	}
+}
+
+# Fires when my custom code changes a leader's species.  You might attach an event
+# here to handle custom traits in another mod that should be added or removed (or
+# converted) based on information about the leader (possibly taking in to account
+# things like their owner).
+# THIS = leader (post-modification)
+on_leader_species_changed = {
+	events = {
 	}
 }

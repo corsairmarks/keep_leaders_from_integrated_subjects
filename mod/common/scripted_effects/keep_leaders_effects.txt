@@ -1,5 +1,15 @@
 # THIS = leader
-# event_target:root_country = country to set citizenship
+# event_target:potential_owner = country for whom the leader is being stored
+# event_target:temporary_owner = country in which to temporarily store leaders
+transfer_leader_to_storage = {
+	set_leader_flag = former_owner@owner
+	set_leader_flag = potential_owner@event_target:potential_owner
+	unassign_leader = THIS
+	set_owner = event_target:temporary_owner
+}
+
+# THIS = leader
+# event_target:potential_owner = country to set citizenship
 ensure_species_rights_and_take_ownership_of_leader = {
 	if = {
 		limit = {
@@ -19,29 +29,29 @@ ensure_species_rights_and_take_ownership_of_leader = {
 	}
 	set_minimum_standard_of_living_species = yes
 	unassign_leader = THIS
-	set_owner = event_target:root_country
+	set_owner = event_target:potential_owner
 }
 
 # THIS = something with species
-# event_target:root_country = country to set citizenship
+# event_target:potential_owner = country to set citizenship
 set_full_citizenship_species = {
 	species= {
 		if = {
 			limit = {
-				event_target:root_country = { is_machine_empire = yes }
+				event_target:potential_owner = { is_machine_empire = yes }
 				NOR = {
 					has_citizenship_type = {
-						country = event_target:root_country
+						country = event_target:potential_owner
 						type = citizenship_full_machine
 					}
 					has_citizenship_type = {
-						country = event_target:root_country
+						country = event_target:potential_owner
 						type = citizenship_assimilation
 					}
 				}
 			}
 			set_citizenship_type = {
-				country = event_target:root_country
+				country = event_target:potential_owner
 				type = citizenship_full_machine
 				cooldown = no
 			}
@@ -50,32 +60,32 @@ set_full_citizenship_species = {
 			limit = {
 				NOR = {
 					has_citizenship_type = {
-						country = event_target:root_country
+						country = event_target:potential_owner
 						type = citizenship_full
 					}
 					has_citizenship_type = {
-						country = event_target:root_country
+						country = event_target:potential_owner
 						type = citizenship_assimilation
 					}
 				}
 			}
 			set_citizenship_type = {
-				country = event_target:root_country
+				country = event_target:potential_owner
 				type = citizenship_full
 				cooldown = no
 			}
 			if = {
 				limit = {
-					event_target:root_country = { has_valid_civic = civic_citizen_service }
+					event_target:potential_owner = { has_valid_civic = civic_citizen_service }
 					NOT = {
 						has_military_service_type = {
-							country = event_target:root_country
+							country = event_target:potential_owner
 							type = military_service_full
 						}
 					}
 				}
 				set_military_service_type = {
-					country = event_target:root_country
+					country = event_target:potential_owner
 					type = military_service_full
 					cooldown = no
 				}
@@ -85,74 +95,74 @@ set_full_citizenship_species = {
 }
 
 # THIS = something with species
-# event_target:root_country = country to set military service
+# event_target:potential_owner = country to set military service
 set_full_military_service_species = {
 	species= {
 		if = {
 			limit = {
 				NOT = {
 					has_military_service_type = {
-						country = event_target:root_country
+						country = event_target:potential_owner
 						type = military_service_full
 					}
 				}
 			}
 			if = {
 				limit = {
-					event_target:root_country = { is_machine_empire = yes }
+					event_target:potential_owner = { is_machine_empire = yes }
 					NOR = {
 						has_citizenship_type = {
-							country = event_target:root_country
+							country = event_target:potential_owner
 							type = citizenship_full_machine
 						}
 						has_citizenship_type = {
-							country = event_target:root_country
+							country = event_target:potential_owner
 							type = citizenship_assimilation
 						}
 					}
 				}
 				set_citizenship_type = {
-					country = event_target:root_country
+					country = event_target:potential_owner
 					type = citizenship_full_machine
 					cooldown = no
 				}
 			}
 			else_if = {
 				limit = {
-					event_target:root_country = { is_hive_empire = yes }
+					event_target:potential_owner = { is_hive_empire = yes }
 					NOR = {
 						has_citizenship_type = {
-							country = event_target:root_country
+							country = event_target:potential_owner
 							type = citizenship_full
 						}
 						has_citizenship_type = {
-							country = event_target:root_country
+							country = event_target:potential_owner
 							type = citizenship_assimilation
 						}
 					}
 				}
 				set_citizenship_type = {
-					country = event_target:root_country
+					country = event_target:potential_owner
 					type = citizenship_full
 					cooldown = no
 				}
 			}
 			else_if = {
 				limit = {
-					event_target:root_country = { has_valid_civic = civic_citizen_service }
+					event_target:potential_owner = { has_valid_civic = civic_citizen_service }
 					NOR = {
 						has_citizenship_type = {
-							country = event_target:root_country
+							country = event_target:potential_owner
 							type = citizenship_full
 						}
 						has_citizenship_type = {
-							country = event_target:root_country
+							country = event_target:potential_owner
 							type = citizenship_assimilation
 						}
 					}
 				}
 				set_citizenship_type = {
-					country = event_target:root_country
+					country = event_target:potential_owner
 					type = citizenship_full
 					cooldown = no
 				}
@@ -161,38 +171,38 @@ set_full_military_service_species = {
 				limit = {
 					NOR = {
 						has_citizenship_type = {
-							country = event_target:root_country
+							country = event_target:potential_owner
 							type = citizenship_full
 						}
 						has_citizenship_type = {
-							country = event_target:root_country
+							country = event_target:potential_owner
 							type = citizenship_limited
 						}
 						has_citizenship_type = {
-							country = event_target:root_country
+							country = event_target:potential_owner
 							type = citizenship_assimilation
 						}
 						AND = {
 							has_global_flag = battle_thrall_military_leaders_installed
 							has_citizenship_type = {
-								country = event_target:root_country
+								country = event_target:potential_owner
 								type = citizenship_slavery
 							}
 							has_slavery_type = {
-								country = event_target:root_country
+								country = event_target:potential_owner
 								type = slavery_military
 							}
 						}
 					}
 				}
 				set_citizenship_type = {
-					country = event_target:root_country
+					country = event_target:potential_owner
 					type = citizenship_limited
 					cooldown = no
 				}
 			}
 			set_military_service_type = {
-				country = event_target:root_country
+				country = event_target:potential_owner
 				type = military_service_full
 				cooldown = no
 			}
@@ -201,12 +211,12 @@ set_full_military_service_species = {
 }
 
 # THIS = something with species
-# event_target:root_country = country to ensure minimum standard of living
+# event_target:potential_owner = country to ensure minimum standard of living
 set_minimum_standard_of_living_species = {
 	species= {
 		if = {
 			limit = {
-				event_target:root_country = {
+				event_target:potential_owner = {
 					OR = {
 						is_machine_empire = yes
 						is_hive_empire = yes
@@ -214,68 +224,68 @@ set_minimum_standard_of_living_species = {
 				}
 				NOR = {
 					has_living_standard = {
-						country = event_target:root_country
+						country = event_target:potential_owner
 						type = living_standard_hive_mind
 					}
 					has_living_standard = {
-						country = event_target:root_country
+						country = event_target:potential_owner
 						type = living_standard_ego_assimilation
 					}
 				}
 			}
 			set_living_standard = {
-				country = event_target:root_country
+				country = event_target:potential_owner
 				type = living_standard_hive_mind
 			}
 		}
 		else_if = {
 			limit = {
-				event_target:root_country = { is_regular_empire = yes }
+				event_target:potential_owner = { is_regular_empire = yes }
 				NOR = {
 					has_citizenship_type = {
-						country = event_target:root_country
+						country = event_target:potential_owner
 						type = citizenship_assimilation
 					}
 					AND = {
 						has_citizenship_type = {
-							country = event_target:root_country
+							country = event_target:potential_owner
 							type = citizenship_purge
 						}
 						has_living_standard = {
-							country = event_target:root_country
+							country = event_target:potential_owner
 							type = living_standard_none
 						}
 						has_purge_type = {
-							country = event_target:root_country
+							country = event_target:potential_owner
 							type = purge_necrophage
 						}
 					}
-					event_target:root_country = {
+					AND = {
 						is_robotic_species = yes
-						has_full_ai_rights = no
+						event_target:potential_owner = { has_full_ai_rights = no }
 					}
 				}
 			}
 			if = {
-				limit = { event_target:root_country = { has_valid_civic = civic_shared_burden } }
+				limit = { event_target:potential_owner = { has_valid_civic = civic_shared_burden } }
 				set_living_standard = {
-					country = event_target:root_country
+					country = event_target:potential_owner
 					type = living_standard_shared_burden
 					cooldown = no
 				}
 			}
 			else_if = {
-				limit = { event_target:root_country = { is_materialist = yes } }
+				limit = { event_target:potential_owner = { is_materialist = yes } }
 				set_living_standard = {
-					country = event_target:root_country
+					country = event_target:potential_owner
 					type = living_standard_academic_privilege
 					cooldown = no
 				}
 			}
 			else_if = {
-				limit = { event_target:root_country = { is_authoritarian = yes } }
+				limit = { event_target:potential_owner = { is_authoritarian = yes } }
 				set_living_standard = {
-					country = event_target:root_country
+					country = event_target:potential_owner
 					type = living_standard_stratified
 					cooldown = no
 				}
@@ -283,19 +293,19 @@ set_minimum_standard_of_living_species = {
 			else_if = {
 				limit = {
 					has_citizenship_type = {
-						country = event_target:root_country
+						country = event_target:potential_owner
 						type = citizenship_full
 					} 
 				}
 				set_living_standard = {
-					country = event_target:root_country
+					country = event_target:potential_owner
 					type = living_standard_normal
 					cooldown = no
 				}
 			}
 			else = {
 				set_living_standard = {
-					country = event_target:root_country
+					country = event_target:potential_owner
 					type = living_standard_subsistence
 					cooldown = no
 				}
@@ -305,12 +315,12 @@ set_minimum_standard_of_living_species = {
 }
 
 # THIS = something with species
-# event_target:root_country = country doing the assimilating
+# event_target:potential_owner = country doing the assimilating
 set_assimilation_standard_of_living_species = {
 	species= {
 		if = {
 			limit = {
-				event_target:root_country = {
+				event_target:potential_owner = {
 					OR = {
 						has_valid_civic = civic_machine_assimilator
 						AND = {
@@ -321,31 +331,31 @@ set_assimilation_standard_of_living_species = {
 				}
 			}
 			set_living_standard = {
-				country = event_target:root_country
+				country = event_target:potential_owner
 				type = living_standard_ego_assimilation
 				cooldown = no
 			}
 		}
 		else_if = {
-			limit = { event_target:root_country = { has_ascension_perk = ap_transcendence } }
+			limit = { event_target:potential_owner = { has_ascension_perk = ap_transcendence } }
 			set_living_standard = {
-				country = event_target:root_country
+				country = event_target:potential_owner
 				type = living_standard_psi_assimilation
 				cooldown = no
 			}
 		}
 		else_if = {
-			limit = { event_target:root_country = { has_ascension_perk = ap_the_flesh_is_weak } }
+			limit = { event_target:potential_owner = { has_ascension_perk = ap_the_flesh_is_weak } }
 			set_living_standard = {
-				country = event_target:root_country
+				country = event_target:potential_owner
 				type = living_standard_tech_assimilation
 				cooldown = no
 			}
 		}
 		else_if = {
-			limit = { event_target:root_country = { has_ascension_perk = ap_evolutionary_mastery } }
+			limit = { event_target:potential_owner = { has_ascension_perk = ap_evolutionary_mastery } }
 			set_living_standard = {
-				country = event_target:root_country
+				country = event_target:potential_owner
 				type = living_standard_deassimilation
 				cooldown = no
 			}
@@ -356,6 +366,9 @@ set_assimilation_standard_of_living_species = {
 # THIS = country
 # event_target:leader_to_replace = ruler/heir that you want replaced - will be set to point to the cloned leader
 replace_leader_based_on_pre_ruler_leader_class = {
+	event_target:leader_to_replace.owner = {
+		save_event_target_as = previous_owner
+	}
 	if = {
 		limit = { event_target:leader_to_replace = { pre_ruler_leader_class = governor } }
 		clone_leader = {
@@ -401,7 +414,45 @@ replace_leader_based_on_pre_ruler_leader_class = {
 		}
 	}
 	# else they didn't have a pre-ruler class, or it's one we don't recognize
-	# this can be detected if event_target:leader_to_replace is still leader_class = ruler
+	else = {
+		replace_leader_based_on_government_type = yes
+	}
+}
+
+# THIS = leader
+remove_gestalt_ruler_traits = {
+	if = {
+		limit = { has_trait = leader_trait_ruler_machine_intelligence }
+		set_leader_flag = former_gestalt_ruler
+		remove_trait = leader_trait_ruler_machine_intelligence
+		if = {
+			limit = { has_global_flag = keep_leaders_bonus_traits_installed }
+			add_random_leader_trait = yes
+		}
+		else = {
+			add_trait = leader_trait_flexible_programming
+		}
+	}
+	if = {
+		limit = { has_ruler_trait = leader_trait_ruler_machine_intelligence }
+		remove_ruler_trait = leader_trait_ruler_machine_intelligence
+	}
+	if = {
+		limit = { has_trait = leader_trait_ruler_hive_mind }
+		set_leader_flag = former_gestalt_ruler
+		remove_trait = leader_trait_ruler_hive_mind
+		if = {
+			limit = { has_global_flag = keep_leaders_bonus_traits_installed }
+			add_random_leader_trait = yes
+		}
+		else = {
+			add_trait = leader_trait_adaptable
+		}
+	}
+	if = {
+		limit = { has_ruler_trait = leader_trait_ruler_hive_mind }
+		remove_ruler_trait = leader_trait_ruler_hive_mind
+	}
 }
 
 # THIS = country
@@ -596,26 +647,25 @@ replace_leader_based_on_government_type = {
 		# custom governments (defined by mods)
 		gov_bureaucratic_autocracy = { replace_leader_as_governor = yes } # Eldanær Stellar Authority uses this
 		default = {
-			log_error = "[This.GetRealName] has an unrecognized government ([This.GetGovernmentName]) - falling back to a random leader class"
+			log_error = "\\[This.GetRealName] has an unrecognized government (\\[This.GetGovernmentName]) - falling back to a random leader class"
 			replace_leader_as_random = yes
 		}
 	}
 }
 
 # THIS = leader
-rename_leader_with_title_and_country = {
-	set_name = keep_leaders.former_ruler_name
-}
-
-# THIS = leader
-# event_target:prospective_owner = the country scope that will potentially become the owner of the leader
-#    note - owner_species is used to compare for leader_not_same_species_accumulator
-# event_target:variable_storage = the scope that has these 5 variables:
-# * leader_organic_accumulator
-# * leader_organic_noncyborg_accumulator
-# * leader_not_same_species_accumulator
-# * leader_necrophagable_accumulator
+# event_target:potential_owner = the country scope that will potentially become the owner of the leader
+# event_target:variable_storage = a scope that has these variables:
 # * leader_accumulator
+# * leader_organic_accumulator
+# * leader_organic_non_cyborg_accumulator
+# * leader_hive_accumulator
+# * leader_robotic_accumulator
+# * leader_necrophagable_accumulator
+# * leader_same_species_accumulator
+# * leader_not_same_species_accumulator
+# * leader_transferable_accumulator
+# * leader_transferable_or_assimilatable_accumulator
 accumulate_leader = {
 	if = {
 		limit = { is_organic_species = yes }
@@ -626,17 +676,64 @@ accumulate_leader = {
 			}
 		}
 		if = {
-			limit = { is_cyborg_leader = no }
+			limit = { is_cyborg_species = no }
 			event_target:variable_storage = {
 				change_variable = {
-					which = leader_organic_noncyborg_accumulator
+					which = leader_organic_non_cyborg_accumulator
 					value = 1
 				}
 			}
 		}
 	}
 	if = {
-		limit = { NOT = { is_same_species = event_target:prospective_owner.owner_species } }
+		limit = { is_hive_species = yes }
+		event_target:variable_storage = {
+			change_variable = {
+				which = leader_hive_accumulator
+				value = 1
+			}
+		}
+	}
+	if = {
+		limit = { is_robotic_species_lenient = yes }
+		event_target:variable_storage = {
+			change_variable = {
+				which = leader_robotic_accumulator
+				value = 1
+			}
+		}
+	}
+	else_if= {
+		limit = {
+			species = {
+				is_sapient = yes
+				NOR = {
+					is_same_species = event_target:potential_owner.owner_species
+					has_slavery_type = {
+						type = slavery_livestock
+						country = event_target:potential_owner
+					}
+				}
+				species_has_happiness_with_owner = event_target:potential_owner
+			}
+		}
+		event_target:variable_storage = {
+			change_variable = {
+				which = leader_necrophagable_accumulator
+				value = 1
+			}
+		}
+	}
+	if = {
+		limit = { is_same_species = event_target:potential_owner.owner_species }
+		event_target:variable_storage = {
+			change_variable = {
+				which = leader_same_species_accumulator
+				value = 1
+			}
+		}
+	}
+	else = {
 		event_target:variable_storage = {
 			change_variable = {
 				which = leader_not_same_species_accumulator
@@ -644,24 +741,25 @@ accumulate_leader = {
 			}
 		}
 	}
-	if= {
-		limit = {
-			is_robotic_species = no
-			species = {
-				NOR = {
-					is_sapient = no
-					is_same_species = event_target:prospective_owner.owner_species
-					has_slavery_type = {
-						type = slavery_livestock
-						country = event_target:prospective_owner
-					}
-				}
-				species_has_happiness_with_owner = event_target:prospective_owner
-			}
-		}
+	if = {
+		limit = { is_eligible_transfer_without_assimilation = yes }
 		event_target:variable_storage = {
 			change_variable = {
-				which = leader_necrophagable_accumulator
+				which = leader_transferable_accumulator
+				value = 1
+			}
+			change_variable = {
+				which = leader_transferable_or_assimilatable_accumulator
+				value = 1
+			}
+		}
+	}
+	# else_if helps skip duplicate checks for leaders that don't need assimilation
+	else_if = {
+		limit = { is_eligible_transfer_with_assimilation = yes }
+		event_target:variable_storage = {
+			change_variable = {
+				which = leader_transferable_or_assimilatable_accumulator
 				value = 1
 			}
 		}
