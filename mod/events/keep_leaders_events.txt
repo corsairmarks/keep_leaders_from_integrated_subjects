@@ -47,7 +47,6 @@ country_event = {
 	}
 	immediate = {
 		log = "country [From.GetRealName] integrated by [Root.GetRealName]"
-		set_country_flag = test_from@FROM
 		if = {
 			limit = { NOT = { has_country_flag = keeping_leaders_conquest@FROM } }
 			set_country_flag = keeping_leaders_integration@FROM
@@ -94,14 +93,15 @@ country_event = {
 			value = 0
 		}
 		# "argument" for transfer_leader_to_storage
-		event_target:global_event_country = { save_event_target_as = temporary_owner }
+		event_target:global_event_country = { save_event_target_as = storage_owner }
 		# "arguments" for accumulate_leader
 		save_event_target_as = variable_storage
 		save_event_target_as = potential_owner
 		# count the leaders so we know the multiplier for adding resources
 		# like unity or society research for empires that qualify
 		FROM = {
-			save_event_target_as = integrated_country
+			# "argument" for localistation and set_leader_storage_flags
+			save_event_target_as = former_owner
 			capital_scope = {
 				save_event_target_as = conquered_planet
 			}
@@ -120,10 +120,7 @@ country_event = {
 				replace_leader_based_on_pre_ruler_leader_class = yes
 				event_target:leader_to_replace = {
 					set_leader_flag = former_heir
-					if = {
-						limit = { has_global_flag = keep_leaders_bonus_traits_installed }
-						add_former_heir_trait = yes
-					}
+					add_former_heir_trait = yes
 					transfer_leader_to_storage = yes
 				}
 			}
@@ -137,10 +134,7 @@ country_event = {
 				replace_leader_based_on_pre_ruler_leader_class = yes
 				event_target:leader_to_replace = {
 					set_leader_flag = former_ruler
-					if = {
-						limit = { has_global_flag = keep_leaders_bonus_traits_installed }
-						add_former_ruler_trait = yes
-					}
+					add_former_ruler_trait = yes
 					remove_gestalt_ruler_traits = yes
 					transfer_leader_to_storage = yes
 				}
@@ -1443,8 +1437,8 @@ country_event = {
 			event_target:global_event_country = {
 				every_owned_leader = {
 					limit = {
+						has_leader_flag = former_owner@event_target:former_owner
 						has_leader_flag = potential_owner@event_target:potential_owner
-						has_leader_flag = former_owner@event_target:integrated_country
 					}
 					kill_leader = { show_notification = no }
 				}
@@ -1465,56 +1459,40 @@ country_event = {
 		exists = FROM
 		FROM = {
 			is_country_type = default
-			NOT = { has_country_flag = keeping_leaders_integration@ROOT }
+			NOR = {
+				has_active_event = { observation.3009 }
+				has_country_flag = keeping_leaders_integration@ROOT
+				has_country_flag = keeping_leaders_infiltration@ROOT
+			}
 		}
 	}
 	immediate = {
 		log = "primitive country [Root.GetRealName] destroyed by [From.GetRealName]"
 		# fires the above event - hooray for reuse!
 		FROM = {
-			if = {
-				limit = {
-					has_active_event = {
-						observation.3009
-					}
-				}
-				log = "attempting to fire keep_leaders.3"
-				set_country_flag = keeping_leaders_infiltration@ROOT
-				country_event = {
-					id = keep_leaders.3
-					scopes = {
-						from = ROOT
-					}
-				}
-			}
-			else = {
-				log = "attempting to fire keep_leaders.1"
-				set_country_flag = keeping_leaders_conquest@ROOT
-				country_event = {
-					id = keep_leaders.1
-					scopes = {
-						from = ROOT
-					}
+			set_country_flag = keeping_leaders_conquest@ROOT
+			country_event = {
+				id = keep_leaders.1
+				scopes = {
+					from = ROOT
 				}
 			}
 		}
 	}
 }
 
-# triggered by keep_leaders.2 when it detects that the destoyed country as infiltrated
-# THIS = country, infiltrator
-# FROM = country, infiltrated
-country_event = {
+# triggered by on_primitive_planet_transferred
+# THIS = planet (after ownership change)
+# FROM = country, infiltrated primitives
+planet_event = {
 	id = keep_leaders.3
 	title = keep_leaders.3.title
 	desc = keep_leaders.3.desc
 	picture = GFX_evt_diplomatic_visit
 	is_triggered_only = yes
 	trigger = {
-		has_active_event = {
-			observation.3009
-		}
-		has_country_flag = keeping_leaders_infiltration@FROM
+		exists = owner
+		owner = { has_active_event = { observation.3009 } }
 		exists = FROM
 		FROM = {
 			OR = {
@@ -1525,20 +1503,23 @@ country_event = {
 		}
 	}
 	immediate = {
+		set_variable = {
+			which = infiltration_leader_accumulator
+			value = 0
+		}
+		owner = {
+			set_country_flag = keeping_leaders_infiltration@FROM
+			save_event_target_as = potential_owner
+		}
 		# "argument" for transfer_leader_to_storage
-		event_target:global_event_country = { save_event_target_as = temporary_owner }
-		save_event_target_as = potential_owner
+		event_target:global_event_country = { save_event_target_as = storage_owner }
 		FROM = {
-			save_event_target_as = integrated_country
-			owner_species = {
-				save_event_target_as = original_species
-				home_planet = {
-					save_event_target_as = infiltrated_planet
-				}
-			}
+			# "argument" for localistation and set_leader_storage_flags
+			save_event_target_as = former_owner
+			owner_species = { save_event_target_as = original_species }
 			every_owned_leader = {
 				limit = { is_eligible_transfer_leader_class = yes }
-				event_target:potential_owner = {
+				ROOT = {
 					change_variable = {
 						which = infiltration_leader_accumulator
 						value = 1
@@ -1548,7 +1529,7 @@ country_event = {
 			}
 			if = {
 				limit = { exists = heir }
-				event_target:potential_owner = {
+				ROOT = {
 					change_variable = {
 						which = infiltration_leader_accumulator
 						value = 1
@@ -1561,16 +1542,13 @@ country_event = {
 				replace_leader_based_on_pre_ruler_leader_class = yes
 				event_target:leader_to_replace = {
 					set_leader_flag = former_heir
-					if = {
-						limit = { has_global_flag = keep_leaders_bonus_traits_installed }
-						add_former_heir_trait = yes
-					}
+					add_former_heir_trait = yes
 					transfer_leader_to_storage = yes
 				}
 			}
 			if = {
 				limit = { exists = ruler }
-				event_target:potential_owner = {
+				ROOT = {
 					change_variable = {
 						which = infiltration_leader_accumulator
 						value = 1
@@ -1583,10 +1561,7 @@ country_event = {
 				replace_leader_based_on_pre_ruler_leader_class = yes
 				event_target:leader_to_replace = {
 					set_leader_flag = former_ruler
-					if = {
-						limit = { has_global_flag = keep_leaders_bonus_traits_installed }
-						add_former_ruler_trait = yes
-					}
+					add_former_ruler_trait = yes
 					remove_gestalt_ruler_traits = yes
 					transfer_leader_to_storage = yes
 				}
@@ -1648,8 +1623,8 @@ country_event = {
 			event_target:global_event_country = {
 				every_owned_leader = {
 					limit = {
+						has_leader_flag = former_owner@event_target:former_owner
 						has_leader_flag = potential_owner@event_target:potential_owner
-						has_leader_flag = former_owner@event_target:integrated_country
 					}
 					kill_leader = { show_notification = no }
 				}

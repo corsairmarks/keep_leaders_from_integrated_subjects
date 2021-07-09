@@ -1,4 +1,7 @@
 name="Retain Leaders from Integrated Subjects"
+dependencies={
+	"Primitive Conquest Enhancements"
+}
 tags={
 	"Events"
 	"Gameplay"

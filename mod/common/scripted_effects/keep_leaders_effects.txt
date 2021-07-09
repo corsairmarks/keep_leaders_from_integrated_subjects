@@ -1,11 +1,19 @@
 # THIS = leader
 # event_target:potential_owner = country for whom the leader is being stored
-# event_target:temporary_owner = country in which to temporarily store leaders
+# event_target:storage_owner = country in which to store leaders
 transfer_leader_to_storage = {
 	set_leader_flag = former_owner@owner
 	set_leader_flag = potential_owner@event_target:potential_owner
 	unassign_leader = THIS
-	set_owner = event_target:temporary_owner
+	set_owner = event_target:storage_owner
+}
+
+# THIS = leader
+# event_target:former_owner = country that previously owned the leader
+# event_target:potential_owner = country for whom the leader is being stored
+set_leader_storage_flags = {
+	set_leader_flag = former_owner@event_target:former_owner
+	set_leader_flag = potential_owner@event_target:potential_owner
 }
 
 # THIS = leader
@@ -366,52 +374,21 @@ set_assimilation_standard_of_living_species = {
 # THIS = country
 # event_target:leader_to_replace = ruler/heir that you want replaced - will be set to point to the cloned leader
 replace_leader_based_on_pre_ruler_leader_class = {
-	event_target:leader_to_replace.owner = {
-		save_event_target_as = previous_owner
-	}
 	if = {
 		limit = { event_target:leader_to_replace = { pre_ruler_leader_class = governor } }
-		clone_leader = {
-			target = event_target:leader_to_replace
-			class = governor
-			effect = {
-				event_target:leader_to_replace = { kill_leader = { show_notification = no } }
-				save_event_target_as = leader_to_replace
-			}
-		}
+		replace_leader_as_governor = yes
 	}
 	else_if = {
 		limit = { event_target:leader_to_replace = { pre_ruler_leader_class = scientist } }
-		clone_leader = {
-			target = event_target:leader_to_replace
-			class = scientist
-			effect = {
-				event_target:leader_to_replace = { kill_leader = { show_notification = no } }
-				save_event_target_as = leader_to_replace
-			}
-		}
+		replace_leader_as_scientist = yes
 	}
 	else_if = {
 		limit = { event_target:leader_to_replace = { pre_ruler_leader_class = admiral } }
-		clone_leader = {
-			target = event_target:leader_to_replace
-			class = admiral
-			effect = {
-				event_target:leader_to_replace = { kill_leader = { show_notification = no } }
-				save_event_target_as = leader_to_replace
-			}
-		}
+		replace_leader_as_admiral = yes
 	}
 	else_if = {
 		limit = { event_target:leader_to_replace = { pre_ruler_leader_class = general } }
-		clone_leader = {
-			target = event_target:leader_to_replace
-			class = general
-			effect = {
-				event_target:leader_to_replace = { kill_leader = { show_notification = no } }
-				save_event_target_as = leader_to_replace
-			}
-		}
+		replace_leader_as_general = yes
 	}
 	# else they didn't have a pre-ruler class, or it's one we don't recognize
 	else = {
@@ -426,7 +403,7 @@ remove_gestalt_ruler_traits = {
 		set_leader_flag = former_gestalt_ruler
 		remove_trait = leader_trait_ruler_machine_intelligence
 		if = {
-			limit = { has_global_flag = keep_leaders_bonus_traits_installed }
+			limit = { has_global_flag = better_leader_trait_randomization_installed }
 			add_random_leader_trait = yes
 		}
 		else = {
@@ -442,7 +419,7 @@ remove_gestalt_ruler_traits = {
 		set_leader_flag = former_gestalt_ruler
 		remove_trait = leader_trait_ruler_hive_mind
 		if = {
-			limit = { has_global_flag = keep_leaders_bonus_traits_installed }
+			limit = { has_global_flag = better_leader_trait_randomization_installed }
 			add_random_leader_trait = yes
 		}
 		else = {
@@ -461,11 +438,9 @@ replace_leader_as_governor = {
 	clone_leader = {
 		target = event_target:leader_to_replace
 		class = governor
-		effect = {
-			event_target:leader_to_replace = { kill_leader = { show_notification = no } }
-			save_event_target_as = leader_to_replace
-		}
 	}
+	event_target:leader_to_replace = { kill_leader = { show_notification = no } }
+	last_created_leader = { save_event_target_as = leader_to_replace }
 }
 
 # THIS = country
@@ -474,11 +449,9 @@ replace_leader_as_scientist = {
 	clone_leader = {
 		target = event_target:leader_to_replace
 		class = scientist
-		effect = {
-			event_target:leader_to_replace = { kill_leader = { show_notification = no } }
-			save_event_target_as = leader_to_replace
-		}
 	}
+	event_target:leader_to_replace = { kill_leader = { show_notification = no } }
+	last_created_leader = { save_event_target_as = leader_to_replace }
 }
 
 # THIS = country
@@ -487,11 +460,9 @@ replace_leader_as_admiral = {
 	clone_leader = {
 		target = event_target:leader_to_replace
 		class = admiral
-		effect = {
-			event_target:leader_to_replace = { kill_leader = { show_notification = no } }
-			save_event_target_as = leader_to_replace
-		}
 	}
+	event_target:leader_to_replace = { kill_leader = { show_notification = no } }
+	last_created_leader = { save_event_target_as = leader_to_replace }
 }
 
 # THIS = country
@@ -500,11 +471,9 @@ replace_leader_as_general = {
 	clone_leader = {
 		target = event_target:leader_to_replace
 		class = general
-		effect = {
-			event_target:leader_to_replace = { kill_leader = { show_notification = no } }
-			save_event_target_as = leader_to_replace
-		}
 	}
+	event_target:leader_to_replace = { kill_leader = { show_notification = no } }
+	last_created_leader = { save_event_target_as = leader_to_replace }
 }
 
 # THIS = country
@@ -512,7 +481,7 @@ replace_leader_as_general = {
 replace_leader_as_civilian = {
 	random_list = {
 		50 = { replace_leader_as_governor = yes }
-		50 = { replace_leader_as_scientist= yes }
+		50 = { replace_leader_as_scientist = yes }
 	}
 }
 
@@ -540,7 +509,7 @@ replace_leader_as_non_scientist = {
 replace_leader_as_random = {
 	random_list = {
 		25 = { replace_leader_as_governor = yes }
-		25 = { replace_leader_as_scientist= yes }
+		25 = { replace_leader_as_scientist = yes }
 		25 = { replace_leader_as_admiral = yes }
 		25 = { replace_leader_as_general = yes }
 	}
