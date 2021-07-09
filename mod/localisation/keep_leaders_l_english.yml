@@ -136,12 +136,12 @@
  disconnected_machine_leaders_collapse_without_ai_assimilation_no_x: "Once their uplink to the central §Y$auth_machine_intelligence$§! is severed, $trait_machine_unit$ leaders are rendered inoperable - unless they could be retrofitted with individual §Y$tech_sapient_ai$§!."
 
  # former ruler name formatting
- keep_leaders.former_ruler_name: "[This.GetRegnalName], §LFormer [This.GetTitle] of the [integrated_country.GetRealName]§!"
+ keep_leaders.former_ruler_name: "[This.GetRegnalName], §LFormer [This.GetTitle] of the [former_owner.GetRealName]§!"
 
  keep_leaders.3.title: "Reassign Infiltration Agents"
- keep_leaders.3.desc: "Following the successful infiltration and subsequent integration of [infiltrated_planet.GetName], our agents that posed as [original_species.GetNamePlural] are available for reassignment. What shall we do with them?"
+ keep_leaders.3.desc: "Following the successful infiltration and subsequent integration of [Root.GetName], our agents that posed as [original_species.GetNamePlural] are available for reassignment. What shall we do with them?"
  keep_leaders.3.a: "Promoted them to §Yleaders§!."
- keep_leaders.3.a.tooltip: "Gain $VALUE$ leaders."
+ keep_leaders.3.a.tooltip: "Gain $VALUE$ leader(s)."
  keep_leaders.3.b: "Promoted them to §Yleaders§!, but maintain their cover identities."
  keep_leaders.3.b.tooltip: "Gain $VALUE$ leader(s), disguised as [original_species.GetNamePlural]."
  keep_leaders.3.c: "Retain them as agents - we have need of their subterfuge."
