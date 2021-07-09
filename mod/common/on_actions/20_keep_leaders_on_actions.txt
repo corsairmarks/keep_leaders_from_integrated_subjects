@@ -44,7 +44,7 @@ on_leader_species_changed = {
 
 # fired after a primitive planet has changed ownership
 # THIS = planet (after ownership change)
-# FROM = country, primitives
+# FROM = country, primitive former owner
 on_primitive_planet_transferred = {
 	events = {
 		keep_leaders.3
