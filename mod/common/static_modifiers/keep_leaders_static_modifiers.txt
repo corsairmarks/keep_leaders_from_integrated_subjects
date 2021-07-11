@@ -1,6 +1,5 @@
 # country modifier
 kl_peerless_infiltration_agents = {
-	add_base_country_intel = 10
 	intel_decryption_add = 1
-	spy_network_daily_value_mult = 0.25
+	spy_network_daily_value_mult = 0.5
 }
