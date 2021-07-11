@@ -1,5 +1,4 @@
-﻿# TODO: need to rephrase to not use 3rd-person pronouns
-l_english:
+﻿l_english:
  leader_trait_former_ruler_machine_intelligence: "Former Machine Intelligence Core"
  leader_trait_former_ruler_machine_intelligence_ruler: "$leader_trait_former_ruler_machine_intelligence$"
  leader_trait_former_ruler_machine_intelligence_ruler_desc: "<<re-activate executive protocols>> This leader is the former core consciousness of a Machine Empire who has again risen to power but without a network link to every unit and sub-intelligence."
