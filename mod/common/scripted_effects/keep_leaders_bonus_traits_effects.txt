@@ -15,8 +15,8 @@ add_former_ruler_trait = {
 		add_ruler_trait = leader_trait_former_ruler_hive_ruler
 		switch = {
 			trigger = leader_class
-			governor = { add_trait = leader_trait_former_ruler_machine_intelligence_governor }
-			admiral = { add_trait = leader_trait_former_ruler_machine_intelligence_admiral }
+			governor = { add_trait = leader_trait_former_ruler_hive_governor }
+			admiral = { add_trait = leader_trait_former_ruler_hive_admiral }
 		}
 	}
 	else = {
