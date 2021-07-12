@@ -397,6 +397,21 @@ replace_leader_based_on_pre_ruler_leader_class = {
 }
 
 # THIS = leader
+set_former_gestalt_ruler_flag = {
+	if = {
+		limit = {
+			OR = {
+				has_trait = leader_trait_ruler_machine_intelligence
+				has_ruler_trait = leader_trait_ruler_machine_intelligence
+				has_trait = leader_trait_ruler_hive_mind
+				has_ruler_trait = leader_trait_ruler_hive_mind
+			}
+		}
+		set_leader_flag = former_gestalt_ruler
+	}
+}
+
+# THIS = leader
 remove_gestalt_ruler_traits = {
 	if = {
 		limit = { has_trait = leader_trait_ruler_machine_intelligence }
@@ -435,9 +450,19 @@ remove_gestalt_ruler_traits = {
 # THIS = country
 # event_target:leader_to_replace = leader that you want replaced - will be set to point to the cloned leader
 replace_leader_as_governor = {
-	clone_leader = {
-		target = event_target:leader_to_replace
-		class = governor
+	if = {
+		limit = { event_target:leader_to_replace = { has_leader_flag = clear_traits } }
+		clone_leader = {
+			target = event_target:leader_to_replace
+			class = governor
+			traits = { trait = random_trait }
+		}
+	}
+	else = {
+		clone_leader = {
+			target = event_target:leader_to_replace
+			class = governor
+		}
 	}
 	event_target:leader_to_replace = { kill_leader = { show_notification = no } }
 	last_created_leader = { save_event_target_as = leader_to_replace }
@@ -446,9 +471,19 @@ replace_leader_as_governor = {
 # THIS = country
 # event_target:leader_to_replace = leader that you want replaced - will be set to point to the cloned leader
 replace_leader_as_scientist = {
-	clone_leader = {
-		target = event_target:leader_to_replace
-		class = scientist
+	if = {
+		limit = { event_target:leader_to_replace = { has_leader_flag = clear_traits } }
+		clone_leader = {
+			target = event_target:leader_to_replace
+			class = scientist
+			traits = { trait = leader_trait_expertise_statecraft }
+		}
+	}
+	else = {
+		clone_leader = {
+			target = event_target:leader_to_replace
+			class = scientist
+		}
 	}
 	event_target:leader_to_replace = { kill_leader = { show_notification = no } }
 	last_created_leader = { save_event_target_as = leader_to_replace }
@@ -457,9 +492,19 @@ replace_leader_as_scientist = {
 # THIS = country
 # event_target:leader_to_replace = leader that you want replaced - will be set to point to the cloned leader
 replace_leader_as_admiral = {
-	clone_leader = {
-		target = event_target:leader_to_replace
-		class = admiral
+	if = {
+		limit = { event_target:leader_to_replace = { has_leader_flag = clear_traits } }
+		clone_leader = {
+			target = event_target:leader_to_replace
+			class = admiral
+			traits = { trait = random_trait }
+		}
+	}
+	else = {
+		clone_leader = {
+			target = event_target:leader_to_replace
+			class = admiral
+		}
 	}
 	event_target:leader_to_replace = { kill_leader = { show_notification = no } }
 	last_created_leader = { save_event_target_as = leader_to_replace }
@@ -468,9 +513,19 @@ replace_leader_as_admiral = {
 # THIS = country
 # event_target:leader_to_replace = leader that you want replaced - will be set to point to the cloned leader
 replace_leader_as_general = {
-	clone_leader = {
-		target = event_target:leader_to_replace
-		class = general
+	if = {
+		limit = { event_target:leader_to_replace = { has_leader_flag = clear_traits } }
+		clone_leader = {
+			target = event_target:leader_to_replace
+			class = general
+			traits = { trait = random_trait }
+		}
+	}
+	else = {
+		clone_leader = {
+			target = event_target:leader_to_replace
+			class = general
+		}
 	}
 	event_target:leader_to_replace = { kill_leader = { show_notification = no } }
 	last_created_leader = { save_event_target_as = leader_to_replace }

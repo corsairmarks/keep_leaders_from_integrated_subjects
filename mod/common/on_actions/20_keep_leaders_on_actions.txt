@@ -60,6 +60,15 @@ on_ruler_set = {
 	}
 }
 
+# fired before a primitive planet changes ownership
+# THIS = planet (before ownership change)
+# FROM = country, imminent owner
+on_primitive_planet_transferring = {
+	events = {
+		keep_leaders.4
+	}
+}
+
 # fired after a primitive planet has changed ownership
 # THIS = planet (after ownership change)
 # FROM = country, primitive former owner
