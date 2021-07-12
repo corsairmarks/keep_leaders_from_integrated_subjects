@@ -1446,6 +1446,9 @@ country_event = {
 					kill_leader = { show_notification = no }
 				}
 			}
+			country_event = {
+				id = keep_leaders_bonus_traits.20
+			}
 		}
 	}
 }
@@ -1624,6 +1627,11 @@ planet_event = {
 						has_leader_flag = potential_owner@event_target:potential_owner
 					}
 					kill_leader = { show_notification = no }
+				}
+			}
+			owner = {
+				country_event = {
+					id = keep_leaders_bonus_traits.20
 				}
 			}
 		}

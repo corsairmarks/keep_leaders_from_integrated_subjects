@@ -417,13 +417,7 @@ remove_gestalt_ruler_traits = {
 		limit = { has_trait = leader_trait_ruler_machine_intelligence }
 		set_leader_flag = former_gestalt_ruler
 		remove_trait = leader_trait_ruler_machine_intelligence
-		if = {
-			limit = { has_global_flag = better_leader_trait_randomization_installed }
-			add_random_leader_trait = yes
-		}
-		else = {
-			add_trait = leader_trait_flexible_programming
-		}
+		add_random_leader_trait = yes
 	}
 	if = {
 		limit = { has_ruler_trait = leader_trait_ruler_machine_intelligence }
@@ -433,13 +427,7 @@ remove_gestalt_ruler_traits = {
 		limit = { has_trait = leader_trait_ruler_hive_mind }
 		set_leader_flag = former_gestalt_ruler
 		remove_trait = leader_trait_ruler_hive_mind
-		if = {
-			limit = { has_global_flag = better_leader_trait_randomization_installed }
-			add_random_leader_trait = yes
-		}
-		else = {
-			add_trait = leader_trait_adaptable
-		}
+		add_random_leader_trait = yes
 	}
 	if = {
 		limit = { has_ruler_trait = leader_trait_ruler_hive_mind }
@@ -476,7 +464,19 @@ replace_leader_as_scientist = {
 		clone_leader = {
 			target = event_target:leader_to_replace
 			class = scientist
-			traits = { trait = leader_trait_expertise_statecraft }
+			traits = { trait = random_trait }
+		}
+		if = {
+			limit = { event_target:leader_to_replace = { leader_class = ruler } }
+			last_created_leader = {
+				if = {
+					limit = { NOT = { has_trait = leader_trait_expertise_statecraft } }
+					add_trait = leader_trait_expertise_statecraft
+				}
+				else = {
+					add_random_leader_trait = yes
+				}
+			}
 		}
 	}
 	else = {

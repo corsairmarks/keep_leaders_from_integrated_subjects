@@ -41,12 +41,19 @@
  leader_trait_former_heir_general: "$leader_trait_former_heir$"
  leader_trait_former_heir_general_desc: "This leader is the former heir to the throne of another empire whose military leadership experience fast-tracked them into a command role."
 
- # TODO might be able to remove these
- mod_country_base_physics_research_produces_add: "£physics£ §YResearch Points§!."
- mod_country_base_society_research_produces_add: "£society£ §YResearch Points§!."
- mod_country_base_engineering_research_produces_add: "£engineering£ §YResearch Points§!."
+ mod_country_base_physics_research_produces_add: "£physics£ Research Points"
+ mod_country_base_society_research_produces_add: "£society£ Research Points"
+ mod_country_base_engineering_research_produces_add: "£engineering£ Research Points"
 
  former_ruler_admin_bonus: "Former Ruler Administration"
  former_ruler_admin_bonus_desc: "The combined effects of notable §Yleaders§!' experience as former heads of state. £mod_country_admin_cap_add£ §G+10§! per former ruler that is a §Y$governor$§!."
  former_heir_admin_bonus: "Former Heir Administration"
  former_heir_admin_bonus_desc: "The combined effects of notable §Yleaders§!' experience as former heirs of an $auth_imperial$ government. £mod_country_admin_cap_add£ §G+5§! per former heir that is a §Y$governor$§!."
+ former_ruler_research_bonus: "Former Ruler Research"
+ former_ruler_research_bonus_desc: "The combined effects of notable §Yleaders§!' experience as former heads of state. £physics£ £society£ £engineering£ §YResearch Points§! for new technologies §G+10§! per former ruler that is a §Y$scientist$§!."
+ former_heir_research_bonus: "Former Heir Research"
+ former_heir_research_bonus_desc: "The combined effects of notable §Yleaders§!' experience as former heirs of an $auth_imperial$ government. £physics£ £society£ £engineering£ §YResearch Points§! for new technologies §G+5§! per former heir that is a §Y$scientist$§!."
+ former_ruler_naval_bonus: "Former Ruler Naval Coordination"
+ former_ruler_naval_bonus_desc: "The combined effects of notable §Yleaders§!' experience as former heads of state. £mod_country_naval_cap_add£ §G+6§! per former ruler that is an §Y$admiral$§!."
+ former_heir_naval_bonus: "Former Heir Naval Coordination"
+ former_heir_naval_bonus_desc: "The combined effects of notable §Yleaders§!' experience as former heirs of an $auth_imperial$ government. £mod_country_naval_cap_add£ §G+3§! per former heir that is an §Y$admiral$§!."

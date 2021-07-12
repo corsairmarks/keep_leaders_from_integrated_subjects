@@ -60,12 +60,10 @@ leader_trait_former_ruler_machine_intelligence_scientist = {
 	
 	icon = "gfx/interface/icons/traits/trait_machine_unit.dds"
 
-	self_modifier = {
+	modifier = {
 		country_physics_research_produces_add = 10
 		country_society_research_produces_add = 10
 		country_engineering_research_produces_add = 10
-	}
-	modifier = {
 		# same as leader_trait_sapient_AI_assistant
 		all_technology_research_speed = 0.1
 		science_ship_survey_speed = 0.2
@@ -210,12 +208,10 @@ leader_trait_former_ruler_scientist = {
 	
 	icon = "gfx/interface/icons/traits/leader_traits/leader_trait_enclave_trader.dds"
 
-	self_modifier = {
+	modifier = {
 		country_physics_research_produces_add = 10
 		country_society_research_produces_add = 10
 		country_engineering_research_produces_add = 10
-	}
-	modifier = {
 		# same as leader_trait_curator
 		all_technology_research_speed = 0.15
 		science_ship_survey_speed = 0.25
@@ -319,11 +315,11 @@ leader_trait_former_heir_scientist = {
 	self_modifier = {
 		leaders_upkeep_mult = -0.50
 		species_leader_exp_gain = 0.25
+	}
+	modifier = {
 		country_physics_research_produces_add = 5
 		country_society_research_produces_add = 5
 		country_engineering_research_produces_add = 5
-	}
-	modifier = {
 		all_technology_research_speed = 0.05
 		science_ship_survey_speed = 0.15
 	}
