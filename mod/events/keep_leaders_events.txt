@@ -2000,12 +2000,6 @@ country_event = {
 								type = living_standard_deassimilation
 							}
 						}
-						ROOT = {
-							if = {
-								limit = { has_built_species = no }
-								create_built_robot_species = yes
-							}
-						}
 						random_galaxy_species = {
 							limit = { has_species_flag = mechanical_species_of_machine_species@event_target:machine_species }
 							ROOT = { set_country_flag = found_assim_mech_species@event_target:machine_species }
@@ -2028,8 +2022,9 @@ country_event = {
 									}
 								}
 							}
+							assimilate_species_traits_machine_to_robot = yes
 							modify_species = {
-								base = ROOT.built_species
+								base = event_target:machine_species
 								species = event_target:mechanical_species
 								add_traits_at_start_of_list = yes
 								add_trait = trait_mechanical
