@@ -1991,21 +1991,28 @@ country_event = {
 						}
 						species = {
 							save_event_target_as = machine_species
+							set_citizenship_type = {
+								country = event_target:potential_owner
+								type = citizenship_assimilation
+							}
+							set_living_standard = {
+								country = event_target:potential_owner
+								type = living_standard_deassimilation
+							}
 						}
-						set_citizenship_type = {
-							country = event_target:potential_owner
-							type = citizenship_assimilation
-						}
-						set_living_standard = {
-							country = event_target:potential_owner
-							type = living_standard_deassimilation
+						ROOT = {
+							if = {
+								limit = { has_built_species = no }
+								create_built_robot_species = yes
+							}
 						}
 						random_galaxy_species = {
 							limit = { has_species_flag = mechanical_species_of_machine_species@event_target:machine_species }
+							ROOT = { set_country_flag = found_assim_mech_species@event_target:machine_species }
 							save_event_target_as = mechanical_species
 						}
 						if = {
-							limit = { NOT = { exists = event_target:mechanical_species } }
+							limit = { ROOT = { NOT = { has_country_flag = found_assim_mech_species@event_target:machine_species } } }
 							event_target:machine_species = {
 								create_species = {
 									name = THIS
@@ -2016,10 +2023,14 @@ country_event = {
 									portrait = THIS
 									homeworld = THIS
 									traits = THIS
+									effect = {
+										save_event_target_as = mechanical_species
+									}
 								}
 							}
 							modify_species = {
-								species = last_created_species
+								base = ROOT.built_species
+								species = event_target:mechanical_species
 								add_traits_at_start_of_list = yes
 								add_trait = trait_mechanical
 								remove_trait = trait_machine_unit
@@ -2028,6 +2039,10 @@ country_event = {
 									save_event_target_as = mechanical_species
 								}
 							}
+						}
+						else = {
+							# setup for next loop iteration
+							ROOT = { remove_country_flag = found_assim_mech_species@event_target:machine_species }
 						}
 						change_species = event_target:mechanical_species
 						ensure_species_rights_and_take_ownership_of_leader = yes
