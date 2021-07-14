@@ -1,32 +1,50 @@
 # Overview
 
-Have you ever wondered what happened to the former leaders of your subject after you integrated them?  Or perhaps where those primitive leaders went after you annexed their planet?  Wonder no more!  With this mod you will be prompted to choose what to do with the now-unemployed leaders whenever you integrate a subject, conquer a primitive planet, or "allow" primitives to join you via covert infiltration.
+Have you ever wondered what happened to the former leaders of your subject after you integrated them? Or perhaps where that primitive leader went after you annexed their planet? Wonder no more! With this mod you will be prompted to choose what to do with the now-unemployed leaders whenever you integrate a subject, conquer a primitive planet, or "allow" primitives to join you via covert infiltration.
+
+With this mod, regular (non-machine and non-hive) empires can retain leaders from an integrated Machine Intelligence subject if they have full AI rights.  The leaders in a Machine Intelligence that have enough capacity to act as independent agents, even if the rest of the Pops don't.
 
 # Changes
 
+A lot of code has gone into figuring out what leaders you can choose to keep based on what kind of country you are playing, what ethics it has, what kinds of assimilation or necrophage might be available. All of that boils down to an event screen that appears when you have integrated a subject or conquered a primitive planet, or a second event when you have infiltrated a primitive planet.
+
+These event present you with a few choices about what you can do with the leaders from the now-defunct subject/primitives. It will show a few different options depending on what is available to you. For example, genocidal empires can only keep leaders that are of their own species and necrophage empires have the option to necrophage leaders. There's a special secret bonus for some kinds of leaders - see if you can figure out what it is.
+
+This mod was designed to be played with the default restrictions on ascension paths - mainly that your empire would normally not have more than one assimilation type available to it. However, it is coded in such a way that if you have multiple assimilation types available, any of the "assimilate" button options invokes the same follow-up code. Each integrated leader (and their species) in a regular (non-machine, non-hive empires) are assigned the first assimilation type that they qualify for in this order: synthetic, then cybernetic, then psionic, then deassimilation.  If you are using my machine deassimiilation mod, that type is checked first (before synthetic assimilation).
+
+Finally, this mod adds some special traits (and a special name affix) for demoted former rulers and heirs.  Their names will be followed by brown text indicating that they are the "Former Ruler/Heir of the <Country Name>" and they will gain a special trait depending on their former empire and new leadership role.
+
 ## Compatibility
 
-This mod is designed to understand the species types, ethics, civics, authorities, governments, and origins that are built-in to Stellaris.  The features of this mod are implemented primarily through brand new events and scripting, meaning that it should not directly conflict with most other mods.  However, you could end up with odd behavior if you play with mods that significantly alter the default gameplay - for example, adding a new homicidal species (without the mod providing an update with `is_homicidal`).  Mods that add or modify civics should generally work but this mod may offer decisions that do not make the most sense for the role-play of new civics.
+This mod is designed to understand the species types, ethics, civics, authorities, governments, and origins that are built-in to Stellaris. The features of this mod are implemented primarily through brand new events and scripting, meaning that it should not directly conflict with most other mods. However, you could end up with odd behavior if you play with mods that significantly alter the default gameplay - for example, adding a new homicidal species (without the mod providing an update to the `is_homicidal` trigger). Mods that add or modify civics should generally work but this mod may offer decisions that do not make the most sense for the role-play of new civics.
 
-### Required Dependencies
+### Required Mods
 
-This mod requires the use of my mod [Enable All Eligible Species Traits for Leaders](https://steamcommunity.com/sharedfiles/filedetails/?id=2499031295). This dependency ensures your leaders get all their species-based traits when being assimilated.
+[Primitive Conquest Enhancements](https://steamcommunity.com/sharedfiles/filedetails/?id=2488154830) adds a necessary extension point (dev speak for "it adds something I need") for detecting when the primitive infiltration mission completes. If you don't install it, then this mod won't be able to offer you a choice when infiltration is complete.
 
-### Post-Game Start
+### Recommended Companion Mods
 
-This mod can be safely added or removed from your save game after the game has started.  It is implemented entirely through custom events (and custom triggers). If you remove it, your game will work normally.
+* [Enable All Eligible Species Traits for Leaders](https://steamcommunity.com/sharedfiles/filedetails/?id=2499031295) will ensure your leaders get all their species-based traits when being assimilated (such as Psionic or Erudite).
+* [Leader Traits: Better Randomisation]() improves leader trait randomisation (primarily from level up, but not exclusively) and toggles traits from the biological version to machine traits (and back) if a leader becomes a robot and/or returns to a biological form.
+* [Machine Deassimilation]() allows you to "deassimilate" machine Pops into robots. This is available to any non-machine, non-hive empire that has the Positronic AI technology and doesn't outright ban Artificial Intelligence. Specifically allows (with this mod) for machine deassimilation as a "leadership disposition" choice for integrated machine empire subjects (and if you also have Enable All Eligible Species Traits for Leaders, the leaders are converted to have synth leader traits if you have the right technology).
 
-### Mods With Gameplay Interaction
+You might wonder - why are these separate mods? They override default gameplay options, so I thought it best to give players the choice on whether they want the original version or the reimagined version. Leader Traits: Better Randomisation and Machine Deassimilation were developed alongside this mod.
+
+### When to Install
+
+This mod can be safely added to your savegame after the game has started. If you remove it, you will lose access to the custom "former ruler/heir" traits and the espionage bonus that is one of the choices upon successfully infiltrating primitives. Stellaris is fairly forgiving in situations like this - it's likely that error logs would be generated and the game would otherwise ignore the missing content. Back up your savegame before trying to remove a mod.
+
+### Additional Mods with Gameplay Interaction
 
 * [Eldanær Stellar Authority](https://steamcommunity.com/sharedfiles/filedetails/?id=2496360535) - if you integrate them, their former ruler and heir are guaranteed to be Governors
 * [Full Military Service for Battle Thralls](https://steamcommunity.com/sharedfiles/filedetails/?id=2496357447) - you will keep military leaders from species set to Battle Thralls but also Full Military Service, and this mod also respects species flagged for allowing military leaders despite the empire being xenophobic and/or a necrophage
 
 ## Known Issues
 
-This mod supports features from several of my other mods.  If you are playing without [Eldanær Stellar Authority](https://steamcommunity.com/sharedfiles/filedetails/?id=2496360535) installed, you will get an error log noting a government type doesn't exist:
+This mod supports features from several of my other mods. If you are playing without [Eldanær Stellar Authority](https://steamcommunity.com/sharedfiles/filedetails/?id=2496360535) installed, you will get an error log noting a government type doesn't exist:
 
 ```
-[11:31:50][trigger_impl.cpp:5664]: Invalid government type [gov_bureaucratic_autocracy]!  file:  file: events/keep_leaders_events.txt line: 163 line: 1
+[11:31:50][trigger_impl.cpp:5664]: Invalid government type [gov_bureaucratic_autocracy]! file: file: events/keep_leaders_events.txt line: 163 line: 1
 ```
 
 This error will not affect the functioning of this mod - all built-in government types are handled before the custom one.
@@ -37,16 +55,8 @@ This error will not affect the functioning of this mod - all built-in government
 
 ## Source Code
 
-[Hosted on GitHub](https://github.com/corsairmarks/keep_leaders_from_integrated_subjects)
+Hosted on [GitHub](https://github.com/corsairmarks/keep_leaders_from_integrated_subjects)
 
 ### Development Notes
 
-It is best to clone this repository into `<Stellaris User's Directory>/Paradox Interactive/Stellaris/mod`, and then make a connection to the `mod` folder via a `*.mod` file's `path` property.  That will ensure the game can see the files, and also that CWTools will parse them.  Also note that the README.md file exists in the `mod` directory but is symbolically linked in the root directory.
-
-
-Ideas:
-
-special leader traits?
--> generate extra admin cap? hive, mach, serv, assim - gov; swarm, term - admiral; research AI - scientist
-
-TODO: can syth empires integrate machine pops?
+It is best to clone this repository into `<Stellaris User's Directory>/Paradox Interactive/Stellaris/mod`, and then make a connection to the `mod` folder via a `*.mod` file's `path` property. That will ensure the game can see the files, and also that CWTools will parse them. Also note that the README.md file exists in the `mod` directory but is symbolically linked in the root directory.
