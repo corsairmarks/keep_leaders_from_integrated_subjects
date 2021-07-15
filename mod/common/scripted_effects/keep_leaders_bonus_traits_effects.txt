@@ -2,7 +2,28 @@
 add_former_ruler_trait = {
 	if = {
 		limit = { is_machine_species = yes }
-		add_ruler_trait = leader_trait_former_ruler_machine_intelligence_ruler
+		if = {
+			limit = { owner = { has_government = gov_machine_research } }
+			add_ruler_trait = leader_trait_former_ruler_machine_intelligence_ruler_science
+		}
+		else_if = {
+			limit = { owner = { has_government = gov_machine_industrial } }
+			add_ruler_trait = leader_trait_former_ruler_machine_intelligence_ruler_industrial
+		}
+		else_if = {
+			limit = {
+				owner = {
+					OR = {
+						has_government = gov_machine_servitor
+						has_government = gov_ancient_machine_intelligence
+					}
+				}
+			}
+			add_ruler_trait = leader_trait_former_ruler_machine_intelligence_ruler_caretaker
+		}
+		else = {
+			add_ruler_trait = leader_trait_former_ruler_machine_intelligence_ruler
+		}
 		switch = {
 			trigger = leader_class
 			governor = { add_trait = leader_trait_former_ruler_machine_intelligence_governor }

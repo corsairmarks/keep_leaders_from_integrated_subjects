@@ -2,6 +2,13 @@
  leader_trait_former_ruler_machine_intelligence: "Former Machine Intelligence Core"
  leader_trait_former_ruler_machine_intelligence_ruler: "$leader_trait_former_ruler_machine_intelligence$"
  leader_trait_former_ruler_machine_intelligence_ruler_desc: "<<re-activate executive protocols>> This leader is the former core consciousness of a Machine Empire who has again risen to power but without a network link to every unit and sub-intelligence."
+ leader_trait_former_ruler_machine_intelligence_ruler_science: "$leader_trait_former_ruler_machine_intelligence$: Research Link"
+ leader_trait_former_ruler_machine_intelligence_ruler_science_desc: "$leader_trait_former_ruler_machine_intelligence_ruler_desc$"
+ leader_trait_former_ruler_machine_intelligence_ruler_industrial: "$leader_trait_former_ruler_machine_intelligence$: Industrial"
+ leader_trait_former_ruler_machine_intelligence_ruler_industrial_desc: "$leader_trait_former_ruler_machine_intelligence_ruler_desc$"
+ leader_trait_former_ruler_machine_intelligence_ruler_caretaker: "$leader_trait_former_ruler_machine_intelligence$: Caretaker"
+ leader_trait_former_ruler_machine_intelligence_ruler_caretaker_desc: "$leader_trait_former_ruler_machine_intelligence_ruler_desc$"
+
  leader_trait_former_ruler_machine_intelligence_governor: "$leader_trait_former_ruler_machine_intelligence$"
  leader_trait_former_ruler_machine_intelligence_governor_desc: "This leader is the former core consciousness of a Machine Empire whose comprehensive management and coordination subroutines greatly improve governmental capacity."
  leader_trait_former_ruler_machine_intelligence_scientist: "$leader_trait_former_ruler_machine_intelligence$"
