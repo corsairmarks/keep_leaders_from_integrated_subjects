@@ -1,6 +1,6 @@
 ﻿l_english:
- keep_leaders.1.title: "Disposition of Leaders from [From.GetRealName]"
- keep_leaders.1.desc.integration: "Following the successful integration of [From.GetRealName] into our empire, their leadership is at our disposal. What shall we do with them?"
+ keep_leaders.1.title: "Disposition of Leaders from the [From.GetRealName]"
+ keep_leaders.1.desc.integration: "Following the successful integration of the [From.GetRealName] into our empire, their leadership is at our disposal. What shall we do with them?"
  keep_leaders.1.desc.conquest: "Following our successful conquest of the primitives on [conquered_planet.GetName], their leadership is at our disposal. What shall we do with them?"
 
  # don't keep any leaders
@@ -8,7 +8,7 @@
  keep_leaders.1.a.tooltip: "All leaders from the [former_owner_placeholder.GetName] are executed."
  keep_leaders.1.a.pur: "Purify them."
  keep_leaders.1.a.swarm: "Eat them."
- keep_leaders.1.a.swarm.tooltip: "All leaders from [From.GetRealName] are eaten."
+ keep_leaders.1.a.swarm.tooltip: "All leaders from the [former_owner_placeholder.GetName] are eaten."
  keep_leaders.1.a.term: "Terminate them."
 
  # don't keep any leaders, but be nice
