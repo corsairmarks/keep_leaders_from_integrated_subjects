@@ -466,23 +466,39 @@ replace_leader_as_scientist = {
 			class = scientist
 			traits = { trait = random_trait }
 		}
-		if = {
-			limit = { event_target:leader_to_replace = { leader_class = ruler } }
-			last_created_leader = {
-				if = {
-					limit = { NOT = { has_trait = leader_trait_expertise_statecraft } }
-					add_trait = leader_trait_expertise_statecraft
-				}
-				else = {
-					add_random_leader_trait = yes
-				}
-			}
-		}
 	}
 	else = {
 		clone_leader = {
 			target = event_target:leader_to_replace
 			class = scientist
+		}
+	}
+	if = {
+		limit = { event_target:leader_to_replace = { leader_class = ruler } }
+		last_created_leader = {
+			if = {
+				limit = { NOT = { has_trait = leader_trait_expertise_statecraft } }
+				add_trait = leader_trait_expertise_statecraft
+			}
+			else_if = {
+				limit = {
+					has_synthethic_dawn = yes
+					is_robotic_species = yes
+					NOT = { has_trait = leader_trait_flexible_programming }
+				}
+				add_trait = leader_trait_flexible_programming
+			}
+			else_if = {
+				limit = {
+					OR = {
+						is_robotic_species = no
+						has_synthethic_dawn = no
+					}
+					NOT = { has_trait = leader_trait_adaptable }
+				}
+				add_trait = leader_trait_adaptable
+			}
+			# else they have a lot of traits already
 		}
 	}
 	event_target:leader_to_replace = { kill_leader = { show_notification = no } }
