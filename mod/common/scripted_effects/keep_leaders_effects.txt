@@ -452,8 +452,10 @@ replace_leader_as_governor = {
 			class = governor
 		}
 	}
-	event_target:leader_to_replace = { kill_leader = { show_notification = no } }
-	last_created_leader = { save_event_target_as = leader_to_replace }
+	last_created_leader = {
+		event_target:leader_to_replace = { kill_leader = { show_notification = no } }
+		save_event_target_as = leader_to_replace
+	}
 }
 
 # THIS = country
@@ -501,8 +503,10 @@ replace_leader_as_scientist = {
 			# else they have a lot of traits already
 		}
 	}
-	event_target:leader_to_replace = { kill_leader = { show_notification = no } }
-	last_created_leader = { save_event_target_as = leader_to_replace }
+	last_created_leader = {
+		event_target:leader_to_replace = { kill_leader = { show_notification = no } }
+		save_event_target_as = leader_to_replace
+	}
 }
 
 # THIS = country
@@ -522,8 +526,10 @@ replace_leader_as_admiral = {
 			class = admiral
 		}
 	}
-	event_target:leader_to_replace = { kill_leader = { show_notification = no } }
-	last_created_leader = { save_event_target_as = leader_to_replace }
+	last_created_leader = {
+		event_target:leader_to_replace = { kill_leader = { show_notification = no } }
+		save_event_target_as = leader_to_replace
+	}
 }
 
 # THIS = country
@@ -543,8 +549,10 @@ replace_leader_as_general = {
 			class = general
 		}
 	}
-	event_target:leader_to_replace = { kill_leader = { show_notification = no } }
-	last_created_leader = { save_event_target_as = leader_to_replace }
+	last_created_leader = {
+		event_target:leader_to_replace = { kill_leader = { show_notification = no } }
+		save_event_target_as = leader_to_replace
+	}
 }
 
 # THIS = country
