@@ -1,5 +1,7 @@
 namespace = keep_leaders
 
+@genocidal_resource_base = 50
+
 # flag mod as active
 event = {
 	id = keep_leaders.13
@@ -185,7 +187,7 @@ country_event = {
 		if = {
 			limit = { has_valid_civic = civic_fanatic_purifiers }
 			add_resource = {
-				unity = 5
+				unity = @genocidal_resource_base
 				mult = leader_not_same_species_accumulator
 			}
 		}
@@ -193,14 +195,14 @@ country_event = {
 			limit = { has_valid_civic = civic_hive_devouring_swarm }
 			custom_tooltip = keep_leaders.1.a.swarm.tooltip
 			add_resource = {
-				society_research = 5
+				society_research = @genocidal_resource_base
 				mult = leader_organic_accumulator
 			}
 		}
 		else_if ={
 			limit = { has_valid_civic = civic_machine_terminator }
 			add_resource = {
-				unity = 5
+				unity = @genocidal_resource_base
 				mult = leader_organic_accumulator
 			}
 		}
@@ -492,7 +494,7 @@ country_event = {
 		if = {
 			limit = { has_valid_civic = civic_machine_terminator }
 			add_resource = {
-				unity = 5
+				unity = @genocidal_resource_base
 				mult = leader_organic_accumulator
 			}
 		}
@@ -722,7 +724,7 @@ country_event = {
 			limit = { has_valid_civic = civic_fanatic_purifiers }
 			custom_tooltip = keep_leaders.1.g.pur.tooltip
 			add_resource = {
-				unity = 5
+				unity = @genocidal_resource_base
 				mult = leader_not_same_species_accumulator
 			}
 		}
@@ -757,7 +759,7 @@ country_event = {
 			if = {
 				limit = { has_valid_civic = civic_fanatic_purifiers }
 				add_resource = {
-					unity = 5
+					unity = @genocidal_resource_base
 					mult = leader_not_same_species_accumulator
 				}
 			}
@@ -1285,8 +1287,8 @@ country_event = {
 			factor = 20
 		}
 		add_resource= {
-			unity = 5
-			society_research = 5
+			unity = @genocidal_resource_base
+			society_research = @genocidal_resource_base
 			mult = leader_organic_non_cyborg_accumulator
 		}
 		custom_tooltip_with_params = {
@@ -1376,7 +1378,7 @@ country_event = {
 		if = {
 			limit = { has_swapped_tradition = tr_harmony_unity_of_self }
 			add_resource = {
-				unity = 5
+				unity = @genocidal_resource_base
 				mult = leader_necrophagable_accumulator
 			}
 		}
