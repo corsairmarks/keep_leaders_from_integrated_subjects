@@ -558,11 +558,10 @@ is_bypass_leader_restriction_xenophobe = {
 
 # THIS = country
 all_stored_leaders_eligible_transfer_to_necrophage = {
-	count_owned_leader = {
-		count = all
-		limit = {
-			OR = {
-				is_eligible_transfer_leader_from_storage = no
+	NOT = {
+		any_owned_leader = {
+			is_eligible_transfer_leader_from_storage = yes
+			NOR = {
 				is_same_species = event_target:potential_owner
 				is_bypass_leader_restriction_necrophage = yes
 			}
@@ -572,11 +571,10 @@ all_stored_leaders_eligible_transfer_to_necrophage = {
 
 # THIS = country
 all_stored_leaders_eligible_transfer_to_xenophobe = {
-	count_owned_leader = {
-		count = all
-		limit = {
-			OR  = {
-				is_eligible_transfer_leader_from_storage = no
+	NOT = {
+		any_owned_leader = {
+			is_eligible_transfer_leader_from_storage = yes
+			NOR = {
 				is_same_species = event_target:potential_owner
 				is_bypass_leader_restriction_xenophobe = yes
 			}
@@ -586,39 +584,30 @@ all_stored_leaders_eligible_transfer_to_xenophobe = {
 
 # THIS = country
 all_stored_leaders_same_species = {
-	count_owned_leader = {
-		count = all
-		limit = {
-			OR = {
-				is_eligible_transfer_leader_from_storage = no
-				is_same_species = event_target:potential_owner
-			}
+	NOT = {
+		any_owned_leader = {
+			is_eligible_transfer_leader_from_storage = yes
+			NOT = { is_same_species = event_target:potential_owner }
 		}
 	}
 }
 
 # THIS = country
 all_stored_leaders_robotic_lenient = {
-	count_owned_leader = {
-		count = all
-		limit = {
-			OR = {
-				is_eligible_transfer_leader_from_storage = no
-				is_robotic_species_lenient = yes
-			}
+	NOT = {
+		any_owned_leader = {
+			is_eligible_transfer_leader_from_storage = yes
+			is_robotic_species_lenient = no
 		}
 	}
 }
 
 # THIS = country
 all_stored_leaders_hive = {
-	count_owned_leader = {
-		count = all
-		limit = {
-			OR = {
-				is_eligible_transfer_leader_from_storage = no
-				is_hive_species = yes
-			}
+	NOT = {
+		any_owned_leader = {
+			is_eligible_transfer_leader_from_storage = yes
+			is_hive_species = no
 		}
 	}
 }
