@@ -45,6 +45,12 @@ This mod can be safely added to your savegame after the game has started. If you
 
 [h2]Known Issues[/h2]
 
+[h3]Stellaris Bugs[/h3]
+
+The scalable country bonuses for "former ruler" traits (e.g. admin cap, naval cap, monthly research) will display the correct value (e.g. 3 governors that are former rulers gives +30 admin cap), but the game only awards the un-scaled amount (+10).  This is a bug with known Stellaris and may be patched at some point in the future.
+
+[h3]Error Logs[/h3]
+
 This mod supports features from several of my other mods. If you are playing without [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2496360535]Eldanær Stellar Authority[/url] installed, you will get an error log noting a government type doesn't exist:
 
 [code]
