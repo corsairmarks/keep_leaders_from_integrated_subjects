@@ -38,6 +38,7 @@ ensure_species_rights_and_take_ownership_of_leader = {
 	set_minimum_standard_of_living_species = yes
 	unassign_leader = THIS
 	set_owner = event_target:potential_owner
+	fire_on_action = { on_action = on_leader_owner_changed }
 }
 
 # THIS = something with species

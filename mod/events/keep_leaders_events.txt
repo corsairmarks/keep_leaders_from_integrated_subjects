@@ -1538,6 +1538,7 @@ planet_event = {
 				every_owned_leader = {
 					limit = { is_eligible_transfer_leader_from_storage = yes }
 					set_owner = event_target:potential_owner
+					fire_on_action = { on_action = on_leader_owner_changed }
 					change_species = event_target:potential_owner
 					change_leader_portrait = event_target:potential_owner
 					fire_on_action = { on_action = on_leader_species_changed }
@@ -1575,6 +1576,7 @@ planet_event = {
 				every_owned_leader = {
 					limit = { is_eligible_transfer_leader_from_storage = yes }
 					set_owner = event_target:potential_owner
+					fire_on_action = { on_action = on_leader_owner_changed }
 					change_species = event_target:potential_owner
 					fire_on_action = { on_action = on_leader_species_changed }
 				}
@@ -2266,10 +2268,11 @@ country_event = {
 						limit = { has_leader_flag = former_gestalt_ruler }
 						remove_leader_flag = former_gestalt_ruler
 					}
-					change_species = event_target:potential_owner
-					change_leader_portrait = event_target:potential_owner
 					unassign_leader = THIS
 					set_owner = event_target:potential_owner
+					fire_on_action = { on_action = on_leader_owner_changed }
+					change_species = event_target:potential_owner
+					change_leader_portrait = event_target:potential_owner
 					fire_on_action = { on_action = on_leader_species_changed }
 				}
 				else_if = {
