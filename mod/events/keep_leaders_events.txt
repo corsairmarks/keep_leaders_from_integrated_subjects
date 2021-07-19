@@ -1110,7 +1110,13 @@ country_event = {
 	# assimilate: psionic
 	option = {
 		name = keep_leaders.1.k.psi
-		custom_tooltip = keep_leaders.1.k.psi.tooltip
+		if = {
+			limit = { NOT = { has_global_flag = deassimilate_machines_installed } }
+			custom_tooltip = keep_leaders.1.k.psi.tooltip
+		}
+		else = {
+			custom_tooltip = keep_leaders.1.k.psi.allow-cyb.tooltip
+		}
 		trigger = {
 			hidden_trigger = {
 				has_utopia = yes
@@ -1368,11 +1374,9 @@ country_event = {
 			custom_tooltip = {
 				fail_text = CANNOT_NECROPHAGE_MACHINES_NO_X
 				event_target:global_event_country = {
-					NOT = {
-						any_owned_leader = {
-							is_eligible_transfer_leader_from_storage = yes
-							is_organic_species = yes
-						}
+					any_owned_leader = {
+						is_eligible_transfer_leader_from_storage = yes
+						is_organic_species = yes
 					}
 				}
 			}
