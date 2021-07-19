@@ -1,6 +1,6 @@
 ﻿l_english:
- keep_leaders.1.title: "Disposition of Leaders from the [From.GetRealName]"
- keep_leaders.1.desc.integration: "Following the successful integration of the [From.GetRealName] into our empire, their leadership is at our disposal. What shall we do with them?"
+ keep_leaders.1.title: "Leadership from the [former_owner_placeholder.GetName]"
+ keep_leaders.1.desc.integration: "Following the successful integration of the [former_owner_placeholder.GetName] into our empire, their leadership is at our disposal. What shall we do with them?"
  keep_leaders.1.desc.conquest: "Following our successful conquest of the primitives on [conquered_planet.GetName], their leadership is at our disposal. What shall we do with them?"
 
  # don't keep any leaders
@@ -17,7 +17,7 @@
  keep_leaders.1.b.serv: "Send them all to the sanctuaries."
  keep_leaders.1.b.serv.tooltip: "All leaders from the [former_owner_placeholder.GetName] are released to our organic sanctuaries."
  keep_leaders.1.b.gest.exclusive: "They will serve better as drones."
- keep_leaders.1.b.gest.exclusive.tooltip: "All semi-autonomous [From.GetUnitDronePlural] from the [former_owner_placeholder.GetName] are reassigned to standard drone duties."
+ keep_leaders.1.b.gest.exclusive.tooltip: "All semi-autonomous [Root.GetUnitDronePlural] from the [former_owner_placeholder.GetName] are reassigned to standard drone duties."
 
  # integrate machines only (+cyborgs if applicable) (target has both)
  keep_leaders.1.c: "Reprogram the machines to the serve us. Execute the rest."
