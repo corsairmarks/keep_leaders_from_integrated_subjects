@@ -21,10 +21,11 @@ on_subject_integrated = {
 	}
 }
 
-# fired when a country is destroyed
-# THIS = destroyed country
-# FROM = optional, destroyer (country)
-on_country_destroyed = {
+# fired for the attacker upon victory (before controller is switched)
+# THIS = country, leader attacker
+# FROM = country, planet owner
+# FROMFROM = planet
+on_planet_attackers_win = {
 	events = {
 		keep_leaders.2
 	}

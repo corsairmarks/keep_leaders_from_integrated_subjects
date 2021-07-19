@@ -47,10 +47,13 @@ country_event = {
 		}
 	}
 	immediate = {
-		log = "country [From.GetRealName] integrated by [Root.GetRealName]"
 		if = {
-			limit = { NOT = { has_country_flag = keeping_leaders_conquest@FROM } }
+			limit = { has_country_flag = keeping_leaders_conquest@FROM }
+			log = "country [From.GetRealName] conquered by [Root.GetRealName]"
+		}
+		else = {
 			set_country_flag = keeping_leaders_integration@FROM
+			log = "country [From.GetRealName] integrated by [Root.GetRealName]"
 		}
 		# variables for the counts from accumulate_leader
 		set_variable = {
@@ -1465,35 +1468,26 @@ country_event = {
 	}
 }
 
-# triggered by on_country_destroyed
-# THIS = destroyed country
-# FROM = optional, destroyer (country)
+# triggered by on_planet_attackers_win (same on_action as primitive planet conquest action.14)
+# ROOT = country, leader attacker
+# FROM = country, planet owner
+# FROMFROM = planet
 country_event = {
 	id = keep_leaders.2
 	is_triggered_only = yes
 	hide_window = yes
 	trigger = {
-		is_country_type = primitive
-		exists = FROM
-		FROM = {
-			is_country_type = default
-			NOR = {
-				has_active_event = { observation.3009 }
-				has_country_flag = keeping_leaders_integration@ROOT
-				has_country_flag = keeping_leaders_infiltration@ROOT
-			}
-		}
+		is_country_type = default
+		FROM = { is_country_type = primitive }
 	}
 	immediate = {
-		log = "primitive country [Root.GetRealName] destroyed by [From.GetRealName]"
+		log = "primitive planet [FromFrom.GetName] ([From.GetRealName]) conquered by [Root.GetRealName]"
+		set_country_flag = keeping_leaders_conquest@FROM
 		# fires the above event - hooray for reuse!
-		FROM = {
-			set_country_flag = keeping_leaders_conquest@ROOT
-			country_event = {
-				id = keep_leaders.1
-				scopes = {
-					from = ROOT
-				}
+		country_event = {
+			id = keep_leaders.1
+			scopes = {
+				from = FROM
 			}
 		}
 	}
