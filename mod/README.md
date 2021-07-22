@@ -58,6 +58,7 @@ This error will not affect the functioning of this mod - all built-in government
 ## Changelog
 
 * 1.0.0 Initial version
+* 1.0.1 Add thumbnail
 
 ## Source Code
 
