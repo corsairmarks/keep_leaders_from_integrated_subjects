@@ -61,7 +61,7 @@ This error will not affect the functioning of this mod - all built-in government
 
 [h2]Changelog[/h2]
 
-See [url=]Change Notes[/url]
+See [url=https://steamcommunity.com/sharedfiles/filedetails/changelog/2553818684]Change Notes[/url]
 
 [h2]Source Code[/h2]
 
