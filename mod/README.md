@@ -59,6 +59,7 @@ This error will not affect the functioning of this mod - all built-in government
 
 * 1.0.0 Initial version
 * 1.0.1 Add thumbnail
+* 1.0.2 Support Decree: Honored Protectors in Full Military Service for Battle Thralls
 
 ## Source Code
 
