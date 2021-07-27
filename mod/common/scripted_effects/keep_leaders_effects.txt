@@ -38,6 +38,7 @@ ensure_species_rights_and_take_ownership_of_leader = {
 	set_minimum_standard_of_living_species = yes
 	unassign_leader = THIS
 	set_owner = event_target:potential_owner
+	try_assign_retained_leader_to_former_assignment = yes
 	fire_on_action = { on_action = on_leader_owner_changed }
 }
 
@@ -821,7 +822,7 @@ accumulate_leader = {
 	}
 }
 
-# event_target:mechanical_species - used as the base species to be modified, will be overwritten with the new specis if one or more traits had to be swapped
+# event_target:mechanical_species - used as the base species to be modified, will be overwritten with the new species if one or more traits had to be swapped
 assimilate_species_traits_machine_to_robot = {
 	if = {
 		limit = { has_trait = trait_robot_emotion_emulators }
@@ -843,5 +844,168 @@ assimilate_species_traits_machine_to_robot = {
 				save_event_target_as = mechanical_species
 			}
 		}
+	}
+}
+
+# THIS = leader
+# event_target:potential_owner = country, source of army-match variables
+tag_leader_for_reassignment = {
+	event_target:potential_owner = {
+		if = {
+			limit = { NOT = { is_variable_set = keep_leader_army_match } }
+			set_variable = {
+				which = keep_leader_match_army
+				value = 13 # semi-arbitrary start value
+			}
+		}
+	}
+	switch = {
+		trigger = leader_class
+		# governors can't be reassigned because sectors are cleared and cannot be recreated by script
+		governor = {
+			if = {
+				limit = { exists = sector }
+				set_leader_flag = keep_leader_match_sector_capital_planet@THIS
+				sector.sector_capital = { set_planet_flag = keep_leader_match_sector_capital_planet@PREV }
+			}
+		}
+		scientist = {
+			if = {
+				limit = { exists = fleet }
+				set_leader_flag = keep_leader_match_fleet@THIS
+				fleet = { set_fleet_flag = keep_leader_match_fleet@PREV }
+			}
+			switch = {
+				trigger = is_researching_area
+				physics = { set_leader_flag = keep_leader_research_physics }
+				society = { set_leader_flag = keep_leader_research_society }
+				engineering = { set_leader_flag = keep_leader_research_engineering }
+			}
+		}
+		admiral = {
+			if = {
+				limit = { exists = fleet }
+				set_leader_flag = keep_leader_match_fleet@THIS
+				fleet = { set_fleet_flag = keep_leader_match_fleet@PREV }
+			}
+		}
+		general = {
+			if = {
+				limit = { exists = fleet }
+				set_leader_flag = keep_leader_match_fleet@THIS
+				fleet = { set_fleet_flag = keep_leader_match_fleet@PREV }
+			}
+			owner = {
+				random_owned_army = {
+					limit = {
+						exists = leader
+						leader = { is_same_value = PREVPREV }
+					}
+					leader = {
+						set_variable = {
+							which = keep_leader_match_army
+							value = event_target:potential_owner
+						}
+					}
+					set_variable = {
+						which = keep_leader_match_army
+						value = event_target:potential_owner
+					}
+					event_target:potential_owner = {
+						change_variable = {
+							which = keep_leader_match_army
+							value = 1
+						}
+					}
+				}
+			}
+		}
+		# rulers have special handling
+	}
+}
+
+try_assign_retained_leader_to_former_assignment = {
+	switch = {
+		trigger = leader_class
+		# governor = {
+			# governors can't be reassigned because sectors are cleared and cannot be recreated by script
+			# if = {
+			# 	limit = { has_leader_flag = keep_leader_match_sector_capital_planet@THIS }
+			# 	owner = {
+			# 		random_owned_planet = {
+			# 			limit = {
+			# 				NOT = { exists = sector }
+			# 				has_planet_flag = keep_leader_match_sector_capital_planet@PREVPREV
+			# 			}
+			# 			log = "\\[PrevPrev.GetTitle] \\[PrevPrev.GetName] formerly governed a sector from \\[This.GetName]"
+			# 		}
+			# 	}
+			# }
+		# }
+		scientist = {
+			if = {
+				limit = { has_leader_flag = keep_leader_match_fleet@THIS }
+				owner = {
+					random_owned_fleet = {
+						limit = { has_fleet_flag = keep_leader_match_fleet@PREVPREV }
+						if = {
+							limit = { NOT = { exists = leader } }
+							assign_leader = PREVPREV
+							log = "\\[PrevPrev.GetTitle] \\[PrevPrev.GetName] resumed command of science vessel \\[This.GetName]"
+						}
+					}
+				}
+			}
+		}
+		admiral = {
+			if = {
+				limit = { has_leader_flag = keep_leader_match_fleet@THIS }
+				owner = {
+					random_owned_fleet = {
+						limit = { has_fleet_flag = keep_leader_match_fleet@PREVPREV }
+						if = {
+							limit = { NOT = { exists = leader } }
+							assign_leader = PREVPREV
+							log = "\\[PrevPrev.GetTitle] \\[PrevPrev.GetName] resumed command of fleet \\[This.GetName]"
+						}
+					}
+				}
+			}
+		}
+		general = {
+			if = {
+				limit = { has_leader_flag = keep_leader_match_fleet@THIS }
+				owner = {
+					random_owned_fleet = {
+						limit = { has_fleet_flag = keep_leader_match_fleet@PREVPREV }
+						if = {
+							limit = { NOT = { exists = leader } }
+							assign_leader = PREVPREV
+							log = "\\[PrevPrev.GetTitle] \\[PrevPrev.GetName] resumed command of transport fleet \\[This.GetName]"
+						}
+					}
+				}
+			}
+			else_if = {
+				limit = { is_variable_set = keep_leader_match_army }
+				owner = {
+					random_owned_army = {
+						limit = {
+							is_variable_set = keep_leader_match_army
+							check_variable = {
+								which = keep_leader_match_army
+								value = PREVPREV
+							}
+						}
+						if = {
+							limit = { NOT = { exists = leader } }
+							assign_leader = PREVPREV
+							log = "\\[PrevPrev.GetTitle] \\[PrevPrev.GetName] resumed command of the army \\[This.GetName]"
+						}
+					}
+				}
+			}
+		}
+		# rulers have special handling
 	}
 }

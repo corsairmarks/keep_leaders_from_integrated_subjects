@@ -121,6 +121,7 @@ country_event = {
 			every_owned_leader = {
 				limit = { is_eligible_transfer_leader_class = yes }
 				accumulate_leader = yes
+				tag_leader_for_reassignment = yes
 				transfer_leader_to_storage = yes
 			}
 			if = {
@@ -2271,6 +2272,7 @@ country_event = {
 					fire_on_action = { on_action = on_leader_owner_changed }
 					change_species = event_target:potential_owner
 					change_leader_portrait = event_target:potential_owner
+					try_assign_retained_leader_to_former_assignment = yes
 					fire_on_action = { on_action = on_leader_species_changed }
 				}
 				else_if = {
