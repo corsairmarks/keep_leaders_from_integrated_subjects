@@ -12,12 +12,20 @@ on_single_player_save_game_load = {
 	}
 }
 
+# THIS = country
+on_monthly_pulse_country = {
+	events = {
+		keep_leaders.7
+	}
+}
+
 # fired when a country finishes being integrated
 # THIS = overlord
 # FROM = subject
 on_subject_integrated = {
 	events = {
 		keep_leaders.1
+		keep_leaders.5
 	}
 }
 

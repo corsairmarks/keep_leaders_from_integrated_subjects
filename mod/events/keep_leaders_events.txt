@@ -2528,6 +2528,65 @@ leader_event = {
 	}
 }
 
+# triggered by on_monthly_pulse_country
+# ROOT = country
+country_event = {
+	id = keep_leaders.7
+	hide_window = yes
+	is_triggered_only = yes
+	immediate = {
+		log = "monthly pulse [This.GetName]"
+		country_event = {
+			id = keep_leaders.8
+			days = 29
+		}
+	}
+}
+
+# triggered monthly on the 30th
+# ROOT = country
+country_event = {
+	id = keep_leaders.8
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = {
+		count_subject = { count > 0 }
+		any_owned_fleet = { is_ship_class = shipclass_transport }
+	}
+	immediate = {
+		log = "30th [This.GetName] [GetDate]"
+		every_subject = {
+			every_owned_planet = {
+				limit = { is_colony = yes }
+				solar_system = {
+					set_timed_star_flag = {
+						flag = keep_leaders_subject_system
+						days = 2
+					}
+				}
+			}
+			every_owned_megastructure = {
+				limit = { is_colony = yes }
+				solar_system = {
+					set_timed_star_flag = {
+						flag = keep_leaders_subject_system
+						days = 2
+					}
+				}
+			}
+		}
+		every_owned_fleet = {
+			limit = { is_ship_class = shipclass_transport }
+			set_timed_fleet_flag = {
+				flag = keep_leaders_already_owned
+				days = 2
+			}
+		}
+		# ideally, I could check whether a subject is about the be integrated and clone thier fleets 1 day ahead
+		# but I'm not finding a way to check whether an integration is in progress, or what the progress might be
+	}
+}
+
 # keep robotic only
 # ROOT = country, integrator or conqueror
 # FROM = country, leader storage
