@@ -852,6 +852,13 @@ assimilate_species_traits_machine_to_robot = {
 tag_leader_for_reassignment = {
 	event_target:potential_owner = {
 		if = {
+			limit = { NOT = { is_variable_set = keep_leader_match_transport_fleet } }
+			set_variable = {
+				which = keep_leader_match_transport_fleet
+				value = 13 # semi-arbitrary start value
+			}
+		}
+		if = {
 			limit = { NOT = { is_variable_set = keep_leader_army_match } }
 			set_variable = {
 				which = keep_leader_match_army
@@ -892,8 +899,22 @@ tag_leader_for_reassignment = {
 		general = {
 			if = {
 				limit = { exists = fleet }
-				set_leader_flag = keep_leader_match_fleet@THIS
-				fleet = { set_fleet_flag = keep_leader_match_fleet@PREV }
+				set_variable = {
+					which = keep_leader_match_transport_fleet
+					value = event_target:potential_owner
+				}
+				fleet = {
+					set_variable = {
+						which = keep_leader_match_transport_fleet
+						value = event_target:potential_owner
+					}
+				}
+				event_target:potential_owner = {
+					change_variable = {
+						which = keep_leader_match_transport_fleet
+						value = 1
+					}
+				}
 			}
 			owner = {
 				random_owned_army = {
@@ -924,6 +945,7 @@ tag_leader_for_reassignment = {
 	}
 }
 
+# THIS = leader
 try_assign_retained_leader_to_former_assignment = {
 	switch = {
 		trigger = leader_class
@@ -974,10 +996,16 @@ try_assign_retained_leader_to_former_assignment = {
 		}
 		general = {
 			if = {
-				limit = { has_leader_flag = keep_leader_match_fleet@THIS }
+				limit = { is_variable_set = keep_leader_match_transport_fleet }
 				owner = {
 					random_owned_fleet = {
-						limit = { has_fleet_flag = keep_leader_match_fleet@PREVPREV }
+						limit = {
+							is_variable_set = keep_leader_match_transport_fleet
+							check_variable = {
+								which = keep_leader_match_transport_fleet
+								value = PREVPREV
+							}
+						}
 						if = {
 							limit = { NOT = { exists = leader } }
 							assign_leader = PREVPREV
@@ -1007,5 +1035,21 @@ try_assign_retained_leader_to_former_assignment = {
 			}
 		}
 		# rulers have special handling
+	}
+}
+
+# somewhat hacky workaround to spawn an army transport of a specific type with less repeated code, and also using loclisation for the name
+# THIS = fleet, to which the transport will be assigned
+# $ARMY_TYPE$ = army type to create
+# event_target:source_ship = transport being duplicated
+# event_target:source_army = army being duplicated
+create_army_transport_parameterized = {
+	create_army_transport = {
+		species = event_target:source_army
+		army_type = $ARMY_TYPE$
+		effect = {
+			set_name = "\\[source_ship.GetName]"
+			last_created_army = { set_name = "\\[source_army.GetName]" }
+		}
 	}
 }
