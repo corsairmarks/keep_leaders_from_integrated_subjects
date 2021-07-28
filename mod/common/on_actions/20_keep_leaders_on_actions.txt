@@ -12,6 +12,7 @@ on_single_player_save_game_load = {
 	}
 }
 
+# fired monthly on the 1st
 # THIS = country
 on_monthly_pulse_country = {
 	events = {
