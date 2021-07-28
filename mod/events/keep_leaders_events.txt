@@ -2535,7 +2535,6 @@ country_event = {
 	hide_window = yes
 	is_triggered_only = yes
 	immediate = {
-		log = "monthly pulse [This.GetName]"
 		country_event = {
 			id = keep_leaders.8
 			days = 29
@@ -2550,11 +2549,15 @@ country_event = {
 	hide_window = yes
 	is_triggered_only = yes
 	trigger = {
-		count_subject = { count > 0 }
+		is_overlord = yes
+		any_subject = {
+			any_owned_fleet = {
+				is_ship_class = shipclass_transport
+			}
+		}
 		any_owned_fleet = { is_ship_class = shipclass_transport }
 	}
 	immediate = {
-		log = "30th [This.GetName] [GetDate]"
 		every_subject = {
 			every_owned_planet = {
 				limit = { is_colony = yes }
@@ -2582,7 +2585,7 @@ country_event = {
 				days = 2
 			}
 		}
-		# ideally, I could check whether a subject is about the be integrated and clone thier fleets 1 day ahead
+		# ideally, I could check whether a subject is about the be integrated and clone their fleets 1 day ahead
 		# but I'm not finding a way to check whether an integration is in progress, or what the progress might be
 	}
 }
