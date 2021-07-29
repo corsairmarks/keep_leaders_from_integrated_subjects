@@ -373,31 +373,6 @@ set_assimilation_standard_of_living_species = {
 	}
 }
 
-# THIS = country
-# event_target:leader_to_replace = ruler/heir that you want replaced - will be set to point to the cloned leader
-replace_leader_based_on_pre_ruler_leader_class = {
-	if = {
-		limit = { event_target:leader_to_replace = { pre_ruler_leader_class = governor } }
-		replace_leader_as_governor = yes
-	}
-	else_if = {
-		limit = { event_target:leader_to_replace = { pre_ruler_leader_class = scientist } }
-		replace_leader_as_scientist = yes
-	}
-	else_if = {
-		limit = { event_target:leader_to_replace = { pre_ruler_leader_class = admiral } }
-		replace_leader_as_admiral = yes
-	}
-	else_if = {
-		limit = { event_target:leader_to_replace = { pre_ruler_leader_class = general } }
-		replace_leader_as_general = yes
-	}
-	# else they didn't have a pre-ruler class, or it's one we don't recognize
-	else = {
-		replace_leader_based_on_government_type = yes
-	}
-}
-
 # THIS = leader
 set_former_gestalt_ruler_flag = {
 	if = {
@@ -441,22 +416,25 @@ remove_gestalt_ruler_traits = {
 # event_target:leader_to_replace = leader that you want replaced - will be set to point to the cloned leader
 replace_leader_as_governor = {
 	if = {
-		limit = { event_target:leader_to_replace = { has_leader_flag = clear_traits } }
-		clone_leader = {
-			target = event_target:leader_to_replace
-			class = governor
-			traits = { trait = random_trait }
+		limit = { event_target:leader_to_replace = { NOT = { leader_class = governor } } }
+		if = {
+			limit = { event_target:leader_to_replace = { has_leader_flag = clear_traits } }
+			clone_leader = {
+				target = event_target:leader_to_replace
+				class = governor
+				traits = { trait = random_trait }
+			}
 		}
-	}
-	else = {
-		clone_leader = {
-			target = event_target:leader_to_replace
-			class = governor
+		else = {
+			clone_leader = {
+				target = event_target:leader_to_replace
+				class = governor
+			}
 		}
-	}
-	last_created_leader = {
-		event_target:leader_to_replace = { kill_leader = { show_notification = no } }
-		save_event_target_as = leader_to_replace
+		last_created_leader = {
+			event_target:leader_to_replace = { kill_leader = { show_notification = no } }
+			save_event_target_as = leader_to_replace
+		}
 	}
 }
 
@@ -464,50 +442,25 @@ replace_leader_as_governor = {
 # event_target:leader_to_replace = leader that you want replaced - will be set to point to the cloned leader
 replace_leader_as_scientist = {
 	if = {
-		limit = { event_target:leader_to_replace = { has_leader_flag = clear_traits } }
-		clone_leader = {
-			target = event_target:leader_to_replace
-			class = scientist
-			traits = { trait = random_trait }
+		limit = { event_target:leader_to_replace = { NOT = { leader_class = scientist } } }
+		if = {
+			limit = { event_target:leader_to_replace = { has_leader_flag = clear_traits } }
+			clone_leader = {
+				target = event_target:leader_to_replace
+				class = scientist
+				traits = { trait = random_trait }
+			}
 		}
-	}
-	else = {
-		clone_leader = {
-			target = event_target:leader_to_replace
-			class = scientist
+		else = {
+			clone_leader = {
+				target = event_target:leader_to_replace
+				class = scientist
+			}
 		}
-	}
-	if = {
-		limit = { event_target:leader_to_replace = { leader_class = ruler } }
 		last_created_leader = {
-			if = {
-				limit = { NOT = { has_trait = leader_trait_expertise_statecraft } }
-				add_trait = leader_trait_expertise_statecraft
-			}
-			else_if = {
-				limit = {
-					has_synthethic_dawn = yes
-					is_robotic_species = yes
-					NOT = { has_trait = leader_trait_flexible_programming }
-				}
-				add_trait = leader_trait_flexible_programming
-			}
-			else_if = {
-				limit = {
-					OR = {
-						is_robotic_species = no
-						has_synthethic_dawn = no
-					}
-					NOT = { has_trait = leader_trait_adaptable }
-				}
-				add_trait = leader_trait_adaptable
-			}
-			# else they have a lot of traits already
+			event_target:leader_to_replace = { kill_leader = { show_notification = no } }
+			save_event_target_as = leader_to_replace
 		}
-	}
-	last_created_leader = {
-		event_target:leader_to_replace = { kill_leader = { show_notification = no } }
-		save_event_target_as = leader_to_replace
 	}
 }
 
@@ -515,22 +468,25 @@ replace_leader_as_scientist = {
 # event_target:leader_to_replace = leader that you want replaced - will be set to point to the cloned leader
 replace_leader_as_admiral = {
 	if = {
-		limit = { event_target:leader_to_replace = { has_leader_flag = clear_traits } }
-		clone_leader = {
-			target = event_target:leader_to_replace
-			class = admiral
-			traits = { trait = random_trait }
+		limit = { event_target:leader_to_replace = { NOT = { leader_class = admiral } } }
+		if = {
+			limit = { event_target:leader_to_replace = { has_leader_flag = clear_traits } }
+			clone_leader = {
+				target = event_target:leader_to_replace
+				class = admiral
+				traits = { trait = random_trait }
+			}
 		}
-	}
-	else = {
-		clone_leader = {
-			target = event_target:leader_to_replace
-			class = admiral
+		else = {
+			clone_leader = {
+				target = event_target:leader_to_replace
+				class = admiral
+			}
 		}
-	}
-	last_created_leader = {
-		event_target:leader_to_replace = { kill_leader = { show_notification = no } }
-		save_event_target_as = leader_to_replace
+		last_created_leader = {
+			event_target:leader_to_replace = { kill_leader = { show_notification = no } }
+			save_event_target_as = leader_to_replace
+		}
 	}
 }
 
@@ -538,61 +494,123 @@ replace_leader_as_admiral = {
 # event_target:leader_to_replace = leader that you want replaced - will be set to point to the cloned leader
 replace_leader_as_general = {
 	if = {
-		limit = { event_target:leader_to_replace = { has_leader_flag = clear_traits } }
-		clone_leader = {
-			target = event_target:leader_to_replace
-			class = general
-			traits = { trait = random_trait }
+		limit = { event_target:leader_to_replace = { NOT = { leader_class = general } } }
+		if = {
+			limit = { event_target:leader_to_replace = { has_leader_flag = clear_traits } }
+			clone_leader = {
+				target = event_target:leader_to_replace
+				class = general
+				traits = { trait = random_trait }
+			}
 		}
-	}
-	else = {
-		clone_leader = {
-			target = event_target:leader_to_replace
-			class = general
+		else = {
+			clone_leader = {
+				target = event_target:leader_to_replace
+				class = general
+			}
 		}
-	}
-	last_created_leader = {
-		event_target:leader_to_replace = { kill_leader = { show_notification = no } }
-		save_event_target_as = leader_to_replace
+		last_created_leader = {
+			event_target:leader_to_replace = { kill_leader = { show_notification = no } }
+			save_event_target_as = leader_to_replace
+		}
 	}
 }
 
 # THIS = country
 # event_target:leader_to_replace = leader that you want replaced - will be set to point to the cloned leader
 replace_leader_as_civilian = {
-	random_list = {
-		50 = { replace_leader_as_governor = yes }
-		50 = { replace_leader_as_scientist = yes }
+	if = {
+		limit = {
+			event_target:leader_to_replace = {
+				NOR = {
+					leader_class = governor
+					leader_class = scientist
+				}
+			}
+		}
+		random_list = {
+			50 = { replace_leader_as_governor = yes }
+			50 = { replace_leader_as_scientist = yes }
+		}
 	}
 }
 
 # THIS = country
 # event_target:leader_to_replace = leader that you want replaced - will be set to point to the cloned leader
 replace_leader_as_military = {
-	random_list = {
-		50 = { replace_leader_as_admiral = yes }
-		50 = { replace_leader_as_general = yes }
+	if = {
+		limit = {
+			event_target:leader_to_replace = {
+				NOR = {
+					leader_class = admiral
+					leader_class = general
+				}
+			}
+		}
+		random_list = {
+			50 = { replace_leader_as_admiral = yes }
+			50 = { replace_leader_as_general = yes }
+		}
+	}
+}
+
+# THIS = country
+# event_target:leader_to_replace = leader that you want replaced - will be set to point to the cloned leader
+replace_leader_non_military_as_admiral = {
+	if = {
+		limit = {
+			event_target:leader_to_replace = {
+				NOR = {
+					leader_class = admiral
+					leader_class = general
+				}
+			}
+		}
+		replace_leader_as_admiral = yes
 	}
 }
 
 # THIS = country
 # event_target:leader_to_replace = leader that you want replaced - will be set to point to the cloned leader
 replace_leader_as_non_scientist = {
-	random_list = {
-		33 = { replace_leader_as_governor = yes }
-		33 = { replace_leader_as_admiral = yes }
-		33 = { replace_leader_as_general = yes }
+	if = {
+		limit = {
+			event_target:leader_to_replace = {
+				NOR = {
+					leader_class = governor
+					leader_class = admiral
+					leader_class = general
+				}
+			}
+		}
+		random_list = {
+			33 = { replace_leader_as_governor = yes }
+			33 = { replace_leader_as_admiral = yes }
+			33 = { replace_leader_as_general = yes }
+		}
 	}
 }
 
 # THIS = country
 # event_target:leader_to_replace = leader that you want replaced - will be set to point to the cloned leader
 replace_leader_as_random = {
-	random_list = {
-		25 = { replace_leader_as_governor = yes }
-		25 = { replace_leader_as_scientist = yes }
-		25 = { replace_leader_as_admiral = yes }
-		25 = { replace_leader_as_general = yes }
+	if = {
+		limit = {
+			event_target:leader_to_replace = {
+				NOR = {
+					leader_class = governor
+					leader_class = scientist
+					leader_class = admiral
+					leader_class = scientist
+				}
+			}
+		}
+		random_list = {
+			25 = { replace_leader_as_governor = yes }
+			25 = { replace_leader_as_scientist = yes }
+			25 = { replace_leader_as_admiral = yes }
+			25 = { replace_leader_as_general = yes }
+		}
 	}
 }
 
@@ -621,10 +639,10 @@ replace_leader_based_on_government_type = {
 		# admiral/general
 		gov_military_dictatorship = { replace_leader_as_military = yes }
 		gov_military_junta = { replace_leader_as_military = yes }
-		gov_martial_dictatorship = { replace_leader_as_admiral = yes } # war cult (specifies admiral, although generals can be candidates)
-		gov_war_council = { replace_leader_as_admiral = yes } # war cult (specifies admiral, although generals can be candidates)
-		gov_assembly_of_clans = { replace_leader_as_admiral = yes } # war cult (specifies admiral, although generals can be candidates)
-		gov_citizen_stratocracy = { replace_leader_as_admiral = yes } # cit serv (specifies admiral, although generals can be candidates)
+		gov_martial_dictatorship = { replace_leader_non_military_as_admiral = yes } # war cult (specifies admiral, although generals can be candidates)
+		gov_war_council = { replace_leader_non_military_as_admiral = yes } # war cult (specifies admiral, although generals can be candidates)
+		gov_assembly_of_clans = { replace_leader_non_military_as_admiral = yes } # war cult (specifies admiral, although generals can be candidates)
+		gov_citizen_stratocracy = { replace_leader_non_military_as_admiral = yes } # cit serv (specifies admiral, although generals can be candidates)
 		# admiral/general/governor
 		gov_military_commissariat = { replace_leader_as_non_scientist = yes }
 		gov_citizen_republic = { replace_leader_as_non_scientist = yes } # cit serv
@@ -701,6 +719,354 @@ replace_leader_based_on_government_type = {
 			replace_leader_as_random = yes
 		}
 	}
+}
+
+# THIS = leader
+try_add_demoted_ruler_bonus_trait = {
+	switch = {
+		trigger = leader_class
+		governor = { try_add_demoted_ruler_governor_bonus_trait = yes }
+		scientist = { try_add_demoted_ruler_scientist_bonus_trait = yes }
+		admiral = { try_add_demoted_ruler_admiral_bonus_trait = yes }
+		general = { try_add_demoted_ruler_general_bonus_trait = yes }
+	}
+}
+
+# add the relevant +admin cap trait - which, if using enhanced randomisation, will get switched to the right kind for the new owner
+# THIS = leader
+try_add_demoted_ruler_governor_bonus_trait = {
+	if = {
+		limit = {
+			has_ruler_trait = trait_ruler_military_pioneer
+			NOR = {
+				has_trait = leader_trait_retired_fleet_officer
+				has_trait = leader_trait_ai_aided_design
+			}
+		}
+		if = {
+			limit = {
+				has_synthethic_dawn = yes
+				is_machine_species = yes
+			}
+			add_trait = leader_trait_ai_aided_design
+		}
+		else = {
+			add_trait = leader_trait_army_veteran
+		}
+	}
+	else_if = {
+		limit = {
+			has_ruler_trait = trait_ruler_from_the_ranks
+			NOR = {
+				has_trait = leader_trait_army_veteran
+				has_trait = leader_trait_warbot_tinkerer
+			}
+		}
+		if = {
+			limit = {
+				has_synthethic_dawn = yes
+				is_machine_species = yes
+			}
+			add_trait = leader_trait_warbot_tinkerer
+		}
+		else = {
+			add_trait = leader_trait_army_veteran
+		}
+	}
+	else_if = {
+		limit = {
+			has_ruler_trait = trait_ruler_architectural_sense
+			NOT = { has_trait = leader_trait_architectural_interest }
+		}
+		add_trait = leader_trait_architectural_interest
+	}
+	else_if = {
+		limit = {
+			has_ruler_trait = trait_ruler_fertility_preacher
+			NOT = { has_trait = leader_trait_agrarian_upbringing }
+			is_machine_species = no
+		}
+		add_trait = leader_trait_agrarian_upbringing
+	}
+	else_if = {
+		limit = {
+			has_ruler_trait = trait_ruler_world_shaper
+			NOR = {
+				has_trait = leader_trait_environmental_engineer
+				has_trait = leader_trait_bulldozer
+			}
+		}
+		if = {
+			limit = {
+				has_synthethic_dawn = yes
+				is_machine_species = yes
+			}
+			add_trait = leader_trait_bulldozer
+		}
+		else = {
+			add_trait = leader_trait_environmental_engineer
+		}
+	}
+	else_if = {
+		limit = {
+			has_ruler_trait = trait_ruler_explorer
+			NOR = {
+				has_trait = leader_trait_intellectual
+				has_trait = leader_trait_analytical
+			}
+		}
+		if = {
+			limit = {
+				has_synthethic_dawn = yes
+				is_machine_species = yes
+			}
+			add_trait = leader_trait_analytical
+		}
+		else = {
+			add_trait = leader_trait_intellectual
+		}
+	}
+	else_if = {
+		limit = {
+			owner = { is_machine_empire = yes }
+			NOT = { has_trait = leader_trait_amplifier }
+		}
+		add_trait = leader_trait_amplifier
+	}
+	else_if = {
+		limit = {
+			owner = { is_hive_empire = yes }
+			NOT = { has_trait = leader_trait_mindfulness }
+		}
+		add_trait = leader_trait_mindfulness
+	}
+	else_if = {
+		limit = {
+			owner = { is_regular_empire = yes }
+			NOT = { has_trait = leader_trait_bureaucrat }
+		}
+		add_trait = leader_trait_bureaucrat
+	}
+	else = {
+		try_add_demoted_ruler_generic_bonus_trait = yes
+	}
+}
+
+# THIS = leader
+try_add_demoted_ruler_scientist_bonus_trait = {
+	if = {
+		limit = {
+			has_ruler_trait = trait_ruler_explorer
+			NOR = {
+				has_trait = leader_trait_roamer
+				has_trait = leader_trait_cataloger
+			}
+		}
+		if = {
+			limit = {
+				has_synthethic_dawn = yes
+				is_machine_species = yes
+			}
+			add_trait = leader_trait_cataloger
+		}
+		else = {
+			add_trait = leader_trait_roamer
+		}
+	}
+	else_if = {
+		limit = {
+			OR = {
+				has_ruler_trait = trait_ruler_home_in_the_sky
+				has_ruler_trait = trait_ruler_corvette_focus
+				has_ruler_trait = trait_ruler_destroyer_focus
+				has_ruler_trait = trait_ruler_cruiser_focus
+				has_ruler_trait = trait_ruler_battleship_focus
+			}
+			NOT = { has_trait = leader_trait_expertise_voidcraft }
+		}
+		add_trait = leader_trait_expertise_voidcraft
+	}
+	else_if = {
+		limit = {
+			OR = {
+				has_ruler_trait = trait_ruler_architectural_sense
+				has_ruler_trait = trait_ruler_space_miner
+			}
+			NOT = { has_trait = leader_trait_expertise_materials }
+		}
+		add_trait = leader_trait_expertise_materials
+	}
+	else_if = {
+		limit = {
+			has_ruler_trait = trait_ruler_industrialist
+			NOT = { has_trait = leader_trait_expertise_industry }
+		}
+		add_trait = leader_trait_expertise_industry
+	}
+	else_if = {
+		limit = {
+			OR = {
+				has_ruler_trait = trait_ruler_recruiter
+				has_ruler_trait = trait_ruler_from_the_ranks
+				has_ruler_trait = trait_ruler_military_pioneer
+				has_ruler_trait = trait_ruler_warlike
+			}
+			NOT = { has_trait = leader_trait_expertise_military_theory }
+		}
+		add_trait = leader_trait_expertise_military_theory
+	}
+	else_if = {
+		limit = {
+			has_ruler_trait = trait_ruler_expansionist
+			NOT = { has_trait = leader_trait_expertise_new_worlds }
+		}
+		add_trait = leader_trait_expertise_new_worlds
+	}
+	else_if = {
+		limit = {
+			has_ruler_trait = trait_ruler_world_shaper
+			NOR = {
+				has_trait = leader_trait_archaeologist
+				has_trait = leader_trait_archaeologist_ancrel
+			}
+		}
+		if = {
+			limit = { has_ancrel = yes }
+			add_trait = leader_trait_archaeologist_ancrel
+		}
+		else = {
+			add_trait = leader_trait_archaeologist
+		}
+	}
+	else_if = {
+		limit = { NOT = { has_trait = leader_trait_expertise_statecraft } }
+		add_trait = leader_trait_expertise_statecraft
+	}
+	else = {
+		try_add_demoted_ruler_generic_bonus_trait = yes
+	}
+}
+
+# THIS = leader
+try_add_demoted_ruler_admiral_bonus_trait = {
+	if = {
+		limit = {
+			has_ruler_trait = trait_ruler_warlike
+			NOT = { has_trait = leader_trait_aggressive }
+		}
+		add_trait = leader_trait_aggressive
+	}
+	else_if = {
+		limit = {
+			has_ruler_trait = trait_ruler_military_pioneer
+			NOT = { has_trait = leader_trait_trickster }
+		}
+		add_trait = leader_trait_trickster
+	}
+	else_if = {
+		limit = {
+			has_ruler_trait = trait_ruler_explorer
+			NOT = { has_trait = leader_trait_scout }
+		}
+		add_trait = leader_trait_scout
+	}
+	else_if = {
+		limit = {
+			OR = {
+				has_ruler_trait = trait_ruler_corvette_focus
+				has_ruler_trait = trait_ruler_destroyer_focus
+				has_ruler_trait = trait_ruler_cruiser_focus
+				has_ruler_trait = trait_ruler_battleship_focus
+			}
+			NOT = { has_trait = leader_trait_engineer }
+		}
+		add_trait = leader_trait_scout
+	}
+	else_if = {
+		limit = { NOT = { has_trait = leader_trait_fleet_logistician } }
+		add_trait = leader_trait_fleet_logistician
+	}
+	else = {
+		try_add_demoted_ruler_generic_bonus_trait = yes
+	}
+}
+
+# THIS = leader
+try_add_demoted_ruler_general_bonus_trait = {
+	if = {
+		limit = {
+			OR = {
+				has_ruler_trait = trait_ruler_champion_of_the_people
+				has_ruler_trait = trait_ruler_charismatic
+				has_ruler_trait = trait_ruler_recruiter
+			}
+			NOT = { has_trait = leader_trait_charismatic }
+		}
+		add_trait = leader_trait_charismatic
+	}
+	else_if = {
+		limit = {
+			has_ruler_trait = trait_ruler_fortifier
+			NOT = { has_trait = leader_trait_restrained }
+		}
+		add_trait = leader_trait_restrained
+	}
+	else_if = {
+		limit = {
+			has_ruler_trait = trait_ruler_expansionist
+			NOT = { has_trait = leader_trait_glory_seeker }
+		}
+		add_trait = leader_trait_glory_seeker
+	}
+	else_if = {
+		limit = {
+			has_ruler_trait = trait_ruler_warlike
+			NOR = { 
+				has_trait = leader_trait_butcher
+				has_trait = leader_trait_demoralizer
+			}
+		}
+		if = {
+			limit = {
+				has_synthethic_dawn = yes
+				is_machine_species = yes
+			}
+			add_trait = leader_trait_demoralizer
+		}
+		else = {
+			add_trait = leader_trait_butcher
+		}
+	}
+	else_if = {
+		limit = { NOT = { has_trait = leader_trait_army_logistician } }
+		add_trait = leader_trait_army_logistician
+	}
+	else = {
+		try_add_demoted_ruler_generic_bonus_trait = yes
+	}
+}
+
+# THIS = leader
+try_add_demoted_ruler_generic_bonus_trait = {
+	if = {
+		limit = {
+			has_synthethic_dawn = yes
+			is_robotic_species = yes
+			NOT = { has_trait = leader_trait_flexible_programming }
+		}
+		add_trait = leader_trait_flexible_programming
+	}
+	else_if = {
+		limit = {
+			OR = {
+				is_robotic_species = no
+				has_synthethic_dawn = no
+			}
+			NOT = { has_trait = leader_trait_adaptable }
+		}
+		add_trait = leader_trait_adaptable
+	}
+	# else they have a lot of traits already
 }
 
 # THIS = leader
