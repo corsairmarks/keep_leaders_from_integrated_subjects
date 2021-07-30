@@ -568,6 +568,16 @@ all_stored_leaders_same_species = {
 }
 
 # THIS = country
+all_stored_leaders_robotic_strict = {
+	NOT = {
+		any_owned_leader = {
+			is_eligible_transfer_leader_from_storage = yes
+			is_robotic_species = no
+		}
+	}
+}
+
+# THIS = country
 all_stored_leaders_robotic_lenient = {
 	NOT = {
 		any_owned_leader = {
