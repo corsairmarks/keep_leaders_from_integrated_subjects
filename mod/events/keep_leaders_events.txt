@@ -480,14 +480,14 @@ country_event = {
 				fail_text = keep_leaders.1.necro.fail_text
 				if = {
 					limit = { is_necrophage_empire = yes }
-					event_target:global_event_country = { all_stored_leaders_eligible_transfer_to_main_species_leader_restricted = yes }
+					event_target:global_event_country = { all_stored_robotic_leaders_eligible_transfer_to_main_species_leader_restricted = yes }
 				}
 			}
 			custom_tooltip = {
 				fail_text = keep_leaders.1.phobe.fail_text
 				if = {
 					limit = { is_xenophobe = yes }
-					event_target:global_event_country = { all_stored_leaders_eligible_transfer_to_main_species_leader_restricted = yes }
+					event_target:global_event_country = { all_stored_robotic_leaders_eligible_transfer_to_main_species_leader_restricted = yes }
 				}
 			}
 			custom_tooltip = {
@@ -790,14 +790,14 @@ country_event = {
 				fail_text = keep_leaders.1.necro.fail_text
 				if = {
 					limit = { is_necrophage_empire = yes }
-					event_target:global_event_country = { all_stored_leaders_eligible_transfer_to_main_species_leader_restricted = yes }
+					event_target:global_event_country = { all_stored_robotic_leaders_eligible_transfer_to_main_species_leader_restricted = yes }
 				}
 			}
 			custom_tooltip = {
 				fail_text = keep_leaders.1.phobe.fail_text
 				if = {
 					limit = { is_xenophobe = yes }
-					event_target:global_event_country = { all_stored_leaders_eligible_transfer_to_main_species_leader_restricted = yes }
+					event_target:global_event_country = { all_stored_robotic_leaders_eligible_transfer_to_main_species_leader_restricted = yes }
 				}
 			}
 			
@@ -909,14 +909,14 @@ country_event = {
 				fail_text = keep_leaders.1.necro.fail_text
 				if = {
 					limit = { is_necrophage_empire = yes }
-					event_target:global_event_country = { all_stored_leaders_eligible_transfer_to_main_species_leader_restricted = yes }
+					event_target:global_event_country = { all_stored_organic_leaders_eligible_transfer_to_main_species_leader_restricted = yes }
 				}
 			}
 			custom_tooltip = {
 				fail_text = empire_is_xenophobe_no_x
 				if = {
 					limit = { is_xenophobe = yes }
-					event_target:global_event_country = { all_stored_leaders_eligible_transfer_to_main_species_leader_restricted = yes }
+					event_target:global_event_country = { all_stored_organic_leaders_eligible_transfer_to_main_species_leader_restricted = yes }
 				}
 			}
 		}
@@ -980,14 +980,14 @@ country_event = {
 				fail_text = keep_leaders.1.necro.fail_text
 				if = {
 					limit = { is_necrophage_empire = yes }
-					event_target:global_event_country = { all_stored_leaders_eligible_transfer_to_main_species_leader_restricted = yes }
+					event_target:global_event_country = { all_stored_organic_leaders_eligible_transfer_to_main_species_leader_restricted = yes }
 				}
 			}
 			custom_tooltip = {
 				fail_text = empire_is_xenophobe_no_x
 				if = {
 					limit = { is_xenophobe = yes }
-					event_target:global_event_country = { all_stored_leaders_eligible_transfer_to_main_species_leader_restricted = yes }
+					event_target:global_event_country = { all_stored_organic_leaders_eligible_transfer_to_main_species_leader_restricted = yes }
 				}
 			}
 		}
@@ -1268,15 +1268,27 @@ country_event = {
 			custom_tooltip = {
 				fail_text = keep_leaders.1.necro.fail_text
 				if = {
-					limit = { is_necrophage_empire = yes }
-					event_target:global_event_country = { all_stored_leaders_eligible_transfer_to_main_species_leader_restricted = yes }
+					limit = {
+						is_necrophage_empire = yes
+						check_variable = {
+							which = leader_transferable_accumulator
+							value > 0
+						}
+					}
+					event_target:global_event_country = { any_stored_leaders_eligible_transfer_to_main_species_leader_restricted = yes }
 				}
 			}
 			custom_tooltip = {
 				fail_text = empire_is_xenophobe_no_x
 				if = {
-					limit = { is_xenophobe = yes }
-					event_target:global_event_country = { all_stored_leaders_eligible_transfer_to_main_species_leader_restricted = yes }
+					limit = {
+						check_variable = {
+							which = leader_transferable_accumulator
+							value > 0
+						}
+						is_xenophobe = yes
+					}
+					event_target:global_event_country = { any_stored_leaders_eligible_transfer_to_main_species_leader_restricted = yes }
 				}
 			}
 			custom_tooltip = {
@@ -1288,11 +1300,9 @@ country_event = {
 			}
 			custom_tooltip = {
 				fail_text = keep_leaders.1.j.fail_text
-				event_target:global_event_country = {
-					any_owned_leader = {
-						is_eligible_transfer_leader_from_storage = yes
-						is_eligible_transfer_without_assimilation = yes
-					}
+				check_variable = {
+					which = leader_transferable_accumulator
+					value > 0
 				}
 			}
 		}
@@ -1660,6 +1670,7 @@ country_event = {
 	# assimilate: unmachine
 	option = {
 		name = keep_leaders.1.k.unmach
+		# TODO: what graphic here?  make my of .gfx file for the sprite?
 		custom_tooltip = keep_leaders.1.k.unmach.tooltip
 		custom_tooltip_with_params = {
 			description = keep_leaders.1.tooltip
@@ -1739,9 +1750,9 @@ country_event = {
 		}
 		trigger = {
 			hidden_trigger = { has_necroids = yes }
-			# doesn't use triggers so that these will be translated into icons
+			# doesn't use a trigger so that this will be translated into an icon
 			has_origin = origin_necrophage
-			has_trait = trait_necrophage
+			hidden_trigger = { has_trait = trait_necrophage }
 		}
 		allow = {
 			custom_tooltip = {
@@ -1844,6 +1855,7 @@ country_event = {
 		}
 	}
 }
+# TODO pass FROM to sub-events, they can grab the gloabl event country but the old country might help me with dynamic flags so multiple integrations remain matched to the right leaders
 
 # triggered by on_planet_attackers_win (same on_action as primitive planet conquest action.14)
 # ROOT = country, leader attacker
