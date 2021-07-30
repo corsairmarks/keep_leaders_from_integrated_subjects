@@ -1670,7 +1670,10 @@ country_event = {
 	# assimilate: unmachine
 	option = {
 		name = keep_leaders.1.k.unmach
-		# TODO: what graphic here?  make my of .gfx file for the sprite?
+		icon = {
+			icon = GFX_icon_tech_sapient_ai_alternate
+			text = keep_leaders.1.k.unmach.icon.tooltip
+		}
 		custom_tooltip = keep_leaders.1.k.unmach.tooltip
 		custom_tooltip_with_params = {
 			description = keep_leaders.1.tooltip
