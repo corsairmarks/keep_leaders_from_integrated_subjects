@@ -4,6 +4,10 @@ Have you ever wondered what happened to the former leaders of your subject after
 
 With this mod, regular (non-machine and non-hive) empires can retain leaders from an integrated Machine Intelligence subject if they have full AI rights.  The leaders in a Machine Intelligence that have enough capacity to act as independent agents, even if the rest of the Pops don't.
 
+Now enhanced to auto-assign integrated Scientists and Governors back to their per-integration roles, if they were commanding a science ship or fleet.  Notably, if you play with "pause-on-event" the science vessels will then continue their assigned orders after the leader is reassigned for command.
+
+A smaller, more subtle enhancement is that integrated, demoted rulers will (in most cases) now preserve their existing ruler traits in case they somehow become the ruler of your empire.  Also integrated, demoted rulers now get an extra regular leader class trait upon demotion, based on what ruler traits they have.
+
 [h1]Changes[/h1]
 
 A lot of code has gone into figuring out what leaders you can choose to keep based on what kind of country you are playing, what ethics it has, what kinds of assimilation or necrophage might be available. All of that boils down to an event screen that appears when you have integrated a subject or conquered a primitive planet, or a second event when you have infiltrated a primitive planet.
@@ -49,6 +53,8 @@ This mod can be safely added to your savegame after the game has started. If you
 [h3]Stellaris Bugs[/h3]
 
 The scalable country bonuses for "former ruler" traits (e.g. admin cap, naval cap, monthly research) will display the correct value (e.g. 3 governors that are former rulers gives +30 admin cap), but the game only awards the un-scaled amount (+10).  This is a bug with known Stellaris and may be patched at some point in the future.
+
+Demoted rulers with very long names that also contain a period `.` may cause error logs which the Leader screen is open.  It seems related to the font re-coloring in the "former ruler" name affix.  Don't leave the Leader window open for long periods of time or you will greate a very large error log file.
 
 [h3]Error Logs[/h3]
 

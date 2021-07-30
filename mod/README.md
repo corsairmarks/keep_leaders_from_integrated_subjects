@@ -4,6 +4,10 @@ Have you ever wondered what happened to the former leaders of your subject after
 
 With this mod, regular (non-machine and non-hive) empires can retain leaders from an integrated Machine Intelligence subject if they have full AI rights.  The leaders in a Machine Intelligence that have enough capacity to act as independent agents, even if the rest of the Pops don't.
 
+Now enhanced to auto-assign integrated Scientists and Governors back to their per-integration roles, if they were commanding a science ship or fleet.  Notably, if you play with "pause-on-event" the science vessels will then continue their assigned orders after the leader is reassigned for command.
+
+A smaller, more subtle enhancement is that integrated, demoted rulers will (in most cases) now preserve their existing ruler traits in case they somehow become the ruler of your empire.  Also integrated, demoted rulers now get an extra regular leader class trait upon demotion, based on what ruler traits they have.
+
 # Changes
 
 A lot of code has gone into figuring out what leaders you can choose to keep based on what kind of country you are playing, what ethics it has, what kinds of assimilation or necrophage might be available. All of that boils down to an event screen that appears when you have integrated a subject or conquered a primitive planet, or a second event when you have infiltrated a primitive planet.
@@ -46,6 +50,8 @@ This mod can be safely added to your savegame after the game has started. If you
 
 The scalable country bonuses for "former ruler" traits (e.g. admin cap, naval cap, monthly research) will display the correct value (e.g. 3 governors that are former rulers gives +30 admin cap), but the game only awards the un-scaled amount (+10).  This is a bug with known Stellaris and may be patched at some point in the future.
 
+Demoted rulers with very long names that also contain a period `.` may cause error logs which the Leader screen is open.  It seems related to the font re-coloring in the "former ruler" name affix.  Don't leave the Leader window open for long periods of time or you will greate a very large error log file.
+
 ### Error Logs
 
 This mod supports features from several of my other mods. If you are playing without [Eldanær Stellar Authority](https://steamcommunity.com/sharedfiles/filedetails/?id=2496360535) installed, you will get an error log noting a government type doesn't exist:
@@ -61,7 +67,12 @@ This error will not affect the functioning of this mod - all built-in government
 * 1.0.0 Initial version
 * 1.0.1 Add thumbnail
 * 1.0.2 Support Decree: Honored Protectors in Full Military Service for Battle Thralls
-* 1.1.0 Reassign Scientists and Admirals from integrated subjects back to their previous fleet command roles
+* 1.1.0 Auto-Assign and UI Enhancements
+    * Automatically reassign Scientists and Admirals from integrated subjects back to their previous fleet command roles
+    * Improve some `allow` triggers to be more lenient (most notably the Send them for assignment/"Keep as many as possible")
+    * Refactor choices into more options, which allows me to present icons for many of the choices based on civic/authority/ascension perk
+    * Demoted rulers/heirs are forced out of their office rather than cloned - mainly this means they will preserve their existing ruler traits when moving to your empire
+    * Demoted rulers/heirs will be a somewhat more biased towards being Governors (the default if their gov't doesn't specify and they don't have a pre-ruler class); some leaders will still be cloned if their demoted class isn't one normally allowed to be a ruler for the government which they previously lead (e.g. Star Empires are run by military leaders)
 
 ## Source Code
 
