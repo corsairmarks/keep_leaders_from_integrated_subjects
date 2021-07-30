@@ -1130,7 +1130,10 @@ accumulate_leader = {
 						country = event_target:potential_owner
 					}
 				}
-				species_has_happiness_with_owner = event_target:potential_owner
+				OR = {
+					species_has_happiness_with_owner = event_target:potential_owner
+					has_trait = trait_hive_mind # hive Pops are necrophagable, so leaders are too
+				}
 			}
 		}
 		event_target:variable_storage = {
