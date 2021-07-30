@@ -1858,7 +1858,7 @@ country_event = {
 		}
 	}
 }
-# TODO pass FROM to sub-events, they can grab the gloabl event country but the old country might help me with dynamic flags so multiple integrations remain matched to the right leaders
+# TODO make a new storage country for each invocation instead of using the global event country - then be sure to delete it after the secondary events complete
 
 # triggered by on_planet_attackers_win (same on_action as primitive planet conquest action.14)
 # ROOT = country, leader attacker
@@ -2299,6 +2299,8 @@ country_event = {
 }
 
 # keep robotic only
+# ROOT = country, integrator or conqueror
+# FROM = country, leader storage
 country_event = {
 	id = keep_leaders.10
 	is_triggered_only = yes
@@ -2332,6 +2334,8 @@ country_event = {
 }
 
 # keep organic only
+# ROOT = country, integrator or conqueror
+# FROM = country, leader storage
 country_event = {
 	id = keep_leaders.11
 	is_triggered_only = yes
@@ -2365,6 +2369,8 @@ country_event = {
 }
 
 # keep same species only
+# ROOT = country, integrator or conqueror
+# FROM = country, leader storage
 country_event = {
 	id = keep_leaders.12
 	is_triggered_only = yes
@@ -2387,6 +2393,8 @@ country_event = {
 }
 
 # keep hive only
+# ROOT = country, integrator or conqueror
+# FROM = country, leader storage
 country_event = {
 	id = keep_leaders.14
 	is_triggered_only = yes
@@ -2413,6 +2421,8 @@ country_event = {
 }
 
 # keep 'em all!
+# ROOT = country, integrator or conqueror
+# FROM = country, leader storage
 country_event = {
 	id = keep_leaders.15
 	is_triggered_only = yes
@@ -2438,6 +2448,8 @@ country_event = {
 }
 
 # assimilate
+# ROOT = country, integrator or conqueror
+# FROM = country, leader storage
 country_event = {
 	id = keep_leaders.16
 	is_triggered_only = yes
@@ -2757,6 +2769,8 @@ country_event = {
 }
 
 # necrophage
+# ROOT = country, integrator or conqueror
+# FROM = country, leader storage
 country_event = {
 	id = keep_leaders.17
 	is_triggered_only = yes
@@ -2843,9 +2857,9 @@ country_event = {
 	}
 }
 
+# triggered by on_leader_death
 # THIS = country
 # FROM = leader
-# triggered by on_leader_death
 country_event = {
 	id = keep_leaders.100
 	is_triggered_only = yes
