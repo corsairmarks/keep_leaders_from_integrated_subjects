@@ -480,6 +480,7 @@ country_event = {
 			is_regular_empire = yes
 			hidden_trigger = {
 				NOR = {
+					has_valid_civic = civic_fanatic_purifiers
 					has_country_flag = flesh_weakened
 					has_country_flag = synthetic_empire
 				}
@@ -783,6 +784,7 @@ country_event = {
 		trigger = {
 			hidden_trigger = {
 				is_regular_empire = yes
+				NOT = { has_valid_civic = civic_fanatic_purifiers }
 				event_target:storage_owner = {
 					any_owned_leader = {
 						is_eligible_transfer_leader_from_storage = yes
@@ -913,7 +915,10 @@ country_event = {
 				has_policy_flag = ai_servitude
 			}
 			hidden_trigger = {
-				NOT = { has_country_flag = synthetic_empire }
+				NOR = {
+					has_country_flag = synthetic_empire
+					has_valid_civic = civic_fanatic_purifiers
+				}
 				is_regular_empire = yes
 				event_target:storage_owner = {
 					any_owned_leader = {
