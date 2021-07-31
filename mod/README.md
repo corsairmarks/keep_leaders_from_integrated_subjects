@@ -73,6 +73,7 @@ This error will not affect the functioning of this mod - all built-in government
     * Refactor choices into more options, which allows me to present icons for many of the choices based on civic/authority/ascension perk
     * Demoted rulers/heirs are forced out of their office rather than cloned - mainly this means they will preserve their existing ruler traits when moving to your empire
     * Demoted rulers/heirs will be a somewhat more biased towards being Governors (the default if their gov't doesn't specify and they don't have a pre-ruler class); some leaders will still be cloned if their demoted class isn't one normally allowed to be a ruler for the government which they previously lead (e.g. Star Empires are run by military leaders)
+    * Code improvement: use a hidden country to store the leaders in limbo, rather than the global event country
 
 ## Source Code
 
