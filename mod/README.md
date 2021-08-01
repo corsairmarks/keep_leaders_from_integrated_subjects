@@ -70,10 +70,12 @@ This error will not affect the functioning of this mod - all built-in government
 * 1.1.0 Auto-Assign and UI Enhancements
     * Automatically reassign Scientists and Admirals from integrated subjects back to their previous fleet command roles
     * Improve some `allow` triggers to be more lenient (most notably the Send them for assignment/"Keep as many as possible")
-    * Refactor choices into more options, which allows me to present icons for many of the choices based on civic/authority/ascension perk
+    * Refactor choices into more `option`s, which allows me to present icons for many of the choices based on civic/authority/ascension perk
     * Demoted rulers/heirs are forced out of their office rather than cloned - mainly this means they will preserve their existing ruler traits when moving to your empire
-    * Demoted rulers/heirs will be a somewhat more biased towards being Governors (the default if their gov't doesn't specify and they don't have a pre-ruler class); some leaders will still be cloned if their demoted class isn't one normally allowed to be a ruler for the government which they previously lead (e.g. Star Empires are run by military leaders)
-    * Code improvement: use a hidden country to store the leaders in limbo, rather than the global event country
+    * Demoted rulers/heirs will be a somewhat more biased towards being Governors (the built-in Stellaris default if their gov't doesn't specify and they don't have a pre-ruler class)
+    * Some demoted rulers/heirs will still be cloned if their demoted class isn't one normally allowed to be a ruler for the government which they previously lead (e.g. Star Empires are run by military leaders) and they don't have a pre-ruler class
+    * Code improvement: use a hidden country to store the leaders in limbo (and variables), rather than the global event country
+    * Code improvement: cloned leaders will get a random amount of XP instead of having to start again from 0
 
 ## Source Code
 
