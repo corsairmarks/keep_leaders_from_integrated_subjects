@@ -983,8 +983,22 @@ try_add_demoted_ruler_admiral_bonus_trait = {
 		add_trait = leader_trait_scout
 	}
 	else_if = {
-		limit = { NOT = { has_trait = leader_trait_fleet_logistician } }
-		add_trait = leader_trait_fleet_logistician
+		limit = {
+			NOR = {
+				has_trait = leader_trait_fleet_logistician
+				has_trait = leader_trait_maintenance_loop
+			}
+		}
+		if = {
+			limit = {
+				has_synthethic_dawn = yes
+				is_machine_species = yes
+			}
+			add_trait = leader_trait_maintenance_loop
+		}
+		else = {
+			add_trait = leader_trait_fleet_logistician
+		}
 	}
 	else = {
 		try_add_demoted_ruler_generic_bonus_trait = yes
@@ -1038,8 +1052,22 @@ try_add_demoted_ruler_general_bonus_trait = {
 		}
 	}
 	else_if = {
-		limit = { NOT = { has_trait = leader_trait_army_logistician } }
-		add_trait = leader_trait_army_logistician
+		limit = {
+			NOR = {
+				has_trait = leader_trait_army_logistician
+				has_trait = leader_trait_parts_cannibalizer
+			}
+		}
+		if = {
+			limit = {
+				has_synthethic_dawn = yes
+				is_machine_species = yes
+			}
+			add_trait = leader_trait_parts_cannibalizer
+		}
+		else = {
+			add_trait = leader_trait_army_logistician
+		}
 	}
 	else = {
 		try_add_demoted_ruler_generic_bonus_trait = yes
@@ -1050,21 +1078,21 @@ try_add_demoted_ruler_general_bonus_trait = {
 try_add_demoted_ruler_generic_bonus_trait = {
 	if = {
 		limit = {
-			has_synthethic_dawn = yes
-			is_robotic_species = yes
-			NOT = { has_trait = leader_trait_flexible_programming }
-		}
-		add_trait = leader_trait_flexible_programming
-	}
-	else_if = {
-		limit = {
-			OR = {
-				is_robotic_species = no
-				has_synthethic_dawn = no
+			NOR = {
+				has_trait = leader_trait_adaptable
+				has_trait = leader_trait_flexible_programming
 			}
-			NOT = { has_trait = leader_trait_adaptable }
 		}
-		add_trait = leader_trait_adaptable
+		if = {
+			limit = {
+				has_synthethic_dawn = yes
+				is_machine_species = yes
+			}
+			add_trait = leader_trait_flexible_programming
+		}
+		else = {
+			add_trait = leader_trait_adaptable
+		}
 	}
 	# else they have a lot of traits already
 }
