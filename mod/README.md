@@ -2,7 +2,7 @@
 
 Have you ever wondered what happened to the former leaders of your subject after you integrated them? Or perhaps where that primitive leader went after you annexed their planet? Wonder no more! With this mod you will be prompted to choose what to do with the now-unemployed leaders whenever you integrate a subject, conquer a primitive planet, or "allow" primitives to join you via covert infiltration.
 
-With this mod, regular (non-machine and non-hive) empires can retain leaders from an integrated Machine Intelligence subject if they have full AI rights.  The leaders in a Machine Intelligence that have enough capacity to act as independent agents, even if the rest of the Pops don't.
+Also, regular (non-machine and non-hive) empires can retain leaders from an integrated Machine Intelligence subject if they have full AI rights.  The leaders in a Machine Intelligence that have enough capacity to act as independent agents, even if the rest of the Pops don't.
 
 Now enhanced to auto-assign integrated Scientists and Governors back to their per-integration roles, if they were commanding a science ship or fleet.  Notably, if you play with "pause-on-event" the science vessels will then continue their assigned orders after the leader is reassigned for command.
 
