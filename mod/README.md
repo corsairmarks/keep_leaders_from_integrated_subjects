@@ -50,7 +50,7 @@ This mod can be safely added to your savegame after the game has started. If you
 
 The scalable country bonuses for "former ruler" traits (e.g. admin cap, naval cap, monthly research) will display the correct value (e.g. 3 governors that are former rulers gives +30 admin cap), but the game only awards the un-scaled amount (+10).  This is a bug with known Stellaris and may be patched at some point in the future.
 
-Demoted rulers with very long names that also contain a period `.` may cause error logs which the Leader screen is open.  It seems related to the font re-coloring in the "former ruler" name affix.  Don't leave the Leader window open for long periods of time or you will greate a very large error log file.
+Demoted rulers with very long names that also contain a period `.` may cause error logs when the Leader screen is open.  It seems related to the font re-coloring in the "former ruler" name affix.  Don't leave the Leader window open for long periods of time or you will greate a very large error log file.
 
 ### Error Logs
 

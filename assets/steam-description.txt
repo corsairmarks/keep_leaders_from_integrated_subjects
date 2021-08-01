@@ -2,11 +2,11 @@
 
 Have you ever wondered what happened to the former leaders of your subject after you integrated them? Or perhaps where that primitive leader went after you annexed their planet? Wonder no more! With this mod you will be prompted to choose what to do with the now-unemployed leaders whenever you integrate a subject, conquer a primitive planet, or "allow" primitives to join you via covert infiltration.
 
-Also, regular (non-machine and non-hive) empires can retain leaders from an integrated Machine Intelligence subject if they have full AI rights.  The leaders in a Machine Intelligence that have enough capacity to act as independent agents, even if the rest of the Pops don't.
+Also, regular (non-machine and non-hive) empires can retain leaders from an integrated Machine Intelligence subject if they have full AI rights. The leaders in a Machine Intelligence that have enough capacity to act as independent agents, even if the rest of the Pops don't.
 
-Now enhanced to auto-assign integrated Scientists and Governors back to their per-integration roles, if they were commanding a science ship or fleet.  Notably, if you play with "pause-on-event" the science vessels will then continue their assigned orders after the leader is reassigned for command.
+Now enhanced to auto-assign integrated Scientists and Governors back to their per-integration roles, if they were commanding a science ship or fleet. Notably, if you play with "pause-on-event" the science vessels will then continue their assigned orders after the leader is reassigned for command.
 
-A smaller, more subtle enhancement is that integrated, demoted rulers will (in most cases) now preserve their existing ruler traits in case they somehow become the ruler of your empire.  Also integrated, demoted rulers now get an extra regular leader class trait upon demotion, based on what ruler traits they have.
+A smaller, more subtle enhancement is that integrated, demoted rulers will (in most cases) now preserve their existing ruler traits in case they somehow become the ruler of your empire. Also integrated, demoted rulers now get an extra regular leader class trait upon demotion, based on what ruler traits they have.
 
 [h1]Changes[/h1]
 
@@ -14,9 +14,9 @@ A lot of code has gone into figuring out what leaders you can choose to keep bas
 
 These event present you with a few choices about what you can do with the leaders from the now-defunct subject/primitives. It will show a few different options depending on what is available to you. For example, genocidal empires can only keep leaders that are of their own species and necrophage empires have the option to necrophage leaders. There's a special secret bonus for some kinds of leaders - see if you can figure out what it is.
 
-This mod was designed to be played with the default restrictions on ascension paths - mainly that your empire would normally not have more than one assimilation type available to it. However, it is coded in such a way that if you have multiple assimilation types available, any of the "assimilate" button options invokes the same follow-up code. Each integrated leader (and their species) in a regular (non-machine, non-hive empires) are assigned the first assimilation type that they qualify for in this order: synthetic, then cybernetic, then psionic, then deassimilation.  If you are using my machine deassimiilation mod, that type is checked first (before synthetic assimilation).
+This mod was designed to be played with the default restrictions on ascension paths - mainly that your empire would normally not have more than one assimilation type available to it. However, it is coded in such a way that if you have multiple assimilation types available, any of the "assimilate" button options invokes the same follow-up code. Each integrated leader (and their species) in a regular (non-machine, non-hive empires) are assigned the first assimilation type that they qualify for in this order: synthetic, then cybernetic, then psionic, then deassimilation. If you are using my machine deassimiilation mod, that type is checked first (before synthetic assimilation).
 
-Finally, this mod adds some special traits (and a special name affix) for demoted former rulers and heirs.  Their names will be followed by brown text indicating that they are the "Former Ruler/Heir of the <Country Name>" and they will gain a special trait depending on their former empire and new leadership role.
+Finally, this mod adds some special traits (and a special name affix) for demoted former rulers and heirs. Their names will be followed by brown text indicating that they are the "Former Ruler/Heir of the <Country Name>" and they will gain a special trait depending on their former empire and new leadership role.
 
 [h2]Compatibility[/h2]
 
@@ -29,8 +29,8 @@ This mod is designed to understand the species types, ethics, civics, authoritie
 [h3]Recommended Companion Mods[/h3]
 
 [list]
-[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2499031295]Leader Traits: All Eligible Species Traits[/url] will ensure your leaders get all their species-based traits when being assimilated (such as Psionic or Erudite).
-[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2553806265]Leader Traits: Enhanced Randomisation[/url] improves leader trait randomisation (primarily from level up, but not exclusively) and toggles traits from the biological version to machine traits (and back) if a leader becomes a robot and/or returns to a biological form.
+[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2499031295]Leader Traits: All Eligible Species Traits[/url] ensures your leaders get all their species-based traits when being assimilated (such as Psionic or Erudite)
+[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2553806265]Leader Traits: Enhanced Randomisation[/url] improves leader trait randomisation (primarily from level up, but not exclusively) and toggles traits from the biological version to machine traits (and back) if a leader becomes a robot and/or returns to a biological form
 [*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2553812372]Deassimilate Machines[/url] allows you to "deassimilate" machine Pops into robots. This is available to any non-machine, non-hive empire that has the Positronic AI technology and doesn't outright ban Artificial Intelligence. Specifically allows (with this mod) for machine deassimilation as a "leadership disposition" choice for integrated machine empire subjects (and if you also have Leader Traits: All Eligible Species Traits, the leaders are converted to have synth leader traits if you have the right technology).
 [*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2558494770]corsairmarks's Leader Traits MOD Chinese patch[/url] by Hua Zhang - Chinese localisation
 [/list]
@@ -41,20 +41,13 @@ You might wonder - why are these separate mods? They override default gameplay o
 
 This mod can be safely added to your savegame after the game has started. If you remove it, you will lose access to the custom "former ruler/heir" traits and the espionage bonus that is one of the choices upon successfully infiltrating primitives. Stellaris is fairly forgiving in situations like this - it's likely that error logs would be generated and the game would otherwise ignore the missing content. Back up your savegame before trying to remove a mod.
 
-[h3]Additional Mods with Gameplay Interaction[/h3]
-
-[list]
-[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2496360535]Eldanær Stellar Authority[/url] - if you integrate them, their former ruler and heir are guaranteed to be Governors
-[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2496357447]Full Military Service for Battle Thralls[/url] - you will keep military leaders from species set to Battle Thralls but also Full Military Service, and this mod also respects species flagged for allowing military leaders despite the empire being xenophobic and/or a necrophage
-[/list]
-
 [h2]Known Issues[/h2]
 
 [h3]Stellaris Bugs[/h3]
 
-The scalable country bonuses for "former ruler" traits (e.g. admin cap, naval cap, monthly research) will display the correct value (e.g. 3 governors that are former rulers gives +30 admin cap), but the game only awards the un-scaled amount (+10).  This is a bug with known Stellaris and may be patched at some point in the future.
+The scalable country bonuses for "former ruler" traits (e.g. admin cap) will display the correct value (e.g. 3 governors gives +30 admin cap), but the game only awards the un-scaled amount (+10). This is a bug with known Stellaris and may be patched at some point in the future.
 
-Demoted rulers with very long names that also contain a period `.` may cause error logs which the Leader screen is open.  It seems related to the font re-coloring in the "former ruler" name affix.  Don't leave the Leader window open for long periods of time or you will greate a very large error log file.
+Demoted rulers with very long names with a period may cause error logs when the Leader screen is open. Don't leave the Leader window open for long periods of time or you will greate a very large error log file.
 
 [h3]Error Logs[/h3]
 
