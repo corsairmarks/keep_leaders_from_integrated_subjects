@@ -2057,6 +2057,7 @@ country_event = {
 		}
 	}
 }
+
 # triggered by on_planet_attackers_win (same on_action as primitive planet conquest action.14)
 # ROOT = country, leader attacker
 # FROM = country, planet owner
