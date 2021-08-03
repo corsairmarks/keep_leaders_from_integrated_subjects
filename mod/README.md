@@ -4,7 +4,7 @@ Have you ever wondered what happened to the former leaders of your subject after
 
 Also, regular (non-machine and non-hive) empires can retain leaders from an integrated Machine Intelligence subject if they have full AI rights.  The leaders in a Machine Intelligence that have enough capacity to act as independent agents, even if the rest of the Pops don't.
 
-Now enhanced to auto-assign integrated Scientists and Governors back to their per-integration roles, if they were commanding a science ship or fleet.  Notably, if you play with "pause-on-event" the science vessels will then continue their assigned orders after the leader is reassigned for command.
+Now enhanced to auto-assign integrated Scientists and Admirals back to their per-integration roles, if they were commanding a science ship or fleet.  Notably, if you play with "pause-on-event" the science vessels will then continue their assigned orders after the leader is reassigned for command.
 
 A smaller, more subtle enhancement is that integrated, demoted rulers will (in most cases) now preserve their existing ruler traits in case they somehow become the ruler of your empire.  Also integrated, demoted rulers now get an extra regular leader class trait upon demotion, based on what ruler traits they have.
 
