@@ -2410,110 +2410,15 @@ country_event = {
 	hide_window = yes
 	is_triggered_only = yes
 	immediate = {
-			set_variable = {
-				which = keep_leaders_army_transport_fleet
-				value = 13 # semi-arbitrary start value
-			}
-		save_event_target_as = integrating_country
 		FROM = {
-			save_event_target_as = integrated_country
-		# tag each army with a variable value that corresponds to one set on its transport fleet
-		every_owned_army = {
-			log = "[This.GetName] owned by [This.Owner.GetName]"
-			if = {
-				limit = { exists = fleet }
-				if = {
-					limit = { fleet = { NOT = { is_variable_set = keep_leaders_army_transport_fleet } } }
-					fleet = {
-						set_variable = {
-							which = keep_leaders_army_transport_fleet
-								value = event_target:integrating_country
-						}
-					}
-						event_target:integrating_country = {
-						change_variable = {
-							which = keep_leaders_army_transport_fleet
-							value = 1
-						}
-					}
-				}
-				set_variable = {
-					which = keep_leaders_army_transport_fleet
-					value = fleet
+			country_event = {
+				id = keep_leaders.9
+				scopes = {
+					from = ROOT
 				}
 			}
-		}
-		every_owned_fleet = {
-			limit = { is_ship_class = shipclass_transport }
-			save_event_target_as = source_fleet
-			log = "[source_fleet.GetName] is a transport fleet"
-				event_target:integrating_country = {
-				create_fleet = {
-					effect = {
-						if = {
-							limit = { event_target:source_fleet = { is_variable_set = keep_leader_match_transport_fleet } }
-							set_variable = {
-								which = keep_leader_match_transport_fleet
-								value = event_target:source_fleet
-							}
-							event_target:source_fleet = { clear_variable = keep_leader_match_transport_fleet }
-						}
-						save_event_target_as = target_fleet
-						set_name = "[source_fleet.GetName]"
-							set_owner = event_target:integrating_country
-						set_location = event_target:source_fleet
-						event_target:source_fleet = {
-							every_owned_ship = {
-								save_event_target_as = source_ship
-								log = "transport [source_ship.GetName]"
-								event_target:target_fleet = {
-									event_target:source_fleet.owner = {
-										random_owned_army = {
-											limit = {
-												is_variable_set = keep_leaders_army_transport_fleet
-												check_variable = {
-													which = keep_leaders_army_transport_fleet
-													value = event_target:source_fleet
-												}
-											}
-											log = "army [This.GetName] was in fleet [source_fleet.GetName]"
-											clear_variable = keep_leaders_army_transport_fleet
-											save_event_target_as = source_army
-										}
-									}
-									event_target:source_army = {
-										switch = {
-											trigger = army_type
-											assault_army = { PREV = { create_army_transport_parameterized = { ARMY_TYPE = assault_army } } }
-											clone_army = { PREV = { create_army_transport_parameterized = { ARMY_TYPE = clone_army } } }
-											cybrex_warform = { PREV = { create_army_transport_parameterized = { ARMY_TYPE = cybrex_warform } } }
-											gene_warrior_army = { PREV = { create_army_transport_parameterized = { ARMY_TYPE = gene_warrior_army } } }
-											machine_assault_1 = { PREV = { create_army_transport_parameterized = { ARMY_TYPE = machine_assault_1 } } }
-											machine_assault_2 = { PREV = { create_army_transport_parameterized = { ARMY_TYPE = machine_assault_2 } } }
-											machine_assault_3 = { PREV = { create_army_transport_parameterized = { ARMY_TYPE = machine_assault_3 } } }
-											psionic_army = { PREV = { create_army_transport_parameterized = { ARMY_TYPE = psionic_army } } }
-											robotic_army = { PREV = { create_army_transport_parameterized = { ARMY_TYPE = robotic_army } } }
-											shroud_army = { PREV = { create_army_transport_parameterized = { ARMY_TYPE = shroud_army } } }
-											slave_army = { PREV = { create_army_transport_parameterized = { ARMY_TYPE = slave_army } } }
-											titanic_assault_army = { PREV = { create_army_transport_parameterized = { ARMY_TYPE = titanic_assault_army } } }
-											undead_army = { PREV = { create_army_transport_parameterized = { ARMY_TYPE = undead_army } } }
-											xenomorph_army = { PREV = { create_army_transport_parameterized = { ARMY_TYPE = xenomorph_army } } }
-											default = {
-												log = "unhandled army type for [This.GetName] owned by [This.Owner.GetRealName] - used assault_army"
-												PREV = { create_army_transport_parameterized = { ARMY_TYPE = assault_army } }
-											}
-										}
-									}
-								}
-							}
-						}
-					}
-				}
-			}
-			delete_fleet = THIS
 		}
 	}
-}
 }
 
 # randomise a leader's experience between 0 and the maximum for their current level
@@ -2587,6 +2492,139 @@ country_event = {
 		}
 		# ideally, I could check whether a subject is about the be integrated and clone their fleets 1 day ahead
 		# but I'm not finding a way to check whether an integration is in progress, or what the progress might be
+	}
+}
+
+# copy all army transports in ROOT and create them for FROM (if exists) or ROOT
+# triggered by keep_leaders.5
+# ROOT = country, source of army transports
+# FROM = country, owenr of new army transports (optional - defaults to ROOT)
+country_event = {
+	id = keep_leaders.9
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = {
+		is_overlord = yes
+		any_subject = {
+			any_owned_fleet = {
+				is_ship_class = shipclass_transport
+			}
+		}
+		any_owned_fleet = { is_ship_class = shipclass_transport }
+	}
+	immediate = {
+		if = {
+			limit = {
+				exists = FROM
+				FROM = { is_scope_type = country }
+			}
+			FROM = { save_event_target_as = new_owner_country }
+		}
+		else = {
+			save_event_target_as = new_owner_country
+		}
+		event_target:new_owner_country = {
+			set_variable = {
+				which = keep_leaders_army_transport_fleet
+				value = 13 # semi-arbitrary start value
+			}
+		}
+		# tag each army with a variable value that corresponds to one set on its transport fleet
+		every_owned_army = {
+			log = "[This.GetName] owned by [This.Owner.GetName]"
+			if = {
+				limit = { exists = fleet }
+				if = {
+					limit = { fleet = { NOT = { is_variable_set = keep_leaders_army_transport_fleet } } }
+				log = "[This.GetName] belongs to fleet [This.Fleet.GetName]"
+					fleet = {
+						set_variable = {
+							which = keep_leaders_army_transport_fleet
+						value = event_target:new_owner_country
+						}
+					}
+				event_target:new_owner_country = {
+						change_variable = {
+							which = keep_leaders_army_transport_fleet
+							value = 1
+						}
+					}
+				}
+				set_variable = {
+					which = keep_leaders_army_transport_fleet
+					value = fleet
+				}
+			}
+		}
+		every_owned_fleet = {
+			limit = { is_ship_class = shipclass_transport }
+			save_event_target_as = source_fleet
+			log = "[source_fleet.GetName] is a transport fleet"
+			event_target:new_owner_country = {
+				create_fleet = {
+					effect = {
+						if = {
+							limit = { event_target:source_fleet = { is_variable_set = keep_leader_match_transport_fleet } }
+							set_variable = {
+								which = keep_leader_match_transport_fleet
+								value = event_target:source_fleet
+							}
+							event_target:source_fleet = { clear_variable = keep_leader_match_transport_fleet }
+						}
+						save_event_target_as = target_fleet
+						set_name = "[source_fleet.GetName]"
+						set_owner = event_target:new_owner_country
+						set_location = event_target:source_fleet
+						event_target:source_fleet = {
+							every_owned_ship = {
+								save_event_target_as = source_ship
+								log = "transport [source_ship.GetName]"
+								event_target:target_fleet = {
+									event_target:source_fleet.owner = {
+										random_owned_army = {
+											limit = {
+												is_variable_set = keep_leaders_army_transport_fleet
+												check_variable = {
+													which = keep_leaders_army_transport_fleet
+													value = event_target:source_fleet
+												}
+											}
+											log = "army [This.GetName] was in fleet [source_fleet.GetName]"
+											clear_variable = keep_leaders_army_transport_fleet
+											save_event_target_as = source_army
+										}
+									}
+									event_target:source_army = {
+										switch = {
+											trigger = army_type
+											assault_army = { PREV = { create_army_transport_parameterized = { ARMY_TYPE = assault_army } } }
+											clone_army = { PREV = { create_army_transport_parameterized = { ARMY_TYPE = clone_army } } }
+											cybrex_warform = { PREV = { create_army_transport_parameterized = { ARMY_TYPE = cybrex_warform } } }
+											gene_warrior_army = { PREV = { create_army_transport_parameterized = { ARMY_TYPE = gene_warrior_army } } }
+											machine_assault_1 = { PREV = { create_army_transport_parameterized = { ARMY_TYPE = machine_assault_1 } } }
+											machine_assault_2 = { PREV = { create_army_transport_parameterized = { ARMY_TYPE = machine_assault_2 } } }
+											machine_assault_3 = { PREV = { create_army_transport_parameterized = { ARMY_TYPE = machine_assault_3 } } }
+											psionic_army = { PREV = { create_army_transport_parameterized = { ARMY_TYPE = psionic_army } } }
+											robotic_army = { PREV = { create_army_transport_parameterized = { ARMY_TYPE = robotic_army } } }
+											shroud_army = { PREV = { create_army_transport_parameterized = { ARMY_TYPE = shroud_army } } }
+											slave_army = { PREV = { create_army_transport_parameterized = { ARMY_TYPE = slave_army } } }
+											titanic_assault_army = { PREV = { create_army_transport_parameterized = { ARMY_TYPE = titanic_assault_army } } }
+											undead_army = { PREV = { create_army_transport_parameterized = { ARMY_TYPE = undead_army } } }
+											xenomorph_army = { PREV = { create_army_transport_parameterized = { ARMY_TYPE = xenomorph_army } } }
+											default = {
+												log = "unhandled army type for [This.GetName] owned by [This.Owner.GetRealName] - used assault_army"
+												PREV = { create_army_transport_parameterized = { ARMY_TYPE = assault_army } }
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+			delete_fleet = THIS
+		}
 	}
 }
 
@@ -3099,7 +3137,7 @@ country_event = {
 		country_event = {
 			id = keep_leaders_bonus_traits.20
 		}
-}
+	}
 }
 
 # necrophage

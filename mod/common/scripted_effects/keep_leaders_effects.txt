@@ -1537,46 +1537,46 @@ try_assign_retained_leader_to_former_assignment = {
 			}
 		}
 		# armies can't have their owners changed, an it's unclear how I could clone the transports before integration fires, which means there's nothing to which to reassign a general
-		# general = {
-		# 	if = {
-		# 		limit = { is_variable_set = keep_leader_match_transport_fleet }
-		# 		owner = {
-		# 			random_owned_fleet = {
-		# 				limit = {
-		# 					is_variable_set = keep_leader_match_transport_fleet
-		# 					check_variable = {
-		# 						which = keep_leader_match_transport_fleet
-		# 						value = PREVPREV
-		# 					}
-		# 				}
-		# 				if = {
-		# 					limit = { NOT = { exists = leader } }
-		# 					assign_leader = PREVPREV
-		# 					log = "\\[PrevPrev.GetTitle] \\[PrevPrev.GetName] resumed command of transport fleet \\[This.GetName]"
-		# 				}
-		# 			}
-		# 		}
-		# 	}
-		# 	else_if = {
-		# 		limit = { is_variable_set = keep_leader_match_army }
-		# 		owner = {
-		# 			random_owned_army = {
-		# 				limit = {
-		# 					is_variable_set = keep_leader_match_army
-		# 					check_variable = {
-		# 						which = keep_leader_match_army
-		# 						value = PREVPREV
-		# 					}
-		# 				}
-		# 				if = {
-		# 					limit = { NOT = { exists = leader } }
-		# 					assign_leader = PREVPREV
-		# 					log = "\\[PrevPrev.GetTitle] \\[PrevPrev.GetName] resumed command of the army \\[This.GetName]"
-		# 				}
-		# 			}
-		# 		}
-		# 	}
-		# }
+		general = {
+			if = {
+				limit = { is_variable_set = keep_leader_match_transport_fleet }
+				owner = {
+					random_owned_fleet = {
+						limit = {
+							is_variable_set = keep_leader_match_transport_fleet
+							check_variable = {
+								which = keep_leader_match_transport_fleet
+								value = PREVPREV
+							}
+						}
+						if = {
+							limit = { NOT = { exists = leader } }
+							assign_leader = PREVPREV
+							log = "\\[PrevPrev.GetTitle] \\[PrevPrev.GetName] resumed command of transport fleet \\[This.GetName]"
+						}
+					}
+				}
+			}
+			else_if = {
+				limit = { is_variable_set = keep_leader_match_army }
+				owner = {
+					random_owned_army = {
+						limit = {
+							is_variable_set = keep_leader_match_army
+							check_variable = {
+								which = keep_leader_match_army
+								value = PREVPREV
+							}
+						}
+						if = {
+							limit = { NOT = { exists = leader } }
+							assign_leader = PREVPREV
+							log = "\\[PrevPrev.GetTitle] \\[PrevPrev.GetName] resumed command of the army \\[This.GetName]"
+						}
+					}
+				}
+			}
+		}
 		# rulers have special handling
 	}
 }
