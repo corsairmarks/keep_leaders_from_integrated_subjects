@@ -67,63 +67,63 @@ country_event = {
 				set_country_flag = former_owner@event_target:former_owner
 				save_event_target_as = storage_owner
 				save_event_target_as = variable_storage
-				# variables for the counts from accumulate_leader
-				set_variable = {
-					which = leader_accumulator
-					value = 0
-				}
-				set_variable = {
-					which = leader_organic_accumulator
-					value = 0
-				}
-				set_variable = {
+		# variables for the counts from accumulate_leader
+		set_variable = {
+			which = leader_accumulator
+			value = 0
+		}
+		set_variable = {
+			which = leader_organic_accumulator
+			value = 0
+		}
+		set_variable = {
 					which = leader_organic_reward_accumulator
 					value = 0
 				}
 				set_variable = {
-					which = leader_organic_non_cyborg_accumulator
-					value = 0
-				}
-				set_variable = {
+			which = leader_organic_non_cyborg_accumulator
+			value = 0
+		}
+		set_variable = {
 					which = leader_organic_non_cyborg_reward_accumulator
 					value = 0
 				}
 				set_variable = {
-					which = leader_hive_accumulator
-					value = 0
-				}
-				set_variable = {
-					which = leader_robotic_accumulator
-					value = 0
-				}
-				set_variable = {
-					which = leader_necrophagable_accumulator
-					value = 0
-				}
-				set_variable = {
+			which = leader_hive_accumulator
+			value = 0
+		}
+		set_variable = {
+			which = leader_robotic_accumulator
+			value = 0
+		}
+		set_variable = {
+			which = leader_necrophagable_accumulator
+			value = 0
+		}
+		set_variable = {
 					which = leader_necrophagable_reward_accumulator
 					value = 0
 				}
 				set_variable = {
-					which = leader_same_species_accumulator
-					value = 0
-				}
-				set_variable = {
-					which = leader_not_same_species_accumulator
-					value = 0
-				}
-				set_variable = {
+			which = leader_same_species_accumulator
+			value = 0
+		}
+		set_variable = {
+			which = leader_not_same_species_accumulator
+			value = 0
+		}
+		set_variable = {
 					which = leader_not_same_species_reward_accumulator
 					value = 0
 				}
 				set_variable = {
-					which = leader_transferable_accumulator
-					value = 0
-				}
-				set_variable = {
-					which = leader_transferable_or_assimilatable_accumulator
-					value = 0
-				}
+			which = leader_transferable_accumulator
+			value = 0
+		}
+		set_variable = {
+			which = leader_transferable_or_assimilatable_accumulator
+			value = 0
+		}
 			}
 		}
 		# "arguments" for accumulate_leader
@@ -168,9 +168,9 @@ country_event = {
 					# force the ruler to a non-ruler class (probably governor)
 					assign_leader = event_target:dummy_ruler
 					event_target:integrated_ruler = {
-						set_leader_flag = clear_traits
-						save_event_target_as = leader_to_replace
-					}
+					set_leader_flag = clear_traits
+					save_event_target_as = leader_to_replace
+				}
 					replace_leader_based_on_government_type = yes
 					event_target:leader_to_replace = { save_event_target_as = integrated_ruler }
 				}
@@ -211,9 +211,9 @@ country_event = {
 					# ...then force them to a pre-ruler class by assigning the dummy back (probably governor)
 					assign_leader = event_target:dummy_ruler
 					event_target:integrated_heir = {
-						set_leader_flag = clear_traits
-						save_event_target_as = leader_to_replace
-					}
+					set_leader_flag = clear_traits
+					save_event_target_as = leader_to_replace
+				}
 					replace_leader_based_on_government_type = yes
 					event_target:leader_to_replace = { save_event_target_as = integrated_heir }
 				}
@@ -248,10 +248,10 @@ country_event = {
 							is_eligible_transfer_leader_from_storage = yes
 							is_organic_species = yes
 							is_hive_species = no
-						}
-					}
-				}
 			}
+		}
+			}
+		}
 			custom_tooltip = {
 				fail_text = empire_is_xenophile_no_x
 				is_xenophile = no
@@ -259,7 +259,7 @@ country_event = {
 			custom_tooltip = {
 				fail_text = empire_is_pacifist_no_x
 				is_pacifist = no
-			}
+		}
 		}
 		hidden_effect = { event_target:storage_owner = { destroy_country = yes } }
 		ai_chance = {
@@ -276,13 +276,13 @@ country_event = {
 	}
 	option = {
 		name = keep_leaders.1.a.pur
-		custom_tooltip = keep_leaders.1.a.tooltip
+			custom_tooltip = keep_leaders.1.a.tooltip
 		custom_tooltip_with_params = {
 			description = keep_leaders.1.tooltip.none
 			description_parameters = {
 				TOTAL = "[variable_storage.leader_accumulator]"
-			}
 		}
+			}
 		trigger = { has_valid_civic = civic_fanatic_purifiers }
 		custom_tooltip_with_params = {
 			description = ADD_RESOURCE_EFFECT
@@ -290,15 +290,15 @@ country_event = {
 				RESOURCE = "[This.GetUnityName]"
 				KEY = "unity"
 				NUM = "[variable_storage.leader_not_same_species_reward_accumulator]"
-			}
+		}
 		}
 		hidden_effect = {
 			event_target:variable_storage = {
 				set_variable = {
 					which = index
 					value = 0
-				}
 			}
+		}
 			while = {
 				limit = {
 					event_target:variable_storage = {
@@ -308,15 +308,15 @@ country_event = {
 						}
 					}
 				}
-				add_resource = {
+			add_resource = {
 					unity = @keep_leaders_civic_reward_base
-				}
+			}
 				event_target:variable_storage = {
 					change_variable = {
 						which = index
 						value = 1
-					}
-				}
+			}
+			}
 			}
 			event_target:storage_owner = { destroy_country = yes }
 		}
@@ -340,8 +340,8 @@ country_event = {
 					}
 				}
 			}
-		}
-	}
+					}
+				}
 	option = {
 		name = keep_leaders.1.a.swarm
 		custom_tooltip = keep_leaders.1.a.swarm.tooltip
@@ -350,7 +350,7 @@ country_event = {
 			description_parameters = {
 				TOTAL = "[variable_storage.leader_accumulator]"
 			}
-		}
+			}
 		trigger = { has_valid_civic = civic_hive_devouring_swarm }
 		custom_tooltip_with_params = {
 			description = ADD_RESOURCE_EFFECT
@@ -412,14 +412,14 @@ country_event = {
 				RESOURCE = "[This.GetUnityName]"
 				KEY = "unity"
 				NUM = "[variable_storage.leader_organic_reward_accumulator]"
+	}
 			}
-		}
 		hidden_effect = {
 			event_target:variable_storage = {
 				set_variable = {
 					which = index
 					value = 0
-				}
+		}
 			}
 			while = {
 				limit = {
@@ -427,19 +427,19 @@ country_event = {
 						check_variable = {
 							which = index
 							value < leader_organic_accumulator
-						}
+		}
 					}
 				}
 				add_resource = {
 					unity = @keep_leaders_civic_reward_base
-				}
+			}
 				event_target:variable_storage = {
 					change_variable = {
 						which = index
 						value = 1
-					}
-				}
-			}
+		}
+		}
+		}
 			event_target:storage_owner = { destroy_country = yes }
 		}
 		ai_chance = {
@@ -459,12 +459,12 @@ country_event = {
 	# keep none (nice)
 	option = {
 		name = keep_leaders.1.b
-		custom_tooltip = keep_leaders.1.b.tooltip
+			custom_tooltip = keep_leaders.1.b.tooltip
 		custom_tooltip_with_params = {
 			description = keep_leaders.1.tooltip.none
 			description_parameters = {
 				TOTAL = "[variable_storage.leader_accumulator]"
-			}
+		}
 		}
 		trigger = { is_regular_empire = yes }
 		allow = {
@@ -486,8 +486,8 @@ country_event = {
 			modifier = {
 				factor = 100
 				has_valid_civic = civic_inwards_perfection
+				}
 			}
-		}
 	}
 	option = {
 		name = keep_leaders.1.b.serv
@@ -557,7 +557,7 @@ country_event = {
 			}
 		}
 		hidden_effect = { event_target:storage_owner = { destroy_country = yes } }
-	}
+			}
 	# keep mechanical only - non-assimilation
 	option = {
 		name = keep_leaders.1.c
@@ -567,10 +567,10 @@ country_event = {
 			description_parameters = {
 				VALUE = "[variable_storage.leader_robotic_accumulator]"
 				TOTAL = "[variable_storage.leader_accumulator]"
-			}
 		}
-		trigger = {
-			is_regular_empire = yes
+	}
+			trigger = {
+				is_regular_empire = yes
 			hidden_trigger = {
 				NOR = {
 					has_valid_civic = civic_fanatic_purifiers
@@ -586,9 +586,9 @@ country_event = {
 					any_owned_leader = {
 						is_eligible_transfer_leader_from_storage = yes
 						is_robotic_species = yes
-					}
-				}
 			}
+		}
+		}
 		}
 		allow = {
 			custom_tooltip = {
@@ -619,24 +619,24 @@ country_event = {
 					AND = {
 						has_policy_flag = robots_allowed
 						has_policy_flag = ai_full_rights
+						}
 					}
 				}
-			}
 			custom_tooltip = {
 				fail_text = empire_is_xenophile_no_x
 				is_xenophile = no
-			}
+					}
 			custom_tooltip = {
 				fail_text = empire_is_pacifist_no_x
 				is_pacifist = no
+				}
 			}
-		}
 		ai_chance = {
 			factor = 1
 			modifier = {
 				factor = 0
 				is_spiritualist = yes
-			}
+		}
 		}
 		hidden_effect = {
 			country_event = {
@@ -693,14 +693,14 @@ country_event = {
 				}
 			}
 			while = {
-				limit = {
+					limit = {
 					event_target:variable_storage = {
 						check_variable = {
 							which = index
 							value < leader_organic_accumulator
+							}
 						}
 					}
-				}
 				add_resource = {
 					unity = @keep_leaders_civic_reward_base
 				}
@@ -708,17 +708,17 @@ country_event = {
 					change_variable = {
 						which = index
 						value = 1
-					}
 				}
 			}
-		}
+			}
+			}
 		hidden_effect = {
 			country_event = {
 				id = keep_leaders.10
 				scopes = { from = event_target:storage_owner }
 			}
 		}
-	}
+		}
 	option = {
 		name = keep_leaders.1.c.mach
 		custom_tooltip = keep_leaders.1.c.mach.tooltip
@@ -738,24 +738,24 @@ country_event = {
 					has_valid_civic = civic_machine_terminator
 				}
 				event_target:storage_owner = {
-					any_owned_leader = {
-						is_eligible_transfer_leader_from_storage = yes
-						is_organic_species = yes
-						is_hive_species = no
-					}
-					any_owned_leader = {
-						is_eligible_transfer_leader_from_storage = yes
-						is_robotic_species = yes
-					}
+				any_owned_leader = {
+					is_eligible_transfer_leader_from_storage = yes
+					is_organic_species = yes
+					is_hive_species = no
+				}
+				any_owned_leader = {
+					is_eligible_transfer_leader_from_storage = yes
+					is_robotic_species = yes
 				}
 			}
+		}
 		}
 		allow = {
 			custom_tooltip = {
 				fail_text = keep_leaders.1.serv.fail_text
 				NOT = { has_valid_civic = civic_machine_servitor }
 			}
-		}
+				}
 		ai_chance = {
 			factor = 1
 			modifier = {
@@ -765,15 +765,15 @@ country_event = {
 					has_valid_civic = civic_machine_assimilator
 					has_valid_civic = civic_machine_servitor
 					has_valid_civic = civic_machine_terminator
+			}
 				}
 			}
-		}
 		hidden_effect = {
 			country_event = {
 				id = keep_leaders.10
 				scopes = { from = event_target:storage_owner }
 			}
-		}
+			}
 	}
 	option = {
 		name = keep_leaders.1.c.mach.exclusive
@@ -805,8 +805,8 @@ country_event = {
 				id = keep_leaders.10
 				scopes = { from = event_target:storage_owner }
 			}
+			}
 		}
-	}
 	option = {
 		name = keep_leaders.1.c.cyb
 		custom_tooltip = keep_leaders.1.c.cyb.tooltip
@@ -839,7 +839,7 @@ country_event = {
 		}
 		allow = {
 			OR = {
-				has_completed_special_project_in_log = FLESH_IS_WEAK_PROJECT
+				has_country_flag = flesh_weakened
 				has_valid_civic = civic_machine_assimilator
 			}
 		}
@@ -860,7 +860,7 @@ country_event = {
 				TOTAL = "[variable_storage.leader_accumulator]"
 			}
 		}
-		trigger = {
+			trigger = {
 			OR = {
 				has_ascension_perk = ap_the_flesh_is_weak
 				has_civic = civic_machine_assimilator
@@ -869,7 +869,7 @@ country_event = {
 		}
 		allow = {
 			OR = {
-				has_completed_special_project_in_log = FLESH_IS_WEAK_PROJECT
+				has_country_flag = flesh_weakened
 				has_valid_civic = civic_machine_assimilator
 			}
 		}
@@ -886,17 +886,17 @@ country_event = {
 				scopes = { from = event_target:storage_owner }
 			}
 		}
-	}
+		}
 	# keep mechanical only (nice) - non-assimilation
 	option = {
 		name = keep_leaders.1.d
-		custom_tooltip = keep_leaders.1.d.tooltip
+			custom_tooltip = keep_leaders.1.d.tooltip
 		custom_tooltip_with_params = {
 			description = keep_leaders.1.tooltip
 			description_parameters = {
 				VALUE = "[variable_storage.leader_robotic_accumulator]"
 				TOTAL = "[variable_storage.leader_accumulator]"
-			}
+		}
 		}
 		trigger = {
 			hidden_trigger = {
@@ -908,12 +908,12 @@ country_event = {
 						is_organic_species = yes
 						is_hive_species = no
 					}
-					any_owned_leader = {
-						is_eligible_transfer_leader_from_storage = yes
-						is_robotic_species = yes
-					}
+				any_owned_leader = {
+					is_eligible_transfer_leader_from_storage = yes
+					is_robotic_species = yes
 				}
 			}
+		}
 		}
 		allow = {
 			custom_tooltip = {
@@ -1016,16 +1016,16 @@ country_event = {
 		name = {
 			text = keep_leaders.1.e.spir
 			trigger = { is_spiritualist = yes }
-		}
+			}
 		custom_tooltip = keep_leaders.1.e.tooltip
 		custom_tooltip_with_params = {
 			description = keep_leaders.1.tooltip
 			description_parameters = {
 				VALUE = "[variable_storage.leader_organic_accumulator]"
 				TOTAL = "[variable_storage.leader_accumulator]"
-			}
 		}
-		trigger = {
+		}
+			trigger = {
 			OR = {
 				has_policy_flag = robots_outlawed
 				has_policy_flag = ai_outlawed
@@ -1035,20 +1035,20 @@ country_event = {
 				NOR = {
 					has_country_flag = synthetic_empire
 					has_valid_civic = civic_fanatic_purifiers
-				}
-				is_regular_empire = yes
+		}
+			is_regular_empire = yes
 				event_target:storage_owner = {
-					any_owned_leader = {
-						is_eligible_transfer_leader_from_storage = yes
-						is_organic_species = yes
-						is_hive_species = no
-					}
-					any_owned_leader = {
-						is_eligible_transfer_leader_from_storage = yes
-						is_robotic_species = yes
-					}
+				any_owned_leader = {
+					is_eligible_transfer_leader_from_storage = yes
+					is_organic_species = yes
+					is_hive_species = no
+				}
+				any_owned_leader = {
+					is_eligible_transfer_leader_from_storage = yes
+					is_robotic_species = yes
 				}
 			}
+		}
 		}
 		allow = {
 			custom_tooltip = {
@@ -1100,7 +1100,7 @@ country_event = {
 		}
 		trigger = {
 			OR = {
-				hidden_trigger = { has_completed_special_project_in_log = SYNTHETIC_EVOLUTION_PROJECT }
+				hidden_trigger = { has_country_flag = synthetic_empire }
 				AND = {
 					has_policy_flag = robots_allowed
 					has_policy_flag = ai_full_rights
@@ -1113,14 +1113,14 @@ country_event = {
 						is_eligible_transfer_leader_from_storage = yes
 						is_organic_species = yes
 						is_hive_species = no
-					}
+			}
 					any_owned_leader = {
 						is_eligible_transfer_leader_from_storage = yes
 						is_robotic_species = yes
-					}
-				}
+		}
 			}
 		}
+	}
 		allow = {
 			custom_tooltip = {
 				fail_text = keep_leaders.1.pur.fail_text
@@ -1150,19 +1150,19 @@ country_event = {
 			modifier = {
 				factor = 0
 				is_materialist = yes
-			}
 		}
+			}
 		hidden_effect = {
 			country_event = {
 				id = keep_leaders.11
 				scopes = { from = event_target:storage_owner }
+		}
 			}
 		}
-	}
 	# same species only
 	option = {
 		name = keep_leaders.1.g
-		custom_tooltip = keep_leaders.1.g.tooltip
+			custom_tooltip = keep_leaders.1.g.tooltip
 		custom_tooltip_with_params = {
 			description = keep_leaders.1.tooltip
 			description_parameters = {
@@ -1173,18 +1173,18 @@ country_event = {
 		trigger = {
 			hidden_trigger = {
 				NOT = { has_valid_civic = civic_fanatic_purifiers }
-				is_regular_empire = yes
+			is_regular_empire = yes
 				event_target:storage_owner = {
-					any_owned_leader = {
-						is_eligible_transfer_leader_from_storage = yes
-						is_same_species = event_target:potential_owner
-					}
-					any_owned_leader = {
-						is_eligible_transfer_leader_from_storage = yes
-						NOT = { is_same_species = event_target:potential_owner }
-					}
+				any_owned_leader = {
+					is_eligible_transfer_leader_from_storage = yes
+					is_same_species = event_target:potential_owner
+				}
+				any_owned_leader = {
+					is_eligible_transfer_leader_from_storage = yes
+					NOT = { is_same_species = event_target:potential_owner }
 				}
 			}
+		}
 		}
 		allow = {
 			custom_tooltip = {
@@ -1315,19 +1315,19 @@ country_event = {
 		}
 		trigger = {
 			hidden_trigger = {
-				is_regular_empire = yes
-				NOT = { has_valid_civic = civic_fanatic_purifiers }
+			is_regular_empire = yes
+			NOT = { has_valid_civic = civic_fanatic_purifiers }
 				event_target:storage_owner = {
-					any_owned_leader = {
-						is_eligible_transfer_leader_from_storage = yes
-						is_same_species = event_target:potential_owner
-					}
-					any_owned_leader = {
-						is_eligible_transfer_leader_from_storage = yes
-						NOT = { is_same_species = event_target:potential_owner }
-					}
+				any_owned_leader = {
+					is_eligible_transfer_leader_from_storage = yes
+					is_same_species = event_target:potential_owner
+				}
+				any_owned_leader = {
+					is_eligible_transfer_leader_from_storage = yes
+					NOT = { is_same_species = event_target:potential_owner }
 				}
 			}
+		}
 		}
 		allow = {
 			custom_tooltip = {
@@ -1395,12 +1395,12 @@ country_event = {
 			has_authority = auth_hive_mind
 			hidden_trigger = {
 				event_target:storage_owner = {
-					any_owned_leader = {
-						is_eligible_transfer_leader_from_storage = yes
-						is_hive_species = yes
-					}
+				any_owned_leader = {
+					is_eligible_transfer_leader_from_storage = yes
+					is_hive_species = yes
 				}
 			}
+		}
 		}
 		allow = {
 			custom_tooltip = {
@@ -1455,8 +1455,8 @@ country_event = {
 							check_variable = {
 								which = leader_transferable_accumulator
 								value > 0
-							}
-						}
+				}
+			}
 					}
 					event_target:storage_owner = { any_stored_leaders_eligible_transfer_to_main_species_leader_restricted = yes }
 				}
@@ -1470,11 +1470,11 @@ country_event = {
 								which = leader_transferable_accumulator
 								value > 0
 							}
-						}
+				}
 						is_xenophobe = yes
 					}
 					event_target:storage_owner = { any_stored_leaders_eligible_transfer_to_main_species_leader_restricted = yes }
-				}
+			}
 			}
 			custom_tooltip = {
 				fail_text = keep_leaders.1.pur.fail_text
@@ -1594,14 +1594,14 @@ country_event = {
 		trigger = {
 			hidden_trigger = {
 				has_utopia = yes
-				is_hive_empire = no
+			is_hive_empire = no
 				event_target:storage_owner = {
-					any_owned_leader = {
-						is_eligible_transfer_leader_from_storage = yes
-						is_eligible_for_unhive_assimilation_species = yes
-					}
+				any_owned_leader = {
+					is_eligible_transfer_leader_from_storage = yes
+					is_eligible_for_unhive_assimilation_species = yes
 				}
 			}
+		}
 		}
 		allow = {
 			custom_tooltip = {
@@ -1658,12 +1658,12 @@ country_event = {
 			hidden_trigger = {
 				has_utopia = yes
 				event_target:storage_owner = {
-					any_owned_leader = {
-						is_eligible_transfer_leader_from_storage = yes
-						is_eligible_for_psionic_assimilation_species = yes
-					}
+				any_owned_leader = {
+					is_eligible_transfer_leader_from_storage = yes
+					is_eligible_for_psionic_assimilation_species = yes
 				}
 			}
+		}
 		}
 		allow = {
 			custom_tooltip = {
@@ -1715,12 +1715,12 @@ country_event = {
 				has_utopia = yes
 				NOT = { has_country_flag = synthetic_empire }
 				event_target:storage_owner = {
-					any_owned_leader = {
-						is_eligible_transfer_leader_from_storage = yes
-						is_eligible_for_cybernetic_assimilation_species = yes
-					}
+				any_owned_leader = {
+					is_eligible_transfer_leader_from_storage = yes
+					is_eligible_for_cybernetic_assimilation_species = yes
 				}
 			}
+		}
 		}
 		allow = {
 			custom_tooltip = {
@@ -1776,12 +1776,12 @@ country_event = {
 				has_utopia = yes
 				has_country_flag = flesh_weakened
 				event_target:storage_owner = {
-					any_owned_leader = {
-						is_eligible_transfer_leader_from_storage = yes
-						is_eligible_for_synthetic_assimilation_species = yes
-					}
+				any_owned_leader = {
+					is_eligible_transfer_leader_from_storage = yes
+					is_eligible_for_synthetic_assimilation_species = yes
 				}
 			}
+		}
 		}
 		allow = {
 			custom_tooltip = {
@@ -1826,12 +1826,12 @@ country_event = {
 			hidden_trigger = {
 				has_synthethic_dawn = yes
 				event_target:storage_owner = {
-					any_owned_leader = {
-						is_eligible_transfer_leader_from_storage = yes
-						is_eligible_for_machine_assimilation_species = yes
-					}
+				any_owned_leader = {
+					is_eligible_transfer_leader_from_storage = yes
+					is_eligible_for_machine_assimilation_species = yes
 				}
 			}
+		}
 		}
 		allow = {
 			custom_tooltip = {
@@ -1883,8 +1883,8 @@ country_event = {
 						which = index
 						value = 1
 					}
-				}
 			}
+		}
 		}
 		hidden_effect = {
 			country_event = {
@@ -1913,14 +1913,14 @@ country_event = {
 				has_synthethic_dawn = yes
 				has_utopia = yes
 				has_global_flag = deassimilate_machines_installed
-				is_regular_empire = yes
+			is_regular_empire = yes
 				event_target:storage_owner = {
-					any_owned_leader = {
-						is_eligible_transfer_leader_from_storage = yes
-						is_machine_species = yes
-					}
+				any_owned_leader = {
+					is_eligible_transfer_leader_from_storage = yes
+					is_machine_species = yes
 				}
 			}
+		}
 		}
 		allow = {
 			custom_tooltip = {
@@ -1931,8 +1931,8 @@ country_event = {
 				fail_text = ROBOTS_ARE_OUTLAWED_NO_X
 				OR = {
 					has_country_flag = synthetic_empire
-					has_policy_flag = robots_allowed
-				}
+				has_policy_flag = robots_allowed
+			}
 			}
 			custom_tooltip = {
 				fail_text = AI_IS_OUTLAWED_LEADER_NO_X
@@ -1941,15 +1941,15 @@ country_event = {
 					AND = {
 						has_policy_flag = robots_allowed
 						has_policy_flag = ai_full_rights
-					}
-				}
+			}
+		}
 			}
 			custom_tooltip = {
 				fail_text = keep_leaders.1.necro.fail_text
 				if = {
 					limit = { is_necrophage_empire = yes }
 					event_target:storage_owner = { all_stored_leaders_eligible_transfer_to_main_species_leader_restricted = yes }
-				}
+		}
 			}
 			custom_tooltip = {
 				fail_text = empire_is_xenophobe_no_x
@@ -2000,7 +2000,7 @@ country_event = {
 						which = leader_necrophagable_accumulator
 						value > 0
 					}
-				}
+		}
 			}
 		}
 		ai_chance = {
@@ -2013,42 +2013,42 @@ country_event = {
 		# necrophage unity
 		if = {
 			limit = { has_swapped_tradition = tr_harmony_unity_of_self }
-			custom_tooltip_with_params = {
+		custom_tooltip_with_params = {
 				description = ADD_RESOURCE_EFFECT
-				description_parameters = {
+			description_parameters = {
 					RESOURCE = "[This.GetUnityName]"
 					KEY = "unity"
 					NUM = "[variable_storage.leader_necrophagable_reward_accumulator]"
-				}
 			}
-			hidden_effect = {
+		}
+		hidden_effect = {
 				event_target:variable_storage = {
 					set_variable = {
 						which = index
 						value = 0
-					}
-				}
+			}
+		}
 				while = {
 					limit = {
 						event_target:variable_storage = {
 							check_variable = {
 								which = index
 								value < leader_necrophagable_accumulator
-							}
-						}
-					}
+			}
+			}
+			}
 					add_resource = {
 						unity = @keep_leaders_civic_reward_base
-					}
+			}
 					event_target:variable_storage = {
 						change_variable = {
 							which = index
 							value = 1
-						}
+			}
+			}
 					}
 				}
 			}
-		}
 		hidden_effect = {
 			country_event = {
 				id = keep_leaders.17
@@ -2278,10 +2278,10 @@ planet_event = {
 				save_event_target_as = storage_owner
 				save_event_target_as = variable_storage
 				# variable for leader count
-				set_variable = {
-					which = infiltration_leader_accumulator
-					value = 0
-				}
+		set_variable = {
+			which = infiltration_leader_accumulator
+			value = 0
+		}
 			}
 		}
 		FROM = {
@@ -2337,9 +2337,9 @@ planet_event = {
 					# force the ruler to a non-ruler class (probably governor)
 					assign_leader = event_target:dummy_ruler
 					event_target:integrated_ruler = {
-						set_leader_flag = clear_traits
-						save_event_target_as = leader_to_replace
-					}
+					set_leader_flag = clear_traits
+					save_event_target_as = leader_to_replace
+				}
 					replace_leader_based_on_government_type = yes
 					event_target:leader_to_replace = { save_event_target_as = integrated_ruler }
 				}
@@ -2385,9 +2385,9 @@ planet_event = {
 					# ...then force them to a pre-ruler class by assigning the dummy back (probably governor)
 					assign_leader = event_target:dummy_ruler
 					event_target:integrated_heir = {
-						set_leader_flag = clear_traits
-						save_event_target_as = leader_to_replace
-					}
+					set_leader_flag = clear_traits
+					save_event_target_as = leader_to_replace
+				}
 					replace_leader_based_on_government_type = yes
 					event_target:leader_to_replace = { save_event_target_as = integrated_heir }
 				}
@@ -2410,98 +2410,97 @@ country_event = {
 	hide_window = yes
 	is_triggered_only = yes
 	immediate = {
-		set_variable = {
-			which = keep_leaders_army_transport_fleet
-			value = 13 # semi-arbitrary start value
-		}
+			set_variable = {
+				which = keep_leaders_army_transport_fleet
+				value = 13 # semi-arbitrary start value
+			}
 		save_event_target_as = integrating_country
 		FROM = {
 			save_event_target_as = integrated_country
-			# tag each army with a variable value that corresponds to one set on its transport fleet
-			every_owned_army = {
-				log = "[This.GetName] owned by [This.Owner.GetName]"
+		# tag each army with a variable value that corresponds to one set on its transport fleet
+		every_owned_army = {
+			log = "[This.GetName] owned by [This.Owner.GetName]"
+			if = {
+				limit = { exists = fleet }
 				if = {
-					limit = { exists = fleet }
-					if = {
-						limit = { fleet = { NOT = { is_variable_set = keep_leaders_army_transport_fleet } } }
-						fleet = {
-							set_variable = {
-								which = keep_leaders_army_transport_fleet
+					limit = { fleet = { NOT = { is_variable_set = keep_leaders_army_transport_fleet } } }
+					fleet = {
+						set_variable = {
+							which = keep_leaders_army_transport_fleet
 								value = event_target:integrating_country
-							}
-						}
-						event_target:integrating_country = {
-							change_variable = {
-								which = keep_leaders_army_transport_fleet
-								value = 1
-							}
 						}
 					}
-					set_variable = {
-						which = keep_leaders_army_transport_fleet
-						value = fleet
+						event_target:integrating_country = {
+						change_variable = {
+							which = keep_leaders_army_transport_fleet
+							value = 1
+						}
 					}
 				}
+				set_variable = {
+					which = keep_leaders_army_transport_fleet
+					value = fleet
+				}
 			}
-			every_owned_fleet = {
-				limit = { is_ship_class = shipclass_transport }
-				save_event_target_as = source_fleet
-				log = "[source_fleet.GetName] is a transport fleet"
+		}
+		every_owned_fleet = {
+			limit = { is_ship_class = shipclass_transport }
+			save_event_target_as = source_fleet
+			log = "[source_fleet.GetName] is a transport fleet"
 				event_target:integrating_country = {
-					create_fleet = {
-						effect = {
-							if = {
-								limit = { event_target:source_fleet = { is_variable_set = keep_leader_match_transport_fleet } }
-								set_variable = {
-									which = keep_leader_match_transport_fleet
-									value = event_target:source_fleet
-								}
-								event_target:source_fleet = { clear_variable = keep_leader_match_transport_fleet }
+				create_fleet = {
+					effect = {
+						if = {
+							limit = { event_target:source_fleet = { is_variable_set = keep_leader_match_transport_fleet } }
+							set_variable = {
+								which = keep_leader_match_transport_fleet
+								value = event_target:source_fleet
 							}
-							save_event_target_as = target_fleet
-							set_name = "[source_fleet.GetName]"
+							event_target:source_fleet = { clear_variable = keep_leader_match_transport_fleet }
+						}
+						save_event_target_as = target_fleet
+						set_name = "[source_fleet.GetName]"
 							set_owner = event_target:integrating_country
-							set_location = event_target:source_fleet
-							event_target:source_fleet = {
-								every_owned_ship = {
-									save_event_target_as = source_ship
-									log = "transport [source_ship.GetName]"
-									event_target:target_fleet = {
-										event_target:source_fleet.owner = {
-											random_owned_army = {
-												limit = {
-													is_variable_set = keep_leaders_army_transport_fleet
-													check_variable = {
-														which = keep_leaders_army_transport_fleet
-														value = event_target:source_fleet
-													}
+						set_location = event_target:source_fleet
+						event_target:source_fleet = {
+							every_owned_ship = {
+								save_event_target_as = source_ship
+								log = "transport [source_ship.GetName]"
+								event_target:target_fleet = {
+									event_target:source_fleet.owner = {
+										random_owned_army = {
+											limit = {
+												is_variable_set = keep_leaders_army_transport_fleet
+												check_variable = {
+													which = keep_leaders_army_transport_fleet
+													value = event_target:source_fleet
 												}
-												log = "army [This.GetName] was in fleet [source_fleet.GetName]"
-												clear_variable = keep_leaders_army_transport_fleet
-												save_event_target_as = source_army
 											}
+											log = "army [This.GetName] was in fleet [source_fleet.GetName]"
+											clear_variable = keep_leaders_army_transport_fleet
+											save_event_target_as = source_army
 										}
-										event_target:source_army = {
-											switch = {
-												trigger = army_type
-												assault_army = { PREV = { create_army_transport_parameterized = { ARMY_TYPE = assault_army } } }
-												clone_army = { PREV = { create_army_transport_parameterized = { ARMY_TYPE = clone_army } } }
-												cybrex_warform = { PREV = { create_army_transport_parameterized = { ARMY_TYPE = cybrex_warform } } }
-												gene_warrior_army = { PREV = { create_army_transport_parameterized = { ARMY_TYPE = gene_warrior_army } } }
-												machine_assault_1 = { PREV = { create_army_transport_parameterized = { ARMY_TYPE = machine_assault_1 } } }
-												machine_assault_2 = { PREV = { create_army_transport_parameterized = { ARMY_TYPE = machine_assault_2 } } }
-												machine_assault_3 = { PREV = { create_army_transport_parameterized = { ARMY_TYPE = machine_assault_3 } } }
-												psionic_army = { PREV = { create_army_transport_parameterized = { ARMY_TYPE = psionic_army } } }
-												robotic_army = { PREV = { create_army_transport_parameterized = { ARMY_TYPE = robotic_army } } }
-												shroud_army = { PREV = { create_army_transport_parameterized = { ARMY_TYPE = shroud_army } } }
-												slave_army = { PREV = { create_army_transport_parameterized = { ARMY_TYPE = slave_army } } }
-												titanic_assault_army = { PREV = { create_army_transport_parameterized = { ARMY_TYPE = titanic_assault_army } } }
-												undead_army = { PREV = { create_army_transport_parameterized = { ARMY_TYPE = undead_army } } }
-												xenomorph_army = { PREV = { create_army_transport_parameterized = { ARMY_TYPE = xenomorph_army } } }
-												default = {
-													log = "unhandled army type for [This.GetName] owned by [This.Owner.GetRealName] - used assault_army"
-													PREV = { create_army_transport_parameterized = { ARMY_TYPE = assault_army } }
-												}
+									}
+									event_target:source_army = {
+										switch = {
+											trigger = army_type
+											assault_army = { PREV = { create_army_transport_parameterized = { ARMY_TYPE = assault_army } } }
+											clone_army = { PREV = { create_army_transport_parameterized = { ARMY_TYPE = clone_army } } }
+											cybrex_warform = { PREV = { create_army_transport_parameterized = { ARMY_TYPE = cybrex_warform } } }
+											gene_warrior_army = { PREV = { create_army_transport_parameterized = { ARMY_TYPE = gene_warrior_army } } }
+											machine_assault_1 = { PREV = { create_army_transport_parameterized = { ARMY_TYPE = machine_assault_1 } } }
+											machine_assault_2 = { PREV = { create_army_transport_parameterized = { ARMY_TYPE = machine_assault_2 } } }
+											machine_assault_3 = { PREV = { create_army_transport_parameterized = { ARMY_TYPE = machine_assault_3 } } }
+											psionic_army = { PREV = { create_army_transport_parameterized = { ARMY_TYPE = psionic_army } } }
+											robotic_army = { PREV = { create_army_transport_parameterized = { ARMY_TYPE = robotic_army } } }
+											shroud_army = { PREV = { create_army_transport_parameterized = { ARMY_TYPE = shroud_army } } }
+											slave_army = { PREV = { create_army_transport_parameterized = { ARMY_TYPE = slave_army } } }
+											titanic_assault_army = { PREV = { create_army_transport_parameterized = { ARMY_TYPE = titanic_assault_army } } }
+											undead_army = { PREV = { create_army_transport_parameterized = { ARMY_TYPE = undead_army } } }
+											xenomorph_army = { PREV = { create_army_transport_parameterized = { ARMY_TYPE = xenomorph_army } } }
+											default = {
+												log = "unhandled army type for [This.GetName] owned by [This.Owner.GetRealName] - used assault_army"
+												PREV = { create_army_transport_parameterized = { ARMY_TYPE = assault_army } }
 											}
 										}
 									}
@@ -2510,10 +2509,11 @@ country_event = {
 						}
 					}
 				}
-				delete_fleet = THIS
 			}
+			delete_fleet = THIS
 		}
 	}
+}
 }
 
 # randomise a leader's experience between 0 and the maximum for their current level
@@ -2567,7 +2567,7 @@ country_event = {
 		country_event = {
 			id = keep_leaders_bonus_traits.20
 		}
-	}
+}
 }
 
 # keep organic only
@@ -2608,7 +2608,7 @@ country_event = {
 		# recalculate former ruler country bonuses
 		country_event = {
 			id = keep_leaders_bonus_traits.20
-		}
+}
 	}
 }
 
@@ -2674,7 +2674,7 @@ country_event = {
 		# recalculate former ruler country bonuses
 		country_event = {
 			id = keep_leaders_bonus_traits.20
-		}
+}
 	}
 }
 
@@ -2709,7 +2709,7 @@ country_event = {
 		country_event = {
 			id = keep_leaders_bonus_traits.20
 		}
-	}
+}
 }
 
 # assimilate
@@ -3037,7 +3037,7 @@ country_event = {
 		country_event = {
 			id = keep_leaders_bonus_traits.20
 		}
-	}
+}
 }
 
 # necrophage
@@ -3133,7 +3133,7 @@ country_event = {
 		country_event = {
 			id = keep_leaders_bonus_traits.20
 		}
-	}
+}
 }
 
 # triggered by on_leader_death
