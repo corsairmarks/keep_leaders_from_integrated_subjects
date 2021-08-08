@@ -76,6 +76,7 @@ This error will not affect the functioning of this mod - all built-in government
     * Some demoted rulers/heirs will still be cloned if their demoted class isn't one normally allowed to be a ruler for the government which they previously lead (e.g. Star Empires are run by military leaders) and they don't have a pre-ruler class
     * Code improvement: use a hidden country to store the leaders in limbo (and variables), rather than the global event country
     * Code improvement: cloned leaders will get a random amount of XP instead of having to start again from 0
+* 1.1.1 Fix subtle bug with allowing cybernetic/synthetic assimilation for leaders
 
 ## Source Code
 
