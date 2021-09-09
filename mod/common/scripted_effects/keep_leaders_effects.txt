@@ -392,9 +392,7 @@ set_former_gestalt_ruler_flag = {
 remove_gestalt_ruler_traits = {
 	if = {
 		limit = { has_trait = leader_trait_ruler_machine_intelligence }
-		set_leader_flag = former_gestalt_ruler
 		remove_trait = leader_trait_ruler_machine_intelligence
-		add_random_leader_trait = yes
 	}
 	if = {
 		limit = { has_ruler_trait = leader_trait_ruler_machine_intelligence }
@@ -402,9 +400,7 @@ remove_gestalt_ruler_traits = {
 	}
 	if = {
 		limit = { has_trait = leader_trait_ruler_hive_mind }
-		set_leader_flag = former_gestalt_ruler
 		remove_trait = leader_trait_ruler_hive_mind
-		add_random_leader_trait = yes
 	}
 	if = {
 		limit = { has_ruler_trait = leader_trait_ruler_hive_mind }
