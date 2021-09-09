@@ -7,7 +7,7 @@ tags={
 	"Gameplay"
 	"Leaders"
 }
-version="1.2.0"
+version="1.2.1"
 picture="thumbnail.png"
 supported_version="3.0.*"
 remote_file_id="2553818684"
