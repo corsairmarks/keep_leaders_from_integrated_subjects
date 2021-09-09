@@ -147,6 +147,7 @@ country_event = {
 				limit = { exists = ruler }
 				ruler = {
 					set_name = keep_leaders.former_ruler_name
+					set_leader_flag = former_ruler
 					save_event_target_as = integrated_ruler
 				}
 				if = {
@@ -172,11 +173,16 @@ country_event = {
 						save_event_target_as = leader_to_replace
 					}
 					replace_leader_based_on_government_type = yes
-					event_target:leader_to_replace = { save_event_target_as = integrated_ruler }
+					event_target:leader_to_replace = {
+						if = {
+							limit = { NOT = { has_leader_flag = former_ruler } }
+							set_leader_flag = former_ruler
+						}
+						save_event_target_as = integrated_ruler
+					}
 				}
 				event_target:integrated_ruler = {
 					accumulate_leader = yes
-					set_leader_flag = former_ruler
 					set_former_gestalt_ruler_flag = yes
 					remove_gestalt_ruler_traits = yes
 					add_former_ruler_trait = yes
@@ -187,6 +193,7 @@ country_event = {
 				limit = { exists = heir }
 				heir = {
 					set_name = keep_leaders.former_ruler_name
+					set_leader_flag = former_heir
 					save_event_target_as = integrated_heir
 				}
 				if = {
@@ -216,11 +223,16 @@ country_event = {
 						save_event_target_as = leader_to_replace
 					}
 					replace_leader_based_on_government_type = yes
-					event_target:leader_to_replace = { save_event_target_as = integrated_heir }
+					event_target:leader_to_replace = {
+						if = {
+							limit = { NOT = { has_leader_flag = former_heir } }
+							set_leader_flag = former_heir
+						}
+						save_event_target_as = integrated_heir
+					}
 				}
 				event_target:integrated_heir = {
 					accumulate_leader = yes
-					set_leader_flag = former_heir
 					add_former_heir_trait = yes
 					transfer_leader_to_storage = yes
 				}
@@ -2316,6 +2328,7 @@ planet_event = {
 				}
 				ruler = {
 					set_name = keep_leaders.former_ruler_name
+					set_leader_flag = former_ruler
 					save_event_target_as = integrated_ruler
 				}
 				if = {
@@ -2341,10 +2354,15 @@ planet_event = {
 						save_event_target_as = leader_to_replace
 					}
 					replace_leader_based_on_government_type = yes
-					event_target:leader_to_replace = { save_event_target_as = integrated_ruler }
+					event_target:leader_to_replace = {
+						if = {
+							limit = { NOT = { has_leader_flag = former_ruler } }
+							set_leader_flag = former_ruler
+						}
+						save_event_target_as = integrated_ruler
+					}
 				}
 				event_target:integrated_ruler = {
-					set_leader_flag = former_ruler
 					set_former_gestalt_ruler_flag = yes
 					remove_gestalt_ruler_traits = yes
 					add_former_ruler_trait = yes
@@ -2361,6 +2379,7 @@ planet_event = {
 				}
 				heir = {
 					set_name = keep_leaders.former_ruler_name
+					set_leader_flag = former_heir
 					save_event_target_as = integrated_heir
 				}
 				if = {
@@ -2390,10 +2409,15 @@ planet_event = {
 						save_event_target_as = leader_to_replace
 					}
 					replace_leader_based_on_government_type = yes
-					event_target:leader_to_replace = { save_event_target_as = integrated_heir }
+					event_target:leader_to_replace = {
+						if = {
+							limit = { NOT = { has_leader_flag = former_heir } }
+							set_leader_flag = former_heir
+						}
+						save_event_target_as = integrated_heir
+					}
 				}
 				event_target:integrated_heir = {
-					set_leader_flag = former_heir
 					add_former_heir_trait = yes
 					transfer_leader_to_storage = yes
 				}

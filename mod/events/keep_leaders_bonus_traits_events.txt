@@ -7,6 +7,12 @@ country_event = {
 	hide_window = yes
 	trigger = {
 		exists = FROM
+		FROM = {
+			NOR = {
+				has_leader_flag = former_ruler
+				has_leader_flag = former_heir
+			}
+		}
 	}
 	immediate = {
 		FROM = { add_former_ruler_trait = yes }
