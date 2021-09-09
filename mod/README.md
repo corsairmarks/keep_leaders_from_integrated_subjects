@@ -77,6 +77,8 @@ This error will not affect the functioning of this mod - all built-in government
     * Code improvement: use a hidden country to store the leaders in limbo (and variables), rather than the global event country
     * Code improvement: cloned leaders will get a random amount of XP instead of having to start again from 0
 * 1.1.1 Fix subtle bug with allowing cybernetic/synthetic assimilation for leaders
+* 1.2.0 Any demoted ruler (such as the loser of an election) now benefits from a demoted ruler trait
+    * Fix a bug where gestalt ruler traits weren't removed upon subject integration
 
 ## Source Code
 
