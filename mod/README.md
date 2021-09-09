@@ -8,6 +8,8 @@ Now enhanced to auto-assign integrated Scientists and Admirals back to their per
 
 A smaller, more subtle enhancement is that integrated, demoted rulers will (in most cases) now preserve their existing ruler traits in case they somehow become the ruler of your empire.  Also integrated, demoted rulers now get an extra regular leader class trait upon demotion, based on what ruler traits they have.
 
+Even more enhancement! Rulers demoted for any reason such as losing an election now benefit by gaining former ruler traits.  They may not have won the hearts and minds of voters, but they still rose to the occasion and developed new skills.  This will also apply when being demoted from a ruler for any reason, such as gameplay another mod.
+
 # Changes
 
 A lot of code has gone into figuring out what leaders you can choose to keep based on what kind of country you are playing, what ethics it has, what kinds of assimilation or necrophage might be available. All of that boils down to an event screen that appears when you have integrated a subject or conquered a primitive planet, or a second event when you have infiltrated a primitive planet.

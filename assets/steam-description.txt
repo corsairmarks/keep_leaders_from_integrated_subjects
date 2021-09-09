@@ -8,6 +8,8 @@ Now enhanced to auto-assign integrated Scientists and Admirals back to their per
 
 A smaller, more subtle enhancement is that integrated, demoted rulers will (in most cases) now preserve their existing ruler traits in case they somehow become the ruler of your empire. Also integrated, demoted rulers now get an extra regular leader class trait upon demotion, based on what ruler traits they have.
 
+Even more enhancement! Rulers demoted for any reason such as losing an election now benefit by gaining former ruler traits.  They may not have won the hearts and minds of voters, but they still rose to the occasion and developed new skills.  This will also apply when being demoted from a ruler for any reason, such as gameplay another mod.
+
 [h1]Changes[/h1]
 
 A lot of code has gone into figuring out what leaders you can choose to keep based on what kind of country you are playing, what ethics it has, what kinds of assimilation or necrophage might be available. All of that boils down to an event screen that appears when you have integrated a subject or conquered a primitive planet, or a second event when you have infiltrated a primitive planet.
@@ -29,9 +31,9 @@ This mod is designed to understand the species types, ethics, civics, authoritie
 [h3]Recommended Companion Mods[/h3]
 
 [list]
-[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2499031295]Leader Traits: All Eligible Species Traits[/url] ensures your leaders get all their species-based traits when being assimilated (such as Psionic or Erudite)
-[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2553806265]Leader Traits: Enhanced Randomisation[/url] improves leader trait randomisation (primarily from level up, but not exclusively) and toggles traits from the biological version to machine traits (and back) if a leader becomes a robot and/or returns to a biological form
-[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2553812372]Deassimilate Machines[/url] allows you to "deassimilate" machine Pops into robots. This is available to any non-machine, non-hive empire that has the Positronic AI technology and doesn't outright ban Artificial Intelligence. Specifically allows (with this mod) for machine deassimilation as a "leadership disposition" choice for integrated machine empire subjects (and if you also have Leader Traits: All Eligible Species Traits, the leaders are converted to have synth leader traits if you have the right technology).
+[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2499031295]Leader Traits: All Eligible Species Traits[/url] ensures your leaders get all their species-based traits (such as Psionic or Erudite)
+[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2553806265]Leader Traits: Enhanced Randomisation[/url] improves leader trait randomisation and toggles traits from biological to machine traits (and back) if a leader becomes a robot and/or returns to a biological form
+[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2553812372]Deassimilate Machines[/url] allows you to "deassimilate" machine Pops into robots. Specifically allows (with this mod) for machine deassimilation as a "leadership disposition" choice for integrated subjects (combined with Leader Traits: All Eligible Species Traits, the leaders gain synth leader traits).
 [*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2558494770]corsairmarks's Leader Traits MOD Chinese patch[/url] by Hua Zhang - Chinese localisation
 [/list]
 
