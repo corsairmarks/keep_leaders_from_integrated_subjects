@@ -433,6 +433,10 @@ replace_leader_as_governor = {
 			save_event_target_as = leader_to_replace
 		}
 	}
+	else_if = {
+		limit = { has_leader_flag = clear_traits }
+		remove_leader_flag = clear_traits
+	}
 }
 
 # THIS = country
@@ -459,6 +463,10 @@ replace_leader_as_scientist = {
 			leader_event = { id = keep_leaders.6 }
 			save_event_target_as = leader_to_replace
 		}
+	}
+	else_if = {
+		limit = { has_leader_flag = clear_traits }
+		remove_leader_flag = clear_traits
 	}
 }
 
@@ -487,6 +495,10 @@ replace_leader_as_admiral = {
 			save_event_target_as = leader_to_replace
 		}
 	}
+	else_if = {
+		limit = { has_leader_flag = clear_traits }
+		remove_leader_flag = clear_traits
+	}
 }
 
 # THIS = country
@@ -513,6 +525,10 @@ replace_leader_as_general = {
 			leader_event = { id = keep_leaders.6 }
 			save_event_target_as = leader_to_replace
 		}
+	}
+	else_if = {
+		limit = { has_leader_flag = clear_traits }
+		remove_leader_flag = clear_traits
 	}
 }
 
