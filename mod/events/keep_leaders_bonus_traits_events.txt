@@ -256,7 +256,7 @@ country_event = {
 	}
 }
 
-# shim event in order to update cxountry-level leader bonuses after the game removes them from the leader pool
+# shim event in order to update country-level leader bonuses after the game removes them from the leader pool
 # fired by on_leader_fired and on_leader_death 
 country_event = {
 	id = keep_leaders_bonus_traits.21
