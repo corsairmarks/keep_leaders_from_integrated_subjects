@@ -305,7 +305,7 @@ set_minimum_standard_of_living_species = {
 					has_citizenship_type = {
 						country = event_target:potential_owner
 						type = citizenship_full
-					} 
+					}
 				}
 				set_living_standard = {
 					country = event_target:potential_owner
@@ -433,9 +433,13 @@ replace_leader_as_governor = {
 			save_event_target_as = leader_to_replace
 		}
 	}
-	else_if = {
-		limit = { has_leader_flag = clear_traits }
-		remove_leader_flag = clear_traits
+	else = {
+		event_target:leader_to_replace = {
+			if = {
+				limit = { has_leader_flag = clear_traits }
+				remove_leader_flag = clear_traits
+			}
+		}
 	}
 }
 
@@ -464,9 +468,13 @@ replace_leader_as_scientist = {
 			save_event_target_as = leader_to_replace
 		}
 	}
-	else_if = {
-		limit = { has_leader_flag = clear_traits }
-		remove_leader_flag = clear_traits
+	else = {
+		event_target:leader_to_replace = {
+			if = {
+				limit = { has_leader_flag = clear_traits }
+				remove_leader_flag = clear_traits
+			}
+		}
 	}
 }
 
@@ -495,9 +503,13 @@ replace_leader_as_admiral = {
 			save_event_target_as = leader_to_replace
 		}
 	}
-	else_if = {
-		limit = { has_leader_flag = clear_traits }
-		remove_leader_flag = clear_traits
+	else = {
+		event_target:leader_to_replace = {
+			if = {
+				limit = { has_leader_flag = clear_traits }
+				remove_leader_flag = clear_traits
+			}
+		}
 	}
 }
 
@@ -526,9 +538,13 @@ replace_leader_as_general = {
 			save_event_target_as = leader_to_replace
 		}
 	}
-	else_if = {
-		limit = { has_leader_flag = clear_traits }
-		remove_leader_flag = clear_traits
+	else = {
+		event_target:leader_to_replace = {
+			if = {
+				limit = { has_leader_flag = clear_traits }
+				remove_leader_flag = clear_traits
+			}
+		}
 	}
 }
 
@@ -1051,7 +1067,7 @@ try_add_demoted_ruler_general_bonus_trait = {
 	else_if = {
 		limit = {
 			has_ruler_trait = trait_ruler_warlike
-			NOR = { 
+			NOR = {
 				has_trait = leader_trait_butcher
 				has_trait = leader_trait_demoralizer
 			}
