@@ -2435,37 +2435,21 @@ country_event = {
 	hide_window = yes
 	is_triggered_only = yes
 	immediate = {
-		set_variable = {
-			which = keep_leaders_army_transport_fleet
-			value = 13 # semi-arbitrary start value
-		}
 		save_event_target_as = integrating_country
 		FROM = {
 			save_event_target_as = integrated_country
-			# tag each army with a variable value that corresponds to one set on its transport fleet
+			# flag each army to correspond to a flag set on its transport fleet
 			every_owned_army = {
 				log = "[This.GetName] owned by [This.Owner.GetName]"
 				if = {
 					limit = { exists = fleet }
-					if = {
-						limit = { fleet = { NOT = { is_variable_set = keep_leaders_army_transport_fleet } } }
-						fleet = {
-							set_variable = {
-								which = keep_leaders_army_transport_fleet
-									value = event_target:integrating_country
-							}
-						}
-						event_target:integrating_country = {
-							change_variable = {
-								which = keep_leaders_army_transport_fleet
-								value = 1
-							}
+					fleet = {
+						if = {
+							limit = { NOT = { has_fleet_flag = keep_leaders_army_transport_fleet@THIS } }
+							set_fleet_flag = keep_leaders_army_transport_fleet@THIS
 						}
 					}
-					set_variable = {
-						which = keep_leaders_army_transport_fleet
-						value = fleet
-					}
+					set_army_flag = keep_leaders_army_transport_fleet@fleet
 				}
 			}
 			every_owned_fleet = {
@@ -2476,12 +2460,9 @@ country_event = {
 					create_fleet = {
 						effect = {
 							if = {
-								limit = { event_target:source_fleet = { is_variable_set = keep_leader_match_transport_fleet } }
-								set_variable = {
-									which = keep_leader_match_transport_fleet
-									value = event_target:source_fleet
-								}
-								event_target:source_fleet = { clear_variable = keep_leader_match_transport_fleet }
+								limit = { event_target:source_fleet = { has_fleet_flag = keep_leader_match_transport_fleet@THIS } }
+								event_target:source_fleet = { remove_fleet_flag = keep_leader_match_transport_fleet@THIS }
+								set_fleet_flag = keep_leader_match_transport_fleet@event_target:source_fleet
 							}
 							save_event_target_as = target_fleet
 							set_name = "[source_fleet.GetName]"
@@ -2494,15 +2475,9 @@ country_event = {
 									event_target:target_fleet = {
 										event_target:source_fleet.owner = {
 											random_owned_army = {
-												limit = {
-													is_variable_set = keep_leaders_army_transport_fleet
-													check_variable = {
-														which = keep_leaders_army_transport_fleet
-														value = event_target:source_fleet
-													}
-												}
+												limit = { has_army_flag = keep_leaders_army_transport_fleet@event_target:source_fleet }
 												log = "army [This.GetName] was in fleet [source_fleet.GetName]"
-												clear_variable = keep_leaders_army_transport_fleet
+												remove_army_flag = keep_leaders_army_transport_fleet@event_target:source_fleet
 												save_event_target_as = source_army
 											}
 										}

@@ -1417,24 +1417,7 @@ assimilate_species_traits_machine_to_robot = {
 }
 
 # THIS = leader
-# event_target:potential_owner = country, source of army-match variables
 tag_leader_for_reassignment = {
-	event_target:potential_owner = {
-		if = {
-			limit = { NOT = { is_variable_set = keep_leader_match_transport_fleet } }
-			set_variable = {
-				which = keep_leader_match_transport_fleet
-				value = 13 # semi-arbitrary start value
-			}
-		}
-		if = {
-			limit = { NOT = { is_variable_set = keep_leader_match_army } }
-			set_variable = {
-				which = keep_leader_match_army
-				value = 13 # semi-arbitrary start value
-			}
-		}
-	}
 	switch = {
 		trigger = leader_class
 		# governors can't be reassigned because sectors are cleared and cannot be recreated by script
@@ -1469,22 +1452,8 @@ tag_leader_for_reassignment = {
 		general = {
 			if = {
 				limit = { exists = fleet }
-				set_variable = {
-					which = keep_leader_match_transport_fleet
-					value = event_target:potential_owner
-				}
-				fleet = {
-					set_variable = {
-						which = keep_leader_match_transport_fleet
-						value = event_target:potential_owner
-					}
-				}
-				event_target:potential_owner = {
-					change_variable = {
-						which = keep_leader_match_transport_fleet
-						value = 1
-					}
-				}
+				set_leader_flag = keep_leader_match_transport_fleet@THIS
+				fleet = { set_fleet_flag = keep_leader_match_transport_fleet@PREV }
 			}
 			owner = {
 				random_owned_army = {
@@ -1492,22 +1461,8 @@ tag_leader_for_reassignment = {
 						exists = leader
 						leader = { is_same_value = PREVPREV }
 					}
-					leader = {
-						set_variable = {
-							which = keep_leader_match_army
-							value = event_target:potential_owner
-						}
-					}
-					set_variable = {
-						which = keep_leader_match_army
-						value = event_target:potential_owner
-					}
-					event_target:potential_owner = {
-						change_variable = {
-							which = keep_leader_match_army
-							value = 1
-						}
-					}
+					leader = { set_leader_flag = keep_leader_match_army@THIS }
+					set_army_flag = keep_leader_match_army@leader
 				}
 			}
 		}
@@ -1539,12 +1494,12 @@ try_assign_retained_leader_to_former_assignment = {
 				limit = { has_leader_flag = keep_leader_match_fleet@THIS }
 				owner = {
 					random_owned_fleet = {
-						limit = { has_fleet_flag = keep_leader_match_fleet@PREVPREV }
-						if = {
-							limit = { NOT = { exists = leader } }
-							assign_leader = PREVPREV
-							log = "\\[PrevPrev.GetTitle] \\[PrevPrev.GetName] resumed command of science vessel \\[This.GetName]"
+						limit = {
+							has_fleet_flag = keep_leader_match_fleet@PREVPREV
+							NOT = { exists = leader }
 						}
+						assign_leader = PREVPREV
+						log = "\\[PrevPrev.GetTitle] \\[PrevPrev.GetName] resumed command of science vessel \\[This.GetName]"
 					}
 				}
 			}
@@ -1554,12 +1509,12 @@ try_assign_retained_leader_to_former_assignment = {
 				limit = { has_leader_flag = keep_leader_match_fleet@THIS }
 				owner = {
 					random_owned_fleet = {
-						limit = { has_fleet_flag = keep_leader_match_fleet@PREVPREV }
-						if = {
-							limit = { NOT = { exists = leader } }
-							assign_leader = PREVPREV
-							log = "\\[PrevPrev.GetTitle] \\[PrevPrev.GetName] resumed command of fleet \\[This.GetName]"
+						limit = {
+							has_fleet_flag = keep_leader_match_fleet@PREVPREV
+							NOT = { exists = leader }
 						}
+						assign_leader = PREVPREV
+						log = "\\[PrevPrev.GetTitle] \\[PrevPrev.GetName] resumed command of fleet \\[This.GetName]"
 					}
 				}
 			}
@@ -1567,40 +1522,28 @@ try_assign_retained_leader_to_former_assignment = {
 		# armies can't have their owners changed, an it's unclear how I could clone the transports before integration fires, which means there's nothing to which to reassign a general
 		# general = {
 		# 	if = {
-		# 		limit = { is_variable_set = keep_leader_match_transport_fleet }
+		# 		limit = { has_leader_flag = keep_leader_match_transport_fleet@THIS }
 		# 		owner = {
 		# 			random_owned_fleet = {
 		# 				limit = {
-		# 					is_variable_set = keep_leader_match_transport_fleet
-		# 					check_variable = {
-		# 						which = keep_leader_match_transport_fleet
-		# 						value = PREVPREV
-		# 					}
+		# 					has_fleet_flag = keep_leader_match_transport_fleet@PREVPREV
+		# 					NOT = { exists = leader }
 		# 				}
-		# 				if = {
-		# 					limit = { NOT = { exists = leader } }
-		# 					assign_leader = PREVPREV
-		# 					log = "\\[PrevPrev.GetTitle] \\[PrevPrev.GetName] resumed command of transport fleet \\[This.GetName]"
-		# 				}
+		# 				assign_leader = PREVPREV
+		# 				log = "\\[PrevPrev.GetTitle] \\[PrevPrev.GetName] resumed command of transport fleet \\[This.GetName]"
 		# 			}
 		# 		}
 		# 	}
 		# 	else_if = {
-		# 		limit = { is_variable_set = keep_leader_match_army }
+		# 		limit = { has_leader_flag = keep_leader_match_army@THIS }
 		# 		owner = {
 		# 			random_owned_army = {
 		# 				limit = {
-		# 					is_variable_set = keep_leader_match_army
-		# 					check_variable = {
-		# 						which = keep_leader_match_army
-		# 						value = PREVPREV
-		# 					}
+		# 					has_army_flag = keep_leader_match_army@PREVPREV
+		# 					NOT = { exists = leader }
 		# 				}
-		# 				if = {
-		# 					limit = { NOT = { exists = leader } }
-		# 					assign_leader = PREVPREV
-		# 					log = "\\[PrevPrev.GetTitle] \\[PrevPrev.GetName] resumed command of the army \\[This.GetName]"
-		# 				}
+		# 				assign_leader = PREVPREV
+		# 				log = "\\[PrevPrev.GetTitle] \\[PrevPrev.GetName] resumed command of the army \\[This.GetName]"
 		# 			}
 		# 		}
 		# 	}
