@@ -22,6 +22,8 @@ Finally, this mod adds some special traits (and a special name affix) for demote
 
 ## Compatibility
 
+Built for Stellaris version 3.1.\* "Lem."  Not compatible with achievements.
+
 This mod is designed to understand the species types, ethics, civics, authorities, governments, and origins that are built-in to Stellaris. The features of this mod are implemented primarily through brand new events and scripting, meaning that it should not directly conflict with most other mods. However, you could end up with odd behavior if you play with mods that significantly alter the default gameplay - for example, adding a new homicidal species (without the mod providing an update to the `is_homicidal` trigger). Mods that add or modify civics should generally work but this mod may offer decisions that do not make the most sense for the role-play of new civics.
 
 ### Required Mods
@@ -49,8 +51,6 @@ This mod can be safely added to your savegame after the game has started. If you
 ## Known Issues
 
 ### Stellaris Bugs
-
-The scalable country bonuses for "former ruler" traits (e.g. admin cap, naval cap, monthly research) will display the correct value (e.g. 3 governors that are former rulers gives +30 admin cap), but the game only awards the un-scaled amount (+10).  This is a bug with known Stellaris and may be patched at some point in the future.
 
 Demoted rulers with very long names that also contain a period `.` may cause error logs when the Leader screen is open.  It seems related to the font re-coloring in the "former ruler" name affix.  Don't leave the Leader window open for long periods of time or you will greate a very large error log file.
 
@@ -82,6 +82,10 @@ This error will not affect the functioning of this mod - all built-in government
 * 1.2.0 Any demoted ruler (such as the loser of an election) now benefits from a demoted ruler trait
     * Fix a bug where gestalt ruler traits weren't removed upon subject integration
 * 1.2.1 Fix scoping error with flag cleanup
+* 2.0.0 Update for compatibility with Stellaris 3.1 "Lem"
+    * Use army flags instead of hacky variables
+    * Support Origin: Necrophage for hive minds
+    * Support tradition changes
 
 ## Source Code
 

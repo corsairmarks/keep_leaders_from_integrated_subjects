@@ -22,6 +22,8 @@ Finally, this mod adds some special traits (and a special name affix) for demote
 
 [h2]Compatibility[/h2]
 
+Built for Stellaris version 3.1.* "Lem."  Not compatible with achievements.
+
 This mod is designed to understand the species types, ethics, civics, authorities, governments, and origins that are built-in to Stellaris. The features of this mod are implemented primarily through brand new events and scripting, meaning that it should not directly conflict with most other mods. However, you could end up with odd behavior if you play with mods that significantly alter the default gameplay - for example, adding a new homicidal species (without the mod providing an update to the [b]is_homicidal[/b] trigger). Mods that add or modify civics should generally work but this mod may offer decisions that do not make the most sense for the role-play of new civics.
 
 [h3]Required Mods[/h3]
@@ -33,7 +35,7 @@ This mod is designed to understand the species types, ethics, civics, authoritie
 [list]
 [*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2499031295]Leader Traits: All Eligible Species Traits[/url] ensures your leaders get all their species-based traits (such as Psionic or Erudite)
 [*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2553806265]Leader Traits: Enhanced Randomisation[/url] improves leader trait randomisation and toggles traits from biological to machine traits (and back) if a leader becomes a robot and/or returns to a biological form
-[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2553812372]Deassimilate Machines[/url] allows you to "deassimilate" machine Pops into robots. Specifically allows (with this mod) for machine deassimilation as a "leadership disposition" choice for integrated subjects (combined with Leader Traits: All Eligible Species Traits, the leaders gain synth leader traits).
+[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2553812372]Deassimilate Machines[/url] allows you to "deassimilate" machine Pops into robots - specifically allows (with this mod) for machine deassimilation as a "leadership disposition" choice for integrated subjects (combined with Leader Traits: All Eligible Species Traits, the leaders gain synth leader traits)
 [*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2558494770]corsairmarks's Leader Traits MOD Chinese patch[/url] by Hua Zhang - Chinese localisation
 [/list]
 
@@ -46,8 +48,6 @@ This mod can be safely added to your savegame after the game has started. If you
 [h2]Known Issues[/h2]
 
 [h3]Stellaris Bugs[/h3]
-
-The scalable country bonuses for "former ruler" traits (e.g. admin cap) will display the correct value (e.g. 3 governors gives +30 admin cap), but the game only awards the un-scaled amount (+10). This is a bug with known Stellaris and may be patched at some point in the future.
 
 Demoted rulers with very long names with a period may cause error logs when the Leader screen is open. Don't leave the Leader window open for long periods of time or you will greate a very large error log file.
 
