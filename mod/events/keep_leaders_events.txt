@@ -2024,7 +2024,7 @@ country_event = {
 		}
 		# necrophage unity
 		if = {
-			limit = { has_swapped_tradition = tr_harmony_unity_of_self }
+			limit = { has_active_tradition = tr_harmony_unity_of_self }
 		custom_tooltip_with_params = {
 				description = ADD_RESOURCE_EFFECT
 			description_parameters = {
