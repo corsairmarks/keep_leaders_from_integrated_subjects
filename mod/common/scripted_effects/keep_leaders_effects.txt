@@ -1185,9 +1185,12 @@ accumulate_leader = {
 				is_sapient = yes
 				NOR = {
 					is_same_species = event_target:potential_owner.owner_species
-					has_slavery_type = {
-						type = slavery_livestock
-						country = event_target:potential_owner
+					AND = {
+						has_slavery_type = {
+							type = slavery_livestock
+							country = event_target:potential_owner
+						}
+						event_target:potential_owner = { is_hive_empire = no }
 					}
 				}
 				OR = {
