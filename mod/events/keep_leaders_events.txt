@@ -77,15 +77,7 @@ country_event = {
 					value = 0
 				}
 				set_variable = {
-					which = leader_organic_reward_accumulator
-					value = 0
-				}
-				set_variable = {
 					which = leader_organic_non_cyborg_accumulator
-					value = 0
-				}
-				set_variable = {
-					which = leader_organic_non_cyborg_reward_accumulator
 					value = 0
 				}
 				set_variable = {
@@ -101,19 +93,11 @@ country_event = {
 					value = 0
 				}
 				set_variable = {
-					which = leader_necrophagable_reward_accumulator
-					value = 0
-				}
-				set_variable = {
 					which = leader_same_species_accumulator
 					value = 0
 				}
 				set_variable = {
 					which = leader_not_same_species_accumulator
-					value = 0
-				}
-				set_variable = {
-					which = leader_not_same_species_reward_accumulator
 					value = 0
 				}
 				set_variable = {
@@ -289,7 +273,7 @@ country_event = {
 	}
 	option = {
 		name = keep_leaders.1.a.pur
-			custom_tooltip = keep_leaders.1.a.tooltip
+		custom_tooltip = keep_leaders.1.a.tooltip
 		custom_tooltip_with_params = {
 			description = keep_leaders.1.tooltip.none
 			description_parameters = {
@@ -297,42 +281,11 @@ country_event = {
 			}
 		}
 		trigger = { has_valid_civic = civic_fanatic_purifiers }
-		custom_tooltip_with_params = {
-			description = ADD_RESOURCE_EFFECT
-			description_parameters = {
-				RESOURCE = "[This.GetUnityName]"
-				KEY = "unity"
-				NUM = "[variable_storage.leader_not_same_species_reward_accumulator]"
-			}
+		add_resource = {
+			unity = @keep_leaders_civic_reward_base
+			mult = event_target:variable_storage.leader_not_same_species_accumulator
 		}
-		hidden_effect = {
-			event_target:variable_storage = {
-				set_variable = {
-					which = index
-					value = 0
-				}
-			}
-			while = {
-				limit = {
-					event_target:variable_storage = {
-						check_variable = {
-							which = index
-							value < leader_not_same_species_accumulator
-						}
-					}
-				}
-				add_resource = {
-					unity = @keep_leaders_civic_reward_base
-				}
-				event_target:variable_storage = {
-					change_variable = {
-						which = index
-						value = 1
-					}
-				}
-			}
-			event_target:storage_owner = { destroy_country = yes }
-		}
+		hidden_effect = { event_target:storage_owner = { destroy_country = yes } }
 		ai_chance = {
 			factor = 1
 			modifier = {
@@ -365,42 +318,11 @@ country_event = {
 			}
 		}
 		trigger = { has_valid_civic = civic_hive_devouring_swarm }
-		custom_tooltip_with_params = {
-			description = ADD_RESOURCE_EFFECT
-			description_parameters = {
-				RESOURCE = "[This.GetSocietyResearchName]"
-				KEY = "society"
-				NUM = "[variable_storage.leader_organic_reward_accumulator]"
-			}
+		add_resource = {
+			society_research = @keep_leaders_civic_reward_base
+			mult = event_target:variable_storage.leader_organic_accumulator
 		}
-		hidden_effect = {
-			event_target:variable_storage = {
-				set_variable = {
-					which = index
-					value = 0
-				}
-			}
-			while = {
-				limit = {
-					event_target:variable_storage = {
-						check_variable = {
-							which = index
-							value < leader_organic_accumulator
-						}
-					}
-				}
-				add_resource = {
-					society_research = @keep_leaders_civic_reward_base
-				}
-				event_target:variable_storage = {
-					change_variable = {
-						which = index
-						value = 1
-					}
-				}
-			}
-			event_target:storage_owner = { destroy_country = yes }
-		}
+		hidden_effect = { event_target:storage_owner = { destroy_country = yes } }
 		ai_chance = {
 			factor = 1
 			modifier = {
@@ -419,42 +341,11 @@ country_event = {
 			}
 		}
 		trigger = { has_valid_civic = civic_machine_terminator }
-		custom_tooltip_with_params = {
-			description = ADD_RESOURCE_EFFECT
-			description_parameters = {
-				RESOURCE = "[This.GetUnityName]"
-				KEY = "unity"
-				NUM = "[variable_storage.leader_organic_reward_accumulator]"
-			}
+		add_resource = {
+			unity = @keep_leaders_civic_reward_base
+			mult = event_target:variable_storage.leader_organic_accumulator
 		}
-		hidden_effect = {
-			event_target:variable_storage = {
-				set_variable = {
-					which = index
-					value = 0
-				}
-			}
-			while = {
-				limit = {
-					event_target:variable_storage = {
-						check_variable = {
-							which = index
-							value < leader_organic_accumulator
-						}
-					}
-				}
-				add_resource = {
-					unity = @keep_leaders_civic_reward_base
-				}
-				event_target:variable_storage = {
-					change_variable = {
-						which = index
-						value = 1
-					}
-				}
-			}
-			event_target:storage_owner = { destroy_country = yes }
-		}
+		hidden_effect = { event_target:storage_owner = { destroy_country = yes } }
 		ai_chance = {
 			factor = 1
 			modifier = {
@@ -692,40 +583,9 @@ country_event = {
 				NOT = { has_valid_civic = civic_machine_terminator }
 			}
 		}
-		custom_tooltip_with_params = {
-			description = ADD_RESOURCE_EFFECT
-			description_parameters = {
-				RESOURCE = "[This.GetUnityName]"
-				KEY = "unity"
-				NUM = "[variable_storage.leader_organic_reward_accumulator]"
-			}
-		}
-		hidden_effect = {
-			event_target:variable_storage = {
-				set_variable = {
-					which = index
-					value = 0
-				}
-			}
-			while = {
-					limit = {
-					event_target:variable_storage = {
-						check_variable = {
-							which = index
-							value < leader_organic_accumulator
-							}
-						}
-					}
-				add_resource = {
-					unity = @keep_leaders_civic_reward_base
-				}
-				event_target:variable_storage = {
-					change_variable = {
-						which = index
-						value = 1
-					}
-				}
-			}
+		add_resource = {
+			unity = @keep_leaders_civic_reward_base
+			mult = event_target:variable_storage.leader_organic_accumulator
 		}
 		hidden_effect = {
 			country_event = {
@@ -1277,40 +1137,9 @@ country_event = {
 				has_trait = trait_necrophage
 			}
 		}
-		custom_tooltip_with_params = {
-			description = ADD_RESOURCE_EFFECT
-			description_parameters = {
-				RESOURCE = "[This.GetUnityName]"
-				KEY = "unity"
-				NUM = "[variable_storage.leader_not_same_species_reward_accumulator]"
-			}
-		}
-		hidden_effect = {
-			event_target:variable_storage = {
-				set_variable = {
-					which = index
-					value = 0
-				}
-			}
-			while = {
-				limit = {
-					event_target:variable_storage = {
-						check_variable = {
-							which = index
-							value < leader_not_same_species_accumulator
-						}
-					}
-				}
-				add_resource = {
-					unity = @keep_leaders_civic_reward_base
-				}
-				event_target:variable_storage = {
-					change_variable = {
-						which = index
-						value = 1
-					}
-				}
-			}
+		add_resource = {
+			unity = @keep_leaders_civic_reward_base
+			mult = event_target:variable_storage.leader_not_same_species_accumulator
 		}
 		hidden_effect = {
 			country_event = {
@@ -1859,49 +1688,10 @@ country_event = {
 		ai_chance = {
 			factor = 20
 		}
-		custom_tooltip_with_params = {
-			description = ADD_RESOURCE_EFFECT
-			description_parameters = {
-				RESOURCE = "[This.GetUnityName]"
-				KEY = "unity"
-				NUM = "[variable_storage.leader_organic_non_cyborg_reward_accumulator]"
-			}
-		}
-		custom_tooltip_with_params = {
-			description = ADD_RESOURCE_EFFECT
-			description_parameters = {
-				RESOURCE = "[This.GetSocietyResearchName]"
-				KEY = "society"
-				NUM = "[variable_storage.leader_organic_non_cyborg_reward_accumulator]"
-			}
-		}
-		hidden_effect = {
-			event_target:variable_storage = {
-				set_variable = {
-					which = index
-					value = 0
-				}
-			}
-			while = {
-				limit = {
-					event_target:variable_storage = {
-						check_variable = {
-							which = index
-							value < leader_organic_non_cyborg_accumulator
-						}
-					}
-				}
-				add_resource = {
-					unity = @keep_leaders_civic_reward_base
-					society_research = @keep_leaders_civic_reward_base
-				}
-				event_target:variable_storage = {
-					change_variable = {
-						which = index
-						value = 1
-					}
-				}
-			}
+		add_resource = {
+			unity = @keep_leaders_civic_reward_base
+			society_research = @keep_leaders_civic_reward_base
+			mult = event_target:variable_storage.leader_organic_non_cyborg_accumulator
 		}
 		hidden_effect = {
 			country_event = {
@@ -2030,40 +1820,9 @@ country_event = {
 		# necrophage unity
 		if = {
 			limit = { has_active_tradition = tr_harmony_unity_of_self }
-		custom_tooltip_with_params = {
-				description = ADD_RESOURCE_EFFECT
-			description_parameters = {
-					RESOURCE = "[This.GetUnityName]"
-					KEY = "unity"
-					NUM = "[variable_storage.leader_necrophagable_reward_accumulator]"
-			}
-		}
-		hidden_effect = {
-				event_target:variable_storage = {
-					set_variable = {
-						which = index
-						value = 0
-					}
-				}
-				while = {
-					limit = {
-						event_target:variable_storage = {
-							check_variable = {
-								which = index
-								value < leader_necrophagable_accumulator
-							}
-						}
-					}
-					add_resource = {
-						unity = @keep_leaders_civic_reward_base
-					}
-					event_target:variable_storage = {
-						change_variable = {
-							which = index
-							value = 1
-						}
-					}
-				}
+			add_resource = {
+				unity = @keep_leaders_civic_reward_base
+				mult = event_target:variable_storage.leader_necrophagable_accumulator
 			}
 		}
 		hidden_effect = {

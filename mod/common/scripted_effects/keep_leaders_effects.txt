@@ -1150,10 +1150,6 @@ accumulate_leader = {
 				which = leader_organic_accumulator
 				value = 1
 			}
-			change_variable = {
-				which = leader_organic_reward_accumulator
-				value = @keep_leaders_civic_reward_base
-			}
 		}
 		if = {
 			limit = { is_cyborg_species = no }
@@ -1161,10 +1157,6 @@ accumulate_leader = {
 				change_variable = {
 					which = leader_organic_non_cyborg_accumulator
 					value = 1
-				}
-				change_variable = {
-					which = leader_organic_non_cyborg_reward_accumulator
-					value = @keep_leaders_civic_reward_base
 				}
 			}
 		}
@@ -1209,10 +1201,6 @@ accumulate_leader = {
 				which = leader_necrophagable_accumulator
 				value = 1
 			}
-			change_variable = {
-				which = leader_necrophagable_reward_accumulator
-				value = @keep_leaders_civic_reward_base
-			}
 		}
 	}
 	if = {
@@ -1229,10 +1217,6 @@ accumulate_leader = {
 			change_variable = {
 				which = leader_not_same_species_accumulator
 				value = 1
-			}
-			change_variable = {
-				which = leader_not_same_species_reward_accumulator
-				value = @keep_leaders_civic_reward_base
 			}
 		}
 	}
