@@ -587,8 +587,10 @@ country_event = {
 			hidden_trigger = {
 				NOR = {
 					has_valid_civic = civic_fanatic_purifiers
-					has_country_flag = flesh_weakened
-					has_country_flag = synthetic_empire
+					AND = {
+						has_ascension_perk = ap_the_flesh_is_weak
+						has_country_flag = flesh_weakened
+					}
 				}
 				event_target:storage_owner = {
 					any_owned_leader = {
@@ -751,17 +753,17 @@ country_event = {
 					has_valid_civic = civic_machine_terminator
 				}
 				event_target:storage_owner = {
-				any_owned_leader = {
-					is_eligible_transfer_leader_from_storage = yes
-					is_organic_species = yes
-					is_hive_species = no
-				}
-				any_owned_leader = {
-					is_eligible_transfer_leader_from_storage = yes
-					is_robotic_species = yes
+					any_owned_leader = {
+						is_eligible_transfer_leader_from_storage = yes
+						is_organic_species = yes
+						is_hive_species = no
+					}
+					any_owned_leader = {
+						is_eligible_transfer_leader_from_storage = yes
+						is_robotic_species = yes
+					}
 				}
 			}
-		}
 		}
 		allow = {
 			custom_tooltip = {
@@ -852,7 +854,10 @@ country_event = {
 		}
 		allow = {
 			OR = {
-				has_country_flag = flesh_weakened
+				custom_tooltip = {
+					text = keep_leaders.1.k.cyb2.fail_text
+					has_country_flag = flesh_weakened
+				}
 				has_valid_civic = civic_machine_assimilator
 			}
 		}
