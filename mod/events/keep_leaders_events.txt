@@ -2521,18 +2521,6 @@ country_event = {
 	}
 }
 
-# randomise a leader's experience between 0 and the maximum for their current level
-# triggered by an effect, because directly invoking the effect directly resulted in exceeding the maximum call depth of 5
-# ROOT = leader
-leader_event = {
-	id = keep_leaders.6
-	is_triggered_only = yes
-	hide_window = yes
-	immediate = {
-		randomise_leader_xp = yes
-	}
-}
-
 # keep robotic only
 # ROOT = country, integrator or conqueror
 # FROM = country, leader storage
