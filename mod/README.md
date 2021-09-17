@@ -86,6 +86,8 @@ This error will not affect the functioning of this mod - all built-in government
     * Use army flags instead of hacky variables
     * Support Origin: Necrophage for hive minds
     * Support tradition changes
+    * Remove random XP for cloned leaders - we can now copy the exact amount
+    * Clean up variable code that can now be done much more simply
 
 ## Source Code
 
