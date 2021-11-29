@@ -155,3 +155,23 @@
  keep_leaders.3.b.tooltip: "Gain $VALUE$ leader(s), disguised as [original_species.GetNamePlural]."
  keep_leaders.3.c: "Retain them as agents - we have need of their subterfuge."
  kl_peerless_infiltration_agents: "Peerless Infiltration"
+
+# colossus transfer title and descriptions
+keep_leaders.6.title: ""
+keep_leaders.6.desc.planet_killer_deluge: ""
+keep_leaders.6.desc.planet_killer_nanobots: ""
+keep_leaders.6.desc.planet_killer_spore_dispersal: ""
+keep_leaders.6.desc.planet_killer_fallback: ""
+# none - probably need mean/nice
+keep_leaders.6.desc.a: ""
+# machines only - this could get silly with variants
+keep_leaders.6.desc.b: ""
+# cyb only - this could get silly with variants
+keep_leaders.6.desc.c.planet_killer_nanobots: ""
+# nec only - this could get silly with variants
+keep_leaders.6.desc.c.planet_killer_spore_dispersal: ""
+# all
+keep_leaders.6.desc.j: ""
+# TODO x of y leaders
+# aq - keep yes, no
+# nano/nec keep all,none,machines,cyb/phage

@@ -101,5 +101,9 @@ on_primitive_planet_transferring = {
 on_primitive_planet_transferred = {
 	events = {
 		keep_leaders.3
+		keep_leaders.20
+		keep_leaders.30
+		keep_leaders.40
+		keep_leaders.50
 	}
 }

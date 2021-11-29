@@ -1,3 +1,183 @@
+# creates a country to store leaders and variables counting them, then transfers and counts them
+# event_target:potential_owner = country, overlord/infiltrator/planet-killer
+# event_target:former_owner = country, integrated subject/primitives/victims
+create_leader_storage_and_transfer_leaders = {
+	# "arguments" for transfer_leader_to_storage
+	create_country = {
+		type = neutral_faction
+		species = event_target:former_owner
+		flag = event_target:former_owner
+		auto_delete = no
+		ignore_initial_colony_error = yes
+		effect = {
+			set_name = "[former_owner.GetRealName]"
+			set_country_flag = former_owner@event_target:former_owner
+			save_event_target_as = storage_owner
+			save_event_target_as = variable_storage
+			# variables for the counts from accumulate_leader
+			set_variable = {
+				which = leader_accumulator
+				value = 0
+			}
+			set_variable = {
+				which = leader_organic_accumulator
+				value = 0
+			}
+			set_variable = {
+				which = leader_organic_non_cyborg_accumulator
+				value = 0
+			}
+			set_variable = {
+				which = leader_hive_accumulator
+				value = 0
+			}
+			set_variable = {
+				which = leader_robotic_accumulator
+				value = 0
+			}
+			set_variable = {
+				which = leader_necrophagable_accumulator
+				value = 0
+			}
+			set_variable = {
+				which = leader_same_species_accumulator
+				value = 0
+			}
+			set_variable = {
+				which = leader_not_same_species_accumulator
+				value = 0
+			}
+			set_variable = {
+				which = leader_transferable_accumulator
+				value = 0
+			}
+			set_variable = {
+				which = leader_transferable_or_assimilatable_accumulator
+				value = 0
+			}
+
+
+			# TODO infiltration leader count - or just use leader_accumulator?
+			set_variable = {
+				which = infiltration_leader_accumulator
+				value = 0
+			}
+		}
+	}
+	# count the leaders so we know the multiplier for adding resources
+	# like unity or society research for empires that qualify
+	event_target:former_owner = {
+		every_owned_leader = {
+			limit = { is_eligible_transfer_leader_class = yes }
+			accumulate_leader = yes
+			tag_leader_for_reassignment = yes
+			transfer_leader_to_storage = yes
+		}
+		create_leader = {
+			species = owner_species
+			class = ruler
+			# effect = { save_event_target_as = dummy_ruler } # TODO can I use this, or stick with las_created_leader?
+		}
+		# can't always save in effect - is it because the primitive country is being deleted?
+		last_created_leader = { save_event_target_as = dummy_ruler }
+		if = {
+			limit = { exists = ruler }
+			ruler = {
+				set_name = keep_leaders.former_ruler_name
+				set_leader_flag = former_ruler
+				save_event_target_as = integrated_ruler
+			}
+			if = {
+				limit = {
+					event_target:integrated_ruler = {
+						OR = {
+							pre_ruler_leader_class = governor
+							pre_ruler_leader_class = scientist
+							pre_ruler_leader_class = admiral
+							pre_ruler_leader_class = general
+						}
+					}
+				}
+				# force the ruler back to their pre-ruler class
+				assign_leader = event_target:dummy_ruler
+			}
+			# else they didn't have a pre-ruler class, or it's one we don't recognize
+			else = {
+				# force the ruler to a non-ruler class (probably governor)
+				assign_leader = event_target:dummy_ruler
+				event_target:integrated_ruler = {
+					set_leader_flag = clear_traits
+					save_event_target_as = leader_to_replace
+				}
+				replace_leader_based_on_government_type = yes
+				event_target:leader_to_replace = {
+					if = {
+						limit = { NOT = { has_leader_flag = former_ruler } }
+						set_leader_flag = former_ruler
+					}
+					save_event_target_as = integrated_ruler
+				}
+			}
+			event_target:integrated_ruler = {
+				accumulate_leader = yes
+				set_former_gestalt_ruler_flag = yes
+				remove_gestalt_ruler_traits = yes
+				add_former_ruler_trait = yes
+				transfer_leader_to_storage = yes
+			}
+		}
+		if = {
+			limit = { exists = heir }
+			heir = {
+				set_name = keep_leaders.former_ruler_name
+				set_leader_flag = former_heir
+				save_event_target_as = integrated_heir
+			}
+			if = {
+				limit = {
+					event_target:integrated_heir = {
+						OR = {
+							pre_ruler_leader_class = governor
+							pre_ruler_leader_class = scientist
+							pre_ruler_leader_class = admiral
+							pre_ruler_leader_class = general
+						}
+					}
+				}
+				# set the heir as the ruler...
+				assign_leader = event_target:integrated_heir
+				# ...then force them back to their pre-ruler class by assigning the dummy back
+				assign_leader = event_target:dummy_ruler
+			}
+			# else they didn't have a pre-ruler class, or it's one we don't recognize
+			else = {
+				# set the heir as the ruler...
+				assign_leader = event_target:integrated_heir
+				# ...then force them to a pre-ruler class by assigning the dummy back (probably governor)
+				assign_leader = event_target:dummy_ruler
+				event_target:integrated_heir = {
+					set_leader_flag = clear_traits
+					save_event_target_as = leader_to_replace
+				}
+				replace_leader_based_on_government_type = yes
+				event_target:leader_to_replace = {
+					if = {
+						limit = { NOT = { has_leader_flag = former_heir } }
+						set_leader_flag = former_heir
+					}
+					save_event_target_as = integrated_heir
+				}
+			}
+			event_target:integrated_heir = {
+				accumulate_leader = yes
+				add_former_heir_trait = yes
+				transfer_leader_to_storage = yes
+			}
+		}
+		event_target:dummy_ruler = { kill_leader = { show_notification = no } }
+	}
+}
+
 # THIS = leader
 # event_target:potential_owner = country for whom the leader is being stored
 # event_target:storage_owner = country in which to store leaders
