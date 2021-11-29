@@ -13,7 +13,8 @@ event = {
 	}
 }
 
-# triggered by on_subject_integrated
+# triggered by on_subject_integrated and keep_leaders.2
+# window with options to potentially keep the stored leaders from integration/primitive conquest
 # root = country, overlord
 # from = country, integrated subject
 country_event = {
@@ -1685,7 +1686,8 @@ country_event = {
 	is_triggered_only = yes
 	hide_window = yes
 	trigger = {
-		is_country_type = default
+		any_playable_country = { is_country = prev }
+		exists = from
 		from = { is_country_type = primitive }
 	}
 	immediate = {
@@ -1701,7 +1703,7 @@ country_event = {
 	}
 }
 
-# window with options to potentially keep the stored leaders
+# window with options to potentially keep the stored leaders from infiltration
 # triggered by on_primitive_planet_transferred
 # root = planet (after ownership change)
 # from = country, infiltrated primitives
