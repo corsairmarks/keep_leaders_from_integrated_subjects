@@ -14,8 +14,8 @@ event = {
 }
 
 # triggered by on_subject_integrated
-# ROOT = country, overlord
-# FROM = country, integrated subject
+# root = country, overlord
+# from = country, integrated subject
 country_event = {
 	id = keep_leaders.1
 	picture = GFX_evt_intelligence_report
@@ -23,20 +23,20 @@ country_event = {
 	title = keep_leaders.1.title
 	desc = {
 		trigger = {
-			has_country_flag = keeping_leaders_conquest@FROM
+			has_country_flag = keeping_leaders_conquest@from
 		}
 		text = keep_leaders.1.desc.conquest
 	}
 	desc = {
 		trigger = {
-			NOT = { has_country_flag = keeping_leaders_conquest@FROM }
+			NOT = { has_country_flag = keeping_leaders_conquest@from }
 		}
 		text = keep_leaders.1.desc.integration
 	}
 	is_triggered_only = yes
 	trigger = {
-		exists = FROM
-		FROM = {
+		exists = from
+		from = {
 			OR = {
 				exists = ruler
 				exists = heir
@@ -46,16 +46,16 @@ country_event = {
 	}
 	immediate = {
 		if = {
-			limit = { has_country_flag = keeping_leaders_conquest@FROM }
+			limit = { has_country_flag = keeping_leaders_conquest@from }
 			log = "country [From.GetRealName] conquered by [Root.GetRealName]"
 		}
 		else = {
-			set_country_flag = keeping_leaders_integration@FROM
+			set_country_flag = keeping_leaders_integration@from
 			log = "country [From.GetRealName] integrated by [Root.GetRealName]"
 		}
 		# "argument" for create_leader_storage_and_transfer_leaders
 		save_event_target_as = potential_owner
-		FROM = {
+		from = {
 			save_event_target_as = former_owner # "argument" for create_leader_storage_and_transfer_leaders
 			capital_scope = { save_event_target_as = conquered_planet } # "argument" for localistation
 		}
@@ -1677,25 +1677,25 @@ country_event = {
 }
 
 # triggered by on_planet_attackers_win (same on_action as primitive planet conquest action.14)
-# ROOT = country, leader attacker
-# FROM = country, planet owner
-# FROMFROM = planet
+# root = country, leader attacker
+# from = country, planet owner
+# fromfrom = planet
 country_event = {
 	id = keep_leaders.2
 	is_triggered_only = yes
 	hide_window = yes
 	trigger = {
 		is_country_type = default
-		FROM = { is_country_type = primitive }
+		from = { is_country_type = primitive }
 	}
 	immediate = {
 		log = "primitive planet [FromFrom.GetName] ([From.GetRealName]) conquered by [Root.GetRealName]"
-		set_country_flag = keeping_leaders_conquest@FROM
+		set_country_flag = keeping_leaders_conquest@from
 		# fires the above event - hooray for reuse!
 		country_event = {
 			id = keep_leaders.1
 			scopes = {
-				from = FROM
+				from = from
 			}
 		}
 	}
@@ -1703,8 +1703,8 @@ country_event = {
 
 # window with options to potentially keep the stored leaders
 # triggered by on_primitive_planet_transferred
-# ROOT = planet (after ownership change)
-# FROM = country, infiltrated primitives
+# root = planet (after ownership change)
+# from = country, infiltrated primitives
 planet_event = {
 	id = keep_leaders.3
 	title = keep_leaders.3.title
@@ -1715,19 +1715,19 @@ planet_event = {
 		has_owner = yes
 	}
 	trigger = {
-		owner = { has_country_flag = keeping_leaders_infiltration@FROM }
-		exists = FROM
+		owner = { has_country_flag = keeping_leaders_infiltration@from }
+		exists = from
 		any_country = {
 			is_country_type = neutral_faction
-			has_country_flag = former_owner@FROM
+			has_country_flag = former_owner@from
 			any_owned_leader = {
-				has_leader_flag = former_owner@FROM
-				has_leader_flag = potential_owner@PREVPREV.owner
+				has_leader_flag = former_owner@from
+				has_leader_flag = potential_owner@prevprev.owner
 			}
 		}
 	}
 	immediate = {
-		FROM = {
+		from = {
 			save_event_target_as = former_owner
 			owner_species = { save_event_target_as = original_species }
 		}
@@ -1876,8 +1876,8 @@ planet_event = {
 
 # transfer leaders to storage while the primitive country exists
 # triggered by on_primitive_planet_transferring
-# ROOT = planet (before ownership change)
-# FROM = country, infiltrator
+# root = planet (before ownership change)
+# from = country, infiltrator
 planet_event = {
 	id = keep_leaders.4
 	is_triggered_only = yes
@@ -1893,7 +1893,7 @@ planet_event = {
 				any_owned_leader = { is_eligible_transfer_leader_class = yes }
 			}
 		}
-		exists = FROM
+		exists = from
 		OR = {
 			owner = { has_country_flag = colossus_transfer@prev }
 			from = { has_country_flag = keeping_leaders_infiltration@prev.owner }
@@ -1919,15 +1919,15 @@ planet_event = {
 }
 
 # triggered by on_subject_integrated
-# ROOT = country, overlord
-# FROM = country, integrated subject
+# root = country, overlord
+# from = country, integrated subject
 country_event = {
 	id = keep_leaders.7
 	hide_window = yes
 	is_triggered_only = yes
 	immediate = {
 		save_event_target_as = integrating_country
-		FROM = {
+		from = {
 			save_event_target_as = integrated_country
 			# flag each army to correspond to a flag set on its transport fleet
 			every_owned_army = {
@@ -1936,8 +1936,8 @@ country_event = {
 					limit = { exists = fleet }
 					fleet = {
 						if = {
-							limit = { NOT = { has_fleet_flag = keep_leaders_army_transport_fleet@THIS } }
-							set_fleet_flag = keep_leaders_army_transport_fleet@THIS
+							limit = { NOT = { has_fleet_flag = keep_leaders_army_transport_fleet@this } }
+							set_fleet_flag = keep_leaders_army_transport_fleet@this
 						}
 					}
 					set_army_flag = keep_leaders_army_transport_fleet@fleet
@@ -1951,8 +1951,8 @@ country_event = {
 					create_fleet = {
 						effect = {
 							if = {
-								limit = { event_target:source_fleet = { has_fleet_flag = keep_leader_match_transport_fleet@THIS } }
-								event_target:source_fleet = { remove_fleet_flag = keep_leader_match_transport_fleet@THIS }
+								limit = { event_target:source_fleet = { has_fleet_flag = keep_leader_match_transport_fleet@this } }
+								event_target:source_fleet = { remove_fleet_flag = keep_leader_match_transport_fleet@this }
 								set_fleet_flag = keep_leader_match_transport_fleet@event_target:source_fleet
 							}
 							save_event_target_as = target_fleet
@@ -1975,23 +1975,23 @@ country_event = {
 										event_target:source_army = {
 											switch = {
 												trigger = army_type
-												assault_army = { PREV = { create_army_transport_parameterized = { ARMY_TYPE = assault_army } } }
-												clone_army = { PREV = { create_army_transport_parameterized = { ARMY_TYPE = clone_army } } }
-												cybrex_warform = { PREV = { create_army_transport_parameterized = { ARMY_TYPE = cybrex_warform } } }
-												gene_warrior_army = { PREV = { create_army_transport_parameterized = { ARMY_TYPE = gene_warrior_army } } }
-												machine_assault_1 = { PREV = { create_army_transport_parameterized = { ARMY_TYPE = machine_assault_1 } } }
-												machine_assault_2 = { PREV = { create_army_transport_parameterized = { ARMY_TYPE = machine_assault_2 } } }
-												machine_assault_3 = { PREV = { create_army_transport_parameterized = { ARMY_TYPE = machine_assault_3 } } }
-												psionic_army = { PREV = { create_army_transport_parameterized = { ARMY_TYPE = psionic_army } } }
-												robotic_army = { PREV = { create_army_transport_parameterized = { ARMY_TYPE = robotic_army } } }
-												shroud_army = { PREV = { create_army_transport_parameterized = { ARMY_TYPE = shroud_army } } }
-												slave_army = { PREV = { create_army_transport_parameterized = { ARMY_TYPE = slave_army } } }
-												titanic_assault_army = { PREV = { create_army_transport_parameterized = { ARMY_TYPE = titanic_assault_army } } }
-												undead_army = { PREV = { create_army_transport_parameterized = { ARMY_TYPE = undead_army } } }
-												xenomorph_army = { PREV = { create_army_transport_parameterized = { ARMY_TYPE = xenomorph_army } } }
+												assault_army = { prev = { create_army_transport_parameterized = { ARMY_TYPE = assault_army } } }
+												clone_army = { prev = { create_army_transport_parameterized = { ARMY_TYPE = clone_army } } }
+												cybrex_warform = { prev = { create_army_transport_parameterized = { ARMY_TYPE = cybrex_warform } } }
+												gene_warrior_army = { prev = { create_army_transport_parameterized = { ARMY_TYPE = gene_warrior_army } } }
+												machine_assault_1 = { prev = { create_army_transport_parameterized = { ARMY_TYPE = machine_assault_1 } } }
+												machine_assault_2 = { prev = { create_army_transport_parameterized = { ARMY_TYPE = machine_assault_2 } } }
+												machine_assault_3 = { prev = { create_army_transport_parameterized = { ARMY_TYPE = machine_assault_3 } } }
+												psionic_army = { prev = { create_army_transport_parameterized = { ARMY_TYPE = psionic_army } } }
+												robotic_army = { prev = { create_army_transport_parameterized = { ARMY_TYPE = robotic_army } } }
+												shroud_army = { prev = { create_army_transport_parameterized = { ARMY_TYPE = shroud_army } } }
+												slave_army = { prev = { create_army_transport_parameterized = { ARMY_TYPE = slave_army } } }
+												titanic_assault_army = { prev = { create_army_transport_parameterized = { ARMY_TYPE = titanic_assault_army } } }
+												undead_army = { prev = { create_army_transport_parameterized = { ARMY_TYPE = undead_army } } }
+												xenomorph_army = { prev = { create_army_transport_parameterized = { ARMY_TYPE = xenomorph_army } } }
 												default = {
 													log = "unhandled army type for [This.GetName] owned by [This.Owner.GetRealName] - used assault_army"
-													PREV = { create_army_transport_parameterized = { ARMY_TYPE = assault_army } }
+													prev = { create_army_transport_parameterized = { ARMY_TYPE = assault_army } }
 												}
 											}
 										}
@@ -2001,15 +2001,15 @@ country_event = {
 						}
 					}
 				}
-				delete_fleet = THIS
+				delete_fleet = this
 			}
 		}
 	}
 }
 
 # keep robotic only
-# ROOT = country, integrator or conqueror
-# FROM = country, leader storage
+# root = country, integrator or conqueror
+# from = country, leader storage
 country_event = {
 	id = keep_leaders.10
 	is_triggered_only = yes
@@ -2018,7 +2018,7 @@ country_event = {
 		log = "keep_leaders.10 keep robotic only"
 		save_event_target_as = potential_owner
 		set_update_modifiers_batch = begin
-		FROM = {
+		from = {
 			every_owned_leader = {
 				limit = {
 					is_eligible_transfer_leader_from_storage = yes
@@ -2050,8 +2050,8 @@ country_event = {
 }
 
 # keep organic only
-# ROOT = country, integrator or conqueror
-# FROM = country, leader storage
+# root = country, integrator or conqueror
+# from = country, leader storage
 country_event = {
 	id = keep_leaders.11
 	is_triggered_only = yes
@@ -2060,7 +2060,7 @@ country_event = {
 		log = "keep_leaders.11 keep organic only"
 		save_event_target_as = potential_owner
 		set_update_modifiers_batch = begin
-		FROM = {
+		from = {
 			every_owned_leader = {
 				limit = {
 					is_eligible_transfer_leader_from_storage = yes
@@ -2092,8 +2092,8 @@ country_event = {
 }
 
 # keep same species only
-# ROOT = country, integrator or conqueror
-# FROM = country, leader storage
+# root = country, integrator or conqueror
+# from = country, leader storage
 country_event = {
 	id = keep_leaders.12
 	is_triggered_only = yes
@@ -2102,7 +2102,7 @@ country_event = {
 		log = "keep_leaders.12 keep same species only"
 		save_event_target_as = potential_owner
 		set_update_modifiers_batch = begin
-		FROM = {
+		from = {
 			every_owned_leader = {
 				limit = {
 					is_eligible_transfer_leader_from_storage = yes
@@ -2123,8 +2123,8 @@ country_event = {
 }
 
 # keep hive only
-# ROOT = country, integrator or conqueror
-# FROM = country, leader storage
+# root = country, integrator or conqueror
+# from = country, leader storage
 country_event = {
 	id = keep_leaders.14
 	is_triggered_only = yes
@@ -2137,7 +2137,7 @@ country_event = {
 		log = "keep_leaders.14 keep hive only"
 		save_event_target_as = potential_owner
 		set_update_modifiers_batch = begin
-		FROM = {
+		from = {
 			every_owned_leader = {
 				limit = {
 					is_eligible_transfer_leader_from_storage = yes
@@ -2158,8 +2158,8 @@ country_event = {
 }
 
 # keep 'em all!
-# ROOT = country, integrator or conqueror
-# FROM = country, leader storage
+# root = country, integrator or conqueror
+# from = country, leader storage
 country_event = {
 	id = keep_leaders.15
 	is_triggered_only = yes
@@ -2171,7 +2171,7 @@ country_event = {
 		log = "keep_leaders.15 keep as many as possible"
 		save_event_target_as = potential_owner
 		set_update_modifiers_batch = begin
-		FROM = {
+		from = {
 			every_owned_leader = {
 				limit = {
 					is_eligible_transfer_leader_from_storage = yes
@@ -2192,8 +2192,8 @@ country_event = {
 }
 
 # assimilate
-# ROOT = country, integrator or conqueror
-# FROM = country, leader storage
+# root = country, integrator or conqueror
+# from = country, leader storage
 country_event = {
 	id = keep_leaders.16
 	is_triggered_only = yes
@@ -2205,7 +2205,7 @@ country_event = {
 		log = "keep_leaders.16 assimilation"
 		save_event_target_as = potential_owner
 		set_update_modifiers_batch = begin
-		FROM = {
+		from = {
 			every_owned_leader = {
 				limit = { is_eligible_transfer_leader_from_storage = yes }
 				species = { save_event_target_as = former_species }
@@ -2335,21 +2335,21 @@ country_event = {
 						}
 						random_galaxy_species = {
 							limit = { has_species_flag = mechanical_species_of_machine_species@event_target:machine_species }
-							ROOT = { set_country_flag = found_assim_mech_species@event_target:machine_species }
+							root = { set_country_flag = found_assim_mech_species@event_target:machine_species }
 							save_event_target_as = mechanical_species
 						}
 						if = {
-							limit = { ROOT = { NOT = { has_country_flag = found_assim_mech_species@event_target:machine_species } } }
+							limit = { root = { NOT = { has_country_flag = found_assim_mech_species@event_target:machine_species } } }
 							event_target:machine_species = {
 								create_species = {
-									name = THIS
-									plural = THIS
-									adjective = THIS
-									name_list = THIS
+									name = this
+									plural = this
+									adjective = this
+									name_list = this
 									class = ROBOT
-									portrait = THIS
-									homeworld = THIS
-									traits = THIS
+									portrait = this
+									homeworld = this
+									traits = this
 									effect = {
 										save_event_target_as = mechanical_species
 									}
@@ -2370,7 +2370,7 @@ country_event = {
 						}
 						else = {
 							# setup for next loop iteration
-							ROOT = { remove_country_flag = found_assim_mech_species@event_target:machine_species }
+							root = { remove_country_flag = found_assim_mech_species@event_target:machine_species }
 						}
 						change_species = event_target:mechanical_species
 						ensure_species_rights_and_take_ownership_of_leader = yes
@@ -2560,8 +2560,8 @@ country_event = {
 }
 
 # necrophage
-# ROOT = country, integrator or conqueror
-# FROM = country, leader storage
+# root = country, integrator or conqueror
+# from = country, leader storage
 country_event = {
 	id = keep_leaders.17
 	is_triggered_only = yes
@@ -2574,7 +2574,7 @@ country_event = {
 		log = "keep_leaders.17 necrophage"
 		save_event_target_as = potential_owner
 		set_update_modifiers_batch = begin
-		FROM = {
+		from = {
 			every_owned_leader = {
 				limit = { is_eligible_transfer_leader_from_storage = yes }
 				species = { save_event_target_as = former_species }
@@ -2627,7 +2627,7 @@ country_event = {
 						limit = { has_leader_flag = former_gestalt_ruler }
 						remove_leader_flag = former_gestalt_ruler
 					}
-					unassign_leader = THIS
+					unassign_leader = this
 					set_owner = event_target:potential_owner
 					fire_on_action = { on_action = on_leader_owner_changed }
 					change_species = event_target:potential_owner
@@ -2667,8 +2667,8 @@ country_event = {
 
 # window with options to potentially keep the stored leaders
 # triggered by on_primitive_planet_transferred
-# ROOT = planet (after ownership change)
-# FROM = country, colossus'd
+# root = planet (after ownership change)
+# from = country, colossus'd
 planet_event = {
 	id = keep_leaders.20
 	hide_window = yes
@@ -2717,8 +2717,8 @@ planet_event = {
 
 # window with options to potentially keep the stored leaders
 # triggered by on_primitive_planet_transferred
-# ROOT = planet (after ownership change)
-# FROM = country, colossus'd
+# root = planet (after ownership change)
+# from = country, colossus'd
 planet_event = {
 	id = keep_leaders.30
 	title = keep_leaders.6.title # TODO desc related to colossus weapon, title general
@@ -2899,8 +2899,8 @@ planet_event = {
 
 # window with options to potentially keep the stored leaders
 # triggered by on_primitive_planet_transferred
-# ROOT = planet (after ownership change)
-# FROM = country, colossus'd
+# root = planet (after ownership change)
+# from = country, colossus'd
 planet_event = {
 	id = keep_leaders.40
 	title = keep_leaders.6.title # TODO desc related to colossus weapon, title general
@@ -3095,8 +3095,8 @@ planet_event = {
 
 # window with options to potentially keep the stored leaders
 # triggered by on_primitive_planet_transferred
-# ROOT = planet (after ownership change)
-# FROM = country, colossus'd
+# root = planet (after ownership change)
+# from = country, colossus'd
 planet_event = {
 	id = keep_leaders.50
 	hide_window = yes
@@ -3157,24 +3157,24 @@ planet_event = {
 }
 
 # triggered by on_leader_death
-# THIS = country
-# FROM = leader
+# this = country
+# from = leader
 country_event = {
 	id = keep_leaders.100
 	is_triggered_only = yes
 	hide_window = yes
 	trigger = {
-		exists = FROM
-		FROM = { has_leader_flag = former_gestalt_ruler }
+		exists = from
+		from = { has_leader_flag = former_gestalt_ruler }
 		any_owned_pop_species = {
-			is_same_species = FROM
+			is_same_species = from
 		}
 	}
 	immediate = {
 		log = "keep_leaders.100 former gestalt leader [From.GetName] death"
 		# NOTE: using clone_leader here causes a lot of error logs related to random being used in a forbidden location
 		clone_leader = {
-			target = FROM
+			target = from
 			effect = {
 				set_leader_flag = former_gestalt_ruler_clone
 				if = {
@@ -3198,7 +3198,7 @@ country_event = {
 					}
 				}
 				save_event_target_as = exiled_former_gestalt_ruler
-				exile_leader_as = exiled_former_gestalt_ruler@THIS
+				exile_leader_as = exiled_former_gestalt_ruler@this
 			}
 		}
 		country_event = {
@@ -3213,8 +3213,8 @@ country_event = {
 }
 
 # the "dead" gestalt leader re-emerges 1-3 months after keep_leaders.100
-# THIS = country
-# FROM = the exiled leader
+# this = country
+# from = the exiled leader
 country_event = {
 	id = keep_leaders.101
 	is_triggered_only = yes
@@ -3240,33 +3240,33 @@ country_event = {
 	}
 	picture = {
 		trigger = {
-			FROM = { is_organic_species = yes }
+			from = { is_organic_species = yes }
 		}
 		picture = GFX_evt_hive_mind
 	}
 	picture = {
 		trigger = {
-			FROM = { is_robotic_species = yes }
+			from = { is_robotic_species = yes }
 		}
 		picture = GFX_evt_machine_sapience
 	}
 	show_sound = {
 		trigger = {
-			FROM = { is_organic_species = yes }
+			from = { is_organic_species = yes }
 		}
 		sound = event_evolution_mastery
 	}
 	show_sound = {
 		trigger = {
-			FROM = { is_robotic_species = yes }
+			from = { is_robotic_species = yes }
 		}
 		sound = event_synthetic_evolution
 	}
 	trigger = {
-		exists = FROM
-		FROM = { has_leader_flag = former_gestalt_ruler_clone }
+		exists = from
+		from = { has_leader_flag = former_gestalt_ruler_clone }
 		any_owned_pop_species = {
-			is_same_species = FROM
+			is_same_species = from
 		}
 	}
 	immediate = {
@@ -3277,12 +3277,12 @@ country_event = {
 		custom_tooltip = keep_leaders.101.a.tooltip
 		hidden_effect = {
 			clone_leader = {
-				target = FROM
+				target = from
 				effect = {
 					set_leader_flag = former_gestalt_ruler
 				}
 			}
-			FROM = { kill_leader = { show_notification = no } }
+			from = { kill_leader = { show_notification = no } }
 		}
 	}
 }
