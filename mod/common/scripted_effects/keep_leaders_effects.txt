@@ -55,11 +55,8 @@ create_leader_storage_and_transfer_leaders = {
 				which = leader_transferable_or_assimilatable_accumulator
 				value = 0
 			}
-
-
-			# TODO infiltration leader count - or just use leader_accumulator?
 			set_variable = {
-				which = infiltration_leader_accumulator
+				which = leader_aquatic_accumulator
 				value = 0
 			}
 		}
@@ -175,6 +172,32 @@ create_leader_storage_and_transfer_leaders = {
 			}
 		}
 		event_target:dummy_ruler = { kill_leader = { show_notification = no } }
+	}
+}
+
+# sets up necessary event_targets:
+# event_target:potential_owner = this.owner
+# event_target:former_owner = from
+# event_target:original_species = from.owner_species
+# event_target:storage_owner = country, primitive leader storage
+# event_target:variable_storage = country, primitive leader variable storage
+# this = planet (after ownership change)
+# from = country, former owner
+prepare_for_primitive_planet_transferred = {
+	owner = { save_event_target_as = potential_owner }
+	from = {
+		set_country_flag = colossus_transfer_handled@prev
+		save_event_target_as = former_owner
+		owner_species = { save_event_target_as = original_species }
+	}
+	# acquire leader and variable storage
+	random_country = {
+		limit = {
+			is_country_type = neutral_faction
+			has_country_flag = former_owner@from
+		}
+		save_event_target_as = storage_owner
+		save_event_target_as = variable_storage
 	}
 }
 
@@ -924,11 +947,19 @@ replace_leader_based_on_government_type = {
 		gov_military_order = { replace_leader_as_admiral = yes } # sentinels
 		gov_ancient_machine_intelligence = { replace_leader_as_admiral = yes } # immortal/contingency
 		gov_fallback = { replace_leader_as_random = yes }
-		# custom governments (defined by mods)
-		gov_bureaucratic_autocracy = { replace_leader_as_governor = yes } # Eldanær Stellar Authority uses this
 		default = {
-			log_error = "\\[This.GetRealName] has an unrecognized government (\\[This.GetGovernmentName]) - falling back to a random leader class"
-			replace_leader_as_random = yes
+			# custom governments (defined by mods) - moved into default so it doesn't cause lots of error logs
+			if = {
+				limit = {
+					has_global_flag = eldanaer_stellar_authority_installed
+					has_government = gov_bureaucratic_autocracy # Eldanær Stellar Authority uses this
+				}
+				replace_leader_as_governor = yes
+			}
+			else = {
+				log_error = "\\[This.GetRealName] has an unrecognized government (\\[This.GetGovernmentName]) - falling back to a random leader class"
+				replace_leader_as_random = yes
+			}
 		}
 	}
 }
@@ -1322,6 +1353,7 @@ try_add_demoted_ruler_generic_bonus_trait = {
 # * leader_not_same_species_accumulator
 # * leader_transferable_accumulator
 # * leader_transferable_or_assimilatable_accumulator
+# * leader_aquatic_accumulator
 accumulate_leader = {
 	if = {
 		limit = { is_organic_species = yes }
@@ -1422,6 +1454,15 @@ accumulate_leader = {
 		event_target:variable_storage = {
 			change_variable = {
 				which = leader_transferable_or_assimilatable_accumulator
+				value = 1
+			}
+		}
+	}
+	if = {
+		limit = { is_aquatic_species = yes }
+		event_target:variable_storage = {
+			change_variable = {
+				which = leader_aquatic_accumulator
 				value = 1
 			}
 		}
