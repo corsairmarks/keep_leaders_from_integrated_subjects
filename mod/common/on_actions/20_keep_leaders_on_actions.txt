@@ -17,7 +17,7 @@ on_single_player_save_game_load = {
 # from = subject
 on_subject_integrated = {
 	events = {
-		keep_leaders.1
+		keep_leaders.5
 	}
 }
 
@@ -101,9 +101,9 @@ on_primitive_planet_transferring = {
 on_primitive_planet_transferred = {
 	events = {
 		keep_leaders.3
-		keep_leaders.20
-		keep_leaders.30
-		keep_leaders.40
-		keep_leaders.50
+		keep_leaders.21
+		keep_leaders.31
+		keep_leaders.41
+		keep_leaders.51
 	}
 }

@@ -1,0 +1,9 @@
+# this file is intentionally designed to fire after other handlers for this on_action
+# fired after a primitive planet has changed ownership
+# this = planet (after ownership change)
+# from = country, primitive former owner
+on_primitive_planet_transferred = {
+	events = {
+		keep_leaders.99
+	}
+}
