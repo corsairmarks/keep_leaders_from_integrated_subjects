@@ -13,54 +13,123 @@ event = {
 	}
 }
 
-# triggered by on_subject_integrated and keep_leaders.2
-# window with options to potentially keep the stored leaders from integration/primitive conquest
+# triggered by keep_leaders.2, keep_leaders.5, keep_leaders.21, keep_leaders.51
+# window with options to potentially keep the stored leaders from integration/primitive conquest/colossus weapon
 # root = country, overlord
-# from = country, integrated subject
+# from = country, integrated subject or conquered/colossus'd primitives
+# fromfrom = planet, primitive world (if available)
 country_event = {
 	id = keep_leaders.1
-	picture = GFX_evt_intelligence_report
-	show_sound = event_vote
-	title = keep_leaders.1.title
-	desc = {
+	picture = {
+		picture = GFX_evt_intelligence_report
 		trigger = {
-			has_country_flag = keeping_leaders_conquest@from
+			OR = {
+				has_country_flag = keeping_leaders_conquest@from
+				has_country_flag = keeping_leaders_integration@from
+			}
 		}
+	}
+	picture = {
+		picture = GFX_evt_planet_beam
+		trigger = {
+			has_country_flag = keeping_leaders_colossus@from
+			exists = fromfrom
+			fromfrom = { is_scope_type = planet }
+			from = {
+				has_country_flag = colossus_transfer@capital_scope
+				has_country_flag = orbitally_drenched@capital_scope
+			}
+		}
+	}
+	picture = {
+		picture = GFX_evt_death_from_above
+		trigger = {
+			has_country_flag = keeping_leaders_colossus@from
+			exists = fromfrom
+			fromfrom = { is_scope_type = planet }
+			from = {
+				has_country_flag = colossus_transfer@capital_scope
+				NOR = {
+					has_country_flag = orbitally_drenched@capital_scope
+					has_country_flag = nanobot_assimilated@capital_scope
+					has_country_flag = orbitally_necrophaged@capital_scope
+					has_country_flag = colossus_transfer_handled@capital_scope
+				}
+			}
+		}
+	}
+	title = keep_leaders.1.title.scripted_loc
+	desc = {
+		trigger = { has_country_flag = keeping_leaders_conquest@from }
+		show_sound = event_vote
 		text = keep_leaders.1.desc.conquest
 	}
 	desc = {
-		trigger = {
-			NOT = { has_country_flag = keeping_leaders_conquest@from }
-		}
+		trigger = { has_country_flag = keeping_leaders_integration@from }
+		show_sound = event_vote
 		text = keep_leaders.1.desc.integration
+	}
+	desc = {
+		trigger = {
+			has_country_flag = keeping_leaders_colossus@from
+			exists = fromfrom
+			fromfrom = { is_scope_type = planet }
+			from = {
+				has_country_flag = colossus_transfer@capital_scope
+				has_country_flag = orbitally_drenched@capital_scope
+			}
+		}
+		show_sound = aqu_wep_colossus_planet_hit
+		text = keep_leaders.1.desc.planet_killer_deluge
+	}
+	desc = {
+		trigger = {
+			has_country_flag = keeping_leaders_colossus@from
+			exists = fromfrom
+			fromfrom = { is_scope_type = planet }
+			from = {
+				NOR = {
+					has_country_flag = orbitally_drenched@capital_scope
+					has_country_flag = nanobot_assimilated@capital_scope
+					has_country_flag = orbitally_necrophaged@capital_scope
+				}
+			}
+		}
+		show_sound = event_red_alert
+		text = keep_leaders.1.desc.planet_killer_generic
 	}
 	is_triggered_only = yes
 	trigger = {
 		exists = from
-		from = {
-			OR = {
-				exists = ruler
-				exists = heir
-				any_owned_leader = { is_eligible_transfer_leader_class = yes }
+		any_country = {
+			is_country_type = neutral_faction
+			has_country_flag = former_owner@from
+			any_owned_leader = {
+				has_leader_flag = former_owner@from
+				has_leader_flag = potential_owner@prevprev
 			}
 		}
 	}
 	immediate = {
-		if = {
-			limit = { has_country_flag = keeping_leaders_conquest@from }
-			log = "country [From.GetRealName] conquered by [Root.GetRealName]"
-		}
-		else = {
-			set_country_flag = keeping_leaders_integration@from
-			log = "country [From.GetRealName] integrated by [Root.GetRealName]"
-		}
+		log = "country [From.GetRealName] retaining leaders from [Root.GetRealName]"
 		# "argument" for create_leader_storage_and_transfer_leaders
 		save_event_target_as = potential_owner
+		#prepare_for_primitive_planet_transferred = yes
 		from = {
-			save_event_target_as = former_owner # "argument" for create_leader_storage_and_transfer_leaders
+			set_country_flag = colossus_transfer_handled@prev
+			save_event_target_as = former_owner
+			owner_species = { save_event_target_as = original_species }
 			capital_scope = { save_event_target_as = conquered_planet } # "argument" for localistation
 		}
-		create_leader_storage_and_transfer_leaders = yes
+		# acquire leader and variable storage
+		random_country = {
+			limit = {
+				is_country_type = neutral_faction
+				has_country_flag = former_owner@from
+			}
+			save_event_target_as = storage_owner
+			save_event_target_as = variable_storage
+		}
 	}
 	# keep none
 	option = {
@@ -606,7 +675,7 @@ country_event = {
 	# keep mechanical only (nice) - non-assimilation
 	option = {
 		name = keep_leaders.1.d
-			custom_tooltip = keep_leaders.1.d.tooltip
+		custom_tooltip = keep_leaders.1.d.tooltip
 		custom_tooltip_with_params = {
 			description = keep_leaders.1.tooltip
 			description_parameters = {
@@ -1614,7 +1683,13 @@ country_event = {
 	# necrophage (kinda like assimilation in terms of the outcome)
 	option = {
 		name = keep_leaders.1.k.necro
-		custom_tooltip = keep_leaders.1.k.necro.tooltip
+		if = {
+			limit = { is_hive_empire = no }
+			custom_tooltip = keep_leaders.1.k.necro.tooltip
+		}
+		else = {
+			custom_tooltip = keep_leaders.1.k.necro.hive.tooltip
+		}
 		custom_tooltip_with_params = {
 			description = keep_leaders.1.tooltip
 			description_parameters = {
@@ -1688,16 +1763,26 @@ country_event = {
 	trigger = {
 		any_playable_country = { is_country = prev }
 		exists = from
-		from = { is_country_type = primitive }
+		from = {
+			is_country_type = primitive
+			OR = {
+				exists = ruler
+				exists = heir
+				any_owned_leader = { is_eligible_transfer_leader_class = yes }
+			}
+		}
 	}
 	immediate = {
-		log = "primitive planet [FromFrom.GetName] ([From.GetRealName]) conquered by [Root.GetRealName]"
+		log = "primitive planet [FromFrom.GetName] ([From.GetRealName]) conquered by [GetRealName]"
 		set_country_flag = keeping_leaders_conquest@from
-		# fires the above event - hooray for reuse!
+		save_event_target_as = potential_owner # "argument" for create_leader_storage_and_transfer_leaders
+		from = { save_event_target_as = former_owner } # "argument" for create_leader_storage_and_transfer_leaders
+		create_leader_storage_and_transfer_leaders = yes
 		country_event = {
-			id = keep_leaders.1
+			id = keep_leaders.1 # hooray for reuse!
 			scopes = {
 				from = from
+				fromfrom = fromfrom
 			}
 		}
 	}
@@ -1722,20 +1807,8 @@ planet_event = {
 		has_leader_storage_from_country_to_planet_owner = yes
 	}
 	immediate = {
-		from = {
-			save_event_target_as = former_owner
-			owner_species = { save_event_target_as = original_species }
-		}
-		owner = { save_event_target_as = potential_owner }
-		# acquire leader and variable storage
-		random_country = {
-			limit = {
-				is_country_type = neutral_faction
-				has_country_flag = former_owner@event_target:former_owner
-			}
-			save_event_target_as = storage_owner
-			save_event_target_as = variable_storage
-		}
+		log = "primitive planet [GetName] ([From.GetRealName]) infiltrated by [Owner.GetRealName]"
+		prepare_for_primitive_planet_transferred = yes
 	}
 	option = {
 		name = keep_leaders.3.a
@@ -1872,7 +1945,7 @@ planet_event = {
 # transfer leaders to storage while the primitive country exists
 # triggered by on_primitive_planet_transferring
 # root = planet (before ownership change)
-# from = country, infiltrator
+# from = country, actor
 planet_event = {
 	id = keep_leaders.4
 	is_triggered_only = yes
@@ -1913,6 +1986,10 @@ planet_event = {
 			}
 			from = { set_country_flag = keeping_leaders_infiltration@prev.owner }
 		}
+		else_if = {
+			limit = { owner = { has_country_flag = colossus_transfer@prev } }
+			from = { set_country_flag = keeping_leaders_colossus@prev.owner }
+		}
 		owner = {
 			save_event_target_as = former_owner # "argument" for localistation and set_leader_storage_flags
 			owner_species = { save_event_target_as = original_species } # "argument" for localistation
@@ -1922,11 +1999,45 @@ planet_event = {
 	}
 }
 
+# transfer leaders to storage while the integrated subject country exists
 # triggered by on_subject_integrated
 # root = country, overlord
 # from = country, integrated subject
 country_event = {
-	id = keep_leaders.7
+	id = keep_leaders.5
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = {
+		exists = from
+		from = {
+			OR = {
+				exists = ruler
+				exists = heir
+				any_owned_leader = { is_eligible_transfer_leader_class = yes }
+			}
+		}
+	}
+	immediate = {
+		log = "country [From.GetRealName] integrated by [Root.GetRealName]"
+		set_country_flag = keeping_leaders_integration@from
+		save_event_target_as = potential_owner # "argument" for create_leader_storage_and_transfer_leaders
+		from = { save_event_target_as = former_owner } # "argument" for create_leader_storage_and_transfer_leaders
+		create_leader_storage_and_transfer_leaders = yes
+		country_event = {
+			id = keep_leaders.1 # hooray for reuse!
+			scopes = {
+				from = from
+			}
+		}
+	}
+}
+
+# attempt to copy army transports
+# triggered by on_subject_integrated
+# root = country, overlord
+# from = country, integrated subject
+country_event = {
+	id = keep_leaders.6
 	hide_window = yes
 	is_triggered_only = yes
 	immediate = {
@@ -2012,7 +2123,7 @@ country_event = {
 }
 
 # keep robotic only
-# root = country, integrator or conqueror
+# root = country, actor
 # from = country, leader storage
 country_event = {
 	id = keep_leaders.10
@@ -2054,7 +2165,7 @@ country_event = {
 }
 
 # keep organic only
-# root = country, integrator or conqueror
+# root = country, actor
 # from = country, leader storage
 country_event = {
 	id = keep_leaders.11
@@ -2096,7 +2207,7 @@ country_event = {
 }
 
 # keep same species only
-# root = country, integrator or conqueror
+# root = country, actor
 # from = country, leader storage
 country_event = {
 	id = keep_leaders.12
@@ -2127,7 +2238,7 @@ country_event = {
 }
 
 # keep hive only
-# root = country, integrator or conqueror
+# root = country, actor
 # from = country, leader storage
 country_event = {
 	id = keep_leaders.14
@@ -2162,7 +2273,7 @@ country_event = {
 }
 
 # keep 'em all!
-# root = country, integrator or conqueror
+# root = country, actor
 # from = country, leader storage
 country_event = {
 	id = keep_leaders.15
@@ -2196,7 +2307,7 @@ country_event = {
 }
 
 # assimilate
-# root = country, integrator or conqueror
+# root = country, actor
 # from = country, leader storage
 country_event = {
 	id = keep_leaders.16
@@ -2564,7 +2675,7 @@ country_event = {
 }
 
 # necrophage
-# root = country, integrator or conqueror
+# root = country, actor
 # from = country, leader storage
 country_event = {
 	id = keep_leaders.17
@@ -2669,39 +2780,6 @@ country_event = {
 	}
 }
 
-# window with options to potentially keep the stored leaders after being drenched by the Deluge Machine
-# triggered by keep_leaders.21
-# root = planet (after ownership change)
-# from = country, colossus'd
-planet_event = {
-	id = keep_leaders.20
-	title = keep_leaders.20.title
-	desc = keep_leaders.20.desc
-	picture = GFX_evt_planet_beam
-	show_sound = aqu_wep_colossus_planet_hit
-	is_triggered_only = yes
-	pre_triggers = {
-		has_owner = yes
-	}
-	trigger = {
-		exists = from
-		from = {
-			has_country_flag = colossus_transfer@prev
-			has_country_flag = orbitally_drenched@prev
-		}
-		# has_leader_storage_from_country_to_planet_owner = yes
-	}
-	immediate = {
-		# prepare_for_primitive_planet_transferred = yes
-		# TODO: test that I have event_targets
-		# TODO: valid options
-	}
-
-	# Keep
-	# Retire
-	# Execute
-}
-
 # gatekeeper to potentially keep aquatic stored leaders after being drenched by the Deluge Machine
 # triggered by on_primitive_planet_transferred
 # root = planet (after ownership change)
@@ -2738,11 +2816,13 @@ planet_event = {
 					kill_leader_via_class = yes
 				}
 			}
-			# TODO: I want to re-invoke #1 instead of 20
-			planet_event = {
-				id = keep_leaders.20
-				scopes = {
-					from = from
+			owner = {
+				country_event = {
+					id = keep_leaders.1
+					scopes = {
+						from = prev.from
+						fromfrom = prev
+					}
 				}
 			}
 		}
@@ -2767,6 +2847,8 @@ planet_event = {
 		has_owner = yes
 	}
 	trigger = {
+		has_synthethic_dawn = yes
+		owner = { has_valid_civic = civic_machine_assimilator }
 		exists = from
 		from = {
 			has_country_flag = colossus_transfer@prev
@@ -2775,14 +2857,11 @@ planet_event = {
 		has_leader_storage_from_country_to_planet_owner = yes
 	}
 	immediate = {
-		# prepare_for_primitive_planet_transferred = yes
-
-		# TODO: valid options
+		prepare_for_primitive_planet_transferred = yes
 	}
 	# assimilate: assimilator
 	option = {
-		name = keep_leaders.1.k.assim
-		custom_tooltip = keep_leaders.1.k.assim.tooltip
+		name = keep_leaders.30.a
 		custom_tooltip_with_params = {
 			description = keep_leaders.1.tooltip
 			description_parameters = {
@@ -2797,22 +2876,8 @@ planet_event = {
 					hidden_trigger = { is_machine_empire = yes }
 				}
 			}
-			hidden_trigger = {
-				has_synthethic_dawn = yes
-				event_target:storage_owner = {
-					any_owned_leader = {
-						is_eligible_transfer_leader_from_storage = yes
-						is_eligible_for_machine_assimilation_species = yes
-					}
-				}
-			}
 		}
-		allow = {
-			custom_tooltip = {
-				fail_text = keep_leaders.1.k.mach.fail_text
-				owner = { has_valid_civic = civic_machine_assimilator }
-			}
-		}
+		allow = { owner = { has_valid_civic = civic_machine_assimilator } }
 		ai_chance = {
 			factor = 20
 		}
@@ -2832,31 +2897,15 @@ planet_event = {
 	}
 	# keep none (nice)
 	option = {
-		# name = keep_leaders.1.b # TODO Retire or better as drones
-		# custom_tooltip = keep_leaders.1.b.tooltip
-		name = keep_leaders.1.b.gest.exclusive
-		custom_tooltip = keep_leaders.1.b.gest.exclusive.tooltip
+		name = keep_leaders.30.b
+		custom_tooltip = keep_leaders.30.b.tooltip
 		custom_tooltip_with_params = {
 			description = keep_leaders.1.tooltip.none
 			description_parameters = {
 				TOTAL = "[variable_storage.leader_accumulator]"
 			}
 		}
-		trigger = {
-			# doesn't use triggers so that these will be translated into icons
-			owner = {
-				OR = {
-					has_authority = auth_hive_mind
-					has_authority = auth_machine_intelligence
-				}
-				hidden_trigger = {
-					NOR = {
-						has_valid_civic = civic_machine_servitor
-						has_valid_civic = civic_hive_devouring_swarm
-					}
-				}
-			}
-		}
+		trigger = { owner = { has_authority = auth_machine_intelligence } } # explicit to get the icon to show
 		hidden_effect = { event_target:storage_owner = { destroy_country = yes } }
 	}
 	after = {
@@ -2883,6 +2932,8 @@ planet_event = {
 		has_owner = yes
 	}
 	trigger = {
+		has_synthethic_dawn = yes
+		owner = { has_valid_civic = civic_machine_assimilator }
 		exists = from
 		from = {
 			has_country_flag = colossus_transfer@prev
@@ -2935,22 +2986,21 @@ planet_event = {
 		has_owner = yes
 	}
 	trigger = {
+		has_necroids = yes
+		owner = { is_necrophage_empire = yes }
 		exists = from
 		from = {
 			has_country_flag = colossus_transfer@prev
 			has_country_flag = orbitally_necrophaged@prev
 		}
-		# has_leader_storage_from_country_to_planet_owner = yes
+		has_leader_storage_from_country_to_planet_owner = yes
 	}
 	immediate = {
-		# prepare_for_primitive_planet_transferred = yes
-		# TODO: test that I have event_targets
-		# TODO: valid options
+		prepare_for_primitive_planet_transferred = yes
 	}
 	# necrophage
 	option = {
-		name = keep_leaders.1.k.necro # TODO They are now us, and may yet prove useful.
-		custom_tooltip = keep_leaders.1.k.necro.tooltip # TODO: tooltip should say they have "already been necrophaged"
+		name = keep_leaders.40.a
 		custom_tooltip_with_params = {
 			description = keep_leaders.1.tooltip
 			description_parameters = {
@@ -3017,15 +3067,35 @@ planet_event = {
 	}
 	# keep none (nice)
 	option = {
-		name = keep_leaders.1.b # TODO Retire or better as drones
-		custom_tooltip = keep_leaders.1.b.tooltip
+		name = {
+			text = keep_leaders.40.b
+			trigger = { owner = { is_hive_empire = no } }
+		}
+		name = {
+			text = keep_leaders.40.b.hive
+			trigger = { owner = { is_hive_empire = yes } }
+		}
+		if = {
+			limit = { owner = { is_hive_empire = no } }
+			custom_tooltip = keep_leaders.40.b.tooltip
+		}
+		else = {
+			custom_tooltip = keep_leaders.40.b.hive.tooltip
+		}
 		custom_tooltip_with_params = {
 			description = keep_leaders.1.tooltip.none
 			description_parameters = {
 				TOTAL = "[variable_storage.leader_accumulator]"
 			}
 		}
-		trigger = { owner = { is_regular_empire = yes } }
+		trigger = {
+			owner = {
+				OR = {
+					is_regular_empire = yes
+					has_authority = auth_hive_mind # explicit to get the icon to show
+				}
+			}
+		}
 		hidden_effect = { event_target:storage_owner = { destroy_country = yes } }
 		ai_chance = {
 			factor = 2
@@ -3033,14 +3103,15 @@ planet_event = {
 	}
 	# keep none
 	option = {
-		name = keep_leaders.1.a # TODO Execute them anyway
-		custom_tooltip = keep_leaders.1.a.tooltip # TODO
+		name = keep_leaders.40.c
+		custom_tooltip = keep_leaders.40.c.tooltip
 		custom_tooltip_with_params = {
 			description = keep_leaders.1.tooltip.none
 			description_parameters = {
 				TOTAL = "[variable_storage.leader_accumulator]"
 			}
 		}
+		trigger = { owner = { is_regular_empire = yes } }
 		allow = {
 			custom_tooltip = {
 				fail_text = empire_is_xenophile_no_x
@@ -3080,6 +3151,8 @@ planet_event = {
 		has_owner = yes
 	}
 	trigger = {
+		has_necroids = yes
+		owner = { is_necrophage_empire = yes }
 		exists = from
 		from = {
 			has_country_flag = colossus_transfer@prev
@@ -3111,16 +3184,13 @@ planet_event = {
 	}
 }
 
-# window with options to potentially keep the stored leaders
+# gatekeeper to potentially keep stored leaders after being hit by a generic planet killer weapon that allows for leader (and implied Pop) transfer
 # triggered by on_primitive_planet_transferred
 # root = planet (after ownership change)
 # from = country, colossus'd
 planet_event = {
-	id = keep_leaders.50
+	id = keep_leaders.51
 	hide_window = yes
-	# desc = keep_leaders.6.desc.planet_killer_fallback # TODO probably need this in the condition desc for .1
-	# picture = GFX_evt_death_from_above
-	# show_sound = event_red_alert
 	is_triggered_only = yes
 	pre_triggers = {
 		has_owner = yes
@@ -3136,18 +3206,46 @@ planet_event = {
 		has_leader_storage_from_country_to_planet_owner = yes
 	}
 	immediate = {
-		prepare_for_primitive_planet_transferred = yes
-
-		# TODO: need to refactor .1 to be just about storage, then a new event to extract the leaders
-		# or verify .3/.4 way works for my needs
 		owner = {
 			country_event = {
 				id = keep_leaders.1
 				scopes = {
-					from = event_target:storage_owner
-					fromfrom = event_target:variable_storage
+					from = prev.from
+					fromfrom = prev
 				}
 			}
+		}
+	}
+}
+
+# gatekeeper to potentially keep stored leaders after being hit by a generic planet killer weapon that allows for leader (and implied Pop) transfer
+# triggered by on_primitive_planet_transferred
+# root = planet (after ownership change)
+# from = country, colossus'd
+planet_event = {
+	id = keep_leaders.99
+	hide_window = yes
+	is_triggered_only = yes
+	pre_triggers = {
+		has_owner = yes
+	}
+	trigger = {
+		exists = from
+		from = {
+			has_country_flag = colossus_transfer@prev
+			NOT = { has_country_flag = colossus_transfer_handled@prev }
+			# this event is intended to run after all other on_primitive_planet_transferred handlers
+			# and deletes the container country if it wasn't flagged as handled
+		}
+		has_leader_storage_from_country_to_planet_owner = yes
+	}
+	immediate = {
+		random_country = {
+			limit = {
+				is_country_type = neutral_faction
+				has_country_flag = former_owner@from
+			}
+			destroy_country = yes
 		}
 	}
 }
