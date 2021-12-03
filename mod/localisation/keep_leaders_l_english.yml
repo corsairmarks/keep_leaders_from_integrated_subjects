@@ -1,12 +1,12 @@
 ﻿l_english:
- keep_leaders.1.title.scripted_loc: "[GetKeepLeadersEventTitle]"
- keep_leaders.1.title: "Leadership from the [storage_owner.GetRealName]"
+ keep_leaders.1.title.scripted_loc: "[This.GetKeepLeadersEventTitle]"
+ keep_leaders.1.title: "Leadership from the [From.GetRealName]"
  keep_leaders.1.title.planet_killer_deluge: "$PLANET_CAP$ [conquered_planet.GetName] Drenched"
  keep_leaders.1.title.planet_killer_generic: "$PLANET_CAP$ [conquered_planet.GetName] Annexed"
  keep_leaders.1.desc.integration: "Following the successful integration of the [storage_owner.GetRealName] into our empire, their leadership is at our disposal. What shall we do with them?"
  keep_leaders.1.desc.conquest: "Following our successful conquest of the primitives on [conquered_planet.GetName], their leadership is at our disposal. What shall we do with them?"
- keep_leaders.1.desc.planet_killer_deluge: "TODO: Deluge"
- keep_leaders.1.desc.planet_killer_generic: "TODO: Fallback"
+ keep_leaders.1.desc.planet_killer_deluge: "Following the activation of our §Y$PLANET_KILLER_DELUGE$§!, it appears that some of the primitive [original_species.GetName] species survived the conversion process of [conquered_planet.GetName] into an §Y$pc_ocean_adj$§! world. What shall we do with their leaders?"
+ keep_leaders.1.desc.planet_killer_generic: "Following the activation of our §YPlanet-Killer Weapon§! and subsequent annexation of [conquered_planet.GetName] it appears that some of the primitive [original_species.GetName] species survived. What shall we do with their leaders?"
 
  # don't keep any leaders
  keep_leaders.1.a: "Then \"dispose\" of them."
