@@ -111,7 +111,7 @@ country_event = {
 		}
 	}
 	immediate = {
-		log = "country [From.GetRealName] retaining leaders from [Root.GetRealName]"
+		log = "country [This.GetRealName] retaining leaders from [From.GetRealName]"
 		# "argument" for create_leader_storage_and_transfer_leaders
 		save_event_target_as = potential_owner
 		#prepare_for_primitive_planet_transferred = yes
@@ -1773,7 +1773,7 @@ country_event = {
 		}
 	}
 	immediate = {
-		log = "primitive planet [FromFrom.GetName] ([From.GetRealName]) conquered by [GetRealName]"
+		log = "primitive conquest: [FromFrom.GetName] ([From.GetRealName]) conquered by [This.GetRealName]"
 		set_country_flag = keeping_leaders_conquest@from
 		save_event_target_as = potential_owner # "argument" for create_leader_storage_and_transfer_leaders
 		from = { save_event_target_as = former_owner } # "argument" for create_leader_storage_and_transfer_leaders
@@ -1807,7 +1807,7 @@ planet_event = {
 		has_leader_storage_from_country_to_planet_owner = yes
 	}
 	immediate = {
-		log = "primitive planet [GetName] ([From.GetRealName]) infiltrated by [Owner.GetRealName]"
+		log = "primitive infiltration: [GetName] ([From.GetRealName]) infiltrated by [This.Owner.GetRealName]"
 		prepare_for_primitive_planet_transferred = yes
 	}
 	option = {
@@ -2018,7 +2018,7 @@ country_event = {
 		}
 	}
 	immediate = {
-		log = "country [From.GetRealName] integrated by [Root.GetRealName]"
+		log = "subject integration: [From.GetRealName] integrated by [Root.GetRealName]"
 		set_country_flag = keeping_leaders_integration@from
 		save_event_target_as = potential_owner # "argument" for create_leader_storage_and_transfer_leaders
 		from = { save_event_target_as = former_owner } # "argument" for create_leader_storage_and_transfer_leaders
@@ -2801,6 +2801,7 @@ planet_event = {
 	}
 	immediate = {
 		prepare_for_primitive_planet_transferred = yes
+		log = "colossus fired: [This.GetName] ([From.Owner.GetRealName]) drenched by [This.Owner.GetRealName]"
 		if = {
 			limit = {
 				event_target:variable_storage = {
@@ -2942,6 +2943,7 @@ planet_event = {
 		has_leader_storage_from_country_to_planet_owner = yes
 	}
 	immediate = {
+		log = "colossus fired: [This.GetName] ([From.Owner.GetRealName]) assimilated via nanobots by [This.Owner.GetRealName]"
 		prepare_for_primitive_planet_transferred = yes
 		if = {
 			limit = {
@@ -3161,6 +3163,7 @@ planet_event = {
 		has_leader_storage_from_country_to_planet_owner = yes
 	}
 	immediate = {
+		log = "colossus fired: [This.GetName] ([From.Owner.GetRealName]) necrophaged by [This.GetRealName]"
 		prepare_for_primitive_planet_transferred = yes
 		if = {
 			limit = {
@@ -3206,6 +3209,7 @@ planet_event = {
 		has_leader_storage_from_country_to_planet_owner = yes
 	}
 	immediate = {
+		log = "colossus fired: [This.GetName] ([From.Owner.GetRealName]) generic weapon by [This.Owner.GetRealName]"
 		owner = {
 			country_event = {
 				id = keep_leaders.1
