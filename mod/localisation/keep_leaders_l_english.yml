@@ -1,6 +1,6 @@
 ﻿l_english:
- keep_leaders.1.title.scripted_loc: "[This.GetKeepLeadersEventTitle]"
- keep_leaders.1.title: "Leadership from the [From.GetRealName]"
+ keep_leaders.1.title.scripted_loc: "[From.GetKeepLeadersEventTitle]"
+ keep_leaders.1.title: "Leadership from the [This.GetRealName]"
  keep_leaders.1.title.planet_killer_deluge: "$PLANET_CAP$ [conquered_planet.GetName] Drenched"
  keep_leaders.1.title.planet_killer_generic: "$PLANET_CAP$ [conquered_planet.GetName] Annexed"
  keep_leaders.1.desc.integration: "Following the successful integration of the [storage_owner.GetRealName] into our empire, their leadership is at our disposal. What shall we do with them?"

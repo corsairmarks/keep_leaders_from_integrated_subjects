@@ -28,48 +28,24 @@ defined_text = { # scope with species
 	default = getunitdrone_leader
 }
 
-# scope doesn't matter - workaround to read localisation into an argument for custom_tooltip_with_params
-defined_text = {
-	name = GetUnityName
-	default = unity
-}
-
-# scope doesn't matter - workaround to read localisation into an argument for custom_tooltip_with_params
-defined_text = {
-	name = GetSocietyResearchName
-	default = society_research
-}
-
 # this = country
 # from = country
 defined_text = { # country
 	name = GetKeepLeadersEventTitle
 	text = {
 		trigger = {
-			exists = from
-			from = { is_scope_type = country }
-			exists = fromfrom
-			fromfrom = { is_scope_type = planet }
-			from = {
-				has_country_flag = colossus_transfer@capital_scope
-				has_country_flag = orbitally_drenched@capital_scope
-			}
+			has_country_flag = colossus_transfer@capital_scope
+			has_country_flag = orbitally_drenched@capital_scope
 		}
 		localization_key = keep_leaders.1.title.planet_killer_deluge
 	}
 	text = {
 		trigger = {
-			exists = from
-			from = { is_scope_type = country }
-			exists = fromfrom
-			fromfrom = { is_scope_type = planet }
-			from = {
-				has_country_flag = colossus_transfer@capital_scope
-				NOR = {
-					has_country_flag = orbitally_drenched@capital_scope
-					has_country_flag = nanobot_assimilated@capital_scope
-					has_country_flag = orbitally_necrophaged@capital_scope
-				}
+			has_country_flag = colossus_transfer@capital_scope
+			NOR = {
+				has_country_flag = orbitally_drenched@capital_scope
+				has_country_flag = nanobot_assimilated@capital_scope
+				has_country_flag = orbitally_necrophaged@capital_scope
 			}
 		}
 		localization_key = keep_leaders.1.title.planet_killer_generic
