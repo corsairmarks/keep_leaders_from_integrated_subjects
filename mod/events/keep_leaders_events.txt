@@ -1823,9 +1823,12 @@ planet_event = {
 				every_owned_leader = {
 					limit = { is_eligible_transfer_leader_from_storage = yes }
 					set_leader_flag = infiltrator_retained
+					set_timed_leader_flag = {
+						flag = force_gender_match_species
+						days = 1
+					}
 					set_owner = event_target:potential_owner
 					fire_on_action = { on_action = on_leader_owner_changed }
-					# TODO always set the gender norms of the event_target:potential_owner - this leader is supposed to have been one all along
 					change_species = event_target:potential_owner
 					fire_on_action = {
 						on_action = on_leader_species_changed
@@ -1869,9 +1872,12 @@ planet_event = {
 				every_owned_leader = {
 					limit = { is_eligible_transfer_leader_from_storage = yes }
 					set_leader_flag = infiltrator_retained_cover
+					set_timed_leader_flag = {
+						flag = force_gender_match_species
+						days = 1
+					}
 					set_owner = event_target:potential_owner
 					fire_on_action = { on_action = on_leader_owner_changed }
-					# TODO always set the gender norms of the event_target:potential_owner - this leader is supposed to have been one all along
 					change_species = event_target:potential_owner
 					change_leader_portrait = event_target:original_species
 					fire_on_action = {
@@ -2119,6 +2125,28 @@ country_event = {
 				delete_fleet = this
 			}
 		}
+	}
+}
+
+# triggered by on_leader_species_changed
+# root = leader, post-modification
+# from = species, pre-modification (if known)
+leader_event = {
+	id = keep_leaders.7
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = {
+		OR = {
+			has_leader_flag = force_gender_match_species
+			NOT = { has_global_flag = nonbinary_leaders_installed }
+		}
+		exists = from
+		from = { is_scope_type = species }
+		klfis_leader_new_species_allows_current_gender = no
+	}
+	immediate = {
+		klfis_leader_transferred_match_gender_to_species = yes
+		remove_leader_flag = force_gender_match_species
 	}
 }
 
@@ -2512,10 +2540,6 @@ country_event = {
 							remove_leader_flag = former_gestalt_ruler
 						}
 						change_species = event_target:potential_owner
-						# TODO if nonbinary leaders mod is installed, then leaders get to keep their gender identity
-						if = {
-							limit = { NOT = { has_global_flag = nonbinary_leaders_installed } }
-						}
 						change_leader_portrait = event_target:potential_owner
 						ensure_species_rights_and_take_ownership_of_leader = yes
 						fire_on_action = {
@@ -2746,10 +2770,6 @@ country_event = {
 					set_owner = event_target:potential_owner
 					fire_on_action = { on_action = on_leader_owner_changed }
 					change_species = event_target:potential_owner
-					# TODO if nonbinary leaders mod is installed, then leaders get to keep their gender identity
-					if = {
-						limit = { NOT = { has_global_flag = nonbinary_leaders_installed } }
-					}
 					change_leader_portrait = event_target:potential_owner
 					try_assign_retained_leader_to_former_assignment = yes
 					fire_on_action = {
@@ -2814,7 +2834,7 @@ planet_event = {
 			event_target:storage_owner = {
 				every_owned_leader = {
 					limit = { is_aquatic_species = no }
-					kill_leader_via_class = yes
+					kill_leader = { show_notification = no }
 				}
 			}
 			owner = {

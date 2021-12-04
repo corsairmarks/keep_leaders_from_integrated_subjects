@@ -73,7 +73,6 @@ create_leader_storage_and_transfer_leaders = {
 		create_leader = {
 			species = owner_species
 			class = ruler
-			# effect = { save_event_target_as = dummy_ruler } # TODO can I use this, or stick with las_created_leader?
 		}
 		# can't always save in effect - is it because the primitive country is being deleted?
 		last_created_leader = { save_event_target_as = dummy_ruler }
@@ -1648,6 +1647,96 @@ create_army_transport_parameterized = {
 		effect = {
 			set_name = "\\[source_ship.GetName]"
 			last_created_army = { set_name = "\\[source_army.GetName]" }
+		}
+	}
+}
+
+# changes a gender's leader to match the norms for their species (possibly cloning and replacing them)
+# this = leader, with new species
+# from = species, previous
+klfis_leader_transferred_match_gender_to_species = {
+	if = {
+		limit = { klfis_leader_species_gender_change_requires_clone = no }
+		species = {
+			switch = {
+				trigger = species_gender
+				# if indeterminable, then nothing should change
+				female = {
+					prev = {
+						if = {
+							limit = { NOT = { gender = female } }
+							set_is_female = yes
+						}
+					}
+				}
+				male = {
+					prev = {
+						if = {
+							limit = { NOT = { gender = male } }
+							set_is_female = no
+						}
+					}
+				}
+				not_set = {
+					prev = {
+						if = {
+							limit = {
+								NOR = {
+									gender = female
+									gender = male
+								}
+							}
+							random_list = {
+								50 = { set_is_female = yes }
+								50 = { set_is_female = no }
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	else = {
+		save_event_target_as = leader_to_clone
+		owner = { save_event_target_as = leader_owner } # must stay an event_target - the game dislikes prev.owner in the switch statement
+		species = {
+			switch = {
+				trigger = species_gender
+				indeterminable = { prev = { klfis_clone_leader_with_gender = { GENDER = indeterminable } } }
+				female = { prev = { klfis_clone_leader_with_gender = { GENDER = female } } }
+				male = { prev = { klfis_clone_leader_with_gender = { GENDER = male } } }
+				not_set = {
+					prev = {
+						random_list = {
+							50 = { klfis_clone_leader_with_gender = { GENDER = female } }
+							50 = { klfis_clone_leader_with_gender = { GENDER = male } }
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+# creates an exact copy of the current leader, except that the gender of the clone is set to GENDER
+# this = leader, to be cloned
+# GENDER = gender for the clone (indeterminable/female/male)
+klfis_clone_leader_with_gender = {
+	if = {
+		limit = { NOT = { gender = $GENDER$ } } # last minute sanity check to make sure we're only replacing leaders who are changing gender
+		save_event_target_as = leader_to_clone
+		owner = {
+			clone_leader = {
+				target = event_target:leader_to_clone
+				gender = $GENDER$
+				effect = {
+					change_leader_portrait = event_target:leader_to_clone
+					set_name =  event_target:leader_to_clone
+					add_experience = event_target:leader_to_clone.trigger:has_experience # doesn't get copied implicitly when cloned
+					# leave the original cleanup inside the effect block or portraits won't get copied
+					event_target:leader_to_clone = { kill_leader = { show_notification = no } }
+				}
+			}
 		}
 	}
 }
