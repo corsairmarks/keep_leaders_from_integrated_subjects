@@ -3290,6 +3290,7 @@ country_event = {
 		any_owned_pop_species = { is_same_species = from }
 	}
 	immediate = {
+		set_country_flag = disable_gender_clones_on_leader_spawned
 		log = "keep_leaders.100 former gestalt leader [From.GetName] death"
 		create_leader = {
 			name = random
@@ -3312,6 +3313,7 @@ country_event = {
 				}
 				save_event_target_as = exiled_former_gestalt_ruler
 				exile_leader_as = exiled_former_gestalt_ruler@this
+				owner = { remove_country_flag = disable_gender_clones_on_leader_spawned }
 			}
 		}
 		country_event = {

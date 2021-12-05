@@ -70,9 +70,13 @@ create_leader_storage_and_transfer_leaders = {
 			tag_leader_for_reassignment = yes
 			transfer_leader_to_storage = yes
 		}
+		set_country_flag = disable_gender_clones_on_leader_spawned
 		create_leader = {
 			species = owner_species
 			class = ruler
+			effect = {
+				owner = { remove_country_flag = disable_gender_clones_on_leader_spawned }
+			}
 		}
 		# can't always save in effect - is it because the primitive country is being deleted?
 		last_created_leader = { save_event_target_as = dummy_ruler }
@@ -620,6 +624,7 @@ remove_gestalt_ruler_traits = {
 replace_leader_as_governor = {
 	if = {
 		limit = { event_target:leader_to_replace = { NOT = { leader_class = governor } } }
+		set_country_flag = disable_gender_clones_on_leader_spawned
 		if = {
 			limit = { event_target:leader_to_replace = { has_leader_flag = clear_traits } }
 			clone_leader = {
@@ -643,6 +648,7 @@ replace_leader_as_governor = {
 				}
 			}
 			save_event_target_as = leader_to_replace
+			owner = { remove_country_flag = disable_gender_clones_on_leader_spawned }
 		}
 	}
 	else = {
@@ -660,6 +666,7 @@ replace_leader_as_governor = {
 replace_leader_as_scientist = {
 	if = {
 		limit = { event_target:leader_to_replace = { NOT = { leader_class = scientist } } }
+		set_country_flag = disable_gender_clones_on_leader_spawned
 		if = {
 			limit = { event_target:leader_to_replace = { has_leader_flag = clear_traits } }
 			clone_leader = {
@@ -683,6 +690,7 @@ replace_leader_as_scientist = {
 				}
 			}
 			save_event_target_as = leader_to_replace
+			owner = { remove_country_flag = disable_gender_clones_on_leader_spawned }
 		}
 	}
 	else = {
@@ -700,6 +708,7 @@ replace_leader_as_scientist = {
 replace_leader_as_admiral = {
 	if = {
 		limit = { event_target:leader_to_replace = { NOT = { leader_class = admiral } } }
+		set_country_flag = disable_gender_clones_on_leader_spawned
 		if = {
 			limit = { event_target:leader_to_replace = { has_leader_flag = clear_traits } }
 			clone_leader = {
@@ -723,6 +732,7 @@ replace_leader_as_admiral = {
 				}
 			}
 			save_event_target_as = leader_to_replace
+			owner = { remove_country_flag = disable_gender_clones_on_leader_spawned }
 		}
 	}
 	else = {
@@ -740,6 +750,7 @@ replace_leader_as_admiral = {
 replace_leader_as_general = {
 	if = {
 		limit = { event_target:leader_to_replace = { NOT = { leader_class = general } } }
+		set_country_flag = disable_gender_clones_on_leader_spawned
 		if = {
 			limit = { event_target:leader_to_replace = { has_leader_flag = clear_traits } }
 			clone_leader = {
@@ -763,6 +774,7 @@ replace_leader_as_general = {
 				}
 			}
 			save_event_target_as = leader_to_replace
+			owner = { remove_country_flag = disable_gender_clones_on_leader_spawned }
 		}
 	}
 	else = {
@@ -1751,12 +1763,13 @@ klfis_clone_leader_with_gender = {
 		limit = { NOT = { gender = $GENDER$ } } # last minute sanity check to make sure we're only replacing leaders who are changing gender
 		save_event_target_as = leader_to_clone
 		owner = {
+			set_country_flag = disable_gender_clones_on_leader_spawned
 			clone_leader = {
 				target = event_target:leader_to_clone
 				gender = $GENDER$
 				effect = {
 					change_leader_portrait = event_target:leader_to_clone
-					set_name =  event_target:leader_to_clone
+					set_name = event_target:leader_to_clone
 					add_experience = event_target:leader_to_clone.trigger:has_experience # doesn't get copied implicitly when cloned
 					if = {
 						limit = { event_target:leader_to_clone = { has_leader_flag = clone_should_be_recruitable } }
@@ -1771,6 +1784,7 @@ klfis_clone_leader_with_gender = {
 							fire = yes
 						}
 					}
+					owner = { remove_country_flag = disable_gender_clones_on_leader_spawned }
 				}
 			}
 		}
