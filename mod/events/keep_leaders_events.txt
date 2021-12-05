@@ -2140,13 +2140,13 @@ leader_event = {
 			has_leader_flag = force_gender_match_species
 			NOT = { has_global_flag = nonbinary_leaders_installed }
 		}
+		NOT = { has_leader_flag = leader_replaced_by_clone }
 		exists = from
 		from = { is_scope_type = species }
 		klfis_leader_new_species_allows_current_gender = no
 	}
 	immediate = {
 		klfis_leader_transferred_match_gender_to_species = yes
-		remove_leader_flag = force_gender_match_species
 	}
 }
 
@@ -2834,7 +2834,10 @@ planet_event = {
 			event_target:storage_owner = {
 				every_owned_leader = {
 					limit = { is_aquatic_species = no }
-					kill_leader = { show_notification = no }
+					kill_leader = {
+						show_notification = no
+						fire = yes
+					}
 				}
 			}
 			owner = {
@@ -3400,7 +3403,12 @@ country_event = {
 					set_leader_flag = former_gestalt_ruler
 				}
 			}
-			from = { kill_leader = { show_notification = no } }
+			from = {
+				kill_leader = {
+					show_notification = no
+					fire = yes
+				}
+			}
 		}
 	}
 }

@@ -170,7 +170,12 @@ create_leader_storage_and_transfer_leaders = {
 				transfer_leader_to_storage = yes
 			}
 		}
-		event_target:dummy_ruler = { kill_leader = { show_notification = no } }
+		event_target:dummy_ruler = {
+			kill_leader = {
+				show_notification = no
+				fire = yes
+			}
+		}
 	}
 }
 
@@ -631,7 +636,12 @@ replace_leader_as_governor = {
 		}
 		last_created_leader = {
 			add_experience = event_target:leader_to_replace.trigger:has_experience
-			event_target:leader_to_replace = { kill_leader = { show_notification = no } }
+			event_target:leader_to_replace = {
+				kill_leader = {
+					show_notification = no
+					fire = yes
+				}
+			}
 			save_event_target_as = leader_to_replace
 		}
 	}
@@ -666,7 +676,12 @@ replace_leader_as_scientist = {
 		}
 		last_created_leader = {
 			add_experience = event_target:leader_to_replace.trigger:has_experience
-			event_target:leader_to_replace = { kill_leader = { show_notification = no } }
+			event_target:leader_to_replace = {
+				kill_leader = {
+					show_notification = no
+					fire = yes
+				}
+			}
 			save_event_target_as = leader_to_replace
 		}
 	}
@@ -701,7 +716,12 @@ replace_leader_as_admiral = {
 		}
 		last_created_leader = {
 			add_experience = event_target:leader_to_replace.trigger:has_experience
-			event_target:leader_to_replace = { kill_leader = { show_notification = no } }
+			event_target:leader_to_replace = {
+				kill_leader = {
+					show_notification = no
+					fire = yes
+				}
+			}
 			save_event_target_as = leader_to_replace
 		}
 	}
@@ -736,7 +756,12 @@ replace_leader_as_general = {
 		}
 		last_created_leader = {
 			add_experience = event_target:leader_to_replace.trigger:has_experience
-			event_target:leader_to_replace = { kill_leader = { show_notification = no } }
+			event_target:leader_to_replace = {
+				kill_leader = {
+					show_notification = no
+					fire = yes
+				}
+			}
 			save_event_target_as = leader_to_replace
 		}
 	}
@@ -1733,8 +1758,19 @@ klfis_clone_leader_with_gender = {
 					change_leader_portrait = event_target:leader_to_clone
 					set_name =  event_target:leader_to_clone
 					add_experience = event_target:leader_to_clone.trigger:has_experience # doesn't get copied implicitly when cloned
+					if = {
+						limit = { event_target:leader_to_clone = { has_leader_flag = clone_should_be_recruitable } }
+						recruitable = no
+						recruitable = yes
+					}
 					# leave the original cleanup inside the effect block or portraits won't get copied
-					event_target:leader_to_clone = { kill_leader = { show_notification = no } }
+					event_target:leader_to_clone = {
+						set_leader_flag = leader_replaced_by_clone # other events will fire before the leader is removed - this is to prevent duplicate cloning
+						kill_leader = {
+							show_notification = no
+							fire = yes
+						}
+					}
 				}
 			}
 		}
