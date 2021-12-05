@@ -1506,7 +1506,7 @@ country_event = {
 			country_event = {
 				id = keep_leaders.16
 				scopes = { from = event_target:storage_owner }
-			}	
+			}
 		}
 	}
 	# assimilate: synthetic
@@ -3287,35 +3287,27 @@ country_event = {
 	trigger = {
 		exists = from
 		from = { has_leader_flag = former_gestalt_ruler }
-		any_owned_pop_species = {
-			is_same_species = from
-		}
+		any_owned_pop_species = { is_same_species = from }
 	}
 	immediate = {
 		log = "keep_leaders.100 former gestalt leader [From.GetName] death"
-		# NOTE: using clone_leader here causes a lot of error logs related to random being used in a forbidden location
+		create_leader = {
+			name = random
+			class = ruler
+			species = from
+			effect = {
+				save_event_target_as = age_proxy
+			}
+		}
 		clone_leader = {
 			target = from
 			effect = {
 				set_leader_flag = former_gestalt_ruler_clone
-				if = {
-					limit = { is_lithoid = yes }
-					if = {
-						limit = { is_hive_species = yes }
-						set_age = 40
-					}
-					else = {
-						set_age = 70
-					}
-				}
-				else_if = {
-					limit = { is_organic_species = yes }
-					if = {
-						limit = { is_hive_species = yes }
-						set_age = 15
-					}
-					else = {
-						set_age = 40
+				set_age = event_target:age_proxy.trigger:leader_age
+				event_target:age_proxy = {
+					kill_leader = {
+						show_notification = no
+						fire = yes
 					}
 				}
 				save_event_target_as = exiled_former_gestalt_ruler
@@ -3386,28 +3378,36 @@ country_event = {
 	trigger = {
 		exists = from
 		from = { has_leader_flag = former_gestalt_ruler_clone }
-		any_owned_pop_species = {
-			is_same_species = from
-		}
+		any_owned_pop_species = { is_same_species = from }
 	}
 	immediate = {
 		log = "keep_leaders.101 former gestalt leader [From.GetFirstName] respawned"
+		from = { save_event_target_as = unexile_leader }
 	}
 	option = {
 		name = INCREDIBLE
 		custom_tooltip = keep_leaders.101.a.tooltip
 		hidden_effect = {
-			clone_leader = {
-				target = from
+			create_fleet = {
+				name = "unexile leader"
 				effect = {
-					set_leader_flag = former_gestalt_ruler
+					set_owner = prev
+					create_ship = {
+						name = random
+						random_existing_design = science
+					}
+					set_leader = event_target:unexile_leader
+					save_event_target_as = unexile_fleet
 				}
 			}
-			from = {
-				kill_leader = {
-					show_notification = no
-					fire = yes
-				}
+			destroy_fleet = {
+				target = event_target:unexile_fleet
+				kill_leader = no
+				destroy_template = yes
+			}
+			event_target:unexile_leader = {
+				recruitable = no
+				recruitable = yes
 			}
 		}
 	}
