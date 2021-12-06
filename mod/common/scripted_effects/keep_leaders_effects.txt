@@ -1718,6 +1718,7 @@ klfis_leader_transferred_match_gender_to_species = {
 					prev = {
 						if = {
 							limit = {
+								klfis_species_class_uses_gender = yes
 								NOR = {
 									gender = female
 									gender = male
@@ -1743,11 +1744,17 @@ klfis_leader_transferred_match_gender_to_species = {
 				female = { prev = { klfis_clone_leader_with_gender = { GENDER = female } } }
 				male = { prev = { klfis_clone_leader_with_gender = { GENDER = male } } }
 				not_set = {
-					prev = {
-						random_list = {
-							50 = { klfis_clone_leader_with_gender = { GENDER = female } }
-							50 = { klfis_clone_leader_with_gender = { GENDER = male } }
+					if = {
+						limit = { klfis_species_class_uses_gender = yes }
+						prev = {
+							random_list = {
+								50 = { klfis_clone_leader_with_gender = { GENDER = female } }
+								50 = { klfis_clone_leader_with_gender = { GENDER = male } }
+							}
 						}
+					}
+					else = {
+						prev = { klfis_clone_leader_with_gender = { GENDER = indeterminable } }
 					}
 				}
 			}
@@ -1779,6 +1786,7 @@ klfis_clone_leader_with_gender = {
 					# leave the original cleanup inside the effect block or portraits won't get copied
 					event_target:leader_to_clone = {
 						set_leader_flag = leader_replaced_by_clone # other events will fire before the leader is removed - this is to prevent duplicate cloning
+						set_leader_flag = leader_replaced_by_clone@prev
 						kill_leader = {
 							show_notification = no
 							fire = yes
