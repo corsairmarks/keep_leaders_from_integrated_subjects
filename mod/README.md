@@ -54,6 +54,8 @@ This mod can be safely added to your savegame after the game has started. If you
 
 Demoted rulers with very long names that also contain a period `.` may cause error logs when the Leader screen is open.  It seems related to the font re-coloring in the "former ruler" name affix.  Don't leave the Leader window open for long periods of time or you will generate a very large error log file.
 
+When cloning a leader and changing them from a species class without gender to a species class with gender (or vice versa) the Leader screen interface breaks. The Leader screen does not hide the replaced leader or correctly show their replacement until the player manually recruits a new leader.
+
 ### Error Logs
 
 This mod supports features from several of my other mods. If you are playing without [Eldanær Stellar Authority](https://steamcommunity.com/sharedfiles/filedetails/?id=2496360535) installed, you will get an error log noting a government type doesn't exist:
