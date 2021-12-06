@@ -1,6 +1,6 @@
 # Overview
 
-Have you ever wondered what happened to the former leaders of your subject after you integrated them? Or perhaps where that primitive leader went after you annexed their planet? Wonder no more! With this mod you will be prompted to choose what to do with the now-unemployed leaders whenever you integrate a subject, conquer a primitive planet, or "allow" primitives to join you via covert infiltration.
+Have you ever wondered what happened to the former leaders of your subject after you integrated them? Or perhaps where that primitive leader went after you annexed their planet? Wonder no more! With this mod you will be prompted to choose what to do with the now-unemployed leaders whenever you integrate a subject, conquer a primitive planet, "allow" primitives to join you via covert infiltration, or convert then via a colossus weapon.
 
 Also, regular (non-machine and non-hive) empires can retain leaders from an integrated Machine Intelligence subject if they have full AI rights.  The leaders in a Machine Intelligence that have enough capacity to act as independent agents, even if the rest of the Pops don't.
 
@@ -52,7 +52,7 @@ This mod can be safely added to your savegame after the game has started. If you
 
 ### Stellaris Bugs
 
-Demoted rulers with very long names that also contain a period `.` may cause error logs when the Leader screen is open.  It seems related to the font re-coloring in the "former ruler" name affix.  Don't leave the Leader window open for long periods of time or you will greate a very large error log file.
+Demoted rulers with very long names that also contain a period `.` may cause error logs when the Leader screen is open.  It seems related to the font re-coloring in the "former ruler" name affix.  Don't leave the Leader window open for long periods of time or you will generate a very large error log file.
 
 ### Error Logs
 
