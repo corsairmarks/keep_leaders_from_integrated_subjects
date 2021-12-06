@@ -2,13 +2,11 @@
 
 Have you ever wondered what happened to the former leaders of your subject after you integrated them? Or perhaps where that primitive leader went after you annexed their planet? Wonder no more! With this mod you will be prompted to choose what to do with the now-unemployed leaders whenever you integrate a subject, conquer a primitive planet, "allow" primitives to join you via covert infiltration, or convert then via a colossus weapon.
 
-Also, regular (non-machine and non-hive) empires can retain leaders from an integrated Machine Intelligence subject if they have full AI rights.  The leaders in a Machine Intelligence that have enough capacity to act as independent agents, even if the rest of the Pops don't.
+Demoted rulers you aquire through integration/conquest/etc. will (in most cases) preserve their existing ruler traits in case they somehow become the ruler of your empire. Rulers demoted for any reason such as being integrated or even losing an election benefit by gaining the same former ruler traits. They may not have won the hearts and minds of voters, but they still rose to the occasion and developed new skills. This will applies when being demoted from ruler for any reason, such as gameplay from another mod.
 
-Now enhanced to auto-assign integrated Scientists and Admirals back to their per-integration roles, if they were commanding a science ship or fleet.  Notably, if you play with "pause-on-event" the science vessels will then continue their assigned orders after the leader is reassigned for command.
+Regular (non-machine and non-hive) empires can retain leaders from an integrated Machine Intelligence subject if they have full AI rights. The leaders in a Machine Intelligence have enough capacity to act as independent agents, even if the rest of the Pops don't.
 
-A smaller, more subtle enhancement is that integrated, demoted rulers will (in most cases) now preserve their existing ruler traits in case they somehow become the ruler of your empire.  Also integrated, demoted rulers now get an extra regular leader class trait upon demotion, based on what ruler traits they have.
-
-Even more enhancement! Rulers demoted for any reason such as losing an election now benefit by gaining former ruler traits.  They may not have won the hearts and minds of voters, but they still rose to the occasion and developed new skills.  This will also apply when being demoted from a ruler for any reason, such as gameplay another mod.
+Scientists and Admirals are automatically assigned back to their per-integration roles, if they were commanding a science ship or fleet. Notably, if you play with "pause-on-event" the science vessels will then continue their assigned orders after the leader is reassigned for command.
 
 # Changes
 
