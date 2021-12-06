@@ -90,8 +90,10 @@ This error will not affect the functioning of this mod - all built-in government
     * Clean up variable code that can now be done much more simply
 * 2.0.1 Support both necrophage unity traditions
 * 3.0.0 Update for compatibility with Stellaris 3.2 "Herbert"
-    * Use the new ruler resource production modifiers
-    * Blank out (but do not remove) old workaround events
+    * Ensure necrophaged (and otherwise changed) leaders match the gender of their new species ("Gender Nonbinary Leaders" disables this change)
+    * Integrates with "Full Military Service for Battle Thralls" and "Gender Nonbinary Leaders" to avoid duplicate cloning
+    * If using a colossus weapon on a primitive empire that results in the transfer of control of their planet to your empire, you can choose what happens to the leaders
+    * Supports these colossus weapons by default: Nanobot Diffuser, Deluge Machine, Necrophagic Spore Diffuser (from Eldanær Stellar Authority)
 
 ## Source Code
 
