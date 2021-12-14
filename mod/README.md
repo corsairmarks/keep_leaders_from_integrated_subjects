@@ -2,7 +2,7 @@
 
 Have you ever wondered what happened to the former leaders of your subject after you integrated them? Or perhaps where that primitive leader went after you annexed their planet? Wonder no more! With this mod you will be prompted to choose what to do with the now-unemployed leaders whenever you integrate a subject, conquer a primitive planet, "allow" primitives to join you via covert infiltration, or convert then via a colossus weapon.
 
-Demoted rulers you aquire through integration/conquest/etc. will (in most cases) preserve their existing ruler traits in case they somehow become the ruler of your empire. Rulers demoted for any reason such as being integrated or even losing an election benefit by gaining the same former ruler traits. They may not have won the hearts and minds of voters, but they still rose to the occasion and developed new skills. This will applies when being demoted from ruler for any reason, such as gameplay from another mod.
+Demoted rulers you acquire through integration/conquest/etc. will (in most cases) preserve their existing ruler traits in case they somehow become the ruler of your empire. Rulers demoted for any reason such as being integrated or even losing an election benefit by gaining the same former ruler traits. They may not have won the hearts and minds of voters, but they still rose to the occasion and developed new skills. This will applies when being demoted from ruler for any reason, such as gameplay from another mod.
 
 Regular (non-machine and non-hive) empires can retain leaders from an integrated Machine Intelligence subject if they have full AI rights. The leaders in a Machine Intelligence have enough capacity to act as independent agents, even if the rest of the Pops don't.
 
@@ -14,7 +14,7 @@ A lot of code has gone into figuring out what leaders you can choose to keep bas
 
 These event present you with a few choices about what you can do with the leaders from the now-defunct subject/primitives. It will show a few different options depending on what is available to you. For example, genocidal empires can only keep leaders that are of their own species and necrophage empires have the option to necrophage leaders. There's a special secret bonus for some kinds of leaders - see if you can figure out what it is.
 
-This mod was designed to be played with the default restrictions on ascension paths - mainly that your empire would normally not have more than one assimilation type available to it. However, it is coded in such a way that if you have multiple assimilation types available, any of the "assimilate" button options invokes the same follow-up code. Each integrated leader (and their species) in a regular (non-machine, non-hive empires) are assigned the first assimilation type that they qualify for in this order: synthetic, then cybernetic, then psionic, then deassimilation.  If you are using my machine deassimiilation mod, that type is checked first (before synthetic assimilation).
+This mod was designed to be played with the default restrictions on ascension paths - mainly that your empire would normally not have more than one assimilation type available to it. However, it is coded in such a way that if you have multiple assimilation types available, any of the "assimilate" button options invokes the same follow-up code. Each integrated leader (and their species) in a regular (non-machine, non-hive empires) are assigned the first assimilation type that they qualify for in this order: synthetic, then cybernetic, then psionic, then deassimilation.  If you are using my machine deassimilation mod, that type is checked first (before synthetic assimilation).
 
 Finally, this mod adds some special traits (and a special name affix) for demoted former rulers and heirs.  Their names will be followed by brown text indicating that they are the "Former Ruler/Heir of the <Country Name>" and they will gain a special trait depending on their former empire and new leadership role.
 
@@ -44,7 +44,7 @@ This mod can be safely added to your savegame after the game has started. If you
 ### Additional Mods with Gameplay Interaction
 
 * [Eldanær Stellar Authority](https://steamcommunity.com/sharedfiles/filedetails/?id=2496360535) - if you integrate them, their former ruler and heir are guaranteed to be Governors
-* [Full Military Service for Battle Thralls](https://steamcommunity.com/sharedfiles/filedetails/?id=2496357447) - you will keep military leaders from species set to Battle Thralls but also Full Military Service, and this mod also respects species flagged for allowing military leaders despite the empire being xenophobic and/or a necrophage
+* [Special Leadership Privileges for Battle Thralls and Bio-Trophies](https://steamcommunity.com/sharedfiles/filedetails/?id=2496357447) - interacts with special leadership privileges: a) you will keep military leaders from species set to Battle Thralls but also Full Military Service, b) respects species flagged for allowing military leaders despite the empire being xenophobic and/or a necrophage, and c) allows Rogue Servitors to choose to retain organic leaders as Organic Advisors
 
 ## Known Issues
 
@@ -94,6 +94,7 @@ This error will not affect the functioning of this mod - all built-in government
     * Integrates with "Full Military Service for Battle Thralls" and "Gender Nonbinary Leaders" to avoid duplicate cloning
     * If using a colossus weapon on a primitive empire that results in the transfer of control of their planet to your empire, you can choose what happens to the leaders
     * Supports these colossus weapons by default: Nanobot Diffuser, Deluge Machine, Necrophagic Spore Diffuser (from Eldanær Stellar Authority)
+* 3.1.0 Allow Rogue Servitors to choose to keep organic leaders as advisors when "Special Leadership Privileges for Battle Thralls and Bio-Trophies" is also installed
 
 ## Source Code
 
