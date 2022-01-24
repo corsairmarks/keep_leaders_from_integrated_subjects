@@ -1,5 +1,4 @@
 [h1]Overview[/h1]
-
 Have you ever wondered what happened to the former leaders of your subject after you integrated them? Or perhaps where that primitive leader went after you annexed their planet? Wonder no more! With this mod you will be prompted to choose what to do with the now-unemployed leaders whenever you integrate a subject, conquer a primitive planet, "allow" primitives to join you via covert infiltration, or convert then via a colossus weapon.
 
 Demoted rulers you acquire through integration/conquest/etc. will (in most cases) preserve their existing ruler traits in case they somehow become the ruler of your empire. Rulers demoted for any reason such as being integrated or even losing an election benefit by gaining the same former ruler traits. They may not have won the hearts and minds of voters, but they still rose to the occasion and developed new skills. This will applies when being demoted from ruler for any reason, such as gameplay from another mod.
@@ -9,7 +8,6 @@ Regular (non-machine and non-hive) empires can retain leaders from an integrated
 Scientists and Admirals are automatically assigned back to their per-integration roles, if they were commanding a science ship or fleet. Notably, if you play with "pause-on-event" the science vessels will then continue their assigned orders after the leader is reassigned for command.
 
 [h1]Changes[/h1]
-
 A lot of code has gone into figuring out what leaders you can choose to keep based on what kind of country you are playing, what ethics it has, what kinds of assimilation or necrophage might be available. All of that boils down to an event screen that appears when you have integrated a subject or conquered a primitive planet, or a second event when you have infiltrated a primitive planet.
 
 These event present you with a few choices about what you can do with the leaders from the now-defunct subject/primitives. It will show a few different options depending on what is available to you. For example, genocidal empires can only keep leaders that are of their own species and necrophage empires have the option to necrophage leaders. There's a special secret bonus for some kinds of leaders - see if you can figure out what it is.
@@ -19,54 +17,42 @@ This mod was designed to be played with the default restrictions on ascension pa
 Finally, this mod adds some special traits (and a special name affix) for demoted former rulers and heirs. Their names will be followed by brown text indicating that they are the "Former Ruler/Heir of the <Country Name>" and they will gain a special trait depending on their former empire and new leadership role.
 
 [h2]Compatibility[/h2]
-
-Built for Stellaris version 3.2.* "Herbert." Not compatible with achievements.
+Built for Stellaris version 3.3.* "Libra." Not compatible with achievements.
 
 This mod is designed to understand the species types, ethics, civics, authorities, governments, and origins that are built-in to Stellaris. The features of this mod are implemented primarily through brand new events and scripting, meaning that it should not directly conflict with most other mods. However, you could end up with odd behavior if you play with mods that significantly alter the default gameplay - for example, adding a new homicidal species (without the mod providing an update to the [b]is_homicidal[/b] trigger). Mods that add or modify civics should generally work but this mod may offer decisions that do not make the most sense for the role-play of new civics.
 
 [h3]Required Mods[/h3]
-
 [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2488154830]Primitive Conquest Enhancements[/url] adds a necessary extension point (dev speak for "it adds something I need") for detecting when the primitive infiltration mission completes. If you don't install it, then this mod won't be able to offer you a choice when infiltration is complete.
 
 [h3]Recommended Companion Mods[/h3]
-
 [list]
 [*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2499031295]Leader Traits: All Eligible Species Traits[/url] ensures your leaders get all their species-based traits (such as Psionic or Erudite)
 [*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2553806265]Leader Traits: Enhanced Randomisation[/url] improves leader trait randomisation and toggles traits from biological to machine traits (and back) if a leader becomes a robot and/or returns to a biological form
 [*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2553812372]Deassimilate Machines[/url] allows you to "deassimilate" machine Pops into robots - specifically allows (with this mod) for machine deassimilation as a "leadership disposition" choice for integrated subjects (combined with Leader Traits: All Eligible Species Traits, the leaders gain synth leader traits)
 [*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2558494770]corsairmarks's Leader Traits MOD Chinese patch[/url] by Hua Zhang - Chinese localisation
 [/list]
-
 You might wonder - why are these separate mods? They override default gameplay options, so I thought it best to give players the choice on whether they want the original version or the reimagined version. Leader Traits: Enhanced Randomisation and Machine Deassimilation were developed alongside this mod.
 
 [h3]When to Install[/h3]
-
 This mod can be safely added to your savegame after the game has started. If you remove it, you will lose access to the custom "former ruler/heir" traits and the espionage bonus that is one of the choices upon successfully infiltrating primitives. Stellaris is fairly forgiving in situations like this - it's likely that error logs would be generated and the game would otherwise ignore the missing content. Back up your savegame before trying to remove a mod.
 
 [h2]Known Issues[/h2]
-
 [h3]Stellaris Bugs[/h3]
-
 Demoted rulers with very long names with a period may cause error logs when the Leader screen is open. Don't leave the Leader window open for long periods of time or you will generate a very large error log file.
 
 When cloning a leader and changing them from a species class without gender to a species class with gender (or vice versa) the Leader screen interface breaks. The Leader screen does not hide the replaced leader or correctly show their replacement until the player manually recruits a new leader.
 
 [h3]Error Logs[/h3]
-
 This mod supports features from several of my other mods. If you are playing without "Eldanær Stellar Authority" installed, you will get an error log noting a government type doesn't exist:
-
 [code]
 [11:31:50][trigger_impl.cpp:5664]: Invalid government type [gov_bureaucratic_autocracy]! file: file: events/keep_leaders_events.txt line: 163 line: 1
 [/code]
-
 This error will not affect the functioning of this mod - all built-in government types are handled before the custom one.
 
 [h2]Changelog[/h2]
-
 See [url=https://steamcommunity.com/sharedfiles/filedetails/changelog/2553818684]Change Notes[/url]
 
 [h2]Source Code[/h2]
-
 Hosted on [url=https://github.com/corsairmarks/keep_leaders_from_integrated_subjects]GitHub[/url]
 
 [url=https://discord.gg/bHVez2C][img]https://i.imgur.com/4Und3QN.png[/img][/url]
