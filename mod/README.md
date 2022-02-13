@@ -68,7 +68,7 @@ This error will not affect the functioning of this mod - all built-in government
 
 * 1.0.0 Initial version
 * 1.0.1 Add thumbnail
-* 1.0.2 Support Decree: Honored Protectors in Full Military Service for Battle Thralls
+* 1.0.2 Support Decree: Honored Protectors in Full Military Service for Battle Thralls (now Special Leadership Privileges for Battle Thralls and Bio-Trophies)
 * 1.1.0 Auto-Assign and UI Enhancements
     * Automatically reassign Scientists and Admirals from integrated subjects back to their previous fleet command roles
     * Improve some `allow` triggers to be more lenient (most notably the Send them for assignment/"Keep as many as possible")
@@ -91,7 +91,7 @@ This error will not affect the functioning of this mod - all built-in government
 * 2.0.1 Support both necrophage unity traditions
 * 3.0.0 Update for compatibility with Stellaris 3.2 "Herbert"
     * Ensure necrophaged (and otherwise changed) leaders match the gender of their new species ("Gender Nonbinary Leaders" disables this change)
-    * Integrates with "Full Military Service for Battle Thralls" and "Gender Nonbinary Leaders" to avoid duplicate cloning
+    * Integrates with "Special Leadership Privileges for Battle Thralls and Bio-Trophies" and "Gender Nonbinary Leaders" to avoid duplicate cloning
     * If using a colossus weapon on a primitive empire that results in the transfer of control of their planet to your empire, you can choose what happens to the leaders
     * Supports these colossus weapons by default: Nanobot Diffuser, Deluge Machine, Necrophagic Spore Diffuser (from Eldanær Stellar Authority)
 * 3.1.0 Allow Rogue Servitors to choose to keep organic leaders as advisors when "Special Leadership Privileges for Battle Thralls and Bio-Trophies" is also installed
