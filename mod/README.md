@@ -20,7 +20,7 @@ Finally, this mod adds some special traits (and a special name affix) for demote
 
 ## Compatibility
 
-Built for Stellaris version 3.3.\* "Libra."  Not compatible with achievements.
+Built for Stellaris version 3.3 "Libra."  Not compatible with achievements.
 
 This mod is designed to understand the species types, ethics, civics, authorities, governments, and origins that are built-in to Stellaris. The features of this mod are implemented primarily through brand new events and scripting, meaning that it should not directly conflict with most other mods. However, you could end up with odd behavior if you play with mods that significantly alter the default gameplay - for example, adding a new homicidal species (without the mod providing an update to the `is_homicidal` trigger). Mods that add or modify civics should generally work but this mod may offer decisions that do not make the most sense for the role-play of new civics.
 
