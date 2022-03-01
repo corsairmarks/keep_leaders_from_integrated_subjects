@@ -96,6 +96,7 @@ This error will not affect the functioning of this mod - all built-in government
     * Supports these colossus weapons by default: Nanobot Diffuser, Deluge Machine, Necrophagic Spore Diffuser (from Eldanær Stellar Authority)
 * 3.1.0 Allow Rogue Servitors to choose to keep organic leaders as advisors when "Special Leadership Privileges for Battle Thralls and Bio-Trophies" is also installed
 * 4.0.0 Update for compatibility with Stellaris 3.3 "Libra" - Zombies are not smart enough to be leaders
+* 4.0.1 Remove invalid `modification = no` from leader traits
 
 ## Source Code
 
