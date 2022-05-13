@@ -97,7 +97,13 @@ This error will not affect the functioning of this mod - all built-in government
 * 3.1.0 Allow Rogue Servitors to choose to keep organic leaders as advisors when "Special Leadership Privileges for Battle Thralls and Bio-Trophies" is also installed
 * 4.0.0 Update for compatibility with Stellaris 3.3 "Libra" - Zombies are not smart enough to be leaders
 * 4.0.1 Remove invalid `modification = no` from leader traits
-* 4.1.0 "former ruler" traits no longer give admin cap, instead they grant edict fund
+* 4.1.0 "Former ruler" traits no longer give admin cap, instead they grant edict fund
+* 5.0.0 Update for Stellaris version 3.4 "Cepheus"
+    * Use memory optimization feature for effects and triggers
+    * Use `country_base_` modifiers to generate resources from leaders (previous modifier was removed)
+    * Use new special bracket syntax when setting names
+    * `SALVAGER` and `SHROUDWALKER` species classes do not use gender
+    * Update code to account for hired (mercenary) fleets
 
 ## Source Code
 
