@@ -2219,7 +2219,7 @@ country_event = {
 					set_army_flag = keep_leaders_army_transport_fleet@fleet
 				}
 			}
-			every_owned_fleet = {
+			every_controlled_fleet = {
 				limit = { is_ship_class = shipclass_transport }
 				save_event_target_as = source_fleet
 				log = "[source_fleet.GetName] is a transport fleet"
@@ -2232,11 +2232,11 @@ country_event = {
 								set_fleet_flag = keep_leader_match_transport_fleet@event_target:source_fleet
 							}
 							save_event_target_as = target_fleet
-							set_name = "[source_fleet.GetName]"
+							set_name = "[source_fleet.GetName]" # TODO new syntax
 							set_owner = event_target:integrating_country
 							set_location = event_target:source_fleet
 							event_target:source_fleet = {
-								every_owned_ship = {
+								every_controlled_ship = {
 									save_event_target_as = source_ship
 									log = "transport [source_ship.GetName]"
 									event_target:target_fleet = {
