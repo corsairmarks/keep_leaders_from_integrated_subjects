@@ -89,6 +89,7 @@ create_leader_storage_and_transfer_leaders = {
 					key = keep_leaders.former_ruler_name
 					variable_string = "This.GetRegnalName"
 					variable_string = "This.GetRulerTitle"
+					# variable_string = "This.GetTitle"
 					variable_string = "former_owner.GetName"
 				}
 				set_leader_flag = former_ruler
@@ -137,9 +138,9 @@ create_leader_storage_and_transfer_leaders = {
 			limit = { exists = heir }
 			heir = {
 				set_name = {
-					key = keep_leaders.former_ruler_name
-					variable_string = "This.GetRegnalName"
-					variable_string = "This.GetRulerTitle"
+					key = keep_leaders.former_heir_name
+					variable_string = "This.GetName"
+					# variable_string = "This.GetTitle"
 					variable_string = "former_owner.GetName"
 				}
 				set_leader_flag = former_heir

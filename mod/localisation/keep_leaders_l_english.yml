@@ -158,6 +158,7 @@
 
  # former ruler name formatting
  keep_leaders.former_ruler_name: "[This.GetRegnalName], §LFormer [This.GetRulerTitle] of the [former_owner.GetName]§!"
+ keep_leaders.former_heir_name: "[This.GetName], §LFormer Heir to the [former_owner.GetName]§!"
  keep_leaders.source_fleet_name: "[source_fleet.GetName]"
  keep_leaders.source_ship_name: "[source_ship.GetName]"
  keep_leaders.source_army_name: "[source_army.GetName]"
