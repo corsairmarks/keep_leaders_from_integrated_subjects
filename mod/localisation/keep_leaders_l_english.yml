@@ -158,6 +158,10 @@
 
  # former ruler name formatting
  keep_leaders.former_ruler_name: "[This.GetRegnalName], §LFormer [This.GetTitle] of the [former_owner.GetRealName]§!"
+ keep_leaders.former_owner_real_name: "[former_owner.GetRealName]"
+ keep_leaders.source_fleet_name: "[source_fleet.GetName]"
+ keep_leaders.source_ship_name: "[source_ship.GetName]"
+ keep_leaders.source_army_name: "[source_army.GetName]"
 
  keep_leaders.3.title: "Reassign Infiltration Agents"
  keep_leaders.3.desc: "Following the successful infiltration and subsequent integration of [Root.GetName], our agents that posed as [original_species.GetNamePlural] are available for reassignment. What shall we do with them?"

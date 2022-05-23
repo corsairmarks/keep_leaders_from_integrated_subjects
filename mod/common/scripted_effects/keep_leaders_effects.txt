@@ -11,7 +11,10 @@ create_leader_storage_and_transfer_leaders = {
 		auto_delete = no
 		ignore_initial_colony_error = yes
 		effect = {
-			set_name = "\\[former_owner.GetRealName]" # TODO: new syntax
+			set_name = {
+				key = keep_leaders.former_owner_real_name
+				variable_string = "former_owner.GetRealName"
+			}
 			set_country_flag = former_owner@event_target:former_owner
 			save_event_target_as = storage_owner
 			save_event_target_as = variable_storage
@@ -84,7 +87,12 @@ create_leader_storage_and_transfer_leaders = {
 		if = {
 			limit = { exists = ruler }
 			ruler = {
-				set_name = keep_leaders.former_ruler_name # TODO: new syntax
+				set_name = {
+					key = keep_leaders.former_ruler_name
+					variable_string = "This.GetRegnalName"
+					variable_string = "This.GetTitle"
+					variable_string = "former_owner.GetRealName"
+				}
 				set_leader_flag = former_ruler
 				save_event_target_as = integrated_ruler
 			}
@@ -130,7 +138,12 @@ create_leader_storage_and_transfer_leaders = {
 		if = {
 			limit = { exists = heir }
 			heir = {
-				set_name = keep_leaders.former_ruler_name # TODO: new syntax
+				set_name = {
+					key = keep_leaders.former_ruler_name
+					variable_string = "This.GetRegnalName"
+					variable_string = "This.GetTitle"
+					variable_string = "former_owner.GetRealName"
+				}
 				set_leader_flag = former_heir
 				save_event_target_as = integrated_heir
 			}
@@ -1705,17 +1718,45 @@ try_assign_retained_leader_to_former_assignment = {
 
 # somewhat hacky workaround to spawn an army transport of a specific type with less repeated code, and also using localisation for the name
 # THIS = fleet, to which the transport will be assigned
-# $ARMY_TYPE$ = army type to create
+# ARMY_TYPE = army type to create
 # event_target:source_ship = transport being duplicated
 # event_target:source_army = army being duplicated
 create_army_transport_parameterized = {
 	optimize_memory
-	create_army_transport = {
-		species = event_target:source_army # TODO: won't work if the army doesn't have one!
-		army_type = $ARMY_TYPE$
-		effect = {
-			set_name = "\\[source_ship.GetName]" # TODO: new syntax
-			last_created_army = { set_name = "\\[source_army.GetName]" } # TODO: new syntax
+	if = {
+		limit = { exists = event_target:source_army.species }
+		create_army_transport = {
+			species = event_target:source_army
+			army_type = $ARMY_TYPE$
+			effect = {
+				set_name = {
+					key = keep_leaders.source_ship_name
+					variable_string = "source_ship.GetName"
+				}
+				last_created_army = {
+					set_name = {
+						key = keep_leaders.source_army_name
+						variable_string = "source_army.GetName"
+					}
+				}
+			}
+		}
+	}
+	else = {
+		create_army_transport = {
+			army_type = $ARMY_TYPE$
+			effect = {
+				set_name = {
+					key = keep_leaders.source_ship_name
+					variable_string = "source_ship.GetName"
+				}
+				last_created_army = {
+					set_name = {
+						key = keep_leaders.source_army_name
+						variable_string = "source_army.GetName"
+					}
+				}
+			}
 		}
 	}
 }

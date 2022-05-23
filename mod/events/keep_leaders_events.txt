@@ -2232,7 +2232,10 @@ country_event = {
 								set_fleet_flag = keep_leader_match_transport_fleet@event_target:source_fleet
 							}
 							save_event_target_as = target_fleet
-							set_name = "[source_fleet.GetName]" # TODO new syntax
+							set_name = {
+								key = keep_leaders.source_fleet_name
+								variable_string = "source_fleet.GetName"
+							}
 							set_owner = event_target:integrating_country
 							set_location = event_target:source_fleet
 							event_target:source_fleet = {
