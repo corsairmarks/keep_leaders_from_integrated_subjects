@@ -157,8 +157,7 @@
  disconnected_machine_leaders_collapse_without_ai_assimilation_no_x: "Once their uplink to the central §Y$auth_machine_intelligence$§! is severed, $trait_machine_unit$ leaders are rendered inoperable - unless they could be retrofitted with individual §Y$tech_sapient_ai$§!."
 
  # former ruler name formatting
- keep_leaders.former_ruler_name: "[This.GetRegnalName], §LFormer [This.GetTitle] of the [former_owner.GetRealName]§!"
- keep_leaders.former_owner_real_name: "[former_owner.GetRealName]"
+ keep_leaders.former_ruler_name: "[This.GetRegnalName], §LFormer [This.GetRulerTitle] of the [former_owner.GetName]§!"
  keep_leaders.source_fleet_name: "[source_fleet.GetName]"
  keep_leaders.source_ship_name: "[source_ship.GetName]"
  keep_leaders.source_army_name: "[source_army.GetName]"

@@ -101,7 +101,7 @@ This error will not affect the functioning of this mod - all built-in government
 * 5.0.0 Update for Stellaris version 3.4 "Cepheus"
     * Use memory optimization feature for effects and triggers
     * Use `country_base_` modifiers to generate resources from leaders (previous modifier was removed)
-    * Use new special bracket syntax when setting names
+    * Use new special bracket syntax when setting names (unable to get the heir's title for Imperial authorities, currently)
     * `SALVAGER` and `SHROUDWALKER` species classes do not use gender
     * Update code to account for hired (mercenary) fleets
 

@@ -5,16 +5,14 @@ create_leader_storage_and_transfer_leaders = {
 	optimize_memory
 	# "arguments" for transfer_leader_to_storage
 	create_country = {
+		name = event_target:former_owner
+		adjective = event_target:former_owner
 		type = neutral_faction
 		species = event_target:former_owner
 		flag = event_target:former_owner
 		auto_delete = no
 		ignore_initial_colony_error = yes
 		effect = {
-			set_name = {
-				key = keep_leaders.former_owner_real_name
-				variable_string = "former_owner.GetRealName"
-			}
 			set_country_flag = former_owner@event_target:former_owner
 			save_event_target_as = storage_owner
 			save_event_target_as = variable_storage
@@ -90,8 +88,8 @@ create_leader_storage_and_transfer_leaders = {
 				set_name = {
 					key = keep_leaders.former_ruler_name
 					variable_string = "This.GetRegnalName"
-					variable_string = "This.GetTitle"
-					variable_string = "former_owner.GetRealName"
+					variable_string = "This.GetRulerTitle"
+					variable_string = "former_owner.GetName"
 				}
 				set_leader_flag = former_ruler
 				save_event_target_as = integrated_ruler
@@ -141,8 +139,8 @@ create_leader_storage_and_transfer_leaders = {
 				set_name = {
 					key = keep_leaders.former_ruler_name
 					variable_string = "This.GetRegnalName"
-					variable_string = "This.GetTitle"
-					variable_string = "former_owner.GetRealName"
+					variable_string = "This.GetRulerTitle"
+					variable_string = "former_owner.GetName"
 				}
 				set_leader_flag = former_heir
 				save_event_target_as = integrated_heir
