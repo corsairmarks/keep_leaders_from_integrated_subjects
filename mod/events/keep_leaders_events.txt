@@ -1425,6 +1425,7 @@ country_event = {
 		name = keep_leaders.1.k.hive
 		icon = {
 			icon = GFX_ap_evolutionary_mastery
+			icon_background = GFX_klfis_event_icon_bg_blank
 			text = keep_leaders.1.k.gene.icon.tooltip
 		}
 		custom_tooltip = keep_leaders.1.k.hive.tooltip
@@ -1471,6 +1472,7 @@ country_event = {
 		name = keep_leaders.1.k.unhive
 		icon = {
 			icon = GFX_ap_evolutionary_mastery
+			icon_background = GFX_klfis_event_icon_bg_blank
 			text = keep_leaders.1.k.gene.icon.tooltip
 		}
 		custom_tooltip = keep_leaders.1.k.unhive.tooltip
@@ -1528,6 +1530,7 @@ country_event = {
 		name = keep_leaders.1.k.psi
 		icon = {
 			icon = GFX_ap_transcendence
+			icon_background = GFX_klfis_event_icon_bg_blank
 			text = keep_leaders.1.k.psi.icon.tooltip
 		}
 		if = {
@@ -1590,6 +1593,7 @@ country_event = {
 		name = keep_leaders.1.k.cyb
 		icon = {
 			icon = GFX_ap_the_flesh_is_weak
+			icon_background = GFX_klfis_event_icon_bg_blank
 			text = keep_leaders.1.k.cyb.icon.tooltip
 		}
 		custom_tooltip = keep_leaders.1.k.cyb.tooltip
@@ -1651,6 +1655,7 @@ country_event = {
 		name = keep_leaders.1.k.synth
 		icon = {
 			icon = GFX_ap_synthetic_evolution
+			icon_background = GFX_klfis_event_icon_bg_blank
 			text = keep_leaders.1.k.synth.icon.tooltip
 		}
 		custom_tooltip = keep_leaders.1.k.synth.tooltip
@@ -1749,6 +1754,7 @@ country_event = {
 		name = keep_leaders.1.k.unmach
 		icon = {
 			icon = GFX_icon_tech_sapient_ai_alternate
+			icon_background = GFX_klfis_event_icon_bg_blank
 			text = keep_leaders.1.k.unmach.icon.tooltip
 		}
 		custom_tooltip = keep_leaders.1.k.unmach.tooltip
