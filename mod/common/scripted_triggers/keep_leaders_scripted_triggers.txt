@@ -44,6 +44,19 @@ has_full_ai_rights = {
 	}
 }
 
+# this = country
+allows_ai_leaders = {
+	optimize_memory
+	OR = {
+		is_machine_empire = yes
+		has_country_flag = synthetic_empire
+		NOR = {
+			has_policy_flag = ai_outlawed
+			is_spiritualist = yes
+		}
+	}
+}
+
 # this = something with a species
 # event_target:potential_owner = country to which the leader would transfer
 can_be_civilian_leaders_species = {
@@ -451,7 +464,13 @@ is_cyborg_leader = {
 # this = leader
 is_synthetic_leader = {
 	optimize_memory
-	is_mechanical_species = yes
+	OR = {
+		is_mechanical_species = yes
+		AND = {
+			has_global_flag = machine_leader_synthetic_traits_installed
+			is_machine_species = yes
+		}
+	}
 	OR = {
 		AND = {
 			leader_class = ruler
@@ -510,7 +529,7 @@ is_eligible_transfer_without_assimilation = {
 			}
 			OR = {
 				is_robotic_species = no # intentionally allows machine leaders to join non-machines, even if their Pops can't
-				event_target:potential_owner = { has_full_ai_rights = yes }
+				event_target:potential_owner = { allows_ai_leaders = yes }
 			}
 		}
 		else = {

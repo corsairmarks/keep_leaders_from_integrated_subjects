@@ -1408,7 +1408,7 @@ country_event = {
 			}
 			modifier = {
 				factor = 2
-				has_full_ai_rights = yes
+				allows_ai_leaders = yes
 				event_target:storage_owner = {
 					any_owned_leader = {
 						is_eligible_transfer_leader_from_storage = yes
@@ -2946,7 +2946,7 @@ country_event = {
 				else_if = {
 					limit = {
 						is_robotic_species = yes
-						event_target:potential_owner = { has_full_ai_rights = yes }
+						event_target:potential_owner = { allows_ai_leaders = yes }
 						is_bypass_leader_restriction_honored_protectors = yes
 					}
 					ensure_species_rights_and_take_ownership_of_leader = yes
