@@ -18,6 +18,7 @@ on_single_player_save_game_load = {
 on_subject_integrated = {
 	events = {
 		keep_leaders.5
+		keep_leaders.6
 	}
 }
 

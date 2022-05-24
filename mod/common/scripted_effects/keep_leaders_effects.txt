@@ -1683,34 +1683,34 @@ try_assign_retained_leader_to_former_assignment = {
 			}
 		}
 		# armies can't have their owners changed, an it's unclear how I could clone the transports before integration fires, which means there's nothing to which to reassign a general
-		# general = {
-		# 	if = {
-		# 		limit = { has_leader_flag = keep_leader_match_transport_fleet@THIS }
-		# 		owner = {
-		# 			random_controlled_fleet = {
-		# 				limit = {
-		# 					has_fleet_flag = keep_leader_match_transport_fleet@PREVPREV
-		# 					NOT = { exists = leader }
-		# 				}
-		# 				assign_leader = PREVPREV
-		# 				log = "\\[PrevPrev.GetTitle] \\[PrevPrev.GetName] resumed command of transport fleet \\[This.GetName]"
-		# 			}
-		# 		}
-		# 	}
-		# 	else_if = {
-		# 		limit = { has_leader_flag = keep_leader_match_army@THIS }
-		# 		owner = {
-		# 			random_owned_army = {
-		# 				limit = {
-		# 					has_army_flag = keep_leader_match_army@PREVPREV
-		# 					NOT = { exists = leader }
-		# 				}
-		# 				assign_leader = PREVPREV
-		# 				log = "\\[PrevPrev.GetTitle] \\[PrevPrev.GetName] resumed command of the army \\[This.GetName]"
-		# 			}
-		# 		}
-		# 	}
-		# }
+		general = {
+			if = {
+				limit = { has_leader_flag = keep_leader_match_transport_fleet@THIS }
+				owner = {
+					random_controlled_fleet = {
+						limit = {
+							has_fleet_flag = keep_leader_match_transport_fleet@PREVPREV
+							NOT = { exists = leader }
+						}
+						assign_leader = PREVPREV
+						log = "\\[PrevPrev.GetTitle] \\[PrevPrev.GetName] resumed command of transport fleet \\[This.GetName]"
+					}
+				}
+			}
+			else_if = {
+				limit = { has_leader_flag = keep_leader_match_army@THIS }
+				owner = {
+					random_owned_army = {
+						limit = {
+							has_army_flag = keep_leader_match_army@PREVPREV
+							NOT = { exists = leader }
+						}
+						assign_leader = PREVPREV
+						log = "\\[PrevPrev.GetTitle] \\[PrevPrev.GetName] resumed command of the army \\[This.GetName]"
+					}
+				}
+			}
+		}
 		# rulers have special handling
 	}
 }
@@ -1722,40 +1722,29 @@ try_assign_retained_leader_to_former_assignment = {
 # event_target:source_army = army being duplicated
 create_army_transport_parameterized = {
 	optimize_memory
+	log = "attempting to create $ARMY_TYPE$ transport for \\[This.Owner.GetRealName]"
 	if = {
 		limit = { exists = event_target:source_army.species }
 		create_army_transport = {
-			species = event_target:source_army
+			species = event_target:source_army.species
 			army_type = $ARMY_TYPE$
-			effect = {
-				set_name = {
-					key = keep_leaders.source_ship_name
-					variable_string = "source_ship.GetName"
-				}
-				last_created_army = {
-					set_name = {
-						key = keep_leaders.source_army_name
-						variable_string = "source_army.GetName"
-					}
-				}
-			}
 		}
 	}
 	else = {
 		create_army_transport = {
 			army_type = $ARMY_TYPE$
-			effect = {
-				set_name = {
-					key = keep_leaders.source_ship_name
-					variable_string = "source_ship.GetName"
-				}
-				last_created_army = {
-					set_name = {
-						key = keep_leaders.source_army_name
-						variable_string = "source_army.GetName"
-					}
-				}
-			}
+		}
+	}
+	last_created_ship = {
+		set_name = {
+			key = keep_leaders.source_ship_name
+			variable_string = "source_ship.GetName"
+		}
+	}
+	last_created_army = {
+		set_name = {
+			key = keep_leaders.source_army_name
+			variable_string = "source_army.GetName"
 		}
 	}
 }

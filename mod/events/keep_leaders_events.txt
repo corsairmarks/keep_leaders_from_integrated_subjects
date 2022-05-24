@@ -2189,6 +2189,7 @@ country_event = {
 			save_event_target_as = integrated_country
 			# flag each army to correspond to a flag set on its transport fleet
 			every_owned_army = {
+				limit = { is_defensive_army = no }
 				log = "[This.GetName] owned by [This.Owner.GetName]"
 				if = {
 					limit = { exists = fleet }
