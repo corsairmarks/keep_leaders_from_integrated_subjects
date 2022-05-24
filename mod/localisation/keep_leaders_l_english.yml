@@ -46,7 +46,7 @@
 
  # keep organics only (target has both)
  keep_leaders.1.e: "The organics shall join us. Recycle the §Y$MACHINE_plural$§! & §Y$ROBOT_plural$§!."
- keep_leaders.1.e.tooltip: "§Y$BIOLOGICAL$§!, non-§Y$trait_hive_mind$§! leaders from the [storage_owner.GetRealName] are integrated into our empire, but §Y$MACHINE$§! and §Y$ROBOT$§! leaders are recycled."
+ keep_leaders.1.e.tooltip: "§Y$BIOLOGICAL$§!, non-§Y$trait_hive_mind$§! leaders from the [storage_owner.GetRealName] are allowed to join our empire, but §Y$MACHINE$§! and §Y$ROBOT$§! leaders are recycled."
  keep_leaders.1.e.spir: "Welcome the organics. Cleanse the abominable thinking machines."
  keep_leaders.1.e.ai: "The organics shall join us. Retire the §Y$MACHINE_plural$§! & §Y$ROBOT_plural$§!."
  keep_leaders.1.e.ai.tooltip: "§Y$BIOLOGICAL$§!, non-§Y$trait_hive_mind$§! leaders from the [storage_owner.GetRealName] are allowed to join our empire, but §Y$MACHINE$§! and §Y$ROBOT$§! leaders are forced to retire."
