@@ -104,6 +104,7 @@ This error will not affect the functioning of this mod - all built-in government
     * Use new special bracket syntax when setting names (unable to get the heir's title for Imperial authorities, currently)
     * `SALVAGER` and `SHROUDWALKER` species classes do not use gender
     * Update code to account for hired (mercenary) fleets
+* 5.1.0 Allow empires that do not explicitly outlaw artificial intelligence to retain robotic leaders
 
 ## Source Code
 
