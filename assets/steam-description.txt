@@ -42,13 +42,6 @@ Demoted rulers with very long names with a period may cause error logs when the 
 
 When cloning a leader and changing them from a species class without gender to a species class with gender (or vice versa) the Leader screen interface breaks. The Leader screen does not hide the replaced leader or correctly show their replacement until the player manually recruits a new leader.
 
-[h3]Error Logs[/h3]
-This mod supports features from several of my other mods. If you are playing without "Eldanær Stellar Authority" installed, you will get an error log noting a government type doesn't exist:
-[code]
-[11:31:50][trigger_impl.cpp:5664]: Invalid government type [gov_bureaucratic_autocracy]! file: file: events/keep_leaders_events.txt line: 163 line: 1
-[/code]
-This error will not affect the functioning of this mod - all built-in government types are handled before the custom one.
-
 [h2]Changelog[/h2]
 See [url=https://steamcommunity.com/sharedfiles/filedetails/changelog/2553818684]Change Notes[/url]
 
