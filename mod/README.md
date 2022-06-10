@@ -95,7 +95,7 @@ When cloning a leader and changing them from a species class without gender to a
     * `SALVAGER` and `SHROUDWALKER` species classes do not use gender
     * Update code to account for hired (mercenary) fleets
 * 5.1.0 Allow empires that do not explicitly outlaw artificial intelligence to retain robotic leaders
-* 5.2.0 Add a dummy `gov_bureaucratic_autocracy` to stop spamming the error log
+* 5.2.0 Add a dummy `gov_bureaucratic_autocracy` to stop spamming the error log when Eldanær Stellar Authority is not installed
 
 ## Source Code
 
