@@ -383,7 +383,7 @@ country_event = {
 					has_valid_civic = civic_fanatic_purifiers
 					AND = {
 						has_ascension_perk = ap_the_flesh_is_weak
-						has_country_flag = flesh_weakened
+						has_country_flag = cyborg_empire
 					}
 				}
 				event_target:storage_owner = {
@@ -613,7 +613,7 @@ country_event = {
 			OR = {
 				custom_tooltip = {
 					text = keep_leaders.1.k.cyb2.fail_text
-					has_country_flag = flesh_weakened
+					has_country_flag = cyborg_empire
 				}
 				has_valid_civic = civic_machine_assimilator
 			}
@@ -644,7 +644,7 @@ country_event = {
 		}
 		allow = {
 			OR = {
-				has_country_flag = flesh_weakened
+				has_country_flag = cyborg_empire
 				has_valid_civic = civic_machine_assimilator
 			}
 		}
@@ -1623,7 +1623,7 @@ country_event = {
 			}
 			custom_tooltip = {
 				fail_text = keep_leaders.1.k.cyb2.fail_text
-				has_country_flag = flesh_weakened
+				has_country_flag = cyborg_empire
 			}
 			custom_tooltip = {
 				fail_text = keep_leaders.1.necro.fail_text
@@ -1669,7 +1669,7 @@ country_event = {
 		trigger = {
 			hidden_trigger = {
 				has_utopia = yes
-				has_country_flag = flesh_weakened
+				has_country_flag = cyborg_empire
 				event_target:storage_owner = {
 					any_owned_leader = {
 						is_eligible_transfer_leader_from_storage = yes

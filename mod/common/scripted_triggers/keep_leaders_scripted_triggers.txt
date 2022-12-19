@@ -25,7 +25,7 @@ empire_considers_cyborgs_robotic = {
 	OR = {
 		has_valid_civic = civic_machine_assimilator
 		has_ascension_perk = ap_the_flesh_is_weak
-		has_country_flag = flesh_weakened
+		has_country_flag = cyborg_empire
 		has_ascension_perk = ap_synthetic_evolution
 		has_country_flag = synthetic_empire
 	}
@@ -239,7 +239,7 @@ is_eligible_for_cybernetic_assimilation_species = {
 	optimize_memory
 	event_target:potential_owner = {
 		has_ascension_perk = ap_the_flesh_is_weak
-		has_country_flag = flesh_weakened
+		has_country_flag = cyborg_empire
 	}
 	is_organic_species = yes
 	is_cyborg_species = no
@@ -288,17 +288,6 @@ is_eligible_for_assimilation_species = {
 	}
 	else = {
 		always = no
-	}
-}
-
-# this = something with a species
-is_latent_psionic_or_psionic_species = {
-	optimize_memory
-	species = {
-		OR = {
-			has_trait = trait_latent_psionic
-			has_trait = trait_psionic
-		}
 	}
 }
 
@@ -386,7 +375,7 @@ is_military_leader = {
 is_psionic_leader = {
 	optimize_memory
 	OR = {
-		is_latent_psionic_or_psionic_species = yes
+		has_psionic_species_trait = yes
 		if = {
 			limit = { leader_class = ruler }
 			OR = {
@@ -459,13 +448,7 @@ is_cyborg_leader = {
 # this = leader
 is_synthetic_leader = {
 	optimize_memory
-	OR = {
-		is_mechanical_species = yes
-		AND = {
-			has_global_flag = machine_leader_synthetic_traits_installed
-			is_machine_species = yes
-		}
-	}
+	is_robotic_species = yes
 	OR = {
 		AND = {
 			leader_class = ruler
