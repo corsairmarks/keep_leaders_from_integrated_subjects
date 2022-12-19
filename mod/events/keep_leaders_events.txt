@@ -1731,7 +1731,7 @@ country_event = {
 				event_target:storage_owner = {
 					any_owned_leader = {
 						is_eligible_transfer_leader_from_storage = yes
-						is_eligible_for_machine_assimilation_species = yes
+						is_eligible_for_machine_cybernetic_assimilation_species = yes
 					}
 				}
 			}
@@ -2249,6 +2249,9 @@ leader_event = {
 	}
 }
 
+# TODO: update these evants to check and apply all the correct living standards!
+# double-check that hive necrophaging works
+
 # keep robotic only
 # root = country, actor
 # from = country, leader storage
@@ -2460,7 +2463,7 @@ country_event = {
 				if = {
 					limit = { event_target:potential_owner = { is_machine_empire = yes } }
 					if = {
-						limit = { is_eligible_for_machine_assimilation_species = yes }
+						limit = { is_eligible_for_machine_cybernetic_assimilation_species = yes }
 						set_citizenship_type = {
 							country = event_target:potential_owner
 							type = citizenship_assimilation
