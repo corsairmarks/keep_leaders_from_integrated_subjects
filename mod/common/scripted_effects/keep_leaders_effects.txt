@@ -197,18 +197,18 @@ create_leader_storage_and_transfer_leaders = {
 }
 
 # sets up necessary event_targets:
-# event_target:potential_owner = this.owner
-# event_target:former_owner = from
-# event_target:original_species = from.owner_species
+# event_target:potential_owner = from
+# event_target:former_owner = fromfrom
+# event_target:original_species = fromfrom.owner_species
 # event_target:storage_owner = country, primitive leader storage
 # event_target:variable_storage = country, primitive leader variable storage
-# this = planet (after ownership change)
-# from = country, former owner
+# this = planet (after new owner set)
+# from = country (new owner)
+# fromfrom = country (former owner, if any)
 prepare_for_primitive_planet_transferred = {
 	optimize_memory
-	owner = { save_event_target_as = potential_owner }
-	from = {
-		set_country_flag = colossus_transfer_handled@prev
+	from = { save_event_target_as = potential_owner }
+	fromfrom = {
 		save_event_target_as = former_owner
 		owner_species = { save_event_target_as = original_species }
 	}
@@ -216,7 +216,7 @@ prepare_for_primitive_planet_transferred = {
 	random_country = {
 		limit = {
 			is_country_type = neutral_faction
-			has_country_flag = former_owner@from
+			has_country_flag = former_owner@fromfrom
 		}
 		save_event_target_as = storage_owner
 		save_event_target_as = variable_storage
@@ -559,15 +559,16 @@ set_minimum_standard_of_living_species = {
 # event_target:potential_owner = country doing the assimilating
 set_assimilation_standard_of_living_species = {
 	optimize_memory
+	# TODO lots more options with 3.6
 	species= {
 		if = {
 			limit = {
 				event_target:potential_owner = {
 					OR = {
-						has_valid_civic = civic_machine_assimilator
+						has_civic = civic_machine_assimilator
 						AND = {
 							is_regular_hive_empire = yes
-							has_ascension_perk = ap_evolutionary_mastery
+							has_active_tradition = tr_genetics_creation
 						}
 					}
 				}
@@ -579,7 +580,7 @@ set_assimilation_standard_of_living_species = {
 			}
 		}
 		else_if = {
-			limit = { event_target:potential_owner = { has_ascension_perk = ap_transcendence } }
+			limit = { event_target:potential_owner = { has_active_tradition = tr_psionics_psionic_assimilation } }
 			set_living_standard = {
 				country = event_target:potential_owner
 				type = living_standard_psi_assimilation
@@ -587,7 +588,7 @@ set_assimilation_standard_of_living_species = {
 			}
 		}
 		else_if = {
-			limit = { event_target:potential_owner = { has_ascension_perk = ap_the_flesh_is_weak } }
+			limit = { event_target:potential_owner = { has_active_tradition = tr_cybernetics_transubstantiation_synthesis } }
 			set_living_standard = {
 				country = event_target:potential_owner
 				type = living_standard_tech_assimilation
@@ -595,7 +596,7 @@ set_assimilation_standard_of_living_species = {
 			}
 		}
 		else_if = {
-			limit = { event_target:potential_owner = { has_ascension_perk = ap_evolutionary_mastery } }
+			limit = { event_target:potential_owner = { has_active_tradition = tr_genetics_creation } }
 			set_living_standard = {
 				country = event_target:potential_owner
 				type = living_standard_deassimilation
@@ -988,6 +989,7 @@ replace_leader_based_on_government_type = {
 		# immortal rulers would never need to be replaced - so they have assigned leader
 		# replacement classes based on the "theme" of the government
 		gov_hive_mind = { replace_leader_as_governor = yes }
+		gov_parasitic_overmind = { replace_leader_as_governor = yes }
 		gov_devouring_swarm = { replace_leader_as_admiral = yes }
 		gov_machine_empire = { replace_leader_as_governor = yes }
 		gov_machine_terminator = { replace_leader_as_admiral = yes }
