@@ -20,19 +20,16 @@ Finally, this mod adds some special traits (and a special name affix) for demote
 
 ## Compatibility
 
-Built for Stellaris version 3.3 "Libra."  Not compatible with achievements.
+Built for Stellaris version 3.6 "Orion."  Not compatible with achievements.
 
 This mod is designed to understand the species types, ethics, civics, authorities, governments, and origins that are built-in to Stellaris. The features of this mod are implemented primarily through brand new events and scripting, meaning that it should not directly conflict with most other mods. However, you could end up with odd behavior if you play with mods that significantly alter the default gameplay - for example, adding a new homicidal species (without the mod providing an update to the `is_homicidal` trigger). Mods that add or modify civics should generally work but this mod may offer decisions that do not make the most sense for the role-play of new civics.
 
-### Required Mods
-
-[Primitive Conquest Enhancements](https://steamcommunity.com/sharedfiles/filedetails/?id=2488154830) adds a necessary extension point (dev speak for "it adds something I need") for detecting when the primitive infiltration mission completes. If you don't install it, then this mod won't be able to offer you a choice when infiltration is complete.
-
 ### Recommended Companion Mods
 
-* [Leader Traits: All Eligible Species Traits](https://steamcommunity.com/sharedfiles/filedetails/?id=2499031295) will ensure your leaders get all their species-based traits when being assimilated (such as Psionic or Erudite).
-* [Leader Traits: Enhanced Randomisation](https://steamcommunity.com/sharedfiles/filedetails/?id=2553806265) improves leader trait randomisation (primarily from level up, but not exclusively) and toggles traits from the biological version to machine traits (and back) if a leader becomes a robot and/or returns to a biological form.
+* [Leader Traits: All Eligible Species Traits](https://steamcommunity.com/sharedfiles/filedetails/?id=2499031295) will ensure your leaders get all their species-based traits when being assimilated (such as Psionic or Erudite)
+* [Leader Traits: Enhanced Randomisation](https://steamcommunity.com/sharedfiles/filedetails/?id=2553806265) improves leader trait randomisation (primarily from level up, but not exclusively) and toggles traits from the biological version to machine traits (and back) if a leader becomes a robot and/or returns to a biological form
 * [Deassimilate Machines](https://steamcommunity.com/sharedfiles/filedetails/?id=2553812372) allows you to "deassimilate" machine Pops into robots. This is available to any non-machine, non-hive empire that has the Positronic AI technology and doesn't outright ban Artificial Intelligence. Specifically allows (with this mod) for machine deassimilation as a "leadership disposition" choice for integrated machine empire subjects (and if you also have Leader Traits: All Eligible Species Traits, the leaders are converted to have synth leader traits if you have the right technology).
+* [Primitive Conquest Enhancements](https://steamcommunity.com/sharedfiles/filedetails/?id=2488154830) improves the pre-existing infrastructure when you conquer or otherwise acquire a planet that had previously been primitive; pairs well with this mod's bonus leaders from conquered (etc.) primitives
 * [corsairmarks's Leader Traits MOD Chinese patch](https://steamcommunity.com/sharedfiles/filedetails/?id=2558494770) by Hua Zhang - Chinese localisation
 
 You might wonder - why are these separate mods? They override default gameplay options, so I thought it best to give players the choice on whether they want the original version or the reimagined version. Leader Traits: Enhanced Randomisation and Machine Deassimilation were developed alongside this mod.
@@ -96,6 +93,9 @@ When cloning a leader and changing them from a species class without gender to a
     * Update code to account for hired (mercenary) fleets
 * 5.1.0 Allow empires that do not explicitly outlaw artificial intelligence to retain robotic leaders
 * 5.2.0 Add a dummy `gov_bureaucratic_autocracy` to stop spamming the error log when Eldanær Stellar Authority is not installed
+* 6.0.0 Update for Stellaris version 3.6 "Orion" (and changes from version 3.5 "Fornax")
+    * Adjust Retain Leaders (assimilation) requirements based on new ascension traditions
+    * Support new types of assimilation citizenship
 
 ## Source Code
 
