@@ -625,8 +625,8 @@ country_event = {
 		}
 	}
 	option = {
-		name = keep_leaders.1.c.cyb.exclusive
-		custom_tooltip = keep_leaders.1.c.cyb.exclusive.tooltip
+		name = keep_leaders.1.c.assim.exclusive
+		custom_tooltip = keep_leaders.1.c.assim.exclusive.tooltip
 		custom_tooltip_with_params = {
 			description = keep_leaders.1.tooltip
 			description_parameters = {
@@ -635,10 +635,7 @@ country_event = {
 			}
 		}
 		trigger = {
-			OR = {
-				has_tradition = tr_cybernetics_transubstantiation_synthesis
-				has_civic = civic_machine_assimilator
-			}
+			has_civic = civic_machine_assimilator
 			hidden_trigger = { event_target:storage_owner = { all_stored_leaders_robotic_lenient = yes } }
 		}
 		allow = {

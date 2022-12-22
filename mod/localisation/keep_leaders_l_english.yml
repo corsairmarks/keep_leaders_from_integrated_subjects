@@ -37,8 +37,8 @@
  keep_leaders.1.c.mach.exclusive.tooltip: "§Y$MACHINE$§! and §Y$ROBOT$§! leaders from the [storage_owner.GetRealName] are integrated."
  keep_leaders.1.c.cyb: "$keep_leaders.1.c.mach$"
  keep_leaders.1.c.cyb.tooltip: "§Y$MACHINE$§!, §Y$ROBOT$§!, and §Y$trait_cybernetic$§! leaders from the [storage_owner.GetRealName] are integrated, §Y$BIOLOGICAL$§! leaders are discarded."
- keep_leaders.1.c.cyb.exclusive: "$keep_leaders.1.c.mach.exclusive$"
- keep_leaders.1.c.cyb.exclusive.tooltip: "§Y$MACHINE$§!, §Y$ROBOT$§!, and §Y$trait_cybernetic$§! leaders from the [storage_owner.GetRealName] are integrated."
+ keep_leaders.1.c.assim.exclusive: "$keep_leaders.1.c.mach.exclusive$"
+ keep_leaders.1.c.assim.exclusive.tooltip: "§Y$MACHINE$§!, §Y$ROBOT$§!, and §Y$trait_cybernetic$§! leaders from the [storage_owner.GetRealName] are integrated."
 
  # integrate robotic only, but be nice (target has both)
  keep_leaders.1.d: "All §Y$ROBOT_plural$§! and §Y$MACHINE_plural$§! shall join us. Retire the organics."
