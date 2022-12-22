@@ -2079,6 +2079,11 @@ planet_event = {
 							from = event_target:original_species
 						}
 					}
+					# make sure we get the correct species portrait even if the gender was swapped via clone
+					if = {
+						limit = { has_leader_flag = leader_replaced_by_clone@last_created_leader }
+						last_created_leader = { change_leader_portrait = event_target:original_species }
+					}
 					remove_leader_flag = infiltrator_retained_cover
 				}
 				destroy_country = yes
