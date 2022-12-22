@@ -1431,11 +1431,6 @@ country_event = {
 	# assimilate: hive
 	option = {
 		name = keep_leaders.1.k.hive
-		icon = {
-			icon = GFX_tr_genetics_creation
-			icon_background = GFX_klfis_event_icon_bg_blank
-			text = keep_leaders.1.k.gene.icon.tooltip
-		}
 		custom_tooltip = keep_leaders.1.k.hive.tooltip
 		custom_tooltip_with_params = {
 			description = keep_leaders.1.tooltip
@@ -1445,13 +1440,14 @@ country_event = {
 			}
 		}
 		trigger = {
+			has_ascension_perk = ap_engineered_evolution
 			hidden_trigger = {
-				has_utopia = yes
-			}
-			event_target:storage_owner = {
-				any_owned_leader = {
-					is_eligible_transfer_leader_from_storage = yes
-					is_eligible_for_hive_assimilation_species = yes
+				is_hive_empire = yes
+				event_target:storage_owner = {
+					any_owned_leader = {
+						is_eligible_transfer_leader_from_storage = yes
+						is_potential_for_hive_assimilation_species = yes
+					}
 				}
 			}
 		}
@@ -1478,11 +1474,6 @@ country_event = {
 	# assimilate: unhive
 	option = {
 		name = keep_leaders.1.k.unhive
-		icon = {
-			icon = GFX_tr_genetics_creation
-			icon_background = GFX_klfis_event_icon_bg_blank
-			text = keep_leaders.1.k.gene.icon.tooltip
-		}
 		custom_tooltip = keep_leaders.1.k.unhive.tooltip
 		custom_tooltip_with_params = {
 			description = keep_leaders.1.tooltip
@@ -1492,13 +1483,13 @@ country_event = {
 			}
 		}
 		trigger = {
+			has_ascension_perk = ap_engineered_evolution
 			hidden_trigger = {
-				has_utopia = yes
-				is_hive_empire = no
+				is_regular_empire = yes
 				event_target:storage_owner = {
 					any_owned_leader = {
 						is_eligible_transfer_leader_from_storage = yes
-						is_eligible_for_unhive_assimilation_species = yes
+						is_potential_for_unhive_assimilation_species = yes
 					}
 				}
 			}
@@ -1536,18 +1527,7 @@ country_event = {
 	# assimilate: psionic
 	option = {
 		name = keep_leaders.1.k.psi
-		icon = {
-			icon = GFX_tr_psionics_psionic_assimilation
-			icon_background = GFX_klfis_event_icon_bg_blank
-			text = keep_leaders.1.k.psi.icon.tooltip
-		}
-		if = {
-			limit = { NOT = { has_global_flag = deassimilate_machines_installed } }
-			custom_tooltip = keep_leaders.1.k.psi.tooltip
-		}
-		else = {
-			custom_tooltip = keep_leaders.1.k.psi.allow-cyb.tooltip
-		}
+		custom_tooltip = keep_leaders.1.k.psi.tooltip
 		custom_tooltip_with_params = {
 			description = keep_leaders.1.tooltip
 			description_parameters = {
@@ -1556,12 +1536,15 @@ country_event = {
 			}
 		}
 		trigger = {
+			OR = {
+				has_ascension_perk = ap_mind_over_matter
+				has_origin = origin_shroudwalker_apprentice
+			}
 			hidden_trigger = {
-				has_utopia = yes
 				event_target:storage_owner = {
 					any_owned_leader = {
 						is_eligible_transfer_leader_from_storage = yes
-						is_eligible_for_psionic_assimilation_species = yes
+						is_potential_for_psionic_assimilation_species = yes
 					}
 				}
 			}
@@ -1596,15 +1579,27 @@ country_event = {
 			}
 		}
 	}
-	# assimilate: cybernetic
+	# assimilate: cybernetic (including hive)
 	option = {
-		name = keep_leaders.1.k.cyb
-		icon = {
-			icon = GFX_tr_cybernetics_transubstantiation_synthesis
-			icon_background = GFX_klfis_event_icon_bg_blank
-			text = keep_leaders.1.k.cyb.icon.tooltip
+		name = {
+			text = keep_leaders.1.k.cyb
+			trigger = {
+				has_ascension_perk = ap_the_flesh_is_weak
+			}
 		}
-		custom_tooltip = keep_leaders.1.k.cyb.tooltip
+		name = {
+			text = keep_leaders.1.k.cyb.hive
+			trigger = {
+				has_ascension_perk = ap_organo_machine_interfacing
+			}
+		}
+		if = {
+			limit = { has_ascension_perk = ap_the_flesh_is_weak }
+			custom_tooltip = keep_leaders.1.k.cyb.tooltip
+		}
+		else = {
+			custom_tooltip = keep_leaders.1.k.cyb.hive.tooltip
+		}
 		custom_tooltip_with_params = {
 			description = keep_leaders.1.tooltip
 			description_parameters = {
@@ -1613,24 +1608,36 @@ country_event = {
 			}
 		}
 		trigger = {
+			OR = {
+				has_ascension_perk = ap_the_flesh_is_weak
+				has_ascension_perk = ap_organo_machine_interfacing
+			}
 			hidden_trigger = {
-				has_utopia = yes
-				NOT = { has_country_flag = synthetic_empire }
-				event_target:storage_owner = {
-					any_owned_leader = {
-						is_eligible_transfer_leader_from_storage = yes
-						is_eligible_for_cybernetic_assimilation_species = yes
+				OR = {
+					AND = {
+						has_ascension_perk = ap_the_flesh_is_weak
+						event_target:storage_owner = {
+							any_owned_leader = {
+								is_eligible_transfer_leader_from_storage = yes
+								is_potential_for_cybernetic_assimilation_species = yes
+							}
+						}
+					}
+					AND = {
+						has_ascension_perk = ap_organo_machine_interfacing
+						event_target:storage_owner = {
+							any_owned_leader = {
+								is_eligible_transfer_leader_from_storage = yes
+								is_potential_for_hive_cybernetic_assimilation_species = yes
+							}
+						}
 					}
 				}
 			}
 		}
 		allow = {
 			custom_tooltip = {
-				fail_text = keep_leaders.1.k.cyb1.fail_text
-				has_ascension_perk = ap_the_flesh_is_weak
-			}
-			custom_tooltip = {
-				fail_text = keep_leaders.1.k.cyb2.fail_text
+				fail_text = keep_leaders.1.k.cyb.fail_text
 				has_active_tradition = tr_cybernetics_transubstantiation_synthesis
 			}
 			custom_tooltip = {
@@ -1661,11 +1668,6 @@ country_event = {
 	# assimilate: synthetic
 	option = {
 		name = keep_leaders.1.k.synth
-		icon = {
-			icon = GFX_tr_synthetics_synthetic_age
-			icon_background = GFX_klfis_event_icon_bg_blank
-			text = keep_leaders.1.k.synth.icon.tooltip
-		}
 		custom_tooltip = keep_leaders.1.k.synth.tooltip
 		custom_tooltip_with_params = {
 			description = keep_leaders.1.tooltip
@@ -1675,13 +1677,12 @@ country_event = {
 			}
 		}
 		trigger = {
+			has_ascension_perk = ap_synthetic_evolution
 			hidden_trigger = {
-				has_utopia = yes
-				has_country_flag = cyborg_empire
 				event_target:storage_owner = {
 					any_owned_leader = {
 						is_eligible_transfer_leader_from_storage = yes
-						is_eligible_for_synthetic_assimilation_species = yes
+						is_potential_for_synthetic_assimilation_species = yes
 					}
 				}
 			}
@@ -1710,6 +1711,44 @@ country_event = {
 			}
 		}
 	}
+	# assimilate: machine synthetic
+	option = {
+		name = keep_leaders.1.k.synth.mach
+		custom_tooltip = keep_leaders.1.k.synth.mach.tooltip
+		custom_tooltip_with_params = {
+			description = keep_leaders.1.tooltip
+			description_parameters = {
+				VALUE = "[variable_storage.leader_transferable_or_assimilatable_accumulator]"
+				TOTAL = "[variable_storage.leader_accumulator]"
+			}
+		}
+		trigger = {
+			has_ascension_perk = ap_synthetic_age
+			hidden_trigger = {
+				event_target:storage_owner = {
+					any_owned_leader = {
+						is_eligible_transfer_leader_from_storage = yes
+						is_potential_for_machine_synthetic_assimilation_species = yes
+					}
+				}
+			}
+		}
+		allow = {
+			custom_tooltip = {
+				fail_text = keep_leaders.1.k.synth.mach.fail_text
+				has_active_tradition = tr_synthetics_adopt_machine
+			}
+		}
+		ai_chance = {
+			factor = 10
+		}
+		hidden_effect = {
+			country_event = {
+				id = keep_leaders.16
+				scopes = { from = event_target:storage_owner }
+			}
+		}
+	}
 	# assimilate: assimilator
 	option = {
 		name = keep_leaders.1.k.assim
@@ -1722,33 +1761,34 @@ country_event = {
 			}
 		}
 		trigger = {
-			OR = {
-				has_valid_civic = civic_machine_assimilator # explicit to get the icon to show
-				hidden_trigger = { is_machine_empire = yes }
-			}
+			has_valid_civic = civic_machine_assimilator
 			hidden_trigger = {
-				has_synthethic_dawn = yes
 				event_target:storage_owner = {
 					any_owned_leader = {
 						is_eligible_transfer_leader_from_storage = yes
-						is_eligible_for_machine_cybernetic_assimilation_species = yes
+						is_potential_for_machine_cybernetic_assimilation_species = yes
 					}
 				}
-			}
-		}
-		allow = {
-			custom_tooltip = {
-				fail_text = keep_leaders.1.k.mach.fail_text
-				has_valid_civic = civic_machine_assimilator
 			}
 		}
 		ai_chance = {
 			factor = 20
 		}
-		add_resource = {
-			unity = @keep_leaders_civic_reward_base
-			society_research = @keep_leaders_civic_reward_base
-			mult = event_target:variable_storage.leader_organic_non_cyborg_accumulator
+		if = {
+			limit = { NOT = { has_active_tradition = tr_cybernetics_assimilator_adopt } }
+			add_resource = {
+				unity = @keep_leaders_civic_reward_base
+				society_research = @keep_leaders_civic_reward_base
+				mult = event_target:variable_storage.leader_organic_non_cyborg_accumulator
+			}
+		}
+		else = {
+			add_resource = {
+				unity = @keep_leaders_civic_reward_base
+				society_research = @keep_leaders_civic_reward_base
+				engineering_research = @keep_leaders_civic_reward_base
+				mult = event_target:variable_storage.leader_organic_non_cyborg_accumulator_double
+			}
 		}
 		hidden_effect = {
 			country_event = {
@@ -1776,20 +1816,19 @@ country_event = {
 		trigger = {
 			hidden_trigger = {
 				has_synthethic_dawn = yes
-				has_utopia = yes
 				has_global_flag = deassimilate_machines_installed
 				is_regular_empire = yes
 				event_target:storage_owner = {
 					any_owned_leader = {
 						is_eligible_transfer_leader_from_storage = yes
-						is_machine_species = yes
+						is_potential_for_unmachine_assimilation_species = yes
 					}
 				}
 			}
 		}
 		allow = {
 			custom_tooltip = {
-				fail_text = disconnected_machine_leaders_collapse_without_ai_assimilation_no_x
+				fail_text = disconnected_machine_leaders_collapse_citizenship_assimilation
 				has_technology = tech_sapient_ai
 			}
 			custom_tooltip = {
@@ -2450,20 +2489,25 @@ country_event = {
 	is_triggered_only = yes
 	hide_window = yes
 	trigger = {
-		has_utopia = yes
+		OR = {
+			has_synthethic_dawn = yes
+			has_utopia = yes
+		}
 	}
 	immediate = {
+		# TODO: it may be best to split this into multiple sub-events to trigger the specific assimilation that the user clicks
 		log = "keep_leaders.16 assimilation"
 		save_event_target_as = potential_owner
 		set_update_modifiers_batch = begin
 		from = {
+			# TODO: evaluate conditionals, might need more cases to handle new conversions, evaluate living standards too
 			every_owned_leader = {
 				limit = { is_eligible_transfer_leader_from_storage = yes }
 				species = { save_event_target_as = former_species }
 				if = {
 					limit = { event_target:potential_owner = { is_machine_empire = yes } }
 					if = {
-						limit = { is_eligible_for_machine_cybernetic_assimilation_species = yes }
+						limit = { is_potential_for_machine_cybernetic_assimilation_species = yes }
 						set_citizenship_type = {
 							country = event_target:potential_owner
 							type = citizenship_assimilation
@@ -2472,32 +2516,28 @@ country_event = {
 							country = event_target:potential_owner
 							type = living_standard_ego_assimilation
 						}
-						modify_species = {
-							species = species
-							add_trait = trait_cybernetic
-							add_traits_at_start_of_list = yes
-							change_scoped_species = no
-							effect = {
-								save_event_target_as = cyborg_species
-							}
-						}
 						if = {
-							limit = { event_target:cyborg_species = { has_trait = trait_hive_mind } }
+							limit = { NOT = { has_global_flag = assimilate_all_the_things_installed } }
 							modify_species = {
-								base = species
-								species = event_target:cyborg_species
+								species = species
+								add_trait = trait_cybernetic
+								add_traits_at_start_of_list = yes
 								remove_trait = trait_hive_mind
+								remove_trait = trait_self_modified
+								remove_trait = trait_latent_psionic
+								remove_trait = trait_psionic
 								change_scoped_species = no
 								effect = {
 									save_event_target_as = cyborg_species
 								}
 							}
 						}
-						if = {
-							limit = { event_target:cyborg_species = { has_trait = trait_self_modified } }
+						else = {
 							modify_species = {
-								base = species
-								species = event_target:cyborg_species
+								species = species
+								add_trait = trait_cybernetic
+								add_traits_at_start_of_list = yes
+								remove_trait = trait_hive_mind
 								remove_trait = trait_self_modified
 								change_scoped_species = no
 								effect = {
@@ -2522,7 +2562,7 @@ country_event = {
 				else_if = {
 					limit = { event_target:potential_owner = { is_hive_empire = yes } }
 					if = {
-						limit = { is_eligible_for_hive_assimilation_species = yes }
+						limit = { is_potential_for_hive_assimilation_species = yes }
 						set_citizenship_type = {
 							country = event_target:potential_owner
 							type = citizenship_assimilation
@@ -2535,21 +2575,12 @@ country_event = {
 							species = species
 							add_trait = trait_hive_mind
 							add_traits_at_start_of_list = yes
+							remove_trait = trait_self_modified
+							remove_trait = trait_latent_psionic
+							remove_trait = trait_psionic
 							change_scoped_species = no
 							effect = {
 								save_event_target_as = hived_species
-							}
-						}
-						if = {
-							limit = { event_target:hived_species = { has_trait = trait_self_modified } }
-							modify_species = {
-								base = species
-								species = event_target:hived_species
-								remove_trait = trait_self_modified
-								change_scoped_species = no
-								effect = {
-									save_event_target_as = hived_species
-								}
 							}
 						}
 						change_species = event_target:hived_species
@@ -2571,7 +2602,7 @@ country_event = {
 					if = {
 						limit = {
 							has_global_flag = deassimilate_machines_installed
-							is_eligible_for_unmachine_assimilation_species = yes
+							is_potential_for_unmachine_assimilation_species = yes
 						}
 						species = {
 							save_event_target_as = machine_species
@@ -2633,7 +2664,7 @@ country_event = {
 						}
 					}
 					else_if = {
-						limit = { is_eligible_for_synthetic_assimilation_species = yes }
+						limit = { is_potential_for_synthetic_assimilation_species = yes }
 						set_citizenship_type = {
 							country = event_target:potential_owner
 							type = citizenship_assimilation
@@ -2658,7 +2689,7 @@ country_event = {
 						}
 					}
 					else_if = {
-						limit = { is_eligible_for_cybernetic_assimilation_species = yes }
+						limit = { is_potential_for_cybernetic_assimilation_species = yes }
 						set_citizenship_type = {
 							country = event_target:potential_owner
 							type = citizenship_assimilation
@@ -2667,21 +2698,29 @@ country_event = {
 							country = event_target:potential_owner
 							type = living_standard_tech_assimilation
 						}
-						modify_species = {
-							species = species
-							add_trait = trait_cybernetic
-							add_traits_at_start_of_list = yes
-							change_scoped_species = no
-							effect = {
-								save_event_target_as = cyborg_species
+						if = {
+							limit = { NOT = { has_global_flag = assimilate_all_the_things_installed } }
+							modify_species = {
+								species = species
+								add_trait = trait_cybernetic
+								add_traits_at_start_of_list = yes
+								remove_trait = trait_self_modified
+								remove_trait = trait_hive_mind
+								remove_trait = trait_latent_psionic
+								remove_trait = trait_psionic
+								change_scoped_species = no
+								effect = {
+									save_event_target_as = cyborg_species
+								}
 							}
 						}
-						if = {
-							limit = { event_target:cyborg_species = { has_trait = trait_self_modified } }
+						else = {
 							modify_species = {
-								base = species
-								species = event_target:cyborg_species
+								species = species
+								add_trait = trait_cybernetic
+								add_traits_at_start_of_list = yes
 								remove_trait = trait_self_modified
+								remove_trait = trait_hive_mind
 								change_scoped_species = no
 								effect = {
 									save_event_target_as = cyborg_species
@@ -2698,7 +2737,7 @@ country_event = {
 						}
 					}
 					else_if = {
-						limit = { is_eligible_for_psionic_assimilation_species = yes }
+						limit = { is_potential_for_psionic_assimilation_species = yes }
 						set_citizenship_type = {
 							country = event_target:potential_owner
 							type = citizenship_assimilation
@@ -2707,33 +2746,46 @@ country_event = {
 							country = event_target:potential_owner
 							type = living_standard_psi_assimilation
 						}
-						modify_species = {
-							species = species
-							add_trait = trait_psionic
-							add_traits_at_start_of_list = yes
-							change_scoped_species = no
-							effect = {
-								save_event_target_as = psionic_species
-							}
-						}
+						# TODO: don't remove psionics with all-assim installed
 						if = {
-							limit = { event_target:psionic_species = { has_trait = trait_latent_psionic } }
+							limit = { NOT = { has_global_flag = assimilate_all_the_things_installed } }
 							modify_species = {
-								base = species
-								species = event_target:psionic_species
+								species = species
+								add_trait = trait_psionic
+								add_traits_at_start_of_list = yes
+								remove_trait = trait_self_modified
 								remove_trait = trait_latent_psionic
+								remove_trait = trait_cybernetic
+								remove_trait = trait_cyborg_power_drills
+								remove_trait = trait_cyborg_harvesters
+								remove_trait = trait_cyborg_superconductive
+								remove_trait = trait_cyborg_efficient_processors
+								remove_trait = trait_cyborg_logic_engines
+								remove_trait = trait_cyborg_loyalty_circuits
+								remove_trait = trait_cyborg_double_jointed
+								remove_trait = trait_cyborg_bulky
+								remove_trait = trait_cyborg_enhanced_memory
+								remove_trait = trait_cyborg_durable
+								remove_trait = trait_cyborg_high_maintenance
+								remove_trait = trait_cyborg_learning_algorithms
+								remove_trait = trait_cyborg_power_intensive
+								remove_trait = trait_cyborg_neural_limiters
+								remove_trait = trait_cyborg_streamlined_protocols
+								remove_trait = trait_cyborg_high_bandwidth
+								remove_trait = trait_cyborg_trading_algorithms
 								change_scoped_species = no
 								effect = {
 									save_event_target_as = psionic_species
 								}
 							}
 						}
-						if = {
-							limit = { event_target:psionic_species = { has_trait = trait_self_modified } }
+						else = {
 							modify_species = {
-								base = species
-								species = event_target:psionic_species
+								species = species
+								add_trait = trait_psionic
+								add_traits_at_start_of_list = yes
 								remove_trait = trait_self_modified
+								remove_trait = trait_latent_psionic
 								change_scoped_species = no
 								effect = {
 									save_event_target_as = psionic_species
@@ -2750,7 +2802,7 @@ country_event = {
 						}
 					}
 					else_if = {
-						limit = { is_eligible_for_unhive_assimilation_species = yes }
+						limit = { is_potential_for_unhive_assimilation_species = yes }
 						set_citizenship_type = {
 							country = event_target:potential_owner
 							type = citizenship_assimilation
@@ -2762,21 +2814,10 @@ country_event = {
 						modify_species = {
 							species = species
 							remove_trait = trait_hive_mind
+							remove_trait = trait_self_modified
 							change_scoped_species = no
 							effect = {
 								save_event_target_as = unhived_species
-							}
-						}
-						if = {
-							limit = { event_target:unhived_species = { has_trait = trait_self_modified } }
-							modify_species = {
-								base = species
-								species = event_target:unhived_species
-								remove_trait = trait_self_modified
-								change_scoped_species = no
-								effect = {
-									save_event_target_as = unhived_species
-								}
 							}
 						}
 						change_species = event_target:unhived_species

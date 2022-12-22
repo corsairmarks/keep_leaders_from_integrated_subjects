@@ -1430,6 +1430,7 @@ try_add_demoted_ruler_generic_bonus_trait = {
 # * leader_not_same_species_accumulator
 # * leader_transferable_accumulator
 # * leader_transferable_or_assimilatable_accumulator
+# * leader_transferable_or_assimilatable_accumulator_double
 # * leader_aquatic_accumulator
 accumulate_leader = {
 	optimize_memory
@@ -1447,6 +1448,12 @@ accumulate_leader = {
 				change_variable = {
 					which = leader_organic_non_cyborg_accumulator
 					value = 1
+				}
+			}
+			event_target:variable_storage = {
+				change_variable = {
+					which = leader_organic_non_cyborg_accumulator_double
+					value = 2
 				}
 			}
 		}
