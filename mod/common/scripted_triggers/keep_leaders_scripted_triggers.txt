@@ -174,6 +174,15 @@ is_potential_for_machine_synthetic_assimilation_species = {
 	NOT = { is_same_species = event_target:potential_owner }
 }
 
+# this = country
+is_potential_for_synthetic_assimilation_country = {
+	optimize_memory
+	OR = {
+		has_active_tradition = tr_synthetics_adopt_machine
+		has_country_flag = synthetic_empire
+	}
+}
+
 # could this species potentially be made hive and/or cybernetic? (non-robotic, non-cyborg or non-hive)
 # this = something with a species
 is_potential_for_hive_cybernetic_assimilation_species = {
@@ -208,11 +217,25 @@ is_potential_for_hive_assimilation_species = {
 	is_hive_species = no
 }
 
+# this = country
+is_potential_for_genetic_assimilation_country = {
+	optimize_memory
+	has_active_tradition = tr_genetics_creation
+}
+
 # could this species potentially be converted from a machine to a robot? (machine)
 # this = something with a species
 is_potential_for_unmachine_assimilation_species = {
 	optimize_memory
 	is_machine_species = yes
+}
+
+# this = country
+is_potential_for_unmachine_assimilation_country = {
+	optimize_memory
+	is_regular_empire = yes
+	has_technology = tech_sapient_ai
+	allows_ai_leaders = yes
 }
 
 # could this species potentially be unhived? (hive)
@@ -237,6 +260,15 @@ is_potential_for_cybernetic_assimilation_species = {
 	is_cyborg_species = no
 }
 
+# this = country
+is_potential_for_cybernetic_assimilation_country = {
+	optimize_memory
+	OR = {
+		has_civic = civic_machine_assimilator
+		has_active_tradition = tr_cybernetics_transubstantiation_synthesis
+	}
+}
+
 # could this species potentially be made psionic? (non-robotic, non-psionic, non-hive)
 # this = something with a species
 is_potential_for_psionic_assimilation_species = {
@@ -244,6 +276,12 @@ is_potential_for_psionic_assimilation_species = {
 	is_robotic_species = no
 	is_psionic_species = no
 	is_hive_species = no
+}
+
+# this = country
+is_potential_for_psionic_assimilation_country = {
+	optimize_memory
+	has_tradition = tr_psionics_psionic_assimilation
 }
 
 # this = something with a species

@@ -555,32 +555,80 @@ set_minimum_standard_of_living_species = {
 	}
 }
 
-# this = something with species
+# this = species
 # event_target:potential_owner = country doing the assimilating
-set_assimilation_standard_of_living_species = {
+set_assimilation_citizenship_and_standard_of_living = {
 	optimize_memory
-	# TODO lots more options with 3.6
-	species= {
+	set_citizenship_type = {
+		country = event_target:potential_owner
+		type = citizenship_assimilation
+	}
+	if = {
+		limit = { event_target:potential_owner = { is_potential_for_cybernetic_assimilation_country = yes } }
 		if = {
-			limit = {
+			limit = { 
 				event_target:potential_owner = {
 					OR = {
-						has_civic = civic_machine_assimilator
-						AND = {
-							is_regular_hive_empire = yes
-							has_active_tradition = tr_genetics_creation
-						}
+						has_valid_civic = civic_machine_assimilator
+						is_regular_hive_empire = yes
 					}
 				}
 			}
-			set_living_standard = {
-				country = event_target:potential_owner
-				type = living_standard_ego_assimilation
-				cooldown = no
+			if = {
+				limit = { has_psionic_species_trait = no }
+				set_living_standard = {
+					country = event_target:potential_owner
+					type = living_standard_cyborg_ego_assimilation
+					cooldown = no
+				}
+			}
+			else = {
+				set_living_standard = {
+					country = event_target:potential_owner
+					type = living_standard_cyborg_ego_assimilation_psionic
+					cooldown = no
+				}
 			}
 		}
 		else_if = {
-			limit = { event_target:potential_owner = { has_active_tradition = tr_psionics_psionic_assimilation } }
+			limit = { event_target:potential_owner = { is_regular_empire = yes } }
+			if = {
+				limit = { has_psionic_species_trait = no }
+				set_living_standard = {
+					country = event_target:potential_owner
+					type = living_standard_cyborg_assimilation
+					cooldown = no
+				}
+			}
+			else = {
+				set_living_standard = {
+					country = event_target:potential_owner
+					type = living_standard_cyborg_assimilation_psionic
+					cooldown = no
+				}
+			}
+		}
+	}
+	else_if = {
+		limit = { event_target:potential_owner = { is_potential_for_synthetic_assimilation_country = yes } }
+		set_living_standard = {
+			country = event_target:potential_owner
+			type = living_standard_tech_assimilation
+			cooldown = no
+		}
+	}
+	else_if = {
+		limit = { event_target:potential_owner = { is_potential_for_unmachine_assimilation_country = yes } }
+		set_living_standard = {
+			country = event_target:potential_owner
+			type = living_standard_deassimilation_machine
+			cooldown = no
+		}
+	}
+	else_if = {
+		limit = { event_target:potential_owner = { is_potential_for_psionic_assimilation_country = yes } }
+		if = {
+			limit = { NOT = { has_trait = trait_cybernetic } }
 			set_living_standard = {
 				country = event_target:potential_owner
 				type = living_standard_psi_assimilation
@@ -588,19 +636,39 @@ set_assimilation_standard_of_living_species = {
 			}
 		}
 		else_if = {
-			limit = { event_target:potential_owner = { has_active_tradition = tr_cybernetics_transubstantiation_synthesis } }
 			set_living_standard = {
 				country = event_target:potential_owner
-				type = living_standard_tech_assimilation
+				type = living_standard_psi_assimilation_cyborg
 				cooldown = no
 			}
 		}
-		else_if = {
-			limit = { event_target:potential_owner = { has_active_tradition = tr_genetics_creation } }
+	}
+	else_if = {
+		limit = { event_target:potential_owner = { is_potential_for_genetic_assimilation_country = yes } }
+		if = {
+			limit = { event_target:potential_owner = { is_regular_empire = yes } }
 			set_living_standard = {
 				country = event_target:potential_owner
 				type = living_standard_deassimilation
 				cooldown = no
+			}
+		}
+		else_if = {
+			limit = { event_target:potential_owner = { is_regular_hive_empire = yes } }
+			if = {
+				limit = { has_psionic_species_trait = no }
+				set_living_standard = {
+					country = event_target:potential_owner
+					type = living_standard_ego_assimilation
+					cooldown = no
+				}
+			}
+			else = {
+				set_living_standard = {
+					country = event_target:potential_owner
+					type = living_standard_ego_assimilation_psionic
+					cooldown = no
+				}
 			}
 		}
 	}
