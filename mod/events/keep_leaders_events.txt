@@ -1475,6 +1475,7 @@ country_event = {
 		}
 		trigger = {
 			has_ascension_perk = ap_engineered_evolution
+			NOT = { has_valid_civic = civic_fanatic_purifiers }
 			hidden_trigger = {
 				is_regular_empire = yes
 				event_target:storage_owner = {
@@ -1532,6 +1533,7 @@ country_event = {
 				has_origin = origin_shroudwalker_apprentice
 			}
 			hidden_trigger = {
+				NOT = { has_valid_civic = civic_fanatic_purifiers }
 				event_target:storage_owner = {
 					any_owned_leader = {
 						is_eligible_transfer_leader_from_storage = yes
@@ -1606,6 +1608,7 @@ country_event = {
 			hidden_trigger = {
 				OR = {
 					AND = {
+						NOT = { has_valid_civic = civic_fanatic_purifiers }
 						has_ascension_perk = ap_the_flesh_is_weak
 						event_target:storage_owner = {
 							any_owned_leader = {
@@ -1615,6 +1618,7 @@ country_event = {
 						}
 					}
 					AND = {
+						NOT = { has_valid_civic = civic_hive_devouring_swarm }
 						has_ascension_perk = ap_organo_machine_interfacing
 						event_target:storage_owner = {
 							any_owned_leader = {
@@ -1670,6 +1674,7 @@ country_event = {
 		trigger = {
 			has_ascension_perk = ap_synthetic_evolution
 			hidden_trigger = {
+				NOT = { has_valid_civic = civic_fanatic_purifiers }
 				event_target:storage_owner = {
 					any_owned_leader = {
 						is_eligible_transfer_leader_from_storage = yes
@@ -1728,6 +1733,13 @@ country_event = {
 			custom_tooltip = {
 				fail_text = keep_leaders.1.k.synth.mach.fail_text
 				has_active_tradition = tr_synthetics_adopt_machine
+			}
+		}
+		if = {
+			limit = { has_valid_civic = civic_machine_terminator }
+			add_resource = {
+				unity = @keep_leaders_civic_reward_base
+				mult = event_target:variable_storage.leader_organic_accumulator
 			}
 		}
 		ai_chance = {
@@ -1810,7 +1822,10 @@ country_event = {
 				has_synthethic_dawn = yes
 				has_global_flag = deassimilate_machines_installed
 				is_regular_empire = yes
-				NOT = { has_country_flag = synth_assimilation }
+				NOR = {
+					has_country_flag = synth_assimilation
+					has_valid_civic = civic_fanatic_purifiers
+				}
 				event_target:storage_owner = {
 					any_owned_leader = {
 						is_eligible_transfer_leader_from_storage = yes
