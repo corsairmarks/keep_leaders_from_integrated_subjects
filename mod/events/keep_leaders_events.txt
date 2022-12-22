@@ -2292,9 +2292,6 @@ leader_event = {
 	}
 }
 
-# TODO: update these evants to check and apply all the correct living standards!
-# double-check that hive necrophaging works
-
 # keep robotic only
 # root = country, actor
 # from = country, leader storage
