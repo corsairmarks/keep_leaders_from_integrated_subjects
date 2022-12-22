@@ -229,7 +229,7 @@ is_eligible_for_unmachine_assimilation_species = {
 	is_machine_species = yes
 }
 
-# does this a regular empire have Engineered Genesis and a hive species?
+# does this regular empire have Engineered Genesis and a hive species?
 # this = something with a species
 # event_target:potential_owner = country to which the leader would transfer
 is_eligible_for_unhive_assimilation_species = {
@@ -242,7 +242,7 @@ is_eligible_for_unhive_assimilation_species = {
 	is_hive_species = yes
 }
 
-# does this a regular empire have synth assimilation and a non-robotic species?
+# does this regular empire have synth assimilation and a non-robotic species?
 # this = something with a species
 # event_target:potential_owner = country to which the leader would transfer
 is_eligible_for_synthetic_assimilation_species = {
@@ -252,7 +252,7 @@ is_eligible_for_synthetic_assimilation_species = {
 	is_hive_species = no
 }
 
-# does this a regular empire have Transubtantiation Synthesis and a non-robotic, non-cyborg species?
+# does this regular empire have Transubtantiation Synthesis and a non-robotic, non-cyborg species?
 # this = something with a species
 # event_target:potential_owner = country to which the leader would transfer
 is_eligible_for_cybernetic_assimilation_species = {
