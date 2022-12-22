@@ -24,11 +24,14 @@ Built for Stellaris version 3.6 "Orion."  Not compatible with achievements.
 
 This mod is designed to understand the species types, ethics, civics, authorities, governments, and origins that are built-in to Stellaris. The features of this mod are implemented primarily through brand new events and scripting, meaning that it should not directly conflict with most other mods. However, you could end up with odd behavior if you play with mods that significantly alter the default gameplay - for example, adding a new homicidal species (without the mod providing an update to the `is_homicidal` trigger). Mods that add or modify civics should generally work but this mod may offer decisions that do not make the most sense for the role-play of new civics.
 
+### Required Dependency Mods
+
+[Leader Traits: All Eligible Species Traits](https://steamcommunity.com/sharedfiles/filedetails/?id=2499031295) ensures your leaders get all their species-based traits when being assimilated (such as Cybernetic, Psionic, or Erudite).
+
 ### Recommended Companion Mods
 
-* [Leader Traits: All Eligible Species Traits](https://steamcommunity.com/sharedfiles/filedetails/?id=2499031295) will ensure your leaders get all their species-based traits when being assimilated (such as Psionic or Erudite)
 * [Leader Traits: Enhanced Randomisation](https://steamcommunity.com/sharedfiles/filedetails/?id=2553806265) improves leader trait randomisation (primarily from level up, but not exclusively) and toggles traits from the biological version to machine traits (and back) if a leader becomes a robot and/or returns to a biological form
-* [Deassimilate Machines](https://steamcommunity.com/sharedfiles/filedetails/?id=2553812372) allows you to "deassimilate" machine Pops into robots. This is available to any non-machine, non-hive empire that has the Positronic AI technology and doesn't outright ban Artificial Intelligence. Specifically allows (with this mod) for machine deassimilation as a "leadership disposition" choice for integrated machine empire subjects (and if you also have Leader Traits: All Eligible Species Traits, the leaders are converted to have synth leader traits if you have the right technology).
+* [Deassimilate Machines](https://steamcommunity.com/sharedfiles/filedetails/?id=2553812372) allows non-hive, non-machine empires to "deassimilate" machine Pops into robots - specifically allows (with this mod) for machine deassimilation as a "leadership disposition" choice for integrated subjects (etc.) and the deassimilated leaders gain synth leader traits if you have the required technology
 * [Primitive Conquest Enhancements](https://steamcommunity.com/sharedfiles/filedetails/?id=2488154830) improves the pre-existing infrastructure when you conquer or otherwise acquire a planet that had previously been primitive; pairs well with this mod's bonus leaders from conquered (etc.) primitives
 * [corsairmarks's Leader Traits MOD Chinese patch](https://steamcommunity.com/sharedfiles/filedetails/?id=2558494770) by Hua Zhang - Chinese localisation
 

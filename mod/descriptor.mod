@@ -1,5 +1,6 @@
 name="Retain Leaders from Integrated Subjects"
 dependencies={
+	"Leader Traits: All Eligible Species Traits"
 	"Primitive Conquest Enhancements"
 }
 tags={
