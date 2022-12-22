@@ -1805,6 +1805,7 @@ country_event = {
 			}
 		}
 		trigger = {
+			has_technology = tech_sapient_ai
 			hidden_trigger = {
 				has_synthethic_dawn = yes
 				has_global_flag = deassimilate_machines_installed
@@ -1819,10 +1820,6 @@ country_event = {
 			}
 		}
 		allow = {
-			custom_tooltip = {
-				fail_text = disconnected_machine_leaders_collapse_citizenship_assimilation
-				has_technology = tech_sapient_ai
-			}
 			custom_tooltip = {
 				fail_text = ROBOTS_ARE_OUTLAWED_NO_X
 				OR = {

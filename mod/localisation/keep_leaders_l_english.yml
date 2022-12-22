@@ -154,7 +154,6 @@
  CANNOT_NECROPHAGE_MACHINES_NO_X: "Inorganic compounds cannot undergo §Y$purge_necrophage$§!."
  NECROPHAGE_NONE_ELIGIBLE_NO_X: "No leaders are eligible for §Y$purge_necrophage$§!."
  AI_IS_OUTLAWED_LEADER_NO_X: "Artificial Intelligence is §Routlawed§!. §Y$ROBOT$§! and §Y$MACHINE$§! leaders are too sophisticated to convert into mindless robots."
- disconnected_machine_leaders_collapse_citizenship_assimilation: "Once their uplink to the central §Y$auth_machine_intelligence$§! is severed, $trait_machine_unit$ leaders are rendered inoperable. Unless they could be retrofitted with individual §Y$tech_sapient_ai$§!..."
 
  # former ruler name formatting
  keep_leaders.former_ruler_name: "[This.GetRegnalName], §LFormer [This.GetRulerTitle] of the [former_owner.GetName]§!"
