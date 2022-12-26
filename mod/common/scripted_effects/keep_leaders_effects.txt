@@ -1897,7 +1897,6 @@ klfis_prepare_machine_to_mechanical_species = {
 
 # set up a species for cybernetic assimilation (non-hive), saved as event_target:prepared_species
 # this = something with a species (country, leader, pop, etc)
-# event_target:potential_owner = country (assimilator)
 klfis_prepare_cybernetic_species = {
 	optimize_memory
 	if = {
@@ -1951,7 +1950,6 @@ klfis_prepare_hive_species = {
 
 # set up a species for cybernetic assimilation (hive), saved as event_target:prepared_species
 # this = something with a species (country, leader, pop, etc)
-# event_target:potential_owner = country (assimilator)
 klfis_prepare_hive_cybernetic_species = {
 	optimize_memory
 	modify_species = {
@@ -1971,7 +1969,6 @@ klfis_prepare_hive_cybernetic_species = {
 
 # set up a species for hive deassimilation, saved as event_target:prepared_species
 # this = something with a species (country, leader, pop, etc)
-# event_target:potential_owner = country (assimilator)
 klfis_prepare_unhive_species = {
 	optimize_memory
 	modify_species = {
