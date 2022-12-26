@@ -1645,6 +1645,7 @@ assimilate_species_traits_machine_to_robot = {
 			species = event_target:machine_species
 			add_trait = trait_robot_domestic_protocols
 			remove_trait = trait_robot_emotion_emulators
+			change_scoped_species = no
 			effect = {
 				save_event_target_as = mechanical_species
 			}
@@ -1655,6 +1656,7 @@ assimilate_species_traits_machine_to_robot = {
 		modify_species = {
 			species = event_target:machine_species
 			remove_trait = trait_robot_uncanny
+			change_scoped_species = no
 			effect = {
 				save_event_target_as = mechanical_species
 			}
@@ -1846,11 +1848,11 @@ create_army_transport_parameterized = {
 }
 
 # set up a machine species for deassimilation into a mechanical species, saved as event_target:prepared_species
-# this = species (current)
+# this = something with a species (country, leader, pop, etc)
 # event_target:potential_owner = country (assimilator)
-klfis_prepare_machine_species_to_mechanical_species = {
+klfis_prepare_machine_to_mechanical_species = {
 	optimize_memory
-	save_event_target_as = machine_species
+	species = { save_event_target_as = machine_species }
 	random_galaxy_species = {
 		limit = { has_species_flag = mechanical_species_of_machine_species@event_target:machine_species }
 		event_target:potential_owner = { set_country_flag = found_assim_mech_species@event_target:machine_species }
@@ -1880,6 +1882,7 @@ klfis_prepare_machine_species_to_mechanical_species = {
 			add_trait = trait_mechanical
 			add_traits_at_start_of_list = yes
 			remove_trait = trait_machine_unit
+			change_scoped_species = no
 			effect = {
 				set_species_flag = mechanical_species_of_machine_species@event_target:machine_species
 				save_event_target_as = prepared_species
@@ -1893,7 +1896,7 @@ klfis_prepare_machine_species_to_mechanical_species = {
 }
 
 # set up a species for cybernetic assimilation (non-hive), saved as event_target:prepared_species
-# this = species (current)
+# this = something with a species (country, leader, pop, etc)
 # event_target:potential_owner = country (assimilator)
 klfis_prepare_cybernetic_species = {
 	optimize_memory
@@ -1929,11 +1932,11 @@ klfis_prepare_cybernetic_species = {
 }
 
 # set up a species for hive assimilation, saved as event_target:prepared_species
-# this = species (current)
+# this = something with a species (country, leader, pop, etc)
 klfis_prepare_hive_species = {
 	optimize_memory
 	modify_species = {
-		species = this
+		species = species
 		add_trait = trait_hive_mind
 		add_traits_at_start_of_list = yes
 		remove_trait = trait_self_modified
@@ -1947,7 +1950,7 @@ klfis_prepare_hive_species = {
 }
 
 # set up a species for cybernetic assimilation (hive), saved as event_target:prepared_species
-# this = species (current)
+# this = something with a species (country, leader, pop, etc)
 # event_target:potential_owner = country (assimilator)
 klfis_prepare_hive_cybernetic_species = {
 	optimize_memory
@@ -1967,12 +1970,12 @@ klfis_prepare_hive_cybernetic_species = {
 }
 
 # set up a species for hive deassimilation, saved as event_target:prepared_species
-# this = species (current)
+# this = something with a species (country, leader, pop, etc)
 # event_target:potential_owner = country (assimilator)
 klfis_prepare_unhive_species = {
 	optimize_memory
 	modify_species = {
-		species = this
+		species = species
 		remove_trait = trait_self_modified
 		remove_trait = trait_hive_mind
 		change_scoped_species = no
@@ -1983,13 +1986,13 @@ klfis_prepare_unhive_species = {
 }
 
 # set up a species for psionic assimilation, saved as event_target:prepared_species
-# this = species (current)
+# this = something with a species (country, leader, pop, etc)
 klfis_prepare_psionic_species = {
 	optimize_memory
 	if = {
 		limit = { NOT = { has_global_flag = assimilate_all_the_things_installed } }
 		modify_species = {
-			species = this
+			species = species
 			add_trait = trait_psionic
 			add_traits_at_start_of_list = yes
 			remove_trait = trait_self_modified
