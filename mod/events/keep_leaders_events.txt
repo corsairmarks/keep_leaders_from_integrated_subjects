@@ -2498,7 +2498,7 @@ country_event = {
 		}
 	}
 	immediate = {
-		log = "keep_leaders.16 assimilation (synthetic/unmachine first)"
+		log = "keep_leaders.16 assimilation (synthetic/unmachine priority)"
 		save_event_target_as = potential_owner
 		set_update_modifiers_batch = begin
 		from = {
@@ -2529,7 +2529,7 @@ country_event = {
 	}
 }
 
-# assimilate: cybernetic/psionic assimilations before synthetic
+# assimilate: cybernetic/psionic assimilations before synthetic (synthetic won't fire if any biological assimilations took effect)
 # root = country, actor
 # from = country, leader storage
 country_event = {
@@ -2543,7 +2543,7 @@ country_event = {
 		}
 	}
 	immediate = {
-		log = "keep_leaders.17 assimilation (cybernetic first)"
+		log = "keep_leaders.17 assimilation (cybernetic/psionic priority)"
 		save_event_target_as = potential_owner
 		set_update_modifiers_batch = begin
 		from = {
