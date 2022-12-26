@@ -1564,7 +1564,7 @@ country_event = {
 		}
 		hidden_effect = {
 			country_event = {
-				id = keep_leaders.16
+				id = keep_leaders.17
 				scopes = { from = event_target:storage_owner }
 			}
 		}
@@ -1610,7 +1610,7 @@ country_event = {
 						event_target:storage_owner = {
 							any_owned_leader = {
 								is_eligible_transfer_leader_from_storage = yes
-								is_potential_for_cybernetic_assimilation_species = yes
+								is_potential_for_regular_cybernetic_assimilation_species = yes
 							}
 						}
 					}
@@ -1652,7 +1652,7 @@ country_event = {
 		}
 		hidden_effect = {
 			country_event = {
-				id = keep_leaders.16
+				id = keep_leaders.17
 				scopes = { from = event_target:storage_owner }
 			}
 		}
@@ -1675,7 +1675,7 @@ country_event = {
 				event_target:storage_owner = {
 					any_owned_leader = {
 						is_eligible_transfer_leader_from_storage = yes
-						is_potential_for_synthetic_assimilation_species = yes
+						is_potential_for_regular_synthetic_assimilation_species = yes
 					}
 				}
 			}
@@ -1792,7 +1792,7 @@ country_event = {
 		}
 		hidden_effect = {
 			country_event = {
-				id = keep_leaders.16
+				id = keep_leaders.17
 				scopes = { from = event_target:storage_owner }
 			}
 		}
@@ -1930,7 +1930,7 @@ country_event = {
 		}
 		hidden_effect = {
 			country_event = {
-				id = keep_leaders.17
+				id = keep_leaders.18
 				scopes = { from = event_target:storage_owner }
 			}
 		}
@@ -2484,7 +2484,7 @@ country_event = {
 	}
 }
 
-# assimilate
+# assimilate: synthetic before cybernetic/psionic assimilations
 # root = country, actor
 # from = country, leader storage
 country_event = {
@@ -2498,169 +2498,77 @@ country_event = {
 		}
 	}
 	immediate = {
-		# TODO: it may be best to split this into multiple sub-events to trigger the specific assimilation that the user clicks
-		log = "keep_leaders.16 assimilation"
+		log = "keep_leaders.16 assimilation (synthetic/unmachine first)"
 		save_event_target_as = potential_owner
 		set_update_modifiers_batch = begin
 		from = {
 			every_owned_leader = {
 				limit = { is_eligible_transfer_leader_from_storage = yes }
 				species = { save_event_target_as = former_species }
+				set_variable = {
+					which = assimilation_type_counter
+					value = 0
+				}
+				species = { save_event_target_as = prepared_species }
+				try_apply_genetic_assimilation = yes
+				try_apply_synthetic_assimilation = yes
+				try_apply_unmachine_assimilation = yes
+				try_apply_cybernetic_assimilation = yes
+				try_apply_psionic_assimilation = yes
+				complete_assimilation_and_take_ownership_of_leader = yes
+			}
+			destroy_country = yes
+		}
+		set_update_modifiers_batch = end
+	}
+	after = {
+		# recalculate former ruler country bonuses
+		country_event = {
+			id = keep_leaders_bonus_traits.20
+		}
+	}
+}
+
+# assimilate: cybernetic/psionic assimilations before synthetic
+# root = country, actor
+# from = country, leader storage
+country_event = {
+	id = keep_leaders.17
+	is_triggered_only = yes
+	hide_window = yes
+	trigger = {
+		OR = {
+			has_synthethic_dawn = yes
+			has_utopia = yes
+		}
+	}
+	immediate = {
+		log = "keep_leaders.17 assimilation (cybernetic first)"
+		save_event_target_as = potential_owner
+		set_update_modifiers_batch = begin
+		from = {
+			every_owned_leader = {
+				limit = { is_eligible_transfer_leader_from_storage = yes }
+				species = { save_event_target_as = former_species }
+				set_variable = {
+					which = assimilation_type_counter
+					value = 0
+				}
+				species = { save_event_target_as = prepared_species }
+				try_apply_cybernetic_assimilation = yes
+				try_apply_genetic_assimilation = yes
+				try_apply_psionic_assimilation = yes
 				if = {
-					limit = { event_target:potential_owner = { is_potential_for_cybernetic_assimilation_country = yes } }
-					if = {
-						limit = {
-							OR = {
-								AND = {
-									event_target:potential_owner = { is_machine_empire = yes }
-									is_potential_for_machine_cybernetic_assimilation_species = yes
-								}
-								AND = {
-									event_target:potential_owner = { is_regular_hive_empire = yes }
-									is_potential_for_hive_cybernetic_assimilation_species = yes
-								}
-								AND = {
-									event_target:potential_owner = { is_regular_empire = yes }
-									is_potential_for_cybernetic_assimilation_species = yes
-								}
-							}
-						}
-						species = { set_assimilation_citizenship_and_standard_of_living = yes }
-						if = {
-							limit = { event_target:potential_owner = { is_hive_empire = no } }
-							klfis_prepare_cybernetic_species = yes
-						}
-						else = {
-							klfis_prepare_hive_cybernetic_species = yes
-						}
-						change_species = event_target:prepared_species
-						ensure_species_rights_and_take_ownership_of_leader = yes
-						fire_on_action = {
-							on_action = on_leader_species_changed
-							scopes = {
-								from = event_target:former_species
-							}
-						}
-					}
-					else_if = {
-						limit = { is_eligible_transfer_without_assimilation = yes }
-						ensure_species_rights_and_take_ownership_of_leader = yes
-					}
-				}
-				else_if = {
-					limit = { event_target:potential_owner = { is_potential_for_synthetic_assimilation_country = yes } }
-					if = {
-						limit = {
-							OR = {
-								AND = {
-									event_target:potential_owner = { is_machine_empire = yes }
-									is_potential_for_machine_synthetic_assimilation_species = yes
-								}
-								AND = {
-									event_target:potential_owner = { is_regular_empire = yes }
-									is_potential_for_synthetic_assimilation_species = yes
-								}
-							}
-						}
-						species = { set_assimilation_citizenship_and_standard_of_living = yes }
-						# if you convert hive to synths, you lose the secret hive magic
-						if = {
-							limit = {
-								has_leader_flag = former_gestalt_ruler
-								is_hive_species = yes
-							}
-							remove_leader_flag = former_gestalt_ruler
-						}
-						change_species = event_target:potential_owner.owner_species
-						ensure_species_rights_and_take_ownership_of_leader = yes
-						fire_on_action = {
-							on_action = on_leader_species_changed
-							scopes = {
-								from = event_target:former_species
-							}
-						}
-					}
-					else_if = {
-						limit = { is_eligible_transfer_without_assimilation = yes }
-						ensure_species_rights_and_take_ownership_of_leader = yes
-					}
-				}
-				else_if = {
 					limit = {
-						has_global_flag = deassimilate_machines_installed
-						event_target:potential_owner = { is_potential_for_unmachine_assimilation_country = yes }
-					}
-					if = {
-						limit = {
-							event_target:potential_owner = { is_regular_empire = yes }
-							is_potential_for_unmachine_assimilation_species = yes
-						}
-						species = { set_assimilation_citizenship_and_standard_of_living = yes }
-						klfis_prepare_machine_species_to_mechanical_species = yes
-						change_species = event_target:prepared_species
-						ensure_species_rights_and_take_ownership_of_leader = yes
-						fire_on_action = {
-							on_action = on_leader_species_changed
-							scopes = {
-								from = event_target:former_species
-							}
+						check_variable = {
+							which = assimilation_type_counter
+							value < 1
 						}
 					}
-					else_if = {
-						limit = { is_eligible_transfer_without_assimilation = yes }
-						ensure_species_rights_and_take_ownership_of_leader = yes
-					}
+					try_apply_synthetic_assimilation = yes
+					try_apply_unmachine_assimilation = yes
 				}
-				else_if = {
-					limit = { event_target:potential_owner = { is_potential_for_psionic_assimilation_country = yes } }
-					if = {
-						limit = { is_potential_for_psionic_assimilation_species = yes }
-						species = { set_assimilation_citizenship_and_standard_of_living = yes }
-						klfis_prepare_psionic_species = yes
-						change_species = event_target:prepared_species
-						ensure_species_rights_and_take_ownership_of_leader = yes
-						fire_on_action = {
-							on_action = on_leader_species_changed
-							scopes = {
-								from = event_target:former_species
-							}
-						}
-					}
-					else_if = {
-						limit = { is_eligible_transfer_without_assimilation = yes }
-						ensure_species_rights_and_take_ownership_of_leader = yes
-					}
-				}
-				else_if = {
-					limit = { event_target:potential_owner = { is_potential_for_genetic_assimilation_country = yes } }
-					if = {
-						limit = {
-							OR = {
-								is_potential_for_hive_assimilation_species = yes
-								is_potential_for_unhive_assimilation_species = yes
-							}
-						}
-						if = {
-							limit = { is_hive_species = yes }
-							klfis_prepare_unhive_species = yes
-						}
-						else = {
-							klfis_prepare_hive_species = yes
-						}
-						change_species = event_target:prepared_species
-						ensure_species_rights_and_take_ownership_of_leader = yes
-						fire_on_action = {
-							on_action = on_leader_species_changed
-							scopes = {
-								from = event_target:former_species
-							}
-						}
-					}
-					else_if = {
-						limit = { is_eligible_transfer_without_assimilation = yes }
-						ensure_species_rights_and_take_ownership_of_leader = yes
-					}
-				}
+				complete_assimilation_and_take_ownership_of_leader = yes
 			}
 			destroy_country = yes
 		}
@@ -2678,7 +2586,7 @@ country_event = {
 # root = country, actor
 # from = country, leader storage
 country_event = {
-	id = keep_leaders.17
+	id = keep_leaders.18
 	is_triggered_only = yes
 	hide_window = yes
 	trigger = {
@@ -2686,7 +2594,7 @@ country_event = {
 		is_necrophage_empire = yes
 	}
 	immediate = {
-		log = "keep_leaders.17 necrophage"
+		log = "keep_leaders.18 necrophage"
 		save_event_target_as = potential_owner
 		set_update_modifiers_batch = begin
 		from = {
@@ -2891,7 +2799,7 @@ planet_event = {
 			}
 			hidden_effect = {
 				country_event = {
-					id = keep_leaders.16
+					id = keep_leaders.17
 					scopes = { from = event_target:storage_owner }
 				}
 			}
@@ -3065,7 +2973,7 @@ planet_event = {
 			}
 			hidden_effect = {
 				country_event = {
-					id = keep_leaders.17
+					id = keep_leaders.18
 					scopes = { from = event_target:storage_owner }
 				}
 			}

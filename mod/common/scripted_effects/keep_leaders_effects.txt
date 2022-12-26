@@ -1848,11 +1848,11 @@ create_army_transport_parameterized = {
 }
 
 # set up a machine species for deassimilation into a mechanical species, saved as event_target:prepared_species
-# this = something with a species (country, leader, pop, etc)
+# event_target:prepared_species = the species being prepared (possibly with one or more changes from previous assimilations)
 # event_target:potential_owner = country (assimilator)
 klfis_prepare_machine_to_mechanical_species = {
 	optimize_memory
-	species = { save_event_target_as = machine_species }
+	event_target:prepared_species = { save_event_target_as = machine_species }
 	random_galaxy_species = {
 		limit = { has_species_flag = mechanical_species_of_machine_species@event_target:machine_species }
 		event_target:potential_owner = { set_country_flag = found_assim_mech_species@event_target:machine_species }
@@ -1896,13 +1896,13 @@ klfis_prepare_machine_to_mechanical_species = {
 }
 
 # set up a species for cybernetic assimilation (non-hive), saved as event_target:prepared_species
-# this = something with a species (country, leader, pop, etc)
+# event_target:prepared_species = the species being prepared (possibly with one or more changes from previous assimilations)
 klfis_prepare_cybernetic_species = {
 	optimize_memory
 	if = {
 		limit = { NOT = { has_global_flag = assimilate_all_the_things_installed } }
 		modify_species = {
-			species = species
+			species = event_target:prepared_species
 			add_trait = trait_cybernetic
 			add_traits_at_start_of_list = yes
 			remove_trait = trait_self_modified
@@ -1917,7 +1917,7 @@ klfis_prepare_cybernetic_species = {
 	}
 	else = {
 		modify_species = {
-			species = species
+			species = event_target:prepared_species
 			add_trait = trait_cybernetic
 			add_traits_at_start_of_list = yes
 			remove_trait = trait_self_modified
@@ -1931,11 +1931,11 @@ klfis_prepare_cybernetic_species = {
 }
 
 # set up a species for hive assimilation, saved as event_target:prepared_species
-# this = something with a species (country, leader, pop, etc)
+# event_target:prepared_species = the species being prepared (possibly with one or more changes from previous assimilations)
 klfis_prepare_hive_species = {
 	optimize_memory
 	modify_species = {
-		species = species
+		species = event_target:prepared_species
 		add_trait = trait_hive_mind
 		add_traits_at_start_of_list = yes
 		remove_trait = trait_self_modified
@@ -1949,11 +1949,11 @@ klfis_prepare_hive_species = {
 }
 
 # set up a species for cybernetic assimilation (hive), saved as event_target:prepared_species
-# this = something with a species (country, leader, pop, etc)
+# event_target:prepared_species = the species being prepared (possibly with one or more changes from previous assimilations)
 klfis_prepare_hive_cybernetic_species = {
 	optimize_memory
 	modify_species = {
-		species = species
+		species = event_target:prepared_species
 		add_trait = trait_cybernetic
 		add_trait = trait_hive_mind
 		add_traits_at_start_of_list = yes
@@ -1968,11 +1968,11 @@ klfis_prepare_hive_cybernetic_species = {
 }
 
 # set up a species for hive deassimilation, saved as event_target:prepared_species
-# this = something with a species (country, leader, pop, etc)
+# event_target:prepared_species = the species being prepared (possibly with one or more changes from previous assimilations)
 klfis_prepare_unhive_species = {
 	optimize_memory
 	modify_species = {
-		species = species
+		species = event_target:prepared_species
 		remove_trait = trait_self_modified
 		remove_trait = trait_hive_mind
 		change_scoped_species = no
@@ -1983,13 +1983,13 @@ klfis_prepare_unhive_species = {
 }
 
 # set up a species for psionic assimilation, saved as event_target:prepared_species
-# this = something with a species (country, leader, pop, etc)
+# event_target:prepared_species = the species being prepared (possibly with one or more changes from previous assimilations)
 klfis_prepare_psionic_species = {
 	optimize_memory
 	if = {
 		limit = { NOT = { has_global_flag = assimilate_all_the_things_installed } }
 		modify_species = {
-			species = species
+			species = event_target:prepared_species
 			add_trait = trait_psionic
 			add_traits_at_start_of_list = yes
 			remove_trait = trait_self_modified
@@ -2020,7 +2020,7 @@ klfis_prepare_psionic_species = {
 	}
 	else = {
 		modify_species = {
-			species = species
+			species = event_target:prepared_species
 			add_trait = trait_psionic
 			add_traits_at_start_of_list = yes
 			remove_trait = trait_self_modified
@@ -2144,4 +2144,133 @@ klfis_clone_leader_with_gender = {
 			}
 		}
 	}
+}
+
+# this = leader
+# event_target:prepared_species = the species being prepared (possibly with one or more changes from previous assimilations)
+# event_target:potential_owner = country
+# assimilation_type_counter (variable) how many (if any) assimilation changes were applied
+try_apply_cybernetic_assimilation = {
+	optimize_memory
+	if = {
+		limit = { event_target:prepared_species = { is_possible_for_cybernetic_assimilation = yes } }
+		if = {
+			limit = { event_target:potential_owner = { is_hive_empire = no } }
+			klfis_prepare_cybernetic_species = yes
+		}
+		else = {
+			klfis_prepare_hive_cybernetic_species = yes
+		}
+		change_variable = {
+			which = assimilation_type_counter
+			value = 1
+		}
+	}
+}
+
+# this = leader
+# event_target:prepared_species = the species being prepared (possibly with one or more changes from previous assimilations)
+# event_target:potential_owner = country
+# assimilation_type_counter (variable) how many (if any) assimilation changes were applied
+try_apply_synthetic_assimilation = {
+	optimize_memory
+	if = {
+		limit = { event_target:prepared_species = { is_possible_for_synthetic_assimilation = yes } }
+		# if you convert hive to synths, you lose the secret hive magic
+		if = {
+			limit = {
+				has_leader_flag = former_gestalt_ruler
+				is_hive_species = yes # intentionally checks the leader's original species
+			}
+			remove_leader_flag = former_gestalt_ruler
+		}
+		event_target:potential_owner.owner_species = { save_event_target_as = prepared_species }
+		change_variable = {
+			which = assimilation_type_counter
+			value = 1
+		}
+	}
+}
+
+# this = leader
+# event_target:prepared_species = the species being prepared (possibly with one or more changes from previous assimilations)
+# event_target:potential_owner = country
+# assimilation_type_counter (variable) how many (if any) assimilation changes were applied
+try_apply_unmachine_assimilation = {
+	optimize_memory
+	if = {
+		limit = { event_target:prepared_species = { is_possible_for_unmachine_assimilation = yes } }
+		klfis_prepare_machine_to_mechanical_species = yes
+		change_variable = {
+			which = assimilation_type_counter
+			value = 1
+		}
+	}
+}
+
+# this = leader
+# event_target:prepared_species = the species being prepared (possibly with one or more changes from previous assimilations)
+# event_target:potential_owner = country
+# assimilation_type_counter (variable) how many (if any) assimilation changes were applied
+try_apply_psionic_assimilation = {
+	optimize_memory
+	if = {
+		limit = { event_target:prepared_species = { is_possible_for_psionic_assimilation = yes } }
+		klfis_prepare_psionic_species = yes
+		change_variable = {
+			which = assimilation_type_counter
+			value = 1
+		}
+	}
+}
+
+# this = leader
+# event_target:prepared_species = the species being prepared (possibly with one or more changes from previous assimilations)
+# event_target:potential_owner = country
+# assimilation_type_counter (variable) how many (if any) assimilation changes were applied
+try_apply_genetic_assimilation = {
+	optimize_memory
+	if = {
+		limit = { event_target:prepared_species = { is_possible_for_genetic_assimilation = yes } }
+		if = {
+			limit = { is_hive_species = yes }
+			klfis_prepare_unhive_species = yes
+		}
+		else = {
+			klfis_prepare_hive_species = yes
+		}
+		change_variable = {
+			which = assimilation_type_counter
+			value = 1
+		}
+	}
+}
+
+# this = leader
+# event_target:prepared_species = the species being prepared (possibly with one or more changes from previous assimilations)
+# assimilation_type_counter (variable) how many (if any) assimilation changes were applied
+complete_assimilation_and_take_ownership_of_leader = {
+	optimize_memory
+	if = {
+		limit = {
+			check_variable = {
+				which = assimilation_type_counter
+				value > 0
+			}
+		}
+		event_target:prepared_species = { set_assimilation_citizenship_and_standard_of_living = yes }
+		change_species = event_target:prepared_species
+		ensure_species_rights_and_take_ownership_of_leader = yes
+		fire_on_action = {
+			on_action = on_leader_species_changed
+			scopes = {
+				from = event_target:former_species
+			}
+		}
+	}
+	else_if = {
+		limit = { is_eligible_transfer_without_assimilation = yes }
+		ensure_species_rights_and_take_ownership_of_leader = yes
+	}
+	clear_variable = assimilation_type_counter
 }

@@ -52,7 +52,7 @@ allows_ai_leaders = {
 	}
 }
 
-# this = something with a species
+# this = something with a species (country, leader, pop, etc)
 # event_target:potential_owner = country to which the leader would transfer
 can_be_civilian_leaders_species = {
 	optimize_memory
@@ -70,7 +70,7 @@ can_be_civilian_leaders_species = {
 	}
 }
 
-# this = something with a species
+# this = something with a species (country, leader, pop, etc)
 # event_target:potential_owner = country to which the leader would transfer
 can_be_military_leaders_species = {
 	optimize_memory
@@ -82,7 +82,7 @@ can_be_military_leaders_species = {
 	}
 }
 
-# this = something with a species
+# this = something with a species (country, leader, pop, etc)
 # event_target:potential_owner = country to which the leader would transfer
 is_eligible_for_policy_full_citizenship_species = {
 	optimize_memory
@@ -122,7 +122,7 @@ is_eligible_for_policy_full_citizenship_species = {
 	}
 }
 
-# this = something with a species
+# this = something with a species (country, leader, pop, etc)
 # event_target:potential_owner = country to which the leader would transfer
 is_eligible_for_policy_full_military_service_species = {
 	optimize_memory
@@ -167,11 +167,11 @@ is_eligible_for_policy_full_military_service_species = {
 }
 
 # could this species potentially be made machine? (robotic, non-primary)
-# this = something with a species
+# this = something with a species (country, leader, pop, etc)
 is_potential_for_machine_synthetic_assimilation_species = {
 	optimize_memory
 	is_robotic_species = yes
-	NOT = { is_same_species = event_target:potential_owner }
+	species = { NOT = { is_same_species = event_target:potential_owner } }
 }
 
 # this = country
@@ -184,7 +184,7 @@ is_potential_for_synthetic_assimilation_country = {
 }
 
 # could this species potentially be made hive and/or cybernetic? (non-robotic, non-cyborg or non-hive)
-# this = something with a species
+# this = something with a species (country, leader, pop, etc)
 is_potential_for_hive_cybernetic_assimilation_species = {
 	optimize_memory
 	is_robotic_species = no
@@ -195,7 +195,7 @@ is_potential_for_hive_cybernetic_assimilation_species = {
 }
 
 # could this species potentially be made cybernetic and/or non-hive? (non-robotic, non-cyborg, cyborg hive with tradition)
-# this = something with a species
+# this = something with a species (country, leader, pop, etc)
 # event_target:potential_owner = country to which the leader would transfer
 is_potential_for_machine_cybernetic_assimilation_species = {
 	optimize_memory
@@ -210,7 +210,7 @@ is_potential_for_machine_cybernetic_assimilation_species = {
 }
 
 # could this species potentially be hived? (non-robotic, non-hive)
-# this = something with a species
+# this = something with a species (country, leader, pop, etc)
 is_potential_for_hive_assimilation_species = {
 	optimize_memory
 	is_robotic_species = no
@@ -224,7 +224,7 @@ is_potential_for_genetic_assimilation_country = {
 }
 
 # could this species potentially be converted from a machine to a robot? (machine)
-# this = something with a species
+# this = something with a species (country, leader, pop, etc)
 is_potential_for_unmachine_assimilation_species = {
 	optimize_memory
 	is_machine_species = yes
@@ -239,22 +239,22 @@ is_potential_for_unmachine_assimilation_country = {
 }
 
 # could this species potentially be unhived? (hive)
-# this = something with a species
+# this = something with a species (country, leader, pop, etc)
 is_potential_for_unhive_assimilation_species = {
 	optimize_memory
 	is_hive_species = yes
 }
 
 # could this species potentially be made synthetic? (non-hive)
-# this = something with a species
-is_potential_for_synthetic_assimilation_species = {
+# this = something with a species (country, leader, pop, etc)
+is_potential_for_regular_synthetic_assimilation_species = {
 	optimize_memory
 	is_hive_species = no
 }
 
 # could this species potentially be made cybernetic? (non-robotic, non-cyborg)
-# this = something with a species
-is_potential_for_cybernetic_assimilation_species = {
+# this = something with a species (country, leader, pop, etc)
+is_potential_for_regular_cybernetic_assimilation_species = {
 	optimize_memory
 	is_robotic_species = no
 	is_cyborg_species = no
@@ -270,7 +270,7 @@ is_potential_for_cybernetic_assimilation_country = {
 }
 
 # could this species potentially be made psionic? (non-robotic, non-psionic, non-hive)
-# this = something with a species
+# this = something with a species (country, leader, pop, etc)
 is_potential_for_psionic_assimilation_species = {
 	optimize_memory
 	is_robotic_species = no
@@ -284,31 +284,103 @@ is_potential_for_psionic_assimilation_country = {
 	has_tradition = tr_psionics_psionic_assimilation
 }
 
-# this = something with a species
+# this = something with a species (country, leader, pop, etc)
+# event_target:potential_owner = country
+is_possible_for_cybernetic_assimilation = {
+	optimize_memory
+	event_target:potential_owner = { is_potential_for_cybernetic_assimilation_country = yes }
+	OR = {
+		AND = {
+			event_target:potential_owner = { has_valid_civic = civic_machine_assimilator }
+			is_potential_for_machine_cybernetic_assimilation_species = yes
+		}
+		AND = {
+			event_target:potential_owner = { is_regular_hive_empire = yes }
+			is_potential_for_hive_cybernetic_assimilation_species = yes
+		}
+		AND = {
+			event_target:potential_owner = { is_regular_empire = yes }
+			is_potential_for_regular_cybernetic_assimilation_species = yes
+		}
+	}
+}
+
+# this = something with a species (country, leader, pop, etc)
+# event_target:potential_owner = country
+is_possible_for_synthetic_assimilation = {
+	optimize_memory
+	event_target:potential_owner = { is_potential_for_synthetic_assimilation_country = yes }
+	OR = {
+		AND = {
+			event_target:potential_owner = { is_machine_empire = yes }
+			is_potential_for_machine_synthetic_assimilation_species = yes
+		}
+		AND = {
+			event_target:potential_owner = { is_regular_empire = yes }
+			is_potential_for_regular_synthetic_assimilation_species = yes
+		}
+	}
+}
+
+# this = something with a species (country, leader, pop, etc)
+# event_target:potential_owner = country
+is_possible_for_unmachine_assimilation = {
+	optimize_memory
+	has_global_flag = deassimilate_machines_installed
+	event_target:potential_owner = { is_potential_for_unmachine_assimilation_country = yes }
+	is_potential_for_unmachine_assimilation_species = yes
+}
+
+# this = something with a species (country, leader, pop, etc)
+# event_target:potential_owner = country
+is_possible_for_psionic_assimilation = {
+	optimize_memory
+	event_target:potential_owner = { is_potential_for_psionic_assimilation_country = yes }
+	is_potential_for_psionic_assimilation_species = yes
+}
+
+# this = something with a species (country, leader, pop, etc)
+# event_target:potential_owner = country
+is_possible_for_genetic_assimilation = {
+	optimize_memory
+	event_target:potential_owner = { is_potential_for_genetic_assimilation_country = yes }
+	OR = {
+		AND = {
+			event_target:potential_owner = { is_hive_empire = yes }
+			is_potential_for_hive_assimilation_species = yes
+		}
+		AND = {
+			event_target:potential_owner = { is_regular_empire = yes }
+			is_potential_for_unhive_assimilation_species = yes
+		}
+	}
+}
+
+# this = something with a species (country, leader, pop, etc)
 is_latent_psionic_species = {
 	optimize_memory
 	species = { has_trait = trait_latent_psionic }
 }
 
-# this = something with a species
+# this = something with a species (country, leader, pop, etc)
 is_psionic_species = {
 	optimize_memory
 	species = { has_trait = trait_psionic }
 }
 
-# this = something with a species
+# this = something with a species (country, leader, pop, etc)
 is_cyborg_species = {
 	optimize_memory
 	species = { has_trait = trait_cybernetic }
 }
 
-# this = something with a species
+# this = something with a species (country, leader, pop, etc)
 is_hive_species = {
 	optimize_memory
 	species = { has_trait = trait_hive_mind }
 }
 
-# this = something with a species
+# this = something with a species (country, leader, pop, etc)
 is_machine_species = {
 	optimize_memory
 	species = {
@@ -319,7 +391,7 @@ is_machine_species = {
 	}
 }
 
-# this = something with a species
+# this = something with a species (country, leader, pop, etc)
 is_mechanical_species = {
 	optimize_memory
 	species = {
@@ -330,13 +402,13 @@ is_mechanical_species = {
 	}
 }
 
-# this = something with a species
+# this = something with a species (country, leader, pop, etc)
 is_aquatic_species = {
 	optimize_memory
 	species = { has_trait = trait_aquatic }
 }
 
-# this = something with a species
+# this = something with a species (country, leader, pop, etc)
 is_smart_enough_for_leadership_species = {
 	optimize_memory
 	species = {
@@ -560,12 +632,12 @@ is_eligible_transfer_with_assimilation = {
 				}
 				AND = {
 					event_target:potential_owner = { has_active_tradition = tr_cybernetics_transubstantiation_synthesis }
-					is_potential_for_cybernetic_assimilation_species = yes
+					is_potential_for_regular_cybernetic_assimilation_species = yes
 					is_regular_empire_allowable_leader_species = yes
 				}
 				AND = {
 					event_target:potential_owner = { has_country_flag = synth_assimilation }
-					is_potential_for_synthetic_assimilation_species = yes
+					is_potential_for_regular_synthetic_assimilation_species = yes
 				}
 				AND = {
 					event_target:potential_owner = { has_active_tradition = tr_psionics_psionic_assimilation }
