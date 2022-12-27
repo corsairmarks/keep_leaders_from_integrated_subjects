@@ -502,7 +502,7 @@ set_minimum_standard_of_living_species = {
 						}
 					}
 					AND = {
-						is_robotic_species = yes
+						is_robotic = yes
 						event_target:potential_owner = { has_full_ai_rights = no }
 					}
 				}
