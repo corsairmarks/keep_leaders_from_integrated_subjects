@@ -1454,7 +1454,7 @@ country_event = {
 		}
 		hidden_effect = {
 			country_event = {
-				id = keep_leaders.16
+				id = keep_leaders.19
 				scopes = { from = event_target:storage_owner }
 			}
 		}
@@ -1508,7 +1508,7 @@ country_event = {
 		}
 		hidden_effect = {
 			country_event = {
-				id = keep_leaders.16
+				id = keep_leaders.19
 				scopes = { from = event_target:storage_owner }
 			}
 		}
@@ -1564,7 +1564,7 @@ country_event = {
 		}
 		hidden_effect = {
 			country_event = {
-				id = keep_leaders.17
+				id = keep_leaders.18
 				scopes = { from = event_target:storage_owner }
 			}
 		}
@@ -2484,7 +2484,7 @@ country_event = {
 	}
 }
 
-# assimilate: synthetic before biological assimilations
+# assimilate: synthetic/unmachine before biological assimilations
 # root = country, actor
 # from = country, leader storage
 country_event = {
@@ -2537,7 +2537,7 @@ country_event = {
 	}
 }
 
-# assimilate: cybernetic/psionic assimilations before synthetic (synthetic won't fire if any biological assimilations took effect)
+# assimilate: cybernetic assimilation before others (synthetic/unmachine won't fire if any biological assimilations took effect)
 # root = country, actor
 # from = country, leader storage
 country_event = {
@@ -2551,7 +2551,7 @@ country_event = {
 		}
 	}
 	immediate = {
-		log = "keep_leaders.17 assimilation (cybernetic/psionic priority)"
+		log = "keep_leaders.17 assimilation (cybernetic priority)"
 		save_event_target_as = potential_owner
 		set_update_modifiers_batch = begin
 		from = {
@@ -2571,6 +2571,114 @@ country_event = {
 						NOR = {
 							has_leader_flag = cybernetic_assimilation
 							has_leader_flag = genetic_assimilation
+							has_leader_flag = psionic_assimilation
+						}
+					}
+					try_apply_synthetic_assimilation = yes
+					try_apply_unmachine_assimilation = yes
+				}
+				complete_assimilation_and_take_ownership_of_leader = yes
+			}
+			destroy_country = yes
+		}
+		set_update_modifiers_batch = end
+	}
+	after = {
+		# recalculate former ruler country bonuses
+		country_event = {
+			id = keep_leaders_bonus_traits.20
+		}
+	}
+}
+
+# assimilate: psionic assimilation before others (synthetic/unmachine won't fire if any biological assimilations took effect)
+# root = country, actor
+# from = country, leader storage
+country_event = {
+	id = keep_leaders.18
+	is_triggered_only = yes
+	hide_window = yes
+	trigger = {
+		OR = {
+			has_synthethic_dawn = yes
+			has_utopia = yes
+		}
+	}
+	immediate = {
+		log = "keep_leaders.18 assimilation (psionic priority)"
+		save_event_target_as = potential_owner
+		set_update_modifiers_batch = begin
+		from = {
+			every_owned_leader = {
+				limit = { is_eligible_transfer_leader_from_storage = yes }
+				species = { save_event_target_as = former_species }
+				set_variable = {
+					which = assimilation_type_counter
+					value = 0
+				}
+				species = { save_event_target_as = prepared_species }
+				try_apply_psionic_assimilation = yes
+				try_apply_cybernetic_assimilation = yes
+				try_apply_genetic_assimilation = yes
+				if = {
+					limit = {
+						NOR = {
+							has_leader_flag = cybernetic_assimilation
+							has_leader_flag = genetic_assimilation
+							has_leader_flag = psionic_assimilation
+						}
+					}
+					try_apply_synthetic_assimilation = yes
+					try_apply_unmachine_assimilation = yes
+				}
+				complete_assimilation_and_take_ownership_of_leader = yes
+			}
+			destroy_country = yes
+		}
+		set_update_modifiers_batch = end
+	}
+	after = {
+		# recalculate former ruler country bonuses
+		country_event = {
+			id = keep_leaders_bonus_traits.20
+		}
+	}
+}
+
+# assimilate: genetic assimilation before others (synthetic/unmachine won't fire if any biological assimilations took effect)
+# root = country, actor
+# from = country, leader storage
+country_event = {
+	id = keep_leaders.19
+	is_triggered_only = yes
+	hide_window = yes
+	trigger = {
+		OR = {
+			has_synthethic_dawn = yes
+			has_utopia = yes
+		}
+	}
+	immediate = {
+		log = "keep_leaders.19 assimilation (genetic priority)"
+		save_event_target_as = potential_owner
+		set_update_modifiers_batch = begin
+		from = {
+			every_owned_leader = {
+				limit = { is_eligible_transfer_leader_from_storage = yes }
+				species = { save_event_target_as = former_species }
+				set_variable = {
+					which = assimilation_type_counter
+					value = 0
+				}
+				species = { save_event_target_as = prepared_species }
+				try_apply_genetic_assimilation = yes
+				try_apply_cybernetic_assimilation = yes
+				try_apply_psionic_assimilation = yes
+				if = {
+					limit = {
+						NOR = {
+							has_leader_flag = genetic_assimilation
+							has_leader_flag = cybernetic_assimilation
 							has_leader_flag = psionic_assimilation
 						}
 					}
