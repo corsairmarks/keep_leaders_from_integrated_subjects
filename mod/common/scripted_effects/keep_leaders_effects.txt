@@ -263,7 +263,7 @@ ensure_species_rights_and_take_ownership_of_leader = {
 		}
 		set_full_military_service_species = yes
 	}
-	set_minimum_standard_of_living_species = yes
+	set_minimum_living_standard_species = yes
 	unassign_leader = this
 	set_owner = event_target:potential_owner
 	try_assign_retained_leader_to_former_assignment = yes
@@ -452,7 +452,7 @@ set_full_military_service_species = {
 
 # this = something with species
 # event_target:potential_owner = country to ensure minimum standard of living
-set_minimum_standard_of_living_species = {
+set_minimum_living_standard_species = {
 	optimize_memory
 	species= {
 		if = {
@@ -565,14 +565,65 @@ set_minimum_standard_of_living_species = {
 
 # this = species
 # event_target:potential_owner = country doing the assimilating
-set_assimilation_citizenship_and_standard_of_living = {
+set_citizenship_assimilation_and_living_standard_synthetic = {
 	optimize_memory
-	set_citizenship_type = {
-		country = event_target:potential_owner
-		type = citizenship_assimilation
-	}
 	if = {
-		limit = { event_target:potential_owner = { is_potential_for_cybernetic_assimilation_country = yes } }
+		limit = {
+			NOT = { has_species_flag = living_standard_set@event_target:potential_owner }
+			event_target:potential_owner = { is_potential_for_synthetic_assimilation_country = yes }
+		}
+		set_citizenship_type = {
+			country = event_target:potential_owner
+			type = citizenship_assimilation
+			cooldown = no
+		}
+		set_living_standard = {
+			country = event_target:potential_owner
+			type = living_standard_tech_assimilation
+			cooldown = no
+		}
+		set_timed_species_flag = {
+			flag = living_standard_set@event_target:potential_owner
+			days = 1
+		}
+	}
+}
+
+# this = species
+# event_target:potential_owner = country doing the assimilating
+set_citizenship_assimilation_and_living_standard_unmachine = {
+	optimize_memory
+	if = {
+		limit = {
+			NOT = { has_species_flag = living_standard_set@event_target:potential_owner }
+			event_target:potential_owner = { is_potential_for_unmachine_assimilation_country = yes }
+		}
+		set_citizenship_type = {
+			country = event_target:potential_owner
+			type = citizenship_assimilation
+			cooldown = no
+		}
+		set_living_standard = {
+			country = event_target:potential_owner
+			type = living_standard_deassimilation_machine
+			cooldown = no
+		}
+		set_timed_species_flag = {
+			flag = living_standard_set@event_target:potential_owner
+			days = 1
+		}
+	}
+}
+
+# this = species
+# event_target:potential_owner = country doing the assimilating
+set_citizenship_assimilation_and_living_standard_cybernetic = {
+	optimize_memory
+	if = {
+		limit = {
+			NOT = { has_species_flag = living_standard_set@event_target:potential_owner }
+			event_target:potential_owner = { is_potential_for_cybernetic_assimilation_country = yes }
+		}
 		if = {
 			limit = { 
 				event_target:potential_owner = {
@@ -581,6 +632,11 @@ set_assimilation_citizenship_and_standard_of_living = {
 						is_regular_hive_empire = yes
 					}
 				}
+			}
+			set_citizenship_type = {
+				country = event_target:potential_owner
+				type = citizenship_assimilation
+				cooldown = no
 			}
 			if = {
 				limit = { has_psionic_species_trait = no }
@@ -597,9 +653,18 @@ set_assimilation_citizenship_and_standard_of_living = {
 					cooldown = no
 				}
 			}
+			set_timed_species_flag = {
+				flag = living_standard_set@event_target:potential_owner
+				days = 1
+			}
 		}
 		else_if = {
 			limit = { event_target:potential_owner = { is_regular_empire = yes } }
+			set_citizenship_type = {
+				country = event_target:potential_owner
+				type = citizenship_assimilation
+				cooldown = no
+			}
 			if = {
 				limit = { has_psionic_species_trait = no }
 				set_living_standard = {
@@ -615,26 +680,28 @@ set_assimilation_citizenship_and_standard_of_living = {
 					cooldown = no
 				}
 			}
+			set_timed_species_flag = {
+				flag = living_standard_set@event_target:potential_owner
+				days = 1
+			}
 		}
 	}
-	else_if = {
-		limit = { event_target:potential_owner = { is_potential_for_synthetic_assimilation_country = yes } }
-		set_living_standard = {
+}
+
+# this = species
+# event_target:potential_owner = country doing the assimilating
+set_citizenship_assimilation_and_living_standard_psionic = {
+	optimize_memory
+	if = {
+		limit = {
+			NOT = { has_species_flag = living_standard_set@event_target:potential_owner }
+			event_target:potential_owner = { is_potential_for_psionic_assimilation_country = yes }
+		}
+		set_citizenship_type = {
 			country = event_target:potential_owner
-			type = living_standard_tech_assimilation
+			type = citizenship_assimilation
 			cooldown = no
 		}
-	}
-	else_if = {
-		limit = { event_target:potential_owner = { is_potential_for_unmachine_assimilation_country = yes } }
-		set_living_standard = {
-			country = event_target:potential_owner
-			type = living_standard_deassimilation_machine
-			cooldown = no
-		}
-	}
-	else_if = {
-		limit = { event_target:potential_owner = { is_potential_for_psionic_assimilation_country = yes } }
 		if = {
 			limit = { NOT = { has_trait = trait_cybernetic } }
 			set_living_standard = {
@@ -650,19 +717,46 @@ set_assimilation_citizenship_and_standard_of_living = {
 				cooldown = no
 			}
 		}
+		set_timed_species_flag = {
+			flag = living_standard_set@event_target:potential_owner
+			days = 1
+		}
 	}
-	else_if = {
-		limit = { event_target:potential_owner = { is_potential_for_genetic_assimilation_country = yes } }
+}
+
+# this = species
+# event_target:potential_owner = country doing the assimilating
+set_citizenship_assimilation_and_living_standard_genetic = {
+	optimize_memory
+	if = {
+		limit = {
+			NOT = { has_species_flag = living_standard_set@event_target:potential_owner }
+			event_target:potential_owner = { is_potential_for_genetic_assimilation_country = yes }
+		}
 		if = {
 			limit = { event_target:potential_owner = { is_regular_empire = yes } }
+			set_citizenship_type = {
+				country = event_target:potential_owner
+				type = citizenship_assimilation
+				cooldown = no
+			}
 			set_living_standard = {
 				country = event_target:potential_owner
 				type = living_standard_deassimilation
 				cooldown = no
 			}
+			set_timed_species_flag = {
+				flag = living_standard_set@event_target:potential_owner
+				days = 1
+			}
 		}
 		else_if = {
 			limit = { event_target:potential_owner = { is_regular_hive_empire = yes } }
+			set_citizenship_type = {
+				country = event_target:potential_owner
+				type = citizenship_assimilation
+				cooldown = no
+			}
 			if = {
 				limit = { has_psionic_species_trait = no }
 				set_living_standard = {
@@ -677,6 +771,10 @@ set_assimilation_citizenship_and_standard_of_living = {
 					type = living_standard_ego_assimilation_psionic
 					cooldown = no
 				}
+			}
+			set_timed_species_flag = {
+				flag = living_standard_set@event_target:potential_owner
+				days = 1
 			}
 		}
 	}
@@ -2154,6 +2252,7 @@ try_apply_cybernetic_assimilation = {
 	optimize_memory
 	if = {
 		limit = { event_target:prepared_species = { is_possible_for_cybernetic_assimilation = yes } }
+		species = { set_citizenship_assimilation_and_living_standard_cybernetic = yes }
 		if = {
 			limit = { event_target:potential_owner = { is_hive_empire = no } }
 			klfis_prepare_cybernetic_species = yes
@@ -2188,6 +2287,7 @@ try_apply_synthetic_assimilation = {
 			}
 			remove_leader_flag = former_gestalt_ruler
 		}
+		species = { set_citizenship_assimilation_and_living_standard_synthetic = yes }
 		event_target:potential_owner.owner_species = { save_event_target_as = prepared_species }
 		set_timed_leader_flag = {
 			flag = synthetic_assimilation
@@ -2208,6 +2308,7 @@ try_apply_unmachine_assimilation = {
 	optimize_memory
 	if = {
 		limit = { event_target:prepared_species = { is_possible_for_unmachine_assimilation = yes } }
+		species = { set_citizenship_assimilation_and_living_standard_unmachine = yes }
 		klfis_prepare_machine_to_mechanical_species = yes
 		set_timed_leader_flag = {
 			flag = unmachine_assimilation
@@ -2228,6 +2329,7 @@ try_apply_psionic_assimilation = {
 	optimize_memory
 	if = {
 		limit = { event_target:prepared_species = { is_possible_for_psionic_assimilation = yes } }
+		species = { set_citizenship_assimilation_and_living_standard_psionic = yes }
 		klfis_prepare_psionic_species = yes
 		set_timed_leader_flag = {
 			flag = psionic_assimilation
@@ -2248,6 +2350,7 @@ try_apply_genetic_assimilation = {
 	optimize_memory
 	if = {
 		limit = { event_target:prepared_species = { is_possible_for_genetic_assimilation = yes } }
+		species = { set_citizenship_assimilation_and_living_standard_genetic = yes }
 		if = {
 			limit = { is_hive_species = yes }
 			klfis_prepare_unhive_species = yes
@@ -2278,7 +2381,6 @@ complete_assimilation_and_take_ownership_of_leader = {
 				value > 0
 			}
 		}
-		species = { set_assimilation_citizenship_and_standard_of_living = yes }
 		change_species = event_target:prepared_species
 		ensure_species_rights_and_take_ownership_of_leader = yes
 		fire_on_action = {
