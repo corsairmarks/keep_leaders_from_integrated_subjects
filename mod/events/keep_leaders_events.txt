@@ -1930,7 +1930,7 @@ country_event = {
 		}
 		hidden_effect = {
 			country_event = {
-				id = keep_leaders.18
+				id = keep_leaders.20
 				scopes = { from = event_target:storage_owner }
 			}
 		}
@@ -2484,7 +2484,7 @@ country_event = {
 	}
 }
 
-# assimilate: synthetic before cybernetic/psionic assimilations
+# assimilate: synthetic before biological assimilations
 # root = country, actor
 # from = country, leader storage
 country_event = {
@@ -2510,7 +2510,6 @@ country_event = {
 					value = 0
 				}
 				species = { save_event_target_as = prepared_species }
-				try_apply_genetic_assimilation = yes
 				try_apply_synthetic_assimilation = yes
 				try_apply_unmachine_assimilation = yes
 				if = {
@@ -2521,6 +2520,7 @@ country_event = {
 						}
 					}
 					try_apply_cybernetic_assimilation = yes
+					try_apply_genetic_assimilation = yes
 					try_apply_psionic_assimilation = yes
 				}
 				complete_assimilation_and_take_ownership_of_leader = yes
@@ -2563,13 +2563,14 @@ country_event = {
 					value = 0
 				}
 				species = { save_event_target_as = prepared_species }
-				try_apply_genetic_assimilation = yes
 				try_apply_cybernetic_assimilation = yes
+				try_apply_genetic_assimilation = yes
 				try_apply_psionic_assimilation = yes
 				if = {
 					limit = {
 						NOR = {
 							has_leader_flag = cybernetic_assimilation
+							has_leader_flag = genetic_assimilation
 							has_leader_flag = psionic_assimilation
 						}
 					}
@@ -2594,7 +2595,7 @@ country_event = {
 # root = country, actor
 # from = country, leader storage
 country_event = {
-	id = keep_leaders.18
+	id = keep_leaders.20
 	is_triggered_only = yes
 	hide_window = yes
 	trigger = {
@@ -2602,7 +2603,7 @@ country_event = {
 		is_necrophage_empire = yes
 	}
 	immediate = {
-		log = "keep_leaders.18 necrophage"
+		log = "keep_leaders.20 necrophage"
 		save_event_target_as = potential_owner
 		set_update_modifiers_batch = begin
 		from = {
@@ -2981,7 +2982,7 @@ planet_event = {
 			}
 			hidden_effect = {
 				country_event = {
-					id = keep_leaders.18
+					id = keep_leaders.20
 					scopes = { from = event_target:storage_owner }
 				}
 			}
