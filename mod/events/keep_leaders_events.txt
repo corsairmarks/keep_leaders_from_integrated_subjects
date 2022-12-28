@@ -631,6 +631,33 @@ country_event = {
 				}
 			}
 		}
+		allow = {
+			custom_tooltip = {
+				fail_text = ROBOTS_ARE_OUTLAWED_NO_X
+				OR = {
+					has_policy_flag = robots_allowed
+					is_robot_empire = yes
+				}
+			}
+			custom_tooltip = {
+				fail_text = AI_IS_OUTLAWED_LEADER_NO_X
+				allows_ai_leaders = yes
+			}
+			custom_tooltip = {
+				fail_text = keep_leaders.1.necro.fail_text
+				if = {
+					limit = { is_necrophage_empire = yes }
+					event_target:storage_owner = { all_stored_robotic_leaders_eligible_transfer_to_main_species_leader_restricted = yes }
+				}
+			}
+			custom_tooltip = {
+				fail_text = keep_leaders.1.phobe.fail_text
+				if = {
+					limit = { is_xenophobe = yes }
+					event_target:storage_owner = { all_stored_robotic_leaders_eligible_transfer_to_main_species_leader_restricted = yes }
+				}
+			}
+		}
 		hidden_effect = {
 			country_event = {
 				id = keep_leaders.10
