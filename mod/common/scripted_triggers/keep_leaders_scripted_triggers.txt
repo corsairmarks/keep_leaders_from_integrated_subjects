@@ -554,9 +554,10 @@ is_synthetic_leader = {
 	}
 }
 
+# whether this leader could potentially be transferred without being assimilated - does _not_ check whether that leader would be allowed to transfer based on ethics, etc.
 # this = leader
 # event_target:potential_owner = country to which the leader would transfer
-is_eligible_transfer_without_assimilation = {
+is_potential_transfer_without_assimilation = {
 	optimize_memory
 	OR = {
 		species = { is_same_species = event_target:potential_owner.owner_species }
@@ -578,7 +579,7 @@ is_eligible_transfer_without_assimilation = {
 		else_if = {
 			limit = { event_target:potential_owner = { is_regular_empire = yes } }
 			is_hive_species = no
-			is_regular_empire_allowable_leader_species = yes
+			is_smart_enough_for_leadership_species = yes
 			OR = {
 				is_robotic_species = no # intentionally allows machine leaders to join non-machines, even if their Pops can't
 				event_target:potential_owner = { allows_ai_leaders = yes }
@@ -590,9 +591,10 @@ is_eligible_transfer_without_assimilation = {
 	}
 }
 
+# whether this leader could potentially be transferred if assimilated - does _not_ check whether that leader would be allowed to transfer based on ethics, etc.
 # this = leader
 # event_target:potential_owner = country to which the leader would transfer
-is_eligible_transfer_with_assimilation = {
+is_potential_transfer_with_assimilation = {
 	optimize_memory
 	OR = {
 		if = {
@@ -633,7 +635,7 @@ is_eligible_transfer_with_assimilation = {
 				AND = {
 					event_target:potential_owner = { has_active_tradition = tr_cybernetics_transubstantiation_synthesis }
 					is_potential_for_regular_cybernetic_assimilation_species = yes
-					is_regular_empire_allowable_leader_species = yes
+					is_smart_enough_for_leadership_species = yes
 				}
 				AND = {
 					event_target:potential_owner = { has_country_flag = synth_assimilation }
@@ -642,12 +644,12 @@ is_eligible_transfer_with_assimilation = {
 				AND = {
 					event_target:potential_owner = { has_active_tradition = tr_psionics_psionic_assimilation }
 					is_potential_for_psionic_assimilation_species = yes
-					is_regular_empire_allowable_leader_species = yes
+					is_smart_enough_for_leadership_species = yes
 				}
 				AND = {
 					event_target:potential_owner = { has_active_tradition = tr_genetics_creation }
 					is_potential_for_unhive_assimilation_species = yes
-					is_regular_empire_allowable_leader_species = yes
+					is_smart_enough_for_leadership_species = yes
 				}
 			}
 		}
@@ -686,6 +688,12 @@ is_robotic_species_lenient = {
 			event_target:potential_owner = { empire_considers_cyborgs_robotic = yes }
 		}
 	}
+}
+
+# this = leader
+# event_target:potential_owner = country to which the leader would transfer
+is_regular_empire_potential_leader_species = {
+	is_smart_enough_for_leadership_species = yes
 }
 
 # this = leader
