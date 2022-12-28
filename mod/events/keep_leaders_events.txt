@@ -198,7 +198,10 @@ country_event = {
 				TOTAL = "[variable_storage.leader_accumulator]"
 			}
 		}
-		trigger = { has_valid_civic = civic_fanatic_purifiers }
+		trigger = {
+			# uses has_civic instead of has_valid_civic so that this will be translated into an icon
+			has_civic = civic_fanatic_purifiers
+		}
 		add_resource = {
 			unity = @keep_leaders_civic_reward_base
 			mult = event_target:variable_storage.leader_not_same_species_accumulator
@@ -235,7 +238,10 @@ country_event = {
 				TOTAL = "[variable_storage.leader_accumulator]"
 			}
 		}
-		trigger = { has_valid_civic = civic_hive_devouring_swarm }
+		trigger = {
+			# uses has_civic instead of has_valid_civic so that this will be translated into an icon
+			has_civic = civic_hive_devouring_swarm
+		}
 		add_resource = {
 			society_research = @keep_leaders_civic_reward_base
 			mult = event_target:variable_storage.leader_organic_accumulator
@@ -258,7 +264,10 @@ country_event = {
 				TOTAL = "[variable_storage.leader_accumulator]"
 			}
 		}
-		trigger = { has_valid_civic = civic_machine_terminator }
+		trigger = {
+			# uses has_civic instead of has_valid_civic so that this will be translated into an icon
+			has_civic = civic_machine_terminator
+		}
 		add_resource = {
 			unity = @keep_leaders_civic_reward_base
 			mult = event_target:variable_storage.leader_organic_accumulator
@@ -320,7 +329,10 @@ country_event = {
 				TOTAL = "[variable_storage.leader_accumulator]"
 			}
 		}
-		trigger = { has_valid_civic = civic_machine_servitor }
+		trigger = {
+			# uses has_civic instead of has_valid_civic so that this will be translated into an icon
+			has_civic = civic_machine_servitor
+		}
 		hidden_effect = { event_target:storage_owner = { destroy_country = yes } }
 		ai_chance = {
 			factor = 1
@@ -467,7 +479,8 @@ country_event = {
 			}
 		}
 		trigger = {
-			has_valid_civic = civic_machine_terminator
+			# uses has_civic instead of has_valid_civic so that this will be translated into an icon
+			has_civic = civic_machine_terminator
 			hidden_trigger = {
 				event_target:storage_owner = {
 					any_owned_leader = {
@@ -589,6 +602,10 @@ country_event = {
 	}
 	option = {
 		name = keep_leaders.1.c.cyb
+		icon = {
+			icon = GFX_tr_cybernetics_transubstantiation_synthesis
+			text = keep_leaders.1.cyb.icon.tooltip
+		}
 		custom_tooltip = keep_leaders.1.c.cyb.tooltip
 		custom_tooltip_with_params = {
 			description = keep_leaders.1.tooltip
@@ -598,10 +615,42 @@ country_event = {
 			}
 		}
 		trigger = {
-			OR = {
-				has_active_tradition = tr_cybernetics_transubstantiation_synthesis
-				has_civic = civic_machine_assimilator
+			has_active_tradition = tr_cybernetics_transubstantiation_synthesis
+			hidden_trigger = {
+				event_target:storage_owner = {
+					any_owned_leader = {
+						is_eligible_transfer_leader_from_storage = yes
+						is_organic_species = yes
+						is_cyborg_species = no
+						is_hive_species = no
+					}
+					any_owned_leader = {
+						is_eligible_transfer_leader_from_storage = yes
+						is_robotic_species_lenient = yes
+					}
+				}
 			}
+		}
+		hidden_effect = {
+			country_event = {
+				id = keep_leaders.10
+				scopes = { from = event_target:storage_owner }
+			}
+		}
+	}
+	option = {
+		name = keep_leaders.1.c.cyb
+		custom_tooltip = keep_leaders.1.c.cyb.tooltip
+		custom_tooltip_with_params = {
+			description = keep_leaders.1.tooltip
+			description_parameters = {
+				VALUE = "[variable_storage.leader_robotic_accumulator]"
+				TOTAL = "[variable_storage.leader_accumulator]"
+			}
+		}
+		trigger = {
+			# uses has_civic instead of has_valid_civic so that this will be translated into an icon
+			has_civic = civic_machine_assimilator
 			hidden_trigger = {
 				event_target:storage_owner = {
 					any_owned_leader = {
@@ -635,6 +684,7 @@ country_event = {
 			}
 		}
 		trigger = {
+			# uses has_civic instead of has_valid_civic so that this will be translated into an icon
 			has_civic = civic_machine_assimilator
 			hidden_trigger = { event_target:storage_owner = { all_stored_leaders_robotic_lenient = yes } }
 		}
@@ -742,7 +792,8 @@ country_event = {
 			}
 		}
 		trigger = {
-			has_valid_civic = civic_machine_servitor
+			# uses has_civic instead of has_valid_civic so that this will be translated into an icon
+			has_civic = civic_machine_servitor
 			hidden_trigger = {
 				event_target:storage_owner = {
 					any_owned_leader = {
@@ -924,8 +975,8 @@ country_event = {
 			}
 		}
 		trigger = {
-			# doesn't use a trigger so that this will be translated into an icon
-			has_valid_civic = civic_machine_servitor
+			# uses has_civic instead of has_valid_civic so that this will be translated into an icon
+			has_civic = civic_machine_servitor
 			hidden_trigger = {
 				has_global_flag = battle_thrall_military_leaders_installed
 				event_target:storage_owner = {
@@ -984,8 +1035,8 @@ country_event = {
 			}
 		}
 		trigger = {
-			# doesn't use a trigger so that this will be translated into an icon
-			has_valid_civic = civic_machine_servitor
+			# uses has_civic instead of has_valid_civic so that this will be translated into an icon
+			has_civic = civic_machine_servitor
 			hidden_trigger = {
 				has_global_flag = battle_thrall_military_leaders_installed
 				event_target:storage_owner = {
@@ -1039,7 +1090,7 @@ country_event = {
 	# same species only
 	option = {
 		name = keep_leaders.1.g
-			custom_tooltip = keep_leaders.1.g.tooltip
+		custom_tooltip = keep_leaders.1.g.tooltip
 		custom_tooltip_with_params = {
 			description = keep_leaders.1.tooltip
 			description_parameters = {
@@ -1107,7 +1158,8 @@ country_event = {
 			}
 		}
 		trigger = {
-			has_valid_civic = civic_fanatic_purifiers
+			# uses has_civic instead of has_valid_civic so that this will be translated into an icon
+			has_civic = civic_fanatic_purifiers
 			hidden_trigger = {
 				event_target:storage_owner = {
 					any_owned_leader = {
@@ -1308,7 +1360,8 @@ country_event = {
 			OR = {
 				is_regular_empire = yes
 				AND = {
-					has_valid_civic = civic_machine_servitor
+					# uses has_civic instead of has_valid_civic so that this will be translated into an icon
+					has_civic = civic_machine_servitor
 					hidden_trigger = {
 						has_global_flag = battle_thrall_military_leaders_installed
 						event_target:storage_owner = {
@@ -1419,6 +1472,10 @@ country_event = {
 	# assimilate: hive
 	option = {
 		name = keep_leaders.1.k.hive
+		icon = {
+			icon = GFX_ap_engineered_evolution
+			text = keep_leaders.1.k.gene.icon.tooltip
+		}
 		custom_tooltip = keep_leaders.1.k.hive.tooltip
 		custom_tooltip_with_params = {
 			description = keep_leaders.1.tooltip
@@ -1462,6 +1519,10 @@ country_event = {
 	# assimilate: unhive
 	option = {
 		name = keep_leaders.1.k.unhive
+		icon = {
+			icon = GFX_ap_engineered_evolution
+			text = keep_leaders.1.k.gene.icon.tooltip
+		}
 		custom_tooltip = keep_leaders.1.k.unhive.tooltip
 		custom_tooltip_with_params = {
 			description = keep_leaders.1.tooltip
@@ -1472,8 +1533,8 @@ country_event = {
 		}
 		trigger = {
 			has_ascension_perk = ap_engineered_evolution
-			NOT = { has_valid_civic = civic_fanatic_purifiers }
 			hidden_trigger = {
+				NOT = { has_valid_civic = civic_fanatic_purifiers }
 				is_regular_empire = yes
 				event_target:storage_owner = {
 					any_owned_leader = {
@@ -1516,6 +1577,10 @@ country_event = {
 	# assimilate: psionic
 	option = {
 		name = keep_leaders.1.k.psi
+		icon = {
+			icon = GFX_ap_mind_over_matter
+			text = keep_leaders.1.k.psi.icon.tooltip
+		}
 		custom_tooltip = keep_leaders.1.k.psi.tooltip
 		custom_tooltip_with_params = {
 			description = keep_leaders.1.tooltip
@@ -1569,27 +1634,14 @@ country_event = {
 			}
 		}
 	}
-	# assimilate: cybernetic (including hive)
+	# assimilate: cybernetic (non-hive)
 	option = {
-		name = {
-			text = keep_leaders.1.k.cyb
-			trigger = {
-				has_ascension_perk = ap_the_flesh_is_weak
-			}
+		name = keep_leaders.1.k.cyb
+		icon = {
+			icon = GFX_ap_the_flesh_is_weak
+			text = keep_leaders.1.k.cyb.icon.tooltip
 		}
-		name = {
-			text = keep_leaders.1.k.cyb.hive
-			trigger = {
-				has_ascension_perk = ap_organo_machine_interfacing
-			}
-		}
-		if = {
-			limit = { has_ascension_perk = ap_the_flesh_is_weak }
-			custom_tooltip = keep_leaders.1.k.cyb.tooltip
-		}
-		else = {
-			custom_tooltip = keep_leaders.1.k.cyb.hive.tooltip
-		}
+		custom_tooltip = keep_leaders.1.k.cyb.tooltip
 		custom_tooltip_with_params = {
 			description = keep_leaders.1.tooltip
 			description_parameters = {
@@ -1598,31 +1650,14 @@ country_event = {
 			}
 		}
 		trigger = {
-			OR = {
-				has_ascension_perk = ap_the_flesh_is_weak
-				has_ascension_perk = ap_organo_machine_interfacing
-			}
+			has_ascension_perk = ap_the_flesh_is_weak
 			hidden_trigger = {
-				OR = {
-					AND = {
-						NOT = { has_valid_civic = civic_fanatic_purifiers }
-						has_ascension_perk = ap_the_flesh_is_weak
-						event_target:storage_owner = {
-							any_owned_leader = {
-								is_eligible_transfer_leader_from_storage = yes
-								is_potential_for_regular_cybernetic_assimilation_species = yes
-							}
-						}
-					}
-					AND = {
-						NOT = { has_valid_civic = civic_hive_devouring_swarm }
-						has_ascension_perk = ap_organo_machine_interfacing
-						event_target:storage_owner = {
-							any_owned_leader = {
-								is_eligible_transfer_leader_from_storage = yes
-								is_potential_for_hive_cybernetic_assimilation_species = yes
-							}
-						}
+				NOT = { has_valid_civic = civic_fanatic_purifiers }
+				has_ascension_perk = ap_the_flesh_is_weak
+				event_target:storage_owner = {
+					any_owned_leader = {
+						is_eligible_transfer_leader_from_storage = yes
+						is_potential_for_regular_cybernetic_assimilation_species = yes
 					}
 				}
 			}
@@ -1657,9 +1692,57 @@ country_event = {
 			}
 		}
 	}
+	# assimilate: cybernetic (hive)
+	option = {
+		name = keep_leaders.1.k.cyb.hive
+		icon = {
+			icon = GFX_ap_organo_machine_interfacing
+			text = keep_leaders.1.k.cyb.hive.icon.tooltip
+		}
+		custom_tooltip = keep_leaders.1.k.cyb.hive.tooltip
+		custom_tooltip_with_params = {
+			description = keep_leaders.1.tooltip
+			description_parameters = {
+				VALUE = "[variable_storage.leader_transferable_or_assimilatable_accumulator]"
+				TOTAL = "[variable_storage.leader_accumulator]"
+			}
+		}
+		trigger = {
+			has_ascension_perk = ap_organo_machine_interfacing
+			hidden_trigger = {
+				NOT = { has_valid_civic = civic_hive_devouring_swarm }
+				has_ascension_perk = ap_organo_machine_interfacing
+				event_target:storage_owner = {
+					any_owned_leader = {
+						is_eligible_transfer_leader_from_storage = yes
+						is_potential_for_hive_cybernetic_assimilation_species = yes
+					}
+				}
+			}
+		}
+		allow = {
+			custom_tooltip = {
+				fail_text = keep_leaders.1.k.cyb.fail_text
+				has_active_tradition = tr_cybernetics_transubstantiation_synthesis
+			}
+		}
+		ai_chance = {
+			factor = 10
+		}
+		hidden_effect = {
+			country_event = {
+				id = keep_leaders.17
+				scopes = { from = event_target:storage_owner }
+			}
+		}
+	}
 	# assimilate: synthetic
 	option = {
 		name = keep_leaders.1.k.synth
+		icon = {
+			icon = GFX_ap_synthetic_evolution
+			text = keep_leaders.1.k.synth.icon.tooltip
+		}
 		custom_tooltip = keep_leaders.1.k.synth.tooltip
 		custom_tooltip_with_params = {
 			description = keep_leaders.1.tooltip
@@ -1707,6 +1790,10 @@ country_event = {
 	# assimilate: machine synthetic
 	option = {
 		name = keep_leaders.1.k.synth.mach
+		icon = {
+			icon = GFX_ap_synthetic_age
+			text = keep_leaders.1.k.synth.mach.icon.tooltip
+		}
 		custom_tooltip = keep_leaders.1.k.synth.mach.tooltip
 		custom_tooltip_with_params = {
 			description = keep_leaders.1.tooltip
@@ -1761,7 +1848,8 @@ country_event = {
 			}
 		}
 		trigger = {
-			has_valid_civic = civic_machine_assimilator
+			# uses has_civic instead of has_valid_civic so that this will be translated into an icon
+			has_civic = civic_machine_assimilator
 			hidden_trigger = {
 				event_target:storage_owner = {
 					any_owned_leader = {
@@ -1802,7 +1890,6 @@ country_event = {
 		name = keep_leaders.1.k.unmach
 		icon = {
 			icon = GFX_icon_tech_sapient_ai_alternate
-			icon_background = GFX_klfis_event_icon_bg_blank
 			text = keep_leaders.1.k.unmach.icon.tooltip
 		}
 		custom_tooltip = keep_leaders.1.k.unmach.tooltip
@@ -1819,10 +1906,8 @@ country_event = {
 				has_synthethic_dawn = yes
 				has_global_flag = deassimilate_machines_installed
 				is_regular_empire = yes
-				NOR = {
-					has_country_flag = synth_assimilation
-					has_valid_civic = civic_fanatic_purifiers
-				}
+				NOT = { has_valid_civic = civic_fanatic_purifiers }
+				has_country_flag = synth_assimilation
 				event_target:storage_owner = {
 					any_owned_leader = {
 						is_eligible_transfer_leader_from_storage = yes
@@ -1884,7 +1969,6 @@ country_event = {
 		}
 		trigger = {
 			hidden_trigger = { has_necroids = yes }
-			# doesn't use a trigger so that this will be translated into an icon
 			has_origin = origin_necrophage
 			hidden_trigger = { has_trait = trait_necrophage }
 		}
@@ -2468,7 +2552,11 @@ country_event = {
 			every_owned_leader = {
 				limit = {
 					is_eligible_transfer_leader_from_storage = yes
-					is_eligible_transfer_without_assimilation = yes
+					is_potential_transfer_without_assimilation = yes
+					OR = {
+						event_target:potential_owner = { is_regular_empire = no }
+						is_regular_empire_allowable_leader_species = yes
+					}
 				}
 				ensure_species_rights_and_take_ownership_of_leader = yes
 			}
