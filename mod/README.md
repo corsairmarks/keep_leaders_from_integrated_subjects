@@ -32,6 +32,7 @@ This mod is designed to understand the species types, ethics, civics, authoritie
 
 * [Leader Traits: Enhanced Randomisation](https://steamcommunity.com/sharedfiles/filedetails/?id=2553806265) improves leader trait randomisation (primarily from level up, but not exclusively) and toggles traits from the biological version to machine traits (and back) if a leader becomes a robot and/or returns to a biological form
 * [Deassimilate Machines](https://steamcommunity.com/sharedfiles/filedetails/?id=2553812372) allows non-hive, non-machine empires to "deassimilate" machine Pops into robots - specifically allows (with this mod) for machine deassimilation as a "leadership disposition" choice for integrated subjects (etc.) and the deassimilated leaders gain synth leader traits if you have the required technology
+* [Assimilate All the Pops](https://steamcommunity.com/sharedfiles/filedetails/?id=2908463208) allows empires to have multiple assimilation types, which enables this mod to apply all unlocked assimilation types simultaneously to your retained leaders
 * [Primitive Conquest Enhancements](https://steamcommunity.com/sharedfiles/filedetails/?id=2488154830) improves the pre-existing infrastructure when you conquer or otherwise acquire a planet that had previously been primitive; pairs well with this mod's bonus leaders from conquered (etc.) primitives
 * [corsairmarks's Leader Traits MOD Chinese patch](https://steamcommunity.com/sharedfiles/filedetails/?id=2558494770) by Hua Zhang - Chinese localisation
 
