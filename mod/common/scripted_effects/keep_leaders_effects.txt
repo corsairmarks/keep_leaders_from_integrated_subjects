@@ -423,7 +423,7 @@ set_full_military_service_species = {
 							type = citizenship_assimilation
 						}
 						AND = {
-							has_global_flag = battle_thrall_military_leaders_installed
+							has_battle_thrall_military_leaders_active = yes
 							has_citizenship_type = {
 								country = event_target:potential_owner
 								type = citizenship_slavery
@@ -1998,7 +1998,7 @@ klfis_prepare_machine_to_mechanical_species = {
 klfis_prepare_cybernetic_species = {
 	optimize_memory
 	if = {
-		limit = { NOT = { has_global_flag = assimilate_all_the_pops_installed } }
+		limit = { has_assimilate_all_the_pops_active = no }
 		modify_species = {
 			species = event_target:prepared_species
 			add_trait = trait_cybernetic
@@ -2085,7 +2085,7 @@ klfis_prepare_unhive_species = {
 klfis_prepare_psionic_species = {
 	optimize_memory
 	if = {
-		limit = { NOT = { has_global_flag = assimilate_all_the_pops_installed } }
+		limit = { has_assimilate_all_the_pops_active = no }
 		modify_species = {
 			species = event_target:prepared_species
 			add_trait = trait_psionic

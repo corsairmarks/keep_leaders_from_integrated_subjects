@@ -1005,7 +1005,7 @@ country_event = {
 			# uses has_civic instead of has_valid_civic so that this will be translated into an icon
 			has_civic = civic_machine_servitor
 			hidden_trigger = {
-				has_global_flag = battle_thrall_military_leaders_installed
+				has_battle_thrall_military_leaders_active = yes
 				event_target:storage_owner = {
 					any_owned_leader = {
 						is_eligible_transfer_leader_from_storage = yes
@@ -1065,7 +1065,7 @@ country_event = {
 			# uses has_civic instead of has_valid_civic so that this will be translated into an icon
 			has_civic = civic_machine_servitor
 			hidden_trigger = {
-				has_global_flag = battle_thrall_military_leaders_installed
+				has_battle_thrall_military_leaders_active = yes
 				event_target:storage_owner = {
 					count_owned_leader = {
 						count = all
@@ -1364,8 +1364,8 @@ country_event = {
 		}
 		if = {
 			limit = {
+				has_battle_thrall_military_leaders_active = yes
 				has_valid_civic = civic_machine_servitor
-				has_global_flag = battle_thrall_military_leaders_installed
 			}
 			custom_tooltip = keep_leaders.1.j.serv.tooltip
 		}
@@ -1390,7 +1390,7 @@ country_event = {
 					# uses has_civic instead of has_valid_civic so that this will be translated into an icon
 					has_civic = civic_machine_servitor
 					hidden_trigger = {
-						has_global_flag = battle_thrall_military_leaders_installed
+						has_battle_thrall_military_leaders_active = yes
 						event_target:storage_owner = {
 							any_owned_leader = {
 								is_eligible_transfer_leader_from_storage = yes
@@ -1485,8 +1485,8 @@ country_event = {
 			}
 			modifier = {
 				factor = 10
+				has_battle_thrall_military_leaders_active = yes
 				has_valid_civic = civic_machine_servitor
-				has_global_flag = battle_thrall_military_leaders_installed
 			}
 		}
 		hidden_effect = {
@@ -1931,7 +1931,7 @@ country_event = {
 			has_technology = tech_sapient_ai
 			hidden_trigger = {
 				has_synthethic_dawn = yes
-				has_global_flag = deassimilate_machines_installed
+				has_deassimilate_machines_active = yes
 				is_regular_empire = yes
 				NOT = { has_valid_civic = civic_fanatic_purifiers }
 				has_country_flag = synth_assimilation
@@ -2566,8 +2566,8 @@ country_event = {
 		OR = {
 			is_regular_empire = yes
 			AND = {
+				has_battle_thrall_military_leaders_active = yes
 				has_valid_civic = civic_machine_servitor
-				has_global_flag = battle_thrall_military_leaders_installed
 			}
 		}
 	}
