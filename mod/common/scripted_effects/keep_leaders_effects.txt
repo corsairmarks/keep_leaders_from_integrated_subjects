@@ -1236,7 +1236,7 @@ try_add_demoted_ruler_governor_bonus_trait = {
 		if = {
 			limit = {
 				has_synthethic_dawn = yes
-				is_machine_species = yes
+				is_robotic_species = yes
 			}
 			add_trait = leader_trait_ai_aided_design
 		}
@@ -1255,7 +1255,7 @@ try_add_demoted_ruler_governor_bonus_trait = {
 		if = {
 			limit = {
 				has_synthethic_dawn = yes
-				is_machine_species = yes
+				is_robotic_species = yes
 			}
 			add_trait = leader_trait_warbot_tinkerer
 		}
@@ -1274,7 +1274,7 @@ try_add_demoted_ruler_governor_bonus_trait = {
 		limit = {
 			has_ruler_trait = trait_ruler_fertility_preacher
 			NOT = { has_trait = leader_trait_agrarian_upbringing }
-			is_machine_species = no
+			is_robotic_species = no
 		}
 		add_trait = leader_trait_agrarian_upbringing
 	}
@@ -1289,7 +1289,7 @@ try_add_demoted_ruler_governor_bonus_trait = {
 		if = {
 			limit = {
 				has_synthethic_dawn = yes
-				is_machine_species = yes
+				is_robotic_species = yes
 			}
 			add_trait = leader_trait_bulldozer
 		}
@@ -1308,7 +1308,7 @@ try_add_demoted_ruler_governor_bonus_trait = {
 		if = {
 			limit = {
 				has_synthethic_dawn = yes
-				is_machine_species = yes
+				is_robotic_species = yes
 			}
 			add_trait = leader_trait_analytical
 		}
@@ -1356,7 +1356,7 @@ try_add_demoted_ruler_scientist_bonus_trait = {
 		if = {
 			limit = {
 				has_synthethic_dawn = yes
-				is_machine_species = yes
+				is_robotic_species = yes
 			}
 			add_trait = leader_trait_cataloger
 		}
@@ -1484,7 +1484,7 @@ try_add_demoted_ruler_admiral_bonus_trait = {
 		if = {
 			limit = {
 				has_synthethic_dawn = yes
-				is_machine_species = yes
+				is_robotic_species = yes
 			}
 			add_trait = leader_trait_maintenance_loop
 		}
@@ -1536,7 +1536,7 @@ try_add_demoted_ruler_general_bonus_trait = {
 		if = {
 			limit = {
 				has_synthethic_dawn = yes
-				is_machine_species = yes
+				is_machine_species = yes # intentionally machine-only
 			}
 			add_trait = leader_trait_demoralizer
 		}
@@ -1554,7 +1554,7 @@ try_add_demoted_ruler_general_bonus_trait = {
 		if = {
 			limit = {
 				has_synthethic_dawn = yes
-				is_machine_species = yes
+				is_machine_species = yes # intentionally machine-only
 			}
 			add_trait = leader_trait_parts_cannibalizer
 		}
@@ -1580,7 +1580,7 @@ try_add_demoted_ruler_generic_bonus_trait = {
 		if = {
 			limit = {
 				has_synthethic_dawn = yes
-				is_machine_species = yes
+				is_robotic_species = yes
 			}
 			add_trait = leader_trait_flexible_programming
 		}
