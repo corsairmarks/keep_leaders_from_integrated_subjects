@@ -100,6 +100,10 @@ When cloning a leader and changing them from a species class without gender to a
 * 6.0.0 Update for Stellaris version 3.6 "Orion" (and changes from version 3.5 "Fornax")
     * Adjust Retain Leaders (assimilation) requirements based on new ascension traditions
     * Support new types of assimilation citizenship
+* 7.0.0 Compatibility triggers
+    * Add a compatibility trigger for other mods to check whether this one is active
+    * Consume the compatibility triggers from other mods
+    * Remove old compatibility global flag
 
 ## Source Code
 
