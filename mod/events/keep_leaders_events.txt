@@ -1,18 +1,5 @@
 namespace = keep_leaders
 
-# flag mod as active
-event = {
-	id = keep_leaders.13
-	hide_window = yes
-	is_triggered_only = yes
-	trigger = {
-		NOT = { has_global_flag = keep_leaders_installed }
-	}
-	immediate = {
-		set_global_flag = keep_leaders_installed
-	}
-}
-
 # triggered by keep_leaders.2, keep_leaders.5, keep_leaders.21, keep_leaders.51
 # window with options to potentially keep the stored leaders from integration/primitive conquest/colossus weapon
 # root = country, overlord
