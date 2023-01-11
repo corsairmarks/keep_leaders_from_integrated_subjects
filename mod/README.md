@@ -24,6 +24,10 @@ Built for Stellaris version 3.6 "Orion."  Not compatible with achievements.
 
 This mod is designed to understand the species types, ethics, civics, authorities, governments, and origins that are built-in to Stellaris. The features of this mod are implemented primarily through brand new events and scripting, meaning that it should not directly conflict with most other mods. However, you could end up with odd behavior if you play with mods that significantly alter the default gameplay - for example, adding a new homicidal species (without the mod providing an update to the `is_homicidal` trigger). Mods that add or modify civics should generally work but this mod may offer decisions that do not make the most sense for the role-play of new civics.
 
+### When to Install
+
+This mod can be safely added to your savegame after the game has started. If you remove it, you will lose access to the custom "former ruler/heir" traits and the espionage bonus that is one of the choices upon successfully infiltrating primitives. Stellaris is fairly forgiving in situations like this - it's likely that error logs would be generated and the game would otherwise ignore the missing content. Back up your savegame before trying to remove a mod.
+
 ### Required Dependency Mods
 
 [Leader Traits: All Eligible Species Traits](https://steamcommunity.com/sharedfiles/filedetails/?id=2499031295) ensures your leaders get all their species-based traits when being assimilated (such as Cybernetic, Psionic, or Erudite).
@@ -38,10 +42,6 @@ This mod is designed to understand the species types, ethics, civics, authoritie
 
 You might wonder - why are these separate mods? They override default gameplay options, so I thought it best to give players the choice on whether they want the original version or the reimagined version. Leader Traits: Enhanced Randomisation and Machine Deassimilation were developed alongside this mod.
 
-### When to Install
-
-This mod can be safely added to your savegame after the game has started. If you remove it, you will lose access to the custom "former ruler/heir" traits and the espionage bonus that is one of the choices upon successfully infiltrating primitives. Stellaris is fairly forgiving in situations like this - it's likely that error logs would be generated and the game would otherwise ignore the missing content. Back up your savegame before trying to remove a mod.
-
 ### Additional Mods with Gameplay Interaction
 
 * [Eldanær Stellar Authority](https://steamcommunity.com/sharedfiles/filedetails/?id=2496360535) - if you integrate them, their former ruler and heir are guaranteed to be Governors
@@ -52,8 +52,6 @@ This mod can be safely added to your savegame after the game has started. If you
 ### Stellaris Bugs
 
 Demoted rulers with very long names that also contain a period `.` may cause error logs when the Leader screen is open.  It seems related to the font re-coloring in the "former ruler" name affix.  Don't leave the Leader window open for long periods of time or you will generate a very large error log file.
-
-When cloning a leader and changing them from a species class without gender to a species class with gender (or vice versa) the Leader screen interface breaks. The Leader screen does not hide the replaced leader or correctly show their replacement until the player manually recruits a new leader.
 
 ## Changelog
 
