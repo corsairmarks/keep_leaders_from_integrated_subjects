@@ -185,7 +185,7 @@ is_potential_for_synthetic_assimilation_country = {
 
 # could this species potentially be made hive and/or cybernetic? (non-robotic, non-cyborg or non-hive)
 # this = something with a species (country, leader, pop, etc)
-is_potential_for_hive_cybernetic_assimilation_species = {
+is_potential_for_hive_cyborg_assimilation_species = {
 	optimize_memory
 	is_robotic_species = no
 	NAND = {
@@ -197,7 +197,7 @@ is_potential_for_hive_cybernetic_assimilation_species = {
 # could this species potentially be made cybernetic and/or non-hive? (non-robotic, non-cyborg, cyborg hive with tradition)
 # this = something with a species (country, leader, pop, etc)
 # event_target:potential_owner = country to which the leader would transfer
-is_potential_for_machine_cybernetic_assimilation_species = {
+is_potential_for_machine_cyborg_assimilation_species = {
 	optimize_memory
 	is_robotic_species = no
 	OR = {
@@ -254,19 +254,35 @@ is_potential_for_regular_synthetic_assimilation_species = {
 
 # could this species potentially be made cybernetic? (non-robotic, non-cyborg)
 # this = something with a species (country, leader, pop, etc)
-is_potential_for_regular_cybernetic_assimilation_species = {
+is_potential_for_regular_cyborg_assimilation_species = {
 	optimize_memory
 	is_robotic_species = no
 	is_cyborg_species = no
 }
 
 # this = country
-is_potential_for_cybernetic_assimilation_country = {
+is_potential_for_cyborg_assimilation_country = {
 	optimize_memory
 	OR = {
 		has_civic = civic_machine_assimilator
 		has_active_tradition = tr_cybernetics_transubstantiation_synthesis
 	}
+}
+
+# could this species potentially have cybernetics removed? (non-robotic, non-cyborg)
+# this = something with a species (country, leader, pop, etc)
+is_potential_for_uncyborg_assimilation_species = {
+	optimize_memory
+	is_cyborg_species = yes
+	is_hive_species = no
+}
+
+# this = country
+is_potential_for_uncyborg_assimilation_country = {
+	optimize_memory
+	is_regular_empire = yes
+	has_technology = tech_gene_tailoring
+	has_technology = tech_gene_banks
 }
 
 # could this species potentially be made psionic? (non-robotic, non-psionic, non-hive)
@@ -286,21 +302,21 @@ is_potential_for_psionic_assimilation_country = {
 
 # this = something with a species (country, leader, pop, etc)
 # event_target:potential_owner = country
-is_possible_for_cybernetic_assimilation = {
+is_possible_for_cyborg_assimilation = {
 	optimize_memory
-	event_target:potential_owner = { is_potential_for_cybernetic_assimilation_country = yes }
+	event_target:potential_owner = { is_potential_for_cyborg_assimilation_country = yes }
 	OR = {
 		AND = {
 			event_target:potential_owner = { has_valid_civic = civic_machine_assimilator }
-			is_potential_for_machine_cybernetic_assimilation_species = yes
+			is_potential_for_machine_cyborg_assimilation_species = yes
 		}
 		AND = {
 			event_target:potential_owner = { is_regular_hive_empire = yes }
-			is_potential_for_hive_cybernetic_assimilation_species = yes
+			is_potential_for_hive_cyborg_assimilation_species = yes
 		}
 		AND = {
 			event_target:potential_owner = { is_regular_empire = yes }
-			is_potential_for_regular_cybernetic_assimilation_species = yes
+			is_potential_for_regular_cyborg_assimilation_species = yes
 		}
 	}
 }
@@ -329,6 +345,14 @@ is_possible_for_unmachine_assimilation = {
 	has_deassimilate_machines_active = yes
 	event_target:potential_owner = { is_potential_for_unmachine_assimilation_country = yes }
 	is_potential_for_unmachine_assimilation_species = yes
+}
+
+# this = something with a species (country, leader, pop, etc)
+# event_target:potential_owner = country
+is_possible_for_uncyborg_assimilation = {
+	optimize_memory
+	event_target:potential_owner = { is_potential_for_uncyborg_assimilation_country = yes }
+	is_potential_for_uncyborg_assimilation_species = yes
 }
 
 # this = something with a species (country, leader, pop, etc)
@@ -603,7 +627,7 @@ is_potential_transfer_with_assimilation = {
 				is_potential_for_machine_synthetic_assimilation_species = yes
 				AND = {
 					event_target:potential_owner = { has_valid_civic = civic_machine_assimilator }
-					is_potential_for_machine_cybernetic_assimilation_species = yes
+					is_potential_for_machine_cyborg_assimilation_species = yes
 				}
 			}
 		}
@@ -611,12 +635,12 @@ is_potential_transfer_with_assimilation = {
 			limit = { event_target:potential_owner = { is_regular_hive_empire = yes } }
 			OR = {
 				AND = {
-					event_target:potential_owner = { has_active_tradition = tr_genetics_creation }
+					event_target:potential_owner = { has_tradition = tr_genetics_creation }
 					is_potential_for_hive_assimilation_species = yes
 				}
 				AND = {
 					event_target:potential_owner = { has_active_tradition = tr_cybernetics_transubstantiation_synthesis }
-					is_potential_for_hive_cybernetic_assimilation_species = yes
+					is_potential_for_hive_cyborg_assimilation_species = yes
 				}
 			}
 		}
@@ -625,21 +649,13 @@ is_potential_transfer_with_assimilation = {
 			# eligible for necrophage is not assimilation so it is intentionally omitted here
 			OR = {
 				AND = {
-					has_deassimilate_machines_active = yes
-					event_target:potential_owner = {
-						has_technology = tech_sapient_ai
-						allows_ai_leaders = yes
-					}
-					is_potential_for_unmachine_assimilation_species = yes
+					event_target:potential_owner = { has_country_flag = synth_assimilation }
+					is_potential_for_regular_synthetic_assimilation_species = yes
 				}
 				AND = {
 					event_target:potential_owner = { has_active_tradition = tr_cybernetics_transubstantiation_synthesis }
-					is_potential_for_regular_cybernetic_assimilation_species = yes
+					is_potential_for_regular_cyborg_assimilation_species = yes
 					is_smart_enough_for_leadership_species = yes
-				}
-				AND = {
-					event_target:potential_owner = { has_country_flag = synth_assimilation }
-					is_potential_for_regular_synthetic_assimilation_species = yes
 				}
 				AND = {
 					event_target:potential_owner = { has_active_tradition = tr_psionics_psionic_assimilation }
@@ -650,6 +666,22 @@ is_potential_transfer_with_assimilation = {
 					event_target:potential_owner = { has_active_tradition = tr_genetics_creation }
 					is_potential_for_unhive_assimilation_species = yes
 					is_smart_enough_for_leadership_species = yes
+				}
+				AND = {
+					has_deassimilate_machines_active = yes
+					event_target:potential_owner = {
+						has_technology = tech_sapient_ai
+						allows_ai_leaders = yes
+					}
+					is_potential_for_unmachine_assimilation_species = yes
+				}
+				AND = {
+					has_civic_organic_zealots_active = yes
+					event_target:potential_owner = {
+						has_technology = tech_gene_tailoring
+						has_technology = tech_gene_banks
+					}
+					is_potential_for_uncyborg_assimilation_species = yes
 				}
 			}
 		}

@@ -12,7 +12,14 @@ has_battle_thrall_military_leaders_active = {
 	always = no
 }
 
-# supports features from my mod Deassimilate machines
+# supports features from my mod Civic: Organic Zealots
+# this = any
+has_civic_organic_zealots_active = {
+	optimize_memory
+	always = no
+}
+
+# supports features from my mod Deassimilate Machines
 # this = any
 has_deassimilate_machines_active = {
 	optimize_memory

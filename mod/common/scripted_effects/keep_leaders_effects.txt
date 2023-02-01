@@ -622,7 +622,7 @@ set_citizenship_assimilation_and_living_standard_cybernetic = {
 	if = {
 		limit = {
 			NOT = { has_species_flag = living_standard_set@event_target:potential_owner }
-			event_target:potential_owner = { is_potential_for_cybernetic_assimilation_country = yes }
+			event_target:potential_owner = { is_potential_for_cyborg_assimilation_country = yes }
 		}
 		if = {
 			limit = { 
@@ -1995,7 +1995,7 @@ klfis_prepare_machine_to_mechanical_species = {
 
 # set up a species for cybernetic assimilation (non-hive), saved as event_target:prepared_species
 # event_target:prepared_species = the species being prepared (possibly with one or more changes from previous assimilations)
-klfis_prepare_cybernetic_species = {
+klfis_prepare_cyborg_species = {
 	optimize_memory
 	if = {
 		limit = { has_assimilate_all_the_pops_active = no }
@@ -2048,7 +2048,7 @@ klfis_prepare_hive_species = {
 
 # set up a species for cybernetic assimilation (hive), saved as event_target:prepared_species
 # event_target:prepared_species = the species being prepared (possibly with one or more changes from previous assimilations)
-klfis_prepare_hive_cybernetic_species = {
+klfis_prepare_hive_cyborg_species = {
 	optimize_memory
 	modify_species = {
 		species = event_target:prepared_species
@@ -2248,17 +2248,17 @@ klfis_clone_leader_with_gender = {
 # event_target:prepared_species = the species being prepared (possibly with one or more changes from previous assimilations)
 # event_target:potential_owner = country
 # assimilation_type_counter (variable) how many (if any) assimilation changes were applied
-try_apply_cybernetic_assimilation = {
+try_apply_cyborg_assimilation = {
 	optimize_memory
 	if = {
-		limit = { event_target:prepared_species = { is_possible_for_cybernetic_assimilation = yes } }
+		limit = { event_target:prepared_species = { is_possible_for_cyborg_assimilation = yes } }
 		species = { set_citizenship_assimilation_and_living_standard_cybernetic = yes }
 		if = {
 			limit = { event_target:potential_owner = { is_hive_empire = no } }
-			klfis_prepare_cybernetic_species = yes
+			klfis_prepare_cyborg_species = yes
 		}
 		else = {
-			klfis_prepare_hive_cybernetic_species = yes
+			klfis_prepare_hive_cyborg_species = yes
 		}
 		set_timed_leader_flag = {
 			flag = cybernetic_assimilation
@@ -2312,6 +2312,27 @@ try_apply_unmachine_assimilation = {
 		klfis_prepare_machine_to_mechanical_species = yes
 		set_timed_leader_flag = {
 			flag = unmachine_assimilation
+			days = 1
+		}
+		change_variable = {
+			which = assimilation_type_counter
+			value = 1
+		}
+	}
+}
+
+# this = leader
+# event_target:prepared_species = the species being prepared (possibly with one or more changes from previous assimilations)
+# event_target:potential_owner = country
+# assimilation_type_counter (variable) how many (if any) assimilation changes were applied
+try_apply_uncyborg_assimilation = {
+	optimize_memory
+	if = {
+		limit = { event_target:prepared_species = { is_possible_for_uncyborg_assimilation = yes } }
+		species = { set_citizenship_assimilation_and_living_standard_uncyborg = yes }
+		klfis_prepare_uncyborg_species = yes
+		set_timed_leader_flag = {
+			flag = uncybernetic_assimilation
 			days = 1
 		}
 		change_variable = {

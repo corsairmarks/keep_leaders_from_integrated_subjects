@@ -1671,7 +1671,7 @@ country_event = {
 				event_target:storage_owner = {
 					any_owned_leader = {
 						is_eligible_transfer_leader_from_storage = yes
-						is_potential_for_regular_cybernetic_assimilation_species = yes
+						is_potential_for_regular_cyborg_assimilation_species = yes
 					}
 				}
 			}
@@ -1729,7 +1729,7 @@ country_event = {
 				event_target:storage_owner = {
 					any_owned_leader = {
 						is_eligible_transfer_leader_from_storage = yes
-						is_potential_for_hive_cybernetic_assimilation_species = yes
+						is_potential_for_hive_cyborg_assimilation_species = yes
 					}
 				}
 			}
@@ -1868,7 +1868,7 @@ country_event = {
 				event_target:storage_owner = {
 					any_owned_leader = {
 						is_eligible_transfer_leader_from_storage = yes
-						is_potential_for_machine_cybernetic_assimilation_species = yes
+						is_potential_for_machine_cyborg_assimilation_species = yes
 					}
 				}
 			}
@@ -2621,7 +2621,7 @@ country_event = {
 							has_leader_flag = unmachine_assimilation
 						}
 					}
-					try_apply_cybernetic_assimilation = yes
+					try_apply_cyborg_assimilation = yes
 					try_apply_genetic_assimilation = yes
 					try_apply_psionic_assimilation = yes
 				}
@@ -2665,7 +2665,7 @@ country_event = {
 					value = 0
 				}
 				species = { save_event_target_as = prepared_species }
-				try_apply_cybernetic_assimilation = yes
+				try_apply_cyborg_assimilation = yes
 				try_apply_genetic_assimilation = yes
 				try_apply_psionic_assimilation = yes
 				if = {
@@ -2720,7 +2720,7 @@ country_event = {
 				}
 				species = { save_event_target_as = prepared_species }
 				try_apply_psionic_assimilation = yes
-				try_apply_cybernetic_assimilation = yes
+				try_apply_cyborg_assimilation = yes
 				try_apply_genetic_assimilation = yes
 				if = {
 					limit = {
@@ -2774,7 +2774,7 @@ country_event = {
 				}
 				species = { save_event_target_as = prepared_species }
 				try_apply_genetic_assimilation = yes
-				try_apply_cybernetic_assimilation = yes
+				try_apply_cyborg_assimilation = yes
 				try_apply_psionic_assimilation = yes
 				if = {
 					limit = {
