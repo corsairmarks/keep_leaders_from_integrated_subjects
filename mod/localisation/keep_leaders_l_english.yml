@@ -75,6 +75,7 @@
 
  # option icon tooltips (non-assimilation)
  keep_leaders.1.pur.icon.tooltip: "This option is available due to §H[Root.GetName]§! having the §Y$civic_fanatic_purifiers$§! Civic"
+ keep_leaders.1.zeal.icon.tooltip: "This option is available due to §H[Root.GetName]§! having the §Y$civic_organic_zealots$§! Civic"
  keep_leaders.1.cyb.icon.tooltip: "This option is available due to §H[Root.GetName]§! having the §Y$tr_cybernetics_transubstantiation_synthesis$§! Tradition"
  keep_leaders.1.gest.icon.tooltip: "This option is available due to §H[Root.GetName]§! having the §Y$ethic_gestalt_consciousness$§! Ethic"
  keep_leaders.1.hive.icon.tooltip: "This option is available due to §H[Root.GetName]§! having the §Y$auth_hive_mind$§! Government Authority"
@@ -102,8 +103,13 @@
  keep_leaders.1.k.unhive.tooltip: "§Y$trait_hive_mind$§! leaders from the [storage_owner.GetRealName] are dissociated from the Hive Mind. Their corresponding species are also set to §Y$living_standard_deassimilation$§!.\n\n§Y$ROBOT$§! and §Y$MACHINE$§! leaders are retained as long as we do not have the $ai_outlawed_name$ policy."
  keep_leaders.1.k.gene.icon.tooltip: "This option is available due to §H[Root.GetName]§! having the §Y$ap_engineered_evolution$§! Ascension Perk"
  keep_leaders.1.k.unmach: "Upgrade the machine units with individual personality matrices."
- keep_leaders.1.k.unmach.tooltip: "Semi-autonomous §Y$MACHINE$§! leaders are upgraded into §Y$ROBOT_plural$§! with full self-determination. Their corresponding \"species\" are also set to §Y$living_standard_deassimilation_machine$§!. Any other §Y$ROBOT$§! or §Y$MACHINE$§! leaders are also retained."
+ keep_leaders.1.k.unmach.tooltip: "Semi-autonomous §Y$MACHINE$§! leaders are upgraded into §Y$ROBOT_plural$§! with full self-determination. Their corresponding \"species\" are also set to §Y$living_standard_deassimilation_machine$§!. Any other §Y$ROBOT$§! leaders are also retained."
  keep_leaders.1.k.unmach.icon.tooltip: "This option is available due to §H[Root.GetName]§! having the §Y$tech_sapient_ai$§! Technology"
+ keep_leaders.1.k.uncyb: "Return them to their natural forms."
+ keep_leaders.1.k.uncyb.tooltip: "All §Y$trait_cybernetic$§! leaders have their implants removed and replaced with cloned, biological replacements. Their corresponding species are also set to §Y$living_standard_deassimilation_cyborg$§!. §Y$ROBOT$§! and §Y$MACHINE$§! leaders are retained as long as we do not have the $ai_outlawed_name$ policy."
+ keep_leaders.1.k.uncyb.zeal: "Remove the taint of thinking machines."
+ keep_leaders.1.k.uncyb.zeal.tooltip: "All §Y$trait_cybernetic$§! leaders have their implants removed and replaced with cloned, biological replacements. Their corresponding species are also set to §Y$living_standard_deassimilation_cyborg$§!. Any §Y$ROBOT$§! or §Y$MACHINE$§! leaders are purged."
+ keep_leaders.1.k.uncyb.icon.tooltip: "This option is available due to §H[Root.GetName]§! having the §Y$tech_gene_tailoring$§! and §Y$tech_gene_banks$§! Technologies"
  keep_leaders.1.k.psi: "Open their minds to the Shroud."
  keep_leaders.1.k.psi.tooltip: "§Y$BIOLOGICAL$§!, non-§Y$trait_hive_mind$§! leaders from the [storage_owner.GetRealName] have their psionic potential awakened. Their corresponding species are also set to §Y$living_standard_psi_assimilation$§!.\n\n§Y$ROBOT$§! and §Y$MACHINE$§! leaders are retained as long as we do not have the $ai_outlawed_name$ policy."
  keep_leaders.1.k.psi.icon.tooltip: "This option is available due to §H[Root.GetName]§! having the §Y$ap_mind_over_matter$§! Ascension Perk"
