@@ -102,6 +102,7 @@ Demoted rulers with very long names that also contain a period `.` may cause err
     * Add a compatibility trigger for other mods to check whether this one is active
     * Consume the compatibility triggers from other mods
     * Remove old compatibility global flag
+* 7.1.0 Support cyborg deassimilation from Civic: Organic Zealots
 
 ## Source Code
 
