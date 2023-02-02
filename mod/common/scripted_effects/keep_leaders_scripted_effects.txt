@@ -617,7 +617,7 @@ set_citizenship_assimilation_and_living_standard_unmachine = {
 
 # this = species
 # event_target:potential_owner = country doing the assimilating
-set_citizenship_assimilation_and_living_standard_cybernetic = {
+set_citizenship_assimilation_and_living_standard_cyborg = {
 	optimize_memory
 	if = {
 		limit = {
@@ -684,6 +684,32 @@ set_citizenship_assimilation_and_living_standard_cybernetic = {
 				flag = living_standard_set@event_target:potential_owner
 				days = 1
 			}
+		}
+	}
+}
+
+# this = species
+# event_target:potential_owner = country doing the assimilating
+set_citizenship_assimilation_and_living_standard_uncyborg = {
+	optimize_memory
+	if = {
+		limit = {
+			NOT = { has_species_flag = living_standard_set@event_target:potential_owner }
+			event_target:potential_owner = { is_potential_for_uncyborg_assimilation_country = yes }
+		}
+		set_citizenship_type = {
+			country = event_target:potential_owner
+			type = citizenship_assimilation
+			cooldown = no
+		}
+		set_living_standard = {
+			country = event_target:potential_owner
+			type = living_standard_deassimilation_cyborg
+			cooldown = no
+		}
+		set_timed_species_flag = {
+			flag = living_standard_set@event_target:potential_owner
+			days = 1
 		}
 	}
 }
@@ -1734,34 +1760,6 @@ accumulate_leader = {
 	}
 }
 
-# event_target:mechanical_species - used as the base species to be modified, will be overwritten with the new species if one or more traits had to be swapped
-assimilate_species_traits_machine_to_robot = {
-	optimize_memory
-	if = {
-		limit = { has_trait = trait_robot_emotion_emulators }
-		modify_species = {
-			species = event_target:machine_species
-			add_trait = trait_robot_domestic_protocols
-			remove_trait = trait_robot_emotion_emulators
-			change_scoped_species = no
-			effect = {
-				save_event_target_as = mechanical_species
-			}
-		}
-	}
-	if = {
-		limit = { has_trait = trait_robot_uncanny }
-		modify_species = {
-			species = event_target:machine_species
-			remove_trait = trait_robot_uncanny
-			change_scoped_species = no
-			effect = {
-				save_event_target_as = mechanical_species
-			}
-		}
-	}
-}
-
 # this = leader
 tag_leader_for_reassignment = {
 	optimize_memory
@@ -1945,66 +1943,50 @@ create_army_transport_parameterized = {
 	}
 }
 
-# set up a machine species for deassimilation into a mechanical species, saved as event_target:prepared_species
+# set up a species for cybernetic assimilation (non-hive), saved as event_target:prepared_species
 # event_target:prepared_species = the species being prepared (possibly with one or more changes from previous assimilations)
-# event_target:potential_owner = country (assimilator)
-klfis_prepare_machine_to_mechanical_species = {
+# event_target:potential_owner = country
+klfis_prepare_cyborg_species = {
 	optimize_memory
-	event_target:prepared_species = { save_event_target_as = machine_species }
-	random_galaxy_species = {
-		limit = { has_species_flag = mechanical_species_of_machine_species@event_target:machine_species }
-		event_target:potential_owner = { set_country_flag = found_assim_mech_species@event_target:machine_species }
-		save_event_target_as = prepared_species
-	}
 	if = {
-		limit = { event_target:potential_owner = { NOT = { has_country_flag = found_assim_mech_species@event_target:machine_species } } }
-		event_target:machine_species = {
-			create_species = {
-				name = this
-				plural = this
-				adjective = this
-				name_list = this
-				class = ROBOT
-				portrait = this
-				homeworld = this
-				traits = this
+		limit = { event_target:potential_owner = { is_hive_empire = no } }
+		if = {
+			limit = { has_assimilate_all_the_pops_active = no }
+			modify_species = {
+				species = event_target:prepared_species
+				add_trait = trait_cybernetic
+				add_traits_at_start_of_list = yes
+				remove_trait = trait_self_modified
+				remove_trait = trait_hive_mind
+				remove_trait = trait_latent_psionic
+				remove_trait = trait_psionic
+				change_scoped_species = no
 				effect = {
-					save_event_target_as = mechanical_species
+					save_event_target_as = prepared_species
 				}
 			}
 		}
-		assimilate_species_traits_machine_to_robot = yes
-		modify_species = {
-			base = event_target:machine_species
-			species = event_target:mechanical_species
-			add_trait = trait_mechanical
-			add_traits_at_start_of_list = yes
-			remove_trait = trait_machine_unit
-			change_scoped_species = no
-			effect = {
-				set_species_flag = mechanical_species_of_machine_species@event_target:machine_species
-				save_event_target_as = prepared_species
+		else = {
+			modify_species = {
+				species = event_target:prepared_species
+				add_trait = trait_cybernetic
+				add_traits_at_start_of_list = yes
+				remove_trait = trait_self_modified
+				remove_trait = trait_hive_mind
+				change_scoped_species = no
+				effect = {
+					save_event_target_as = prepared_species
+				}
 			}
 		}
 	}
 	else = {
-		# setup for next loop iteration
-		event_target:potential_owner = { remove_country_flag = found_assim_mech_species@event_target:machine_species }
-	}
-}
-
-# set up a species for cybernetic assimilation (non-hive), saved as event_target:prepared_species
-# event_target:prepared_species = the species being prepared (possibly with one or more changes from previous assimilations)
-klfis_prepare_cyborg_species = {
-	optimize_memory
-	if = {
-		limit = { has_assimilate_all_the_pops_active = no }
 		modify_species = {
 			species = event_target:prepared_species
 			add_trait = trait_cybernetic
+			add_trait = trait_hive_mind
 			add_traits_at_start_of_list = yes
 			remove_trait = trait_self_modified
-			remove_trait = trait_hive_mind
 			remove_trait = trait_latent_psionic
 			remove_trait = trait_psionic
 			change_scoped_species = no
@@ -2013,19 +1995,7 @@ klfis_prepare_cyborg_species = {
 			}
 		}
 	}
-	else = {
-		modify_species = {
-			species = event_target:prepared_species
-			add_trait = trait_cybernetic
-			add_traits_at_start_of_list = yes
-			remove_trait = trait_self_modified
-			remove_trait = trait_hive_mind
-			change_scoped_species = no
-			effect = {
-				save_event_target_as = prepared_species
-			}
-		}
-	}
+	
 }
 
 # set up a species for hive assimilation, saved as event_target:prepared_species
@@ -2034,25 +2004,6 @@ klfis_prepare_hive_species = {
 	optimize_memory
 	modify_species = {
 		species = event_target:prepared_species
-		add_trait = trait_hive_mind
-		add_traits_at_start_of_list = yes
-		remove_trait = trait_self_modified
-		remove_trait = trait_latent_psionic
-		remove_trait = trait_psionic
-		change_scoped_species = no
-		effect = {
-			save_event_target_as = prepared_species
-		}
-	}
-}
-
-# set up a species for cybernetic assimilation (hive), saved as event_target:prepared_species
-# event_target:prepared_species = the species being prepared (possibly with one or more changes from previous assimilations)
-klfis_prepare_hive_cyborg_species = {
-	optimize_memory
-	modify_species = {
-		species = event_target:prepared_species
-		add_trait = trait_cybernetic
 		add_trait = trait_hive_mind
 		add_traits_at_start_of_list = yes
 		remove_trait = trait_self_modified
@@ -2252,14 +2203,8 @@ try_apply_cyborg_assimilation = {
 	optimize_memory
 	if = {
 		limit = { event_target:prepared_species = { is_possible_for_cyborg_assimilation = yes } }
-		species = { set_citizenship_assimilation_and_living_standard_cybernetic = yes }
-		if = {
-			limit = { event_target:potential_owner = { is_hive_empire = no } }
-			klfis_prepare_cyborg_species = yes
-		}
-		else = {
-			klfis_prepare_hive_cyborg_species = yes
-		}
+		species = { set_citizenship_assimilation_and_living_standard_cyborg = yes }
+		klfis_prepare_cyborg_species = yes
 		set_timed_leader_flag = {
 			flag = cybernetic_assimilation
 			days = 1
@@ -2309,7 +2254,11 @@ try_apply_unmachine_assimilation = {
 	if = {
 		limit = { event_target:prepared_species = { is_possible_for_unmachine_assimilation = yes } }
 		species = { set_citizenship_assimilation_and_living_standard_unmachine = yes }
-		klfis_prepare_machine_to_mechanical_species = yes
+		# weird scoping is to set prev and this as expected by the effect
+		event_target:potential_owner = {
+			event_target:prepared_species = { dm_prepare_machine_to_mechanical_species = yes }
+			event_target:mechanical_species = { save_event_target_as = prepared_species }
+		}
 		set_timed_leader_flag = {
 			flag = unmachine_assimilation
 			days = 1
@@ -2330,7 +2279,11 @@ try_apply_uncyborg_assimilation = {
 	if = {
 		limit = { event_target:prepared_species = { is_possible_for_uncyborg_assimilation = yes } }
 		species = { set_citizenship_assimilation_and_living_standard_uncyborg = yes }
-		klfis_prepare_uncyborg_species = yes
+		# weird scoping is to set prev and this as expected by the effect
+		event_target:potential_owner = {
+			event_target:prepared_species = { coz_prepare_uncyborg_species = yes }
+			event_target:mechanical_species = { save_event_target_as = prepared_species }
+		}
 		set_timed_leader_flag = {
 			flag = uncybernetic_assimilation
 			days = 1

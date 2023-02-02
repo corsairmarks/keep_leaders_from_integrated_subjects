@@ -1,0 +1,11 @@
+# from Civic: Organic Zealots
+# set up a species for cybernetic deassimilation
+# this = something with a species (country, leader, pop, etc)
+# prev = country (assimilator)
+coz_prepare_uncyborg_species = { }
+
+# from Deassimilate Machines
+# set up a machine species for deassimilation into a mechanical species, saved as event_target:mechanical_species
+# this = species
+# prev = country (assimilator)
+dm_prepare_machine_to_mechanical_species = { }
