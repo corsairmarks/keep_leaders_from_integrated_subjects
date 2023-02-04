@@ -30,6 +30,10 @@ create_leader_storage_and_transfer_leaders = {
 				value = 0
 			}
 			set_variable = {
+				which = leader_organic_non_cyborg_accumulator_double
+				value = 0
+			}
+			set_variable = {
 				which = leader_hive_accumulator
 				value = 0
 			}
