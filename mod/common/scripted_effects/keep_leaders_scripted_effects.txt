@@ -1669,7 +1669,7 @@ try_add_demoted_ruler_generic_bonus_trait = {
 accumulate_leader = {
 	optimize_memory
 	if = {
-		limit = { is_organic_species = yes }
+		limit = { is_robotic_species = no }
 		event_target:variable_storage = {
 			change_variable = {
 				which = leader_organic_accumulator
