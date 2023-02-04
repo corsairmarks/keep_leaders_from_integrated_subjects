@@ -1921,7 +1921,6 @@ country_event = {
 				has_deassimilate_machines_active = yes
 				is_regular_empire = yes
 				NOT = { has_valid_civic = civic_fanatic_purifiers }
-				has_country_flag = synth_assimilation
 				event_target:storage_owner = {
 					any_owned_leader = {
 						is_eligible_transfer_leader_from_storage = yes
