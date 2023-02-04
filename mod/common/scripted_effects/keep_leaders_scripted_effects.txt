@@ -2366,13 +2366,7 @@ complete_assimilation_and_take_ownership_of_leader = {
 		}
 	}
 	else_if = {
-		limit = {
-			is_potential_transfer_without_assimilation = yes
-			OR = {
-				event_target:potential_owner = { is_regular_empire = no }
-				is_regular_empire_allowable_leader_species = yes
-			}
-		}
+		limit = { is_potential_transfer_without_assimilation = yes }
 		ensure_species_rights_and_take_ownership_of_leader = yes
 	}
 	clear_variable = assimilation_type_counter

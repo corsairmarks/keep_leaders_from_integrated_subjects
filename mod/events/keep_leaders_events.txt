@@ -1910,7 +1910,7 @@ country_event = {
 		custom_tooltip_with_params = {
 			description = keep_leaders.1.tooltip
 			description_parameters = {
-				VALUE = "[variable_storage.leader_robotic_accumulator]"
+				VALUE = "[variable_storage.leader_transferable_or_assimilatable_accumulator]"
 				TOTAL = "[variable_storage.leader_accumulator]"
 			}
 		}
@@ -1959,6 +1959,83 @@ country_event = {
 		hidden_effect = {
 			country_event = {
 				id = keep_leaders.16
+				scopes = { from = event_target:storage_owner }
+			}
+		}
+	}
+	# assimilate: uncyborg
+	option = {
+		name = {
+			text = keep_leaders.1.k.uncyb
+			limit = { is_valid_organic_zealots = no }
+		}
+		name = {
+			text = keep_leaders.1.k.uncyb.zeal
+			limit = { is_valid_organic_zealots = yes }
+		}
+		icon = {
+			icon = GFX_icon_tech_gene_banks_alternate
+			text = keep_leaders.1.k.uncyb.icon.tooltip
+		}
+		if = {
+			limit = { is_valid_organic_zealots = no }
+			custom_tooltip = keep_leaders.1.k.uncyb.tooltip
+		}
+		else = {
+			custom_tooltip = keep_leaders.1.k.uncyb.zeal.tooltip
+		}
+		custom_tooltip_with_params = {
+			description = keep_leaders.1.tooltip
+			description_parameters = {
+				VALUE = "[variable_storage.leader_transferable_or_assimilatable_accumulator]" # no special count, it's in addition to existing transformations
+				TOTAL = "[variable_storage.leader_accumulator]"
+			}
+		}
+		trigger = {
+			has_technology = tech_gene_tailoring
+			has_technology = tech_gene_banks
+			hidden_trigger = {
+				OR = {
+					has_synthethic_dawn = yes
+					has_utopia = yes
+				}
+				has_civic_organic_zealots_active = yes
+				is_regular_empire = yes
+				NOT = { has_valid_civic = civic_fanatic_purifiers }
+				event_target:storage_owner = {
+					any_owned_leader = {
+						is_eligible_transfer_leader_from_storage = yes
+						is_potential_for_uncyborg_assimilation_species = yes
+					}
+				}
+			}
+		}
+		allow = {
+			custom_tooltip = {
+				fail_text = keep_leaders.1.necro.fail_text
+				if = {
+					limit = { is_necrophage_empire = yes }
+					event_target:storage_owner = { all_stored_leaders_eligible_transfer_to_main_species_leader_restricted = yes }
+				}
+			}
+			custom_tooltip = {
+				fail_text = empire_is_xenophobe_no_x
+				if = {
+					limit = { is_xenophobe = yes }
+					event_target:storage_owner = { all_stored_leaders_eligible_transfer_to_main_species_leader_restricted = yes }
+				}
+			}
+		}
+		ai_chance = {
+			base = 0
+			modifier = {
+				add = 50
+				is_valid_organic_zealots = yes
+			}
+		}
+		hidden_effect = {
+			country_event = {
+				id = keep_leaders.13
 				scopes = { from = event_target:storage_owner }
 			}
 		}
@@ -2506,6 +2583,51 @@ country_event = {
 	}
 }
 
+# assimilate: uncybernetic assimilation before others (synthetic/unmachine won't fire if any biological assimilations took effect)
+# root = country, actor
+# from = country, leader storage
+country_event = {
+	id = keep_leaders.13
+	is_triggered_only = yes
+	hide_window = yes
+	trigger = {
+		OR = {
+			has_synthethic_dawn = yes
+			has_utopia = yes
+		}
+	}
+	immediate = {
+		log = "keep_leaders.13 assimilation (uncyborg priority)"
+		save_event_target_as = potential_owner
+		set_update_modifiers_batch = begin
+		from = {
+			every_owned_leader = {
+				limit = { is_eligible_transfer_leader_from_storage = yes }
+				species = { save_event_target_as = former_species }
+				set_variable = {
+					which = assimilation_type_counter
+					value = 0
+				}
+				species = { save_event_target_as = prepared_species }
+				try_apply_genetic_assimilation = yes
+				try_apply_psionic_assimilation = yes
+				try_apply_uncyborg_assimilation = yes
+				# no synthetic assimilation since thematically this is about making leaders fully organic
+				try_apply_unmachine_assimilation = yes
+				complete_assimilation_and_take_ownership_of_leader = yes
+			}
+			destroy_country = yes
+		}
+		set_update_modifiers_batch = end
+	}
+	after = {
+		# recalculate former ruler country bonuses
+		country_event = {
+			id = keep_leaders_bonus_traits.20
+		}
+	}
+}
+
 # keep hive only
 # root = country, actor
 # from = country, leader storage
@@ -2566,10 +2688,6 @@ country_event = {
 				limit = {
 					is_eligible_transfer_leader_from_storage = yes
 					is_potential_transfer_without_assimilation = yes
-					OR = {
-						event_target:potential_owner = { is_regular_empire = no }
-						is_regular_empire_allowable_leader_species = yes
-					}
 				}
 				ensure_species_rights_and_take_ownership_of_leader = yes
 			}
@@ -2724,9 +2842,9 @@ country_event = {
 				if = {
 					limit = {
 						NOR = {
+							has_leader_flag = psionic_assimilation
 							has_leader_flag = cybernetic_assimilation
 							has_leader_flag = genetic_assimilation
-							has_leader_flag = psionic_assimilation
 						}
 					}
 					try_apply_synthetic_assimilation = yes
