@@ -58,7 +58,27 @@ create_leader_storage_and_transfer_leaders = {
 				value = 0
 			}
 			set_variable = {
-				which = leader_assimilatable_accumulator
+				which = leader_assimilatable_cyborg_possible_accumulator
+				value = 0
+			}
+			set_variable = {
+				which = leader_assimilatable_uncyborg_possible_accumulator
+				value = 0
+			}
+			set_variable = {
+				which = leader_assimilatable_synthetic_possible_accumulator
+				value = 0
+			}
+			set_variable = {
+				which = leader_assimilatable_unmachine_possible_accumulator
+				value = 0
+			}
+			set_variable = {
+				which = leader_assimilatable_psionic_possible_accumulator
+				value = 0
+			}
+			set_variable = {
+				which = leader_assimilatable_genetic_possible_accumulator
 				value = 0
 			}
 			set_variable = {
@@ -1638,8 +1658,13 @@ try_add_demoted_ruler_generic_bonus_trait = {
 # * leader_same_species_accumulator
 # * leader_not_same_species_accumulator
 # * leader_transferable_accumulator
-# * leader_assimilatable_accumulator
 # * leader_transferable_or_assimilatable_accumulator
+# * leader_assimilatable_cyborg_possible_accumulator
+# * leader_assimilatable_uncyborg_possible_accumulator
+# * leader_assimilatable_synthetic_possible_accumulator
+# * leader_assimilatable_unmachine_possible_accumulator
+# * leader_assimilatable_psionic_possible_accumulator
+# * leader_assimilatable_genetic_possible_accumulator
 # * leader_aquatic_accumulator
 accumulate_leader = {
 	optimize_memory
@@ -1743,13 +1768,75 @@ accumulate_leader = {
 	# else_if helps skip duplicate checks for leaders that don't need assimilation
 	else_if = {
 		limit = { is_potential_transfer_with_assimilation = yes }
+
+		# TODO: figure out how I want numbers to show
+		# also want a total of xferrable + any for a specific assimilation type
+		# ignoring whether as assim type is unlocked, final output must be:
+		# machine requires machine/robot or cyb with assim
+		# hive requires hive
+		# synthetic or unmachine requires allowing AI leaders
+		# 'phobe/'phage requires same species or bypass
+		# validating whether any leaders could be allowed is better in the event
+
+		# I want a total of xferrable + any that would be assimilated total
 		event_target:variable_storage = {
 			change_variable = {
-				which = leader_assimilatable_accumulator
+				which = leader_transferable_or_assimilatable_accumulator
 				value = 1
 			}
+		}
+	}
+	# individual counts needed due to support for multi-assimilation
+	if = {
+		limit = { is_possible_for_cyborg_assimilation = yes }
+		event_target:variable_storage = {
 			change_variable = {
-				which = leader_transferable_or_assimilatable_accumulator
+				which = leader_assimilatable_cyborg_possible_accumulator
+				value = 1
+			}
+		}
+	}
+	if = {
+		limit = { is_possible_for_uncyborg_assimilation = yes }
+		event_target:variable_storage = {
+			change_variable = {
+				which = leader_assimilatable_uncyborg_possible_accumulator
+				value = 1
+			}
+		}
+	}
+	if = {
+		limit = { is_possible_for_synthetic_assimilation = yes }
+		event_target:variable_storage = {
+			change_variable = {
+				which = leader_assimilatable_synthetic_possible_accumulator
+				value = 1
+			}
+		}
+	}
+	if = {
+		limit = { is_possible_for_unmachine_assimilation = yes }
+		event_target:variable_storage = {
+			change_variable = {
+				which = leader_assimilatable_unmachine_possible_accumulator
+				value = 1
+			}
+		}
+	}
+	if = {
+		limit = { is_possible_for_psionic_assimilation = yes }
+		event_target:variable_storage = {
+			change_variable = {
+				which = leader_assimilatable_psionic_possible_accumulator
+				value = 1
+			}
+		}
+	}
+	if = {
+		limit = { is_possible_for_genetic_assimilation = yes }
+		event_target:variable_storage = {
+			change_variable = {
+				which = leader_assimilatable_genetic_possible_accumulator
 				value = 1
 			}
 		}

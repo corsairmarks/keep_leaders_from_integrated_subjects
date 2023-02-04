@@ -180,7 +180,7 @@ is_potential_for_synthetic_assimilation_country = {
 	optimize_memory
 	OR = {
 		has_active_tradition = tr_synthetics_adopt_machine
-		has_country_flag = synthetic_empire
+		has_country_flag = synth_assimilation
 	}
 }
 
@@ -739,11 +739,13 @@ is_bypass_leader_restriction_honored_protectors = {
 }
 
 # this = country
+# $TRIGGER$ = the trigger that evaluates whether a leader's species is eligible for a particular form of assimilation
 # event_target:potential_owner = country to which the leader would transfer
-any_stored_leaders_eligible_transfer_to_main_species_leader_restricted = {
+any_stored_leaders_eligible_to_transfer_main_species_leader_restricted = {
 	optimize_memory
 	any_owned_leader = {
 		is_eligible_transfer_leader_from_storage = yes
+		[[TRIGGER] $TRIGGER$ = yes]
 		OR = {
 			is_same_species = event_target:potential_owner
 			is_bypass_leader_restriction_honored_protectors = yes
@@ -753,7 +755,7 @@ any_stored_leaders_eligible_transfer_to_main_species_leader_restricted = {
 
 # this = country
 # event_target:potential_owner = country to which the leader would transfer
-all_stored_organic_leaders_eligible_transfer_to_main_species_leader_restricted = {
+all_stored_organic_leaders_eligible_to_transfer_main_species_leader_restricted = {
 	optimize_memory
 	count_owned_leader = {
 		count = all
@@ -773,7 +775,7 @@ all_stored_organic_leaders_eligible_transfer_to_main_species_leader_restricted =
 
 # this = country
 # event_target:potential_owner = country to which the leader would transfer
-all_stored_robotic_leaders_eligible_transfer_to_main_species_leader_restricted = {
+all_stored_robotic_leaders_eligible_to_transfer_main_species_leader_restricted = {
 	optimize_memory
 	count_owned_leader = {
 		count = all
