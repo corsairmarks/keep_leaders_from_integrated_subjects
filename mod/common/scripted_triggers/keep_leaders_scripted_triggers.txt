@@ -50,6 +50,7 @@ allows_ai_leaders = {
 		is_robot_empire = yes
 		NOT = { has_policy_flag = ai_outlawed }
 	}
+	is_valid_organic_zealots = no
 }
 
 # this = something with a species (country, leader, pop, etc)
@@ -674,14 +675,6 @@ is_potential_transfer_with_assimilation = {
 						allows_ai_leaders = yes
 					}
 					is_potential_for_unmachine_assimilation_species = yes
-				}
-				AND = {
-					has_civic_organic_zealots_active = yes
-					event_target:potential_owner = {
-						has_technology = tech_gene_tailoring
-						has_technology = tech_gene_banks
-					}
-					is_potential_for_uncyborg_assimilation_species = yes
 				}
 			}
 		}
