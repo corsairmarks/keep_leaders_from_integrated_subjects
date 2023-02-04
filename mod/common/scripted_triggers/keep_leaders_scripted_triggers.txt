@@ -753,22 +753,6 @@ any_stored_leaders_eligible_transfer_to_main_species_leader_restricted = {
 
 # this = country
 # event_target:potential_owner = country to which the leader would transfer
-all_stored_leaders_eligible_transfer_to_main_species_leader_restricted = {
-	optimize_memory
-	count_owned_leader = {
-		count = all
-		limit = {
-			OR = {
-				is_eligible_transfer_leader_from_storage = no
-				is_same_species = event_target:potential_owner
-				is_bypass_leader_restriction_honored_protectors = yes
-			}
-		}
-	}
-}
-
-# this = country
-# event_target:potential_owner = country to which the leader would transfer
 all_stored_organic_leaders_eligible_transfer_to_main_species_leader_restricted = {
 	optimize_memory
 	count_owned_leader = {

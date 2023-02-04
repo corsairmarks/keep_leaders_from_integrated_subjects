@@ -175,6 +175,7 @@
  empire_is_spiritualist_no_x: "This approach goes against our §Y$ethic_spiritualist$§! ideals."
  empire_is_authoritarian_no_x: "This approach goes against our §Y$ethic_authoritarian$§! ideals."
  ROBOTS_ARE_OUTLAWED_NO_X: "Robots are §Routlawed§!."
+ ASSIMILATION_NONE_ELIGIBLE_NO_X: "No leaders are eligible for this form of §Y$citizenship_assimilation$§!."
  CANNOT_NECROPHAGE_MACHINES_NO_X: "Inorganic compounds cannot undergo §Y$purge_necrophage$§!."
  NECROPHAGE_NONE_ELIGIBLE_NO_X: "No leaders are eligible for §Y$purge_necrophage$§!."
  AI_IS_OUTLAWED_LEADER_NO_X: "Artificial Intelligence is §Routlawed§!. §Y$ROBOT$§! and §Y$MACHINE$§! leaders are too sophisticated to convert into mindless robots."

@@ -1,5 +1,7 @@
 namespace = keep_leaders
 
+# TODO: verify whether I need phobe/phage checks here at all - assimilation options probably need a check that sees whether any leaders can be assimilated (new variable)
+
 # triggered by keep_leaders.2, keep_leaders.5, keep_leaders.21, keep_leaders.51
 # window with options to potentially keep the stored leaders from integration/primitive conquest/colossus weapon
 # root = country, overlord
@@ -1512,6 +1514,13 @@ country_event = {
 		}
 		allow = {
 			custom_tooltip = {
+				fail_text = ASSIMILATION_NONE_ELIGIBLE_NO_X
+				check_variable = {
+					which = leader_assimilatable_accumulator
+					value > 0
+				}
+			}
+			custom_tooltip = {
 				fail_text = keep_leaders.1.k.bio.fail_text
 				has_active_tradition = tr_genetics_creation
 			}
@@ -1560,6 +1569,13 @@ country_event = {
 		}
 		allow = {
 			custom_tooltip = {
+				fail_text = ASSIMILATION_NONE_ELIGIBLE_NO_X
+				check_variable = {
+					which = leader_assimilatable_accumulator
+					value > 0
+				}
+			}
+			custom_tooltip = {
 				fail_text = keep_leaders.1.k.bio.fail_text
 				has_active_tradition = tr_genetics_creation
 			}
@@ -1567,14 +1583,14 @@ country_event = {
 				fail_text = keep_leaders.1.necro.fail_text
 				if = {
 					limit = { is_necrophage_empire = yes }
-					event_target:storage_owner = { all_stored_leaders_eligible_transfer_to_main_species_leader_restricted = yes }
+					event_target:storage_owner = { any_stored_leaders_eligible_transfer_to_main_species_leader_restricted = yes }
 				}
 			}
 			custom_tooltip = {
 				fail_text = empire_is_xenophobe_no_x
 				if = {
 					limit = { is_xenophobe = yes }
-					event_target:storage_owner = { all_stored_leaders_eligible_transfer_to_main_species_leader_restricted = yes }
+					event_target:storage_owner = { any_stored_leaders_eligible_transfer_to_main_species_leader_restricted = yes }
 				}
 			}
 		}
@@ -1620,6 +1636,13 @@ country_event = {
 		}
 		allow = {
 			custom_tooltip = {
+				fail_text = ASSIMILATION_NONE_ELIGIBLE_NO_X
+				check_variable = {
+					which = leader_assimilatable_accumulator
+					value > 0
+				}
+			}
+			custom_tooltip = {
 				fail_text = keep_leaders.1.k.psionic.fail_text
 				has_active_tradition = tr_psionics_psionic_assimilation
 			}
@@ -1627,14 +1650,14 @@ country_event = {
 				fail_text = keep_leaders.1.necro.fail_text
 				if = {
 					limit = { is_necrophage_empire = yes }
-					event_target:storage_owner = { all_stored_leaders_eligible_transfer_to_main_species_leader_restricted = yes }
+					event_target:storage_owner = { any_stored_leaders_eligible_transfer_to_main_species_leader_restricted = yes }
 				}
 			}
 			custom_tooltip = {
 				fail_text = empire_is_xenophobe_no_x
 				if = {
 					limit = { is_xenophobe = yes }
-					event_target:storage_owner = { all_stored_leaders_eligible_transfer_to_main_species_leader_restricted = yes }
+					event_target:storage_owner = { any_stored_leaders_eligible_transfer_to_main_species_leader_restricted = yes }
 				}
 			}
 		}
@@ -1678,6 +1701,13 @@ country_event = {
 		}
 		allow = {
 			custom_tooltip = {
+				fail_text = ASSIMILATION_NONE_ELIGIBLE_NO_X
+				check_variable = {
+					which = leader_assimilatable_accumulator
+					value > 0
+				}
+			}
+			custom_tooltip = {
 				fail_text = keep_leaders.1.k.cyb.fail_text
 				has_active_tradition = tr_cybernetics_transubstantiation_synthesis
 			}
@@ -1685,14 +1715,14 @@ country_event = {
 				fail_text = keep_leaders.1.necro.fail_text
 				if = {
 					limit = { is_necrophage_empire = yes }
-					event_target:storage_owner = { all_stored_leaders_eligible_transfer_to_main_species_leader_restricted = yes }
+					event_target:storage_owner = { any_stored_leaders_eligible_transfer_to_main_species_leader_restricted = yes }
 				}
 			}
 			custom_tooltip = {
 				fail_text = empire_is_xenophobe_no_x
 				if = {
 					limit = { is_xenophobe = yes }
-					event_target:storage_owner = { all_stored_leaders_eligible_transfer_to_main_species_leader_restricted = yes }
+					event_target:storage_owner = { any_stored_leaders_eligible_transfer_to_main_species_leader_restricted = yes }
 				}
 			}
 		}
@@ -1736,6 +1766,13 @@ country_event = {
 		}
 		allow = {
 			custom_tooltip = {
+				fail_text = ASSIMILATION_NONE_ELIGIBLE_NO_X
+				check_variable = {
+					which = leader_assimilatable_accumulator
+					value > 0
+				}
+			}
+			custom_tooltip = {
 				fail_text = keep_leaders.1.k.cyb.fail_text
 				has_active_tradition = tr_cybernetics_transubstantiation_synthesis
 			}
@@ -1778,6 +1815,13 @@ country_event = {
 			}
 		}
 		allow = {
+			custom_tooltip = {
+				fail_text = ASSIMILATION_NONE_ELIGIBLE_NO_X
+				check_variable = {
+					which = leader_assimilatable_accumulator
+					value > 0
+				}
+			}
 			custom_tooltip = {
 				fail_text = keep_leaders.1.k.synth1.fail_text
 				has_active_tradition = tr_synthetics_synthetic_age
@@ -1829,6 +1873,13 @@ country_event = {
 		}
 		allow = {
 			custom_tooltip = {
+				fail_text = ASSIMILATION_NONE_ELIGIBLE_NO_X
+				check_variable = {
+					which = leader_assimilatable_accumulator
+					value > 0
+				}
+			}
+			custom_tooltip = {
 				fail_text = keep_leaders.1.k.synth.mach.fail_text
 				has_active_tradition = tr_synthetics_adopt_machine
 			}
@@ -1870,6 +1921,15 @@ country_event = {
 						is_eligible_transfer_leader_from_storage = yes
 						is_potential_for_machine_cyborg_assimilation_species = yes
 					}
+				}
+			}
+		}
+		allow = {
+			custom_tooltip = {
+				fail_text = ASSIMILATION_NONE_ELIGIBLE_NO_X
+				check_variable = {
+					which = leader_assimilatable_accumulator
+					value > 0
 				}
 			}
 		}
@@ -1931,6 +1991,13 @@ country_event = {
 		}
 		allow = {
 			custom_tooltip = {
+				fail_text = ASSIMILATION_NONE_ELIGIBLE_NO_X
+				check_variable = {
+					which = leader_assimilatable_accumulator
+					value > 0
+				}
+			}
+			custom_tooltip = {
 				fail_text = ROBOTS_ARE_OUTLAWED_NO_X
 				OR = {
 					has_policy_flag = robots_allowed
@@ -1945,14 +2012,14 @@ country_event = {
 				fail_text = keep_leaders.1.necro.fail_text
 				if = {
 					limit = { is_necrophage_empire = yes }
-					event_target:storage_owner = { all_stored_leaders_eligible_transfer_to_main_species_leader_restricted = yes }
+					event_target:storage_owner = { any_stored_leaders_eligible_transfer_to_main_species_leader_restricted = yes }
 				}
 			}
 			custom_tooltip = {
 				fail_text = empire_is_xenophobe_no_x
 				if = {
 					limit = { is_xenophobe = yes }
-					event_target:storage_owner = { all_stored_leaders_eligible_transfer_to_main_species_leader_restricted = yes }
+					event_target:storage_owner = { any_stored_leaders_eligible_transfer_to_main_species_leader_restricted = yes }
 				}
 			}
 		}
@@ -1967,11 +2034,11 @@ country_event = {
 	option = {
 		name = {
 			text = keep_leaders.1.k.uncyb
-			limit = { is_valid_organic_zealots = no }
+			trigger = { is_valid_organic_zealots = no }
 		}
 		name = {
 			text = keep_leaders.1.k.uncyb.zeal
-			limit = { is_valid_organic_zealots = yes }
+			trigger = { is_valid_organic_zealots = yes }
 		}
 		icon = {
 			icon = GFX_icon_tech_gene_banks_alternate
@@ -2012,17 +2079,24 @@ country_event = {
 		}
 		allow = {
 			custom_tooltip = {
+				fail_text = ASSIMILATION_NONE_ELIGIBLE_NO_X
+				check_variable = {
+					which = leader_assimilatable_accumulator
+					value > 0
+				}
+			}
+			custom_tooltip = {
 				fail_text = keep_leaders.1.necro.fail_text
 				if = {
 					limit = { is_necrophage_empire = yes }
-					event_target:storage_owner = { all_stored_leaders_eligible_transfer_to_main_species_leader_restricted = yes }
+					event_target:storage_owner = { any_stored_leaders_eligible_transfer_to_main_species_leader_restricted = yes }
 				}
 			}
 			custom_tooltip = {
 				fail_text = empire_is_xenophobe_no_x
 				if = {
 					limit = { is_xenophobe = yes }
-					event_target:storage_owner = { all_stored_leaders_eligible_transfer_to_main_species_leader_restricted = yes }
+					event_target:storage_owner = { any_stored_leaders_eligible_transfer_to_main_species_leader_restricted = yes }
 				}
 			}
 		}
@@ -2064,20 +2138,20 @@ country_event = {
 		}
 		allow = {
 			custom_tooltip = {
-				fail_text = CANNOT_NECROPHAGE_MACHINES_NO_X
-				event_target:storage_owner = {
-					any_owned_leader = {
-						is_eligible_transfer_leader_from_storage = yes
-						is_organic_species = yes
-					}
-				}
-			}
-			custom_tooltip = {
 				fail_text = NECROPHAGE_NONE_ELIGIBLE_NO_X
 				event_target:variable_storage = {
 					check_variable = {
 						which = leader_necrophagable_accumulator
 						value > 0
+					}
+				}
+			}
+			custom_tooltip = {
+				fail_text = CANNOT_NECROPHAGE_MACHINES_NO_X
+				event_target:storage_owner = {
+					any_owned_leader = {
+						is_eligible_transfer_leader_from_storage = yes
+						is_organic_species = yes
 					}
 				}
 			}
@@ -3268,20 +3342,20 @@ planet_event = {
 		}
 		allow = {
 			custom_tooltip = {
-				fail_text = CANNOT_NECROPHAGE_MACHINES_NO_X
-				event_target:storage_owner = {
-					any_owned_leader = {
-						is_eligible_transfer_leader_from_storage = yes
-						is_organic_species = yes
-					}
-				}
-			}
-			custom_tooltip = {
 				fail_text = NECROPHAGE_NONE_ELIGIBLE_NO_X
 				event_target:variable_storage = {
 					check_variable = {
 						which = leader_necrophagable_accumulator
 						value > 0
+					}
+				}
+			}
+			custom_tooltip = {
+				fail_text = CANNOT_NECROPHAGE_MACHINES_NO_X
+				event_target:storage_owner = {
+					any_owned_leader = {
+						is_eligible_transfer_leader_from_storage = yes
+						is_organic_species = yes
 					}
 				}
 			}
