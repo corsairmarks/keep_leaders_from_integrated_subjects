@@ -958,18 +958,20 @@ klfis_leader_species_gender_change_requires_clone = {
 	}
 }
 
-# this = species
+# this = leader
 klfis_has_species_trait_with_leader_trait = {
 	optimize_memory
-	OR = {
-		has_trait = trait_cybernetic
-		has_trait = trait_erudite
-		has_trait = trait_psionic
-		has_trait = trait_latent_psionic
-		has_trait = trait_brainslug
-		has_trait = trait_clone_soldier_fertile
-		# these clone soldier traits count for leader-keeping purposes
-		has_trait = trait_clone_soldier_infertile
-		has_trait = trait_clone_soldier_infertile_full_potential
+	species = {
+		OR = {
+			has_trait = trait_cybernetic
+			has_trait = trait_erudite
+			has_trait = trait_psionic
+			has_trait = trait_latent_psionic
+			has_trait = trait_brainslug
+			has_trait = trait_clone_soldier_fertile
+			# these clone soldier traits count for leader-keeping purposes
+			has_trait = trait_clone_soldier_infertile
+			has_trait = trait_clone_soldier_infertile_full_potential
+		}
 	}
 }
