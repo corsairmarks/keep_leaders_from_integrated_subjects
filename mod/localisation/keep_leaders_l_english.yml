@@ -139,6 +139,14 @@
  # descriptive tooltip
  keep_leaders.1.tooltip.none: "\nDo not retain any of $TOTAL|0Y$ leader(s)."
  keep_leaders.1.tooltip: "\nRetain $VALUE|0Y$ out of $TOTAL|0Y$ leader(s)."
+ keep_leaders.1.k.hive.count.tooltip: "\nAssimilate $VALUE|0Y$ leader(s) into the Hive Mind."
+ keep_leaders.1.k.unhive.count.tooltip: "\nDissociate $VALUE|0Y$ leader(s) from a hive mind."
+ keep_leaders.1.k.psi.count.tooltip: "\nAwaken the psionic potential of $VALUE|0Y$ leader(s)."
+ keep_leaders.1.k.cyb.count.tooltip: "\nCyborgize $VALUE|0Y$ leader(s)."
+ keep_leaders.1.k.uncyb.count.tooltip: "\nDe-cyborgize $VALUE|0Y$ leader(s)."
+ keep_leaders.1.k.synth.count.tooltip: "\nConvert $VALUE|0Y$ leader(s) into synthetics."
+ keep_leaders.1.k.unmach.count.tooltip: "\nDisconnect $VALUE|0Y$ leader(s) from a central machine intelligence."
+ keep_leaders.1.k.necro.count.tooltip: "\nNecrophage $VALUE|0Y$ leader(s)."
 
  # custom event fail text
  keep_leaders.1.serv.fail_text: "We would never harm organics!"

@@ -303,7 +303,7 @@ is_potential_for_psionic_assimilation_country = {
 
 # this = something with a species (country, leader, pop, etc)
 # event_target:potential_owner = country
-is_possible_for_cyborg_assimilation = {
+is_potential_for_cyborg_assimilation = {
 	optimize_memory
 	event_target:potential_owner = { is_potential_for_cyborg_assimilation_country = yes }
 	OR = {
@@ -324,7 +324,7 @@ is_possible_for_cyborg_assimilation = {
 
 # this = something with a species (country, leader, pop, etc)
 # event_target:potential_owner = country
-is_possible_for_synthetic_assimilation = {
+is_potential_for_synthetic_assimilation = {
 	optimize_memory
 	event_target:potential_owner = { is_potential_for_synthetic_assimilation_country = yes }
 	OR = {
@@ -341,7 +341,7 @@ is_possible_for_synthetic_assimilation = {
 
 # this = something with a species (country, leader, pop, etc)
 # event_target:potential_owner = country
-is_possible_for_unmachine_assimilation = {
+is_potential_for_unmachine_assimilation = {
 	optimize_memory
 	has_deassimilate_machines_active = yes
 	event_target:potential_owner = { is_potential_for_unmachine_assimilation_country = yes }
@@ -350,7 +350,7 @@ is_possible_for_unmachine_assimilation = {
 
 # this = something with a species (country, leader, pop, etc)
 # event_target:potential_owner = country
-is_possible_for_uncyborg_assimilation = {
+is_potential_for_uncyborg_assimilation = {
 	optimize_memory
 	event_target:potential_owner = { is_potential_for_uncyborg_assimilation_country = yes }
 	is_potential_for_uncyborg_assimilation_species = yes
@@ -358,7 +358,7 @@ is_possible_for_uncyborg_assimilation = {
 
 # this = something with a species (country, leader, pop, etc)
 # event_target:potential_owner = country
-is_possible_for_psionic_assimilation = {
+is_potential_for_psionic_assimilation = {
 	optimize_memory
 	event_target:potential_owner = { is_potential_for_psionic_assimilation_country = yes }
 	is_potential_for_psionic_assimilation_species = yes
@@ -366,7 +366,7 @@ is_possible_for_psionic_assimilation = {
 
 # this = something with a species (country, leader, pop, etc)
 # event_target:potential_owner = country
-is_possible_for_genetic_assimilation = {
+is_potential_for_genetic_assimilation = {
 	optimize_memory
 	event_target:potential_owner = { is_potential_for_genetic_assimilation_country = yes }
 	OR = {
@@ -586,10 +586,10 @@ is_synthetic_leader = {
 	}
 }
 
-# whether this leader could potentially be transferred without being assimilated
+# whether this leader is allowed transfer without being assimilated
 # this = leader
 # event_target:potential_owner = country to which the leader would transfer
-is_potential_transfer_without_assimilation = {
+is_allow_transfer_without_assimilation = {
 	optimize_memory
 	OR = {
 		species = { is_same_species = event_target:potential_owner.owner_species }
@@ -624,10 +624,10 @@ is_potential_transfer_without_assimilation = {
 	}
 }
 
-# whether this leader could potentially be transferred if assimilated
+# whether this leader would be allowed to transfer if assimilated
 # this = leader
 # event_target:potential_owner = country to which the leader would transfer
-is_potential_transfer_with_assimilation = {
+is_allow_transfer_with_assimilation = {
 	optimize_memory
 	if = {
 		limit = { event_target:potential_owner = { is_machine_empire = yes } }

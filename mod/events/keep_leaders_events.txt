@@ -1373,6 +1373,12 @@ country_event = {
 		}
 		custom_tooltip = keep_leaders.1.k.hive.tooltip
 		custom_tooltip_with_params = {
+			description = keep_leaders.1.k.hive.count.tooltip
+			description_parameters = {
+				VALUE = "[variable_storage.leader_assimilation_genetic_allowable_accumulator]"
+			}
+		}
+		custom_tooltip_with_params = {
 			description = keep_leaders.1.tooltip
 			description_parameters = {
 				VALUE = "[variable_storage.leader_transferable_or_assimilatable_accumulator]"
@@ -1395,7 +1401,7 @@ country_event = {
 			custom_tooltip = {
 				fail_text = ASSIMILATION_NONE_ELIGIBLE_NO_X
 				check_variable = {
-					which = leader_assimilatable_genetic_possible_accumulator
+					which = leader_assimilation_genetic_allowable_accumulator
 					value > 0
 				}
 			}
@@ -1432,6 +1438,12 @@ country_event = {
 		}
 		custom_tooltip = keep_leaders.1.k.unhive.tooltip
 		custom_tooltip_with_params = {
+			description = keep_leaders.1.k.unhive.count.tooltip
+			description_parameters = {
+				VALUE = "[variable_storage.leader_assimilation_genetic_allowable_accumulator]"
+			}
+		}
+		custom_tooltip_with_params = {
 			description = keep_leaders.1.tooltip
 			description_parameters = {
 				VALUE = "[variable_storage.leader_transferable_or_assimilatable_accumulator]"
@@ -1454,7 +1466,7 @@ country_event = {
 			custom_tooltip = {
 				fail_text = ASSIMILATION_NONE_ELIGIBLE_NO_X
 				check_variable = {
-					which = leader_assimilatable_genetic_possible_accumulator
+					which = leader_assimilation_genetic_allowable_accumulator
 					value > 0
 				}
 			}
@@ -1494,6 +1506,12 @@ country_event = {
 		}
 		custom_tooltip = keep_leaders.1.k.psi.tooltip
 		custom_tooltip_with_params = {
+			description = keep_leaders.1.k.psi.count.tooltip
+			description_parameters = {
+				VALUE = "[variable_storage.leader_assimilation_genetic_allowable_accumulator]"
+			}
+		}
+		custom_tooltip_with_params = {
 			description = keep_leaders.1.tooltip
 			description_parameters = {
 				VALUE = "[variable_storage.leader_transferable_or_assimilatable_accumulator]"
@@ -1518,7 +1536,7 @@ country_event = {
 			custom_tooltip = {
 				fail_text = ASSIMILATION_NONE_ELIGIBLE_NO_X
 				check_variable = {
-					which = leader_assimilatable_psionic_possible_accumulator
+					which = leader_assimilation_psionic_allowable_accumulator
 					value > 0
 				}
 			}
@@ -1558,6 +1576,12 @@ country_event = {
 		}
 		custom_tooltip = keep_leaders.1.k.cyb.tooltip
 		custom_tooltip_with_params = {
+			description = keep_leaders.1.k.cyb.count.tooltip
+			description_parameters = {
+				VALUE = "[variable_storage.leader_assimilation_genetic_allowable_accumulator]"
+			}
+		}
+		custom_tooltip_with_params = {
 			description = keep_leaders.1.tooltip
 			description_parameters = {
 				VALUE = "[variable_storage.leader_transferable_or_assimilatable_accumulator]"
@@ -1579,7 +1603,7 @@ country_event = {
 			custom_tooltip = {
 				fail_text = ASSIMILATION_NONE_ELIGIBLE_NO_X
 				check_variable = {
-					which = leader_assimilatable_cyborg_possible_accumulator
+					which = leader_assimilation_cyborg_allowable_accumulator
 					value > 0
 				}
 			}
@@ -1619,6 +1643,12 @@ country_event = {
 		}
 		custom_tooltip = keep_leaders.1.k.cyb.hive.tooltip
 		custom_tooltip_with_params = {
+			description = keep_leaders.1.k.cyb.count.tooltip
+			description_parameters = {
+				VALUE = "[variable_storage.leader_assimilation_genetic_allowable_accumulator]"
+			}
+		}
+		custom_tooltip_with_params = {
 			description = keep_leaders.1.tooltip
 			description_parameters = {
 				VALUE = "[variable_storage.leader_transferable_or_assimilatable_accumulator]"
@@ -1641,7 +1671,7 @@ country_event = {
 			custom_tooltip = {
 				fail_text = ASSIMILATION_NONE_ELIGIBLE_NO_X
 				check_variable = {
-					which = leader_assimilatable_cyborg_possible_accumulator
+					which = leader_assimilation_cyborg_allowable_accumulator
 					value > 0
 				}
 			}
@@ -1674,6 +1704,12 @@ country_event = {
 		}
 		custom_tooltip = keep_leaders.1.k.synth.tooltip
 		custom_tooltip_with_params = {
+			description = keep_leaders.1.k.synth.count.tooltip
+			description_parameters = {
+				VALUE = "[variable_storage.leader_assimilation_genetic_allowable_accumulator]"
+			}
+		}
+		custom_tooltip_with_params = {
 			description = keep_leaders.1.tooltip
 			description_parameters = {
 				VALUE = "[variable_storage.leader_transferable_or_assimilatable_accumulator]"
@@ -1696,7 +1732,7 @@ country_event = {
 			custom_tooltip = {
 				fail_text = ASSIMILATION_NONE_ELIGIBLE_NO_X
 				check_variable = {
-					which = leader_assimilatable_synthetic_possible_accumulator
+					which = leader_assimilation_synthetic_allowable_accumulator
 					value > 0
 				}
 			}
@@ -1732,6 +1768,12 @@ country_event = {
 		}
 		custom_tooltip = keep_leaders.1.k.synth.mach.tooltip
 		custom_tooltip_with_params = {
+			description = keep_leaders.1.k.synth.count.tooltip
+			description_parameters = {
+				VALUE = "[variable_storage.leader_assimilation_genetic_allowable_accumulator]"
+			}
+		}
+		custom_tooltip_with_params = {
 			description = keep_leaders.1.tooltip
 			description_parameters = {
 				VALUE = "[variable_storage.leader_transferable_or_assimilatable_accumulator]"
@@ -1753,7 +1795,7 @@ country_event = {
 			custom_tooltip = {
 				fail_text = ASSIMILATION_NONE_ELIGIBLE_NO_X
 				check_variable = {
-					which = leader_assimilatable_synthetic_possible_accumulator
+					which = leader_assimilation_synthetic_allowable_accumulator
 					value > 0
 				}
 			}
@@ -1782,6 +1824,12 @@ country_event = {
 		name = keep_leaders.1.k.assim
 		custom_tooltip = keep_leaders.1.k.assim.tooltip
 		custom_tooltip_with_params = {
+			description = keep_leaders.1.k.cyb.count.tooltip
+			description_parameters = {
+				VALUE = "[variable_storage.leader_assimilation_genetic_allowable_accumulator]"
+			}
+		}
+		custom_tooltip_with_params = {
 			description = keep_leaders.1.tooltip
 			description_parameters = {
 				VALUE = "[variable_storage.leader_transferable_or_assimilatable_accumulator]"
@@ -1804,7 +1852,7 @@ country_event = {
 			custom_tooltip = {
 				fail_text = ASSIMILATION_NONE_ELIGIBLE_NO_X
 				check_variable = {
-					which = leader_assimilatable_cyborg_possible_accumulator
+					which = leader_assimilation_cyborg_allowable_accumulator
 					value > 0
 				}
 			}
@@ -1842,6 +1890,12 @@ country_event = {
 		}
 		custom_tooltip = keep_leaders.1.k.unmach.tooltip
 		custom_tooltip_with_params = {
+			description = keep_leaders.1.k.unmach.count.tooltip
+			description_parameters = {
+				VALUE = "[variable_storage.leader_assimilation_genetic_allowable_accumulator]"
+			}
+		}
+		custom_tooltip_with_params = {
 			description = keep_leaders.1.tooltip
 			description_parameters = {
 				VALUE = "[variable_storage.leader_transferable_or_assimilatable_accumulator]"
@@ -1866,7 +1920,7 @@ country_event = {
 			custom_tooltip = {
 				fail_text = ASSIMILATION_NONE_ELIGIBLE_NO_X
 				check_variable = {
-					which = leader_assimilatable_unmachine_possible_accumulator
+					which = leader_assimilation_unmachine_allowable_accumulator
 					value > 0
 				}
 			}
@@ -1922,6 +1976,12 @@ country_event = {
 			custom_tooltip = keep_leaders.1.k.uncyb.zeal.tooltip
 		}
 		custom_tooltip_with_params = {
+			description = keep_leaders.1.k.uncyb.count.tooltip
+			description_parameters = {
+				VALUE = "[variable_storage.leader_assimilation_genetic_allowable_accumulator]"
+			}
+		}
+		custom_tooltip_with_params = {
 			description = keep_leaders.1.tooltip
 			description_parameters = {
 				VALUE = "[variable_storage.leader_transferable_or_assimilatable_accumulator]" # no special count, it's in addition to existing transformations
@@ -1950,7 +2010,7 @@ country_event = {
 			custom_tooltip = {
 				fail_text = ASSIMILATION_NONE_ELIGIBLE_NO_X
 				check_variable = {
-					which = leader_assimilatable_uncyborg_possible_accumulator
+					which = leader_assimilation_uncyborg_allowable_accumulator
 					value > 0
 				}
 			}
@@ -1992,6 +2052,12 @@ country_event = {
 		}
 		else = {
 			custom_tooltip = keep_leaders.1.k.necro.hive.tooltip
+		}
+		custom_tooltip_with_params = {
+			description = keep_leaders.1.k.necro.count.tooltip
+			description_parameters = {
+				VALUE = "[variable_storage.leader_assimilation_genetic_allowable_accumulator]"
+			}
 		}
 		custom_tooltip_with_params = {
 			description = keep_leaders.1.tooltip
@@ -2624,7 +2690,7 @@ country_event = {
 			every_owned_leader = {
 				limit = {
 					is_eligible_transfer_leader_from_storage = yes
-					is_potential_transfer_without_assimilation = yes
+					is_allow_transfer_without_assimilation = yes
 				}
 				ensure_species_rights_and_take_ownership_of_leader = yes
 			}
