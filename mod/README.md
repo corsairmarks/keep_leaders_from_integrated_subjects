@@ -103,6 +103,8 @@ Demoted rulers with very long names that also contain a period `.` may cause err
     * Consume the compatibility triggers from other mods
     * Remove old compatibility global flag
 * 7.1.0 Support cyborg deassimilation from Civic: Organic Zealots
+    * Show how many leaders would be assimilated/necrophaged out of the total
+    * Bugfixes where some types of empires were improperly barred from selecting some Retain Leaders options
 
 ## Source Code
 
