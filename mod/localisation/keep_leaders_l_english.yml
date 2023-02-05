@@ -226,7 +226,6 @@ keep_leaders.40.c.tooltip: "$keep_leaders.1.a.tooltip$"
 
  # localisation to make the game happy with the conditional content - matches localisation from  Civic: Organic Zealots so that it won't matter which mod loads first
  civic_organic_zealots: "Organic Zealots"
- personality_organic_zealots_desc: "Organic Zealots consider the mere potential of artificial intelligence as the foremost threat to the galaxy. They may cooperate with other organics, but distrust materialists and view robot users with suspicion. They only approach robots, machines, and synthetics with weapons online."
  civic_tooltip_not_organic_zealots: "Does NOT have §Y$civic_organic_zealots$§! Civic"
  civic_tooltip_not_organic_zealots_fail: "$TRIGGER_FAIL$$civic_tooltip_not_organic_zealots$"
  civic_tooltip_not_organic_zealots_pass: "$TRIGGER_PASS$$civic_tooltip_not_organic_zealots$"
