@@ -251,6 +251,7 @@ is_potential_for_unhive_assimilation_species = {
 is_potential_for_regular_synthetic_assimilation_species = {
 	optimize_memory
 	is_hive_species = no
+	species = { NOT = { is_same_species = event_target:potential_owner } }
 }
 
 # could this species potentially be made cybernetic? (non-robotic, non-cyborg)
