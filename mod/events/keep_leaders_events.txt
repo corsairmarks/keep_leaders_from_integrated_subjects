@@ -1683,6 +1683,7 @@ country_event = {
 		trigger = {
 			has_ascension_perk = ap_synthetic_evolution
 			hidden_trigger = {
+				NOT = { has_valid_civic = civic_fanatic_purifiers }
 				event_target:storage_owner = {
 					any_owned_leader = {
 						is_eligible_transfer_leader_from_storage = yes
@@ -1706,13 +1707,6 @@ country_event = {
 			custom_tooltip = {
 				fail_text = keep_leaders.1.k.synth2.fail_text
 				has_country_flag = synth_assimilation
-			}
-			custom_tooltip = {
-				fail_text = keep_leaders.1.necro.fail_text
-				if = {
-					limit = { has_valid_civic = civic_fanatic_purifiers }
-					event_target:storage_owner = { any_stored_leaders_eligible_to_transfer_main_species_leader_restricted = { TRIGGER = is_potential_for_regular_synthetic_assimilation_species } }
-				}
 			}
 		}
 		ai_chance = {
