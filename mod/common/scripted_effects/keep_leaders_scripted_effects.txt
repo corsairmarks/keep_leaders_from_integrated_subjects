@@ -1768,17 +1768,6 @@ accumulate_leader = {
 	# else_if helps skip duplicate checks for leaders that don't need assimilation
 	else_if = {
 		limit = { is_potential_transfer_with_assimilation = yes }
-
-		# TODO: figure out how I want numbers to show
-		# also want a total of xferrable + any for a specific assimilation type
-		# ignoring whether as assim type is unlocked, final output must be:
-		# machine requires machine/robot or cyb with assim
-		# hive requires hive
-		# synthetic or unmachine requires allowing AI leaders
-		# 'phobe/'phage requires same species or bypass
-		# validating whether any leaders could be allowed is better in the event
-
-		# I want a total of xferrable + any that would be assimilated total
 		event_target:variable_storage = {
 			change_variable = {
 				which = leader_transferable_or_assimilatable_accumulator
