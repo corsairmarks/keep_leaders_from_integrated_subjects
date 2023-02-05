@@ -434,6 +434,13 @@ is_aquatic_species = {
 }
 
 # this = something with a species (country, leader, pop, etc)
+is_non_robotic_non_hive_species = {
+	optimize_memory
+	is_robotic_species = no
+	is_hive_species = no
+}
+
+# this = something with a species (country, leader, pop, etc)
 is_smart_enough_for_leadership_species = {
 	optimize_memory
 	species = {
@@ -749,45 +756,6 @@ any_stored_leaders_eligible_to_transfer_main_species_leader_restricted = {
 		OR = {
 			is_same_species = event_target:potential_owner
 			is_bypass_leader_restriction_honored_protectors = yes
-		}
-	}
-}
-
-# this = country
-# event_target:potential_owner = country to which the leader would transfer
-all_stored_organic_leaders_eligible_to_transfer_main_species_leader_restricted = {
-	optimize_memory
-	count_owned_leader = {
-		count = all
-		limit = {
-			OR = {
-				is_eligible_transfer_leader_from_storage = no
-				is_same_species = event_target:potential_owner
-				AND = {
-					is_bypass_leader_restriction_honored_protectors = yes
-					is_robotic_species = no
-					is_hive_species = no
-				}
-			}
-		}
-	}
-}
-
-# this = country
-# event_target:potential_owner = country to which the leader would transfer
-all_stored_robotic_leaders_eligible_to_transfer_main_species_leader_restricted = {
-	optimize_memory
-	count_owned_leader = {
-		count = all
-		limit = {
-			OR = {
-				is_eligible_transfer_leader_from_storage = no
-				is_same_species = event_target:potential_owner
-				AND = {
-					is_bypass_leader_restriction_honored_protectors = yes
-					is_robotic_species_lenient = yes
-				}
-			}
 		}
 	}
 }
