@@ -846,7 +846,7 @@ country_event = {
 			}
 		}
 		name = {
-			text = keep_leaders.1.e
+			text = keep_leaders.1.e.ai
 			trigger = { allows_ai_leaders = yes }
 		}
 		if = {
