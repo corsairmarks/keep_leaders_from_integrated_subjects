@@ -2383,10 +2383,7 @@ try_apply_uncyborg_assimilation = {
 		limit = { event_target:prepared_species = { is_potential_for_uncyborg_assimilation = yes } }
 		species = { set_citizenship_assimilation_and_living_standard_uncyborg = yes }
 		# weird scoping is to set prev and this as expected by the effect
-		event_target:potential_owner = {
-			event_target:prepared_species = { coz_prepare_uncyborg_species = yes }
-			event_target:mechanical_species = { save_event_target_as = prepared_species }
-		}
+		event_target:potential_owner = { event_target:prepared_species = { coz_prepare_uncyborg_species = yes } }
 		set_timed_leader_flag = {
 			flag = uncybernetic_assimilation
 			days = 1
