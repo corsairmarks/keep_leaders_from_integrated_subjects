@@ -881,6 +881,7 @@ country_event = {
 			text = keep_leaders.1.e
 			trigger = {
 				is_spiritualist = no
+				is_valid_organic_zealots = no
 				allows_ai_leaders = no
 			}
 		}
