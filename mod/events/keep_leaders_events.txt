@@ -219,6 +219,36 @@ country_event = {
 		}
 	}
 	option = {
+		name = keep_leaders.1.a.zeal
+		custom_tooltip = keep_leaders.1.a.tooltip
+		custom_tooltip_with_params = {
+			description = keep_leaders.1.tooltip.none
+			description_parameters = {
+				TOTAL = "[variable_storage.leader_accumulator]"
+			}
+		}
+		trigger = {
+			# uses has_civic instead of has_valid_civic so that this will be translated into an icon
+			has_civic = civic_organic_zealots
+		}
+		add_resource = {
+			unity = @keep_leaders_civic_reward_base
+			mult = event_target:variable_storage.leader_robotic_accumulator
+		}
+		hidden_effect = { event_target:storage_owner = { destroy_country = yes } }
+		ai_chance = {
+			base = 1
+			modifier = {
+				factor = 2
+				is_xenophobe = yes
+			}
+			modifier = {
+				factor = 0.5
+				is_necrophage_empire = yes
+			}
+		}
+	}
+	option = {
 		name = keep_leaders.1.a.swarm
 		custom_tooltip = keep_leaders.1.a.swarm.tooltip
 		custom_tooltip_with_params = {
@@ -293,6 +323,20 @@ country_event = {
 				if = {
 					limit = { has_valid_civic = civic_fanatic_purifiers }
 					event_target:storage_owner = { all_stored_leaders_same_species = yes }
+				}
+			}
+			custom_tooltip = {
+				fail_text = keep_leaders.1.zeal.fail_text
+				if = {
+					limit = { is_valid_organic_zealots = yes }
+					event_target:storage_owner = {
+						NOT = {
+							any_owned_leader = {
+								is_eligible_transfer_leader_from_storage = yes
+								is_robotic_species = yes
+							}
+						}
+					}
 				}
 			}
 		}
@@ -396,6 +440,7 @@ country_event = {
 					has_valid_civic = civic_fanatic_purifiers
 					has_active_tradition = tr_cybernetics_transubstantiation_synthesis
 				}
+				is_valid_organic_zealots = no
 				event_target:storage_owner = {
 					any_owned_leader = {
 						is_eligible_transfer_leader_from_storage = yes
@@ -738,6 +783,7 @@ country_event = {
 			hidden_trigger = {
 				is_regular_empire = yes
 				NOT = { has_valid_civic = civic_fanatic_purifiers }
+				is_valid_organic_zealots = no
 				event_target:storage_owner = {
 					any_owned_leader = {
 						is_eligible_transfer_leader_from_storage = yes
@@ -841,7 +887,10 @@ country_event = {
 		name = {
 			text = keep_leaders.1.e.spir
 			trigger = {
-				is_spiritualist = yes
+				OR = {
+					is_spiritualist = yes
+					is_valid_organic_zealots = yes
+				}
 				allows_ai_leaders = no
 			}
 		}
@@ -904,6 +953,13 @@ country_event = {
 			modifier = {
 				factor = 0
 				is_materialist = yes
+			}
+		}
+		if = {
+			limit = { is_valid_organic_zealots = yes }
+			add_resource = {
+				unity = @keep_leaders_civic_reward_base
+				mult = event_target:variable_storage.leader_robotic_accumulator
 			}
 		}
 		hidden_effect = {
@@ -1310,6 +1366,20 @@ country_event = {
 				if = {
 					limit = { has_valid_civic = civic_fanatic_purifiers }
 					event_target:storage_owner = { all_stored_leaders_same_species = yes }
+				}
+			}
+			custom_tooltip = {
+				fail_text = keep_leaders.1.zeal.fail_text
+				if = {
+					limit = { is_valid_organic_zealots = yes }
+					event_target:storage_owner = {
+						NOT = {
+							any_owned_leader = {
+								is_eligible_transfer_leader_from_storage = yes
+								is_robotic_species = yes
+							}
+						}
+					}
 				}
 			}
 			custom_tooltip = {

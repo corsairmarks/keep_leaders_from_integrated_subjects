@@ -14,6 +14,7 @@
  keep_leaders.1.a: "Then \"dispose\" of them."
  keep_leaders.1.a.tooltip: "All leaders from the [storage_owner.GetRealName] are executed."
  keep_leaders.1.a.pur: "Purify them."
+ keep_leaders.1.a.zeal: "Eliminate them."
  keep_leaders.1.a.swarm: "Eat them."
  keep_leaders.1.a.swarm.tooltip: "All leaders from the [storage_owner.GetRealName] are eaten."
  keep_leaders.1.a.term: "Terminate them."
@@ -153,6 +154,7 @@
  keep_leaders.1.pur.fail_text: "Some of the leaders are foul §Yxenos§! that must be purged."
  keep_leaders.1.term.fail_text: "Some of the leaders are §Yorganics§! that must be terminated."
  keep_leaders.1.mach.fail_text: "Some of the leaders are independent §Yorganics§! that are incompatible with our society."
+ keep_leaders.1.zeal.fail_text: "Some of the leaders are blasphemous §Ythinking machines§! that must be purged."
  keep_leaders.1.b.hive.fail_text: "Some of the leaders are not §Y$trait_hive_mind$§! - they are incompatible with our society."
  keep_leaders.1.swarm.fail_text: "We have no interest in allowing the Mind of prey weaken us."
  keep_leaders.1.j.fail_text: "There are no leaders eligible for reassignment."
@@ -226,6 +228,7 @@ keep_leaders.40.c.tooltip: "$keep_leaders.1.a.tooltip$"
 
  # localisation to make the game happy with the conditional content - matches localisation from  Civic: Organic Zealots so that it won't matter which mod loads first
  civic_organic_zealots: "Organic Zealots"
+ civic_organic_zealots_desc: "'Thou shalt not make a machine in the likeness of an organic mind.' This society created, was enslaved by, overthrew, and finally purged Thinking Machines. They seek to prevent the redevelopment of artificial intelligence, or, failing that, oversee its eradication."
  civic_tooltip_not_organic_zealots: "Does NOT have §Y$civic_organic_zealots$§! Civic"
  civic_tooltip_not_organic_zealots_fail: "$TRIGGER_FAIL$$civic_tooltip_not_organic_zealots$"
  civic_tooltip_not_organic_zealots_pass: "$TRIGGER_PASS$$civic_tooltip_not_organic_zealots$"
