@@ -2358,10 +2358,7 @@ try_apply_unmachine_assimilation = {
 		limit = { event_target:prepared_species = { is_potential_for_unmachine_assimilation = yes } }
 		species = { set_citizenship_assimilation_and_living_standard_unmachine = yes }
 		# weird scoping is to set prev and this as expected by the effect
-		event_target:potential_owner = {
-			event_target:prepared_species = { dm_prepare_machine_to_mechanical_species = yes }
-			event_target:mechanical_species = { save_event_target_as = prepared_species }
-		}
+		event_target:potential_owner = { event_target:prepared_species = { dm_prepare_machine_to_mechanical_species = yes } }
 		set_timed_leader_flag = {
 			flag = unmachine_assimilation
 			days = 1
