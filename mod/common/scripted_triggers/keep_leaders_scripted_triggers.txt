@@ -202,7 +202,10 @@ is_potential_for_machine_cyborg_assimilation_species = {
 	optimize_memory
 	is_robotic_species = no
 	OR = {
-		is_cyborg_species = no
+		AND = {
+			is_cyborg_species = no
+			is_hive_species = no
+		}
 		AND = {
 			event_target:potential_owner = { has_active_tradition = tr_cybernetics_assimilator_inevitable_assimilation }
 			is_hive_species = yes
