@@ -26,14 +26,6 @@ create_leader_storage_and_transfer_leaders = {
 				value = 0
 			}
 			set_variable = {
-				which = leader_organic_non_cyborg_accumulator
-				value = 0
-			}
-			set_variable = {
-				which = leader_organic_non_cyborg_accumulator_double
-				value = 0
-			}
-			set_variable = {
 				which = leader_hive_accumulator
 				value = 0
 			}
@@ -59,6 +51,10 @@ create_leader_storage_and_transfer_leaders = {
 			}
 			set_variable = {
 				which = leader_assimilation_cyborg_allowable_accumulator
+				value = 0
+			}
+			set_variable = {
+				which = leader_assimilation_cyborg_allowable_accumulator_double
 				value = 0
 			}
 			set_variable = {
@@ -1650,8 +1646,6 @@ try_add_demoted_ruler_generic_bonus_trait = {
 # event_target:variable_storage = a scope that has these variables:
 # * leader_accumulator
 # * leader_organic_accumulator
-# * leader_organic_non_cyborg_accumulator
-# * leader_organic_non_cyborg_accumulator_double
 # * leader_hive_accumulator
 # * leader_robotic_accumulator
 # * leader_necrophagable_accumulator
@@ -1660,6 +1654,7 @@ try_add_demoted_ruler_generic_bonus_trait = {
 # * leader_transferable_accumulator
 # * leader_transferable_or_assimilatable_accumulator
 # * leader_assimilation_cyborg_allowable_accumulator
+# * leader_assimilation_cyborg_allowable_accumulator_double
 # * leader_assimilation_uncyborg_allowable_accumulator
 # * leader_assimilation_synthetic_allowable_accumulator
 # * leader_assimilation_unmachine_allowable_accumulator
@@ -1674,19 +1669,6 @@ accumulate_leader = {
 			change_variable = {
 				which = leader_organic_accumulator
 				value = 1
-			}
-		}
-		if = {
-			limit = { is_cyborg_species = no }
-			event_target:variable_storage = {
-				change_variable = {
-					which = leader_organic_non_cyborg_accumulator
-					value = 1
-				}
-				change_variable = {
-					which = leader_organic_non_cyborg_accumulator_double
-					value = 2
-				}
 			}
 		}
 	}
@@ -1794,6 +1776,10 @@ accumulate_leader = {
 				change_variable = {
 					which = leader_assimilation_cyborg_allowable_accumulator
 					value = 1
+				}
+				change_variable = {
+					which = leader_assimilation_cyborg_allowable_accumulator_double
+					value = 2
 				}
 			}
 		}

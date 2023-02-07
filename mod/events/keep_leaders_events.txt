@@ -1900,6 +1900,25 @@ country_event = {
 			}
 		}
 		if = {
+			limit = { has_valid_civic = civic_machine_assimilator }
+			if = {
+				limit = { NOT = { has_active_tradition = tr_cybernetics_assimilator_adopt } }
+				add_resource = {
+					unity = @keep_leaders_civic_reward_base
+					society_research = @keep_leaders_civic_reward_base
+					mult = event_target:variable_storage.leader_assimilation_cyborg_allowable_accumulator
+				}
+			}
+			else = {
+				add_resource = {
+					unity = @keep_leaders_civic_reward_base
+					society_research = @keep_leaders_civic_reward_base
+					engineering_research = @keep_leaders_civic_reward_base
+					mult = event_target:variable_storage.leader_assimilation_cyborg_allowable_accumulator_double
+				}
+			}
+		}
+		else_if = {
 			limit = { has_valid_civic = civic_machine_terminator }
 			add_resource = {
 				unity = @keep_leaders_civic_reward_base
@@ -1966,7 +1985,7 @@ country_event = {
 			add_resource = {
 				unity = @keep_leaders_civic_reward_base
 				society_research = @keep_leaders_civic_reward_base
-				mult = event_target:variable_storage.leader_organic_non_cyborg_accumulator
+				mult = event_target:variable_storage.leader_assimilation_cyborg_allowable_accumulator
 			}
 		}
 		else = {
@@ -1974,7 +1993,7 @@ country_event = {
 				unity = @keep_leaders_civic_reward_base
 				society_research = @keep_leaders_civic_reward_base
 				engineering_research = @keep_leaders_civic_reward_base
-				mult = event_target:variable_storage.leader_organic_non_cyborg_accumulator_double
+				mult = event_target:variable_storage.leader_assimilation_cyborg_allowable_accumulator_double
 			}
 		}
 		hidden_effect = {
@@ -3237,7 +3256,7 @@ planet_event = {
 			add_resource = {
 				unity = @keep_leaders_civic_reward_base
 				society_research = @keep_leaders_civic_reward_base
-				mult = event_target:variable_storage.leader_organic_non_cyborg_accumulator
+				mult = event_target:variable_storage.leader_assimilation_cyborg_allowable_accumulator
 			}
 			hidden_effect = {
 				country_event = {
