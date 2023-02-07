@@ -1,7 +1,5 @@
 namespace = keep_leaders
 
-# TODO: verify whether I need phobe/phage checks here at all - assimilation options probably need a check that sees whether any leaders can be assimilated (new variable)
-
 # triggered by keep_leaders.2, keep_leaders.5, keep_leaders.21, keep_leaders.51
 # window with options to potentially keep the stored leaders from integration/primitive conquest/colossus weapon
 # root = country, overlord
