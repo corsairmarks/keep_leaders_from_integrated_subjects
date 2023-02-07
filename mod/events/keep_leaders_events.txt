@@ -1849,7 +1849,17 @@ country_event = {
 			icon = GFX_ap_synthetic_age
 			text = keep_leaders.1.k.synth.mach.icon.tooltip
 		}
-		custom_tooltip = keep_leaders.1.k.synth.mach.tooltip
+		if = {
+			limit = { NOT = { has_valid_civic = civic_machine_assimilator } }
+			custom_tooltip = keep_leaders.1.k.synth.mach.tooltip
+		}
+		else_if = {
+			limit = { NOT = { has_active_tradition = tr_cybernetics_assimilator_inevitable_assimilation } }
+			custom_tooltip = keep_leaders.1.k.synth.assim.tooltip
+		}
+		else = {
+			custom_tooltip = keep_leaders.1.k.synth.assim.ia.tooltip
+		}
 		custom_tooltip_with_params = {
 			description = keep_leaders.1.k.synth.count.tooltip
 			description_parameters = {
@@ -1907,7 +1917,13 @@ country_event = {
 	# assimilate: assimilator
 	option = {
 		name = keep_leaders.1.k.assim
-		custom_tooltip = keep_leaders.1.k.assim.tooltip
+		if = {
+			limit = { NOT = { has_active_tradition = tr_cybernetics_assimilator_inevitable_assimilation } }
+			custom_tooltip = keep_leaders.1.k.assim.tooltip
+		}
+		else = {
+			custom_tooltip = keep_leaders.1.k.assim.ia.tooltip
+		}
 		custom_tooltip_with_params = {
 			description = keep_leaders.1.k.cyb.count.tooltip
 			description_parameters = {
