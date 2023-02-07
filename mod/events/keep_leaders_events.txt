@@ -3559,8 +3559,9 @@ planet_event = {
 		if = {
 			limit = {
 				event_target:variable_storage = {
-					check_variable = {
-						which = leader_organic_non_cyborg_accumulator
+					check_variable_arithmetic = {
+						which = leader_organic_accumulator
+						subtract = leader_hive_accumulator
 						value > 0
 					}
 				}
@@ -3571,7 +3572,7 @@ planet_event = {
 					limit = {
 						OR = {
 							is_robotic_species = yes
-							is_cyborg_species = yes
+							is_hive_species = yes
 						}
 					}
 					kill_leader = {
