@@ -2484,13 +2484,19 @@ planet_event = {
 	}
 	option = {
 		name = keep_leaders.3.c
+		hidden_effect = {
+			event_target:storage_owner = { destroy_country = yes }
+			if = {
+				limit = { has_modifier = kl_peerless_infiltration_agents }
+				remove_modifier = kl_peerless_infiltration_agents
+			}
+		}
 		owner = {
 			add_modifier = {
 				modifier = kl_peerless_infiltration_agents
 				years = 20
 			}
 		}
-		hidden_effect = { event_target:storage_owner = { destroy_country = yes } }
 		ai_chance = {
 			base = 1
 			modifier = {
