@@ -17,7 +17,7 @@ This mod was designed to be played with the default restrictions on ascension pa
 Finally, this mod adds some special traits (and a special name affix) for demoted former rulers and heirs. Their names will be followed by brown text indicating that they are the "Former Ruler/Heir of the <Country Name>" and they will gain a special trait depending on their former empire and new leadership role.
 
 [h2]Compatibility[/h2]
-Built for Stellaris version 3.6 "Orion." Not compatible with achievements.
+Built for Stellaris version 3.7 "Canis Minor." Not compatible with achievements.
 
 This mod is designed to understand the species types, ethics, civics, authorities, governments, and origins that are built-in to Stellaris. The features of this mod are implemented primarily through brand new events and scripting, meaning that it should not directly conflict with most other mods. However, you could end up with odd behavior if you play with mods that significantly alter the default gameplay - for example, adding a new homicidal species (without the mod providing an update to the [b]is_homicidal[/b] trigger). Mods that add or modify civics should generally work but this mod may offer decisions that do not make the most sense for the role-play of new civics.
 
@@ -32,7 +32,7 @@ This mod can be safely added to your savegame after the game has started. If you
 [*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2553806265]Leader Traits: Enhanced Randomisation[/url] improves leader trait randomisation and toggles traits from biological to machine traits (and back) if a leader becomes a robot and/or returns to a biological form
 [*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2553812372]Deassimilate Machines[/url] allows non-hive, non-machine empires to "deassimilate" machine Pops into robots - specifically allows (with this mod) for machine deassimilation as a "leadership disposition" choice for integrated subjects (etc.) and the deassimilated leaders gain synth leader traits if you have the required technology
 [*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2908463208]Assimilate All the Pops[/url] allows empires to have multiple assimilation types, which enables this mod to apply all unlocked assimilation types simultaneously to your retained leaders
-[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2488154830]Primitive Conquest Enhancements[/url] improves the pre-existing infrastructure when you conquer or otherwise acquire a planet that had previously been primitive; pairs well with this mod's bonus leaders from conquered (etc.) primitives
+[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2488154830]Pre-FTL Conquest & Infiltration: Enhanced[/url] improves the pre-existing infrastructure when you conquer or otherwise acquire a planet that had previously been primitive; pairs well with this mod's bonus leaders from conquered (etc.) primitives
 [*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2558494770]corsairmarks's Leader Traits MOD Chinese patch[/url] by Hua Zhang - Chinese localisation
 [/list]
 You might wonder - why are these separate mods? They override default gameplay options, so I thought it best to give players the choice on whether they want the original version or the reimagined version. Leader Traits: Enhanced Randomisation and Machine Deassimilation were developed alongside this mod.
