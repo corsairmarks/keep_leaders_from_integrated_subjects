@@ -91,7 +91,7 @@ create_leader_storage_and_transfer_leaders = {
 	# like unity or society research for empires that qualify
 	event_target:former_owner = {
 		every_owned_leader = {
-			limit = { is_eligible_transfer_leader_class = yes }
+			limit = { is_eligible_transfer_leader = yes }
 			accumulate_leader = yes
 			tag_leader_for_reassignment = yes
 			transfer_leader_to_storage = yes

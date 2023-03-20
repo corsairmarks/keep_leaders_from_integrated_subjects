@@ -702,16 +702,17 @@ is_allow_transfer_with_assimilation = {
 is_eligible_transfer_leader_from_storage = {
 	optimize_memory
 	has_leader_flag = potential_owner@event_target:potential_owner
-	is_eligible_transfer_leader_class = yes
+	is_eligible_transfer_leader = yes
 }
 
 # this = leader
-is_eligible_transfer_leader_class = {
+is_eligible_transfer_leader = {
 	optimize_memory
 	NOR = {
 		leader_class = ruler
 		leader_class = envoy
 	}
+	species = { is_sapient = yes }
 }
 
 # allows cyborgs to be considered robotic if the potential owner considers them to be robotic
