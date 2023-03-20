@@ -111,10 +111,10 @@ create_leader_storage_and_transfer_leaders = {
 			ruler = {
 				set_name = {
 					key = keep_leaders.former_ruler_name
-					variable_string = "This.GetRegnalName"
-					variable_string = "This.GetRulerTitle"
-					# variable_string = "This.GetTitle"
-					variable_string = "former_owner.GetName"
+					variable_string = "\\[This.GetRegnalName\\]"
+					variable_string = "\\[This.GetRulerTitle\\]"
+					# variable_string = "\\[This.GetTitle\\]"
+					variable_string = "\\[former_owner.GetName\\]"
 				}
 				set_leader_flag = former_ruler
 				save_event_target_as = integrated_ruler
@@ -163,9 +163,9 @@ create_leader_storage_and_transfer_leaders = {
 			heir = {
 				set_name = {
 					key = keep_leaders.former_heir_name
-					variable_string = "This.GetName"
-					# variable_string = "This.GetTitle"
-					variable_string = "former_owner.GetName"
+					variable_string = "\\[This.GetName\\]"
+					# variable_string = "\\[This.GetTitle\\]"
+					variable_string = "\\[former_owner.GetName\\]"
 				}
 				set_leader_flag = former_heir
 				save_event_target_as = integrated_heir
@@ -2002,12 +2002,12 @@ create_army_transport_parameterized = {
 			effect = {
 				set_name = {
 					key = keep_leaders.source_ship_name
-					variable_string = "source_ship.GetName"
+					variable_string = "\\[source_ship.GetName\\]"
 				}
 				last_created_army = {
 					set_name = {
 						key = keep_leaders.source_army_name
-						variable_string = "source_army.GetName"
+						variable_string = "\\[source_army.GetName\\]"
 					}
 				}
 			}
@@ -2019,12 +2019,12 @@ create_army_transport_parameterized = {
 			effect = {
 				set_name = {
 					key = keep_leaders.source_ship_name
-					variable_string = "source_ship.GetName"
+					variable_string = "\\[source_ship.GetName\\]"
 				}
 				last_created_army = {
 					set_name = {
 						key = keep_leaders.source_army_name
-						variable_string = "source_army.GetName"
+						variable_string = "\\[source_army.GetName\\]"
 					}
 				}
 			}

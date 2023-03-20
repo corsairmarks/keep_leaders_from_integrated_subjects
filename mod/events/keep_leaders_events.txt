@@ -2602,7 +2602,7 @@ country_event = {
 							save_event_target_as = target_fleet
 							set_name = {
 								key = keep_leaders.source_fleet_name
-								variable_string = "source_fleet.GetName"
+								variable_string = "[source_fleet.GetName]"
 							}
 							set_owner = event_target:integrating_country
 							set_location = event_target:source_fleet
