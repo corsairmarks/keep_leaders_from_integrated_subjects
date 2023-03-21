@@ -1,4 +1,4 @@
-name="Retain Leaders from Integrated Subjects"
+name="Retain Leaders from Integrated Subjects & Pre-FTL Civilizations"
 dependencies={
 	"Leader Traits: All Eligible Species Traits"
 }
