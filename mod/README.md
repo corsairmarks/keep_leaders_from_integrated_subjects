@@ -1,6 +1,6 @@
 # Overview
 
-Have you ever wondered what happened to the former leaders of your subject after you integrated them? Or perhaps where that primitive leader went after you annexed their planet? Wonder no more! With this mod you will be prompted to choose what to do with the now-unemployed leaders whenever you integrate a subject, conquer a primitive planet, "allow" primitives to join you via covert infiltration, or convert then via a colossus weapon.
+Have you ever wondered what happened to the former leaders of your subject after you integrated them? Or perhaps where that pre-FTL leader went after you annexed their planet? Wonder no more! With this mod you will be prompted to choose what to do with the now-unemployed leaders whenever you integrate a subject, conquer a pre-FTL planet, "allow" pre-FTLs to join you via covert infiltration, or convert then via a colossus weapon.
 
 Demoted rulers you acquire through integration/conquest/etc. will (in most cases) preserve their existing ruler traits in case they somehow become the ruler of your empire. Rulers demoted for any reason such as being integrated or even losing an election benefit by gaining the same former ruler traits. They may not have won the hearts and minds of voters, but they still rose to the occasion and developed new skills. This will applies when being demoted from ruler for any reason, such as gameplay from another mod.
 
@@ -10,9 +10,9 @@ Scientists and Admirals are automatically assigned back to their per-integration
 
 # Changes
 
-A lot of code has gone into figuring out what leaders you can choose to keep based on what kind of country you are playing, what ethics it has, what kinds of assimilation or necrophage might be available. All of that boils down to an event screen that appears when you have integrated a subject or conquered a primitive planet, or a second event when you have infiltrated a primitive planet.
+A lot of code has gone into figuring out what leaders you can choose to keep based on what kind of country you are playing, what ethics it has, what kinds of assimilation or necrophage might be available. All of that boils down to an event screen that appears when you have integrated a subject or conquered a pre-FTL planet, or a second event when you have infiltrated a pre-FTL planet.
 
-These event present you with a few choices about what you can do with the leaders from the now-defunct subject/primitives. It will show a few different options depending on what is available to you. For example, genocidal empires can only keep leaders that are of their own species and necrophage empires have the option to necrophage leaders. There's a special secret bonus for some kinds of leaders - see if you can figure out what it is.
+These event present you with a few choices about what you can do with the leaders from the now-defunct subject/pre-FTLs. It will show a few different options depending on what is available to you. For example, genocidal empires can only keep leaders that are of their own species and necrophage empires have the option to necrophage leaders. There's a special secret bonus for some kinds of leaders - see if you can figure out what it is.
 
 This mod was designed to be played with the default restrictions on ascension paths - mainly that your empire would normally not have more than one assimilation type available to it. However, it is coded in such a way that if you have multiple assimilation types available, any of the "assimilate" button options invokes the same follow-up code. Each integrated leader (and their species) in a regular (non-machine, non-hive empires) are assigned the first assimilation type that they qualify for in this order: synthetic, then cybernetic, then psionic, then deassimilation.  If you are using my machine deassimilation mod, that type is checked first (before synthetic assimilation).
 
@@ -26,7 +26,7 @@ This mod is designed to understand the species types, ethics, civics, authoritie
 
 ### When to Install
 
-This mod can be safely added to your savegame after the game has started. If you remove it, you will lose access to the custom "former ruler/heir" traits and the espionage bonus that is one of the choices upon successfully infiltrating primitives. Stellaris is fairly forgiving in situations like this - it's likely that error logs would be generated and the game would otherwise ignore the missing content. Back up your savegame before trying to remove a mod.
+This mod can be safely added to your savegame after the game has started. If you remove it, you will lose access to the custom "former ruler/heir" traits and the espionage bonus that is one of the choices upon successfully infiltrating pre-FTLs. Stellaris is fairly forgiving in situations like this - it's likely that error logs would be generated and the game would otherwise ignore the missing content. Back up your savegame before trying to remove a mod.
 
 ### Required Dependency Mods
 
@@ -37,7 +37,7 @@ This mod can be safely added to your savegame after the game has started. If you
 * [Leader Traits: Enhanced Randomisation](https://steamcommunity.com/sharedfiles/filedetails/?id=2553806265) improves leader trait randomisation (primarily from level up, but not exclusively) and toggles traits from the biological version to machine traits (and back) if a leader becomes a robot and/or returns to a biological form
 * [Deassimilate Machines](https://steamcommunity.com/sharedfiles/filedetails/?id=2553812372) allows non-hive, non-machine empires to "deassimilate" machine Pops into robots - specifically allows (with this mod) for machine deassimilation as a "leadership disposition" choice for integrated subjects (etc.) and the deassimilated leaders gain synth leader traits if you have the required technology
 * [Assimilate All the Pops](https://steamcommunity.com/sharedfiles/filedetails/?id=2908463208) allows empires to have multiple assimilation types, which enables this mod to apply all unlocked assimilation types simultaneously to your retained leaders
-* [Pre-FTL Conquest & Infiltration: Enhanced](https://steamcommunity.com/sharedfiles/filedetails/?id=2488154830) improves the pre-existing infrastructure when you conquer or otherwise acquire a planet that had previously been primitive; pairs well with this mod's bonus leaders from conquered (etc.) primitives
+* [Pre-FTL Conquest & Infiltration: Enhanced](https://steamcommunity.com/sharedfiles/filedetails/?id=2488154830) improves the pre-existing infrastructure when you conquer or otherwise acquire a planet that had previously been pre-FTL; pairs well with this mod's bonus leaders from conquered (etc.) pre-FTLs
 * [corsairmarks's Leader Traits MOD Chinese patch](https://steamcommunity.com/sharedfiles/filedetails/?id=2558494770) by Hua Zhang - Chinese localisation
 
 You might wonder - why are these separate mods? They override default gameplay options, so I thought it best to give players the choice on whether they want the original version or the reimagined version. Leader Traits: Enhanced Randomisation and Machine Deassimilation were developed alongside this mod.
