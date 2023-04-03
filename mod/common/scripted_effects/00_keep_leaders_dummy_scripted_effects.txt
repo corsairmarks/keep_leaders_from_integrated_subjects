@@ -1,3 +1,5 @@
+# Irony this is a placeholder file please ignore it
+
 # from Civic: Organic Zealots
 # set up a species for cybernetic deassimilation
 # this = something with a species (country, leader, pop, etc)
