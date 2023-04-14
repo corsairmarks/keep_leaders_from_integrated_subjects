@@ -1708,7 +1708,6 @@ country_event = {
 					has_civic_organic_zealots_active = no
 					NAND = {
 						is_subject = yes
-						exists = overlord
 						overlord = { is_valid_organic_zealots = yes }
 					}
 				}
@@ -1803,7 +1802,6 @@ country_event = {
 					has_civic_organic_zealots_active = no
 					NAND = {
 						is_subject = yes
-						exists = overlord
 						overlord = { is_valid_organic_zealots = yes }
 					}
 				}
@@ -2127,7 +2125,6 @@ country_event = {
 					has_civic_organic_zealots_active = no
 					NAND = {
 						is_subject = yes
-						exists = overlord
 						overlord = { is_valid_organic_zealots = yes }
 					}
 				}

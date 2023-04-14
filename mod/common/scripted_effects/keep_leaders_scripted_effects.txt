@@ -2298,7 +2298,6 @@ try_apply_cyborg_assimilation = {
 					is_valid_organic_zealots = no
 					NAND = {
 						is_subject = yes
-						exists = overlord
 						overlord = { is_valid_organic_zealots = yes }
 					}
 				}
