@@ -62,3 +62,11 @@ is_not_restricted_by_organic_zealots = {
 	optimize_memory
 	always = no
 }
+
+### Corsair's Custom Empires: Eldanær Stellar Authority ###
+
+# this = country
+has_government_bureaucratic_autocracy = {
+	optimize_memory
+	always = no
+}
