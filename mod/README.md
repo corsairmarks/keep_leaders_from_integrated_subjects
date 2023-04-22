@@ -109,6 +109,9 @@ Demoted rulers with very long names that also contain a period `.` may cause err
 * 8.0.0 Update for Stellaris version 3.7 "Canis Minor"
     * Adjust "Peerless Infiltration" to grant a bonus in the new "Infiltration" espionage operation category and to improve intel gain speed
     * Integrate underlying game changes
+* 8.1.0 Use compatibility triggers from my other mods
+    * Replace most usage of Civic: Organic Zealots validation messages and instead consume the compatibility trigger `is_not_restricted_by_organic_zealots`
+    * Remove dummy government `gov_bureaucratic_autocracy` and instead consume the compatibility trigger `has_government_bureaucratic_autocracy`
 
 ## Source Code
 
