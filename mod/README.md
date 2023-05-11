@@ -20,7 +20,7 @@ Finally, this mod adds some special traits (and a special name affix) for demote
 
 ## Compatibility
 
-Built for Stellaris version 3.7 "Canis Minor."  Not compatible with achievements.
+Built for Stellaris version 3.8 "Gemini."  Not compatible with achievements.
 
 This mod is designed to understand the species types, ethics, civics, authorities, governments, and origins that are built-in to Stellaris. The features of this mod are implemented primarily through brand new events and scripting, meaning that it should not directly conflict with most other mods. However, you could end up with odd behavior if you play with mods that significantly alter the default gameplay - for example, adding a new homicidal species (without the mod providing an update to the `is_homicidal` trigger). Mods that add or modify civics should generally work but this mod may offer decisions that do not make the most sense for the role-play of new civics.
 
@@ -45,7 +45,7 @@ You might wonder - why are these separate mods? They override default gameplay o
 ### Additional Mods with Gameplay Interaction
 
 * [Eldanær Stellar Authority](https://steamcommunity.com/sharedfiles/filedetails/?id=2496360535) - if you integrate them, their former ruler and heir are guaranteed to be Governors
-* [Special Leadership Privileges for Battle Thralls and Bio-Trophies](https://steamcommunity.com/sharedfiles/filedetails/?id=2496357447) - interacts with special leadership privileges: a) you will keep military leaders from species set to Battle Thralls but also Full Military Service, b) respects species flagged for allowing military leaders despite the empire being xenophobic and/or a necrophage, and c) allows Rogue Servitors to choose to retain organic leaders as Organic Advisors
+* [Special Leadership Privileges for Battle Thralls & Bio-Trophies](https://steamcommunity.com/sharedfiles/filedetails/?id=2496357447) - interacts with special leadership privileges: a) you will keep military leaders from species set to Battle Thralls but also Full Military Service, b) respects species flagged for allowing military leaders despite the empire being xenophobic and/or a necrophage, and c) allows Rogue Servitors to choose to retain organic leaders as Organic Advisors
 
 ## Known Issues
 
@@ -57,7 +57,7 @@ Demoted rulers with very long names that also contain a period `.` may cause err
 
 * 1.0.0 Initial version
 * 1.0.1 Add thumbnail
-* 1.0.2 Support Decree: Honored Protectors in Full Military Service for Battle Thralls (now Special Leadership Privileges for Battle Thralls and Bio-Trophies)
+* 1.0.2 Support Decree: Honored Protectors in Full Military Service for Battle Thralls (now Special Leadership Privileges for Battle Thralls & Bio-Trophies)
 * 1.1.0 Auto-Assign and UI Enhancements
     * Automatically reassign Scientists and Admirals from integrated subjects back to their previous fleet command roles
     * Improve some `allow` triggers to be more lenient (most notably the Send them for assignment/"Keep as many as possible")
@@ -80,10 +80,10 @@ Demoted rulers with very long names that also contain a period `.` may cause err
 * 2.0.1 Support both necrophage unity traditions
 * 3.0.0 Update for compatibility with Stellaris 3.2 "Herbert"
     * Ensure necrophaged (and otherwise changed) leaders match the gender of their new species ("Gender Nonbinary Leaders" disables this change)
-    * Integrates with "Special Leadership Privileges for Battle Thralls and Bio-Trophies" and "Gender Nonbinary Leaders" to avoid duplicate cloning
+    * Integrates with "Special Leadership Privileges for Battle Thralls & Bio-Trophies" and "Gender Nonbinary Leaders" to avoid duplicate cloning
     * If using a colossus weapon on a primitive empire that results in the transfer of control of their planet to your empire, you can choose what happens to the leaders
     * Supports these colossus weapons by default: Nanobot Diffuser, Deluge Machine, Necrophagic Spore Diffuser (from Eldanær Stellar Authority)
-* 3.1.0 Allow Rogue Servitors to choose to keep organic leaders as advisors when "Special Leadership Privileges for Battle Thralls and Bio-Trophies" is also installed
+* 3.1.0 Allow Rogue Servitors to choose to keep organic leaders as advisors when "Special Leadership Privileges for Battle Thralls & Bio-Trophies" is also installed
 * 4.0.0 Update for compatibility with Stellaris 3.3 "Libra" - Zombies are not smart enough to be leaders
 * 4.0.1 Remove invalid `modification = no` from leader traits
 * 4.1.0 "Former ruler" traits no longer give admin cap, instead they grant edict fund
@@ -112,6 +112,11 @@ Demoted rulers with very long names that also contain a period `.` may cause err
 * 8.1.0 Use compatibility triggers from my other mods
     * Replace most usage of Civic: Organic Zealots validation messages and instead consume the compatibility trigger `is_not_restricted_by_organic_zealots`
     * Remove dummy government `gov_bureaucratic_autocracy` and instead consume the compatibility trigger `has_government_bureaucratic_autocracy`
+* 9.0.0 Update for Stellaris version 3.8 "Gemini"
+    * Remove obsolete code for country modifiers to add leader production - leaders can produce resources directly now
+    * Simplify former ruler traits
+    * Add all leader class versions of the former Hive Mind and Machine Intelligence traits
+    * Add scripted_loc to still use the varying flavor text for former rulers
 
 ## Source Code
 
