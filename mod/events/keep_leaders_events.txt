@@ -2455,16 +2455,6 @@ planet_event = {
 			}
 		}
 	}
-	after = {
-		hidden_effect = {
-			# recalculate former ruler country bonuses
-			owner = {
-				country_event = {
-					id = keep_leaders_bonus_traits.20
-				}
-			}
-		}
-	}
 }
 
 # transfer leaders to storage while the integrated subject country exists
@@ -2599,11 +2589,7 @@ leader_event = {
 	hide_window = yes
 	is_triggered_only = yes
 	trigger = {
-		OR = {
-			has_leader_flag = force_gender_match_species
-			has_nonbinary_leaders_active = no
-		}
-		NOT = { has_leader_flag = leader_replaced_by_clone }
+		has_leader_flag = force_gender_match_species
 		exists = from
 		from = { is_scope_type = species }
 		klfis_leader_new_species_allows_current_gender = no
@@ -2647,12 +2633,6 @@ country_event = {
 		}
 		set_update_modifiers_batch = end
 	}
-	after = {
-		# recalculate former ruler country bonuses
-		country_event = {
-			id = keep_leaders_bonus_traits.20
-		}
-	}
 }
 
 # keep organic only
@@ -2689,12 +2669,6 @@ country_event = {
 		}
 		set_update_modifiers_batch = end
 	}
-	after = {
-		# recalculate former ruler country bonuses
-		country_event = {
-			id = keep_leaders_bonus_traits.20
-		}
-	}
 }
 
 # keep same species only
@@ -2719,12 +2693,6 @@ country_event = {
 			destroy_country = yes
 		}
 		set_update_modifiers_batch = end
-	}
-	after = {
-		# recalculate former ruler country bonuses
-		country_event = {
-			id = keep_leaders_bonus_traits.20
-		}
 	}
 }
 
@@ -2765,12 +2733,6 @@ country_event = {
 		}
 		set_update_modifiers_batch = end
 	}
-	after = {
-		# recalculate former ruler country bonuses
-		country_event = {
-			id = keep_leaders_bonus_traits.20
-		}
-	}
 }
 
 # keep hive only
@@ -2799,12 +2761,6 @@ country_event = {
 			destroy_country = yes
 		}
 		set_update_modifiers_batch = end
-	}
-	after = {
-		# recalculate former ruler country bonuses
-		country_event = {
-			id = keep_leaders_bonus_traits.20
-		}
 	}
 }
 
@@ -2839,12 +2795,6 @@ country_event = {
 			destroy_country = yes
 		}
 		set_update_modifiers_batch = end
-	}
-	after = {
-		# recalculate former ruler country bonuses
-		country_event = {
-			id = keep_leaders_bonus_traits.20
-		}
 	}
 }
 
@@ -2892,12 +2842,6 @@ country_event = {
 			destroy_country = yes
 		}
 		set_update_modifiers_batch = end
-	}
-	after = {
-		# recalculate former ruler country bonuses
-		country_event = {
-			id = keep_leaders_bonus_traits.20
-		}
 	}
 }
 
@@ -2947,12 +2891,6 @@ country_event = {
 		}
 		set_update_modifiers_batch = end
 	}
-	after = {
-		# recalculate former ruler country bonuses
-		country_event = {
-			id = keep_leaders_bonus_traits.20
-		}
-	}
 }
 
 # assimilate: psionic assimilation before others (synthetic/unmachine won't fire if any biological assimilations took effect)
@@ -3001,12 +2939,6 @@ country_event = {
 		}
 		set_update_modifiers_batch = end
 	}
-	after = {
-		# recalculate former ruler country bonuses
-		country_event = {
-			id = keep_leaders_bonus_traits.20
-		}
-	}
 }
 
 # assimilate: genetic assimilation before others (synthetic/unmachine won't fire if any biological assimilations took effect)
@@ -3054,12 +2986,6 @@ country_event = {
 			destroy_country = yes
 		}
 		set_update_modifiers_batch = end
-	}
-	after = {
-		# recalculate former ruler country bonuses
-		country_event = {
-			id = keep_leaders_bonus_traits.20
-		}
 	}
 }
 
@@ -3155,12 +3081,6 @@ country_event = {
 		}
 		set_update_modifiers_batch = end
 	}
-	after = {
-		# recalculate former ruler country bonuses
-		country_event = {
-			id = keep_leaders_bonus_traits.20
-		}
-	}
 }
 
 # gatekeeper to potentially keep aquatic stored leaders after being drenched by the Deluge Machine
@@ -3200,10 +3120,7 @@ planet_event = {
 			event_target:storage_owner = {
 				every_owned_leader = {
 					limit = { is_aquatic_species = no }
-					kill_leader = {
-						show_notification = no
-						fire = yes
-					}
+					kill_leader = { show_notification = no }
 				}
 			}
 			from = {
@@ -3294,16 +3211,6 @@ planet_event = {
 		}
 		trigger = { from = { has_authority = auth_machine_intelligence } } # explicit to get the icon to show
 		hidden_effect = { event_target:storage_owner = { destroy_country = yes } }
-	}
-	after = {
-		hidden_effect = {
-			# recalculate former ruler country bonuses
-			from = {
-				country_event = {
-					id = keep_leaders_bonus_traits.20
-				}
-			}
-		}
 	}
 }
 
@@ -3514,16 +3421,6 @@ planet_event = {
 		hidden_effect = { event_target:storage_owner = { destroy_country = yes } }
 		ai_chance = { base = 0 }
 	}
-	after = {
-		hidden_effect = {
-			# recalculate former ruler country bonuses
-			from = {
-				country_event = {
-					id = keep_leaders_bonus_traits.20
-				}
-			}
-		}
-	}
 }
 
 # gatekeeper to potentially keep stored leaders after being necrophaged by the Necrophagic Spore Diffuser
@@ -3610,10 +3507,7 @@ planet_event = {
 							is_hive_species = yes
 						}
 					}
-					kill_leader = {
-						show_notification = no
-						fire = yes
-					}
+					kill_leader = { show_notification = no }
 				}
 			}
 			from = {
@@ -3662,7 +3556,7 @@ planet_event = {
 	}
 }
 
-# triggered by on_leader_death
+# triggered by on_leader_death_notify
 # this = country
 # from = leader
 country_event = {
@@ -3679,7 +3573,7 @@ country_event = {
 		log = "keep_leaders.100 former gestalt leader [From.GetName] death"
 		create_leader = {
 			name = random
-			class = ruler
+			class = random
 			species = from
 			effect = {
 				save_event_target_as = age_proxy
@@ -3690,12 +3584,7 @@ country_event = {
 			effect = {
 				set_leader_flag = former_gestalt_ruler_clone
 				set_age = event_target:age_proxy.trigger:leader_age
-				event_target:age_proxy = {
-					kill_leader = {
-						show_notification = no
-						fire = yes
-					}
-				}
+				event_target:age_proxy = { kill_leader = { show_notification = no } }
 				save_event_target_as = exiled_former_gestalt_ruler
 				exile_leader_as = exiled_former_gestalt_ruler@this
 				owner = { remove_country_flag = disable_gender_clones_on_leader_spawned }
