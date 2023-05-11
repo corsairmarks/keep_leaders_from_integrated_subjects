@@ -194,7 +194,7 @@
  AI_IS_OUTLAWED_LEADER_NO_X: "Artificial Intelligence is §Routlawed§!. §Y$ROBOT$§! and §Y$MACHINE$§! leaders are too sophisticated to convert into mindless robots."
 
  # former ruler name formatting
- keep_leaders.former_ruler_name: "[This.GetRegnalName], §LFormer [This.GetRulerTitle] of the [former_owner.GetName]§!"
+ keep_leaders.former_ruler_name: "[This.GetRegnalName], §LFormer [former_owner.GetRulerTitle] of the [former_owner.GetName]§!"
  keep_leaders.former_heir_name: "[This.GetName], §LFormer Heir to the [former_owner.GetName]§!"
  keep_leaders.source_fleet_name: "[source_fleet.GetName]"
  keep_leaders.source_ship_name: "[source_ship.GetName]"
