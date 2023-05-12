@@ -538,6 +538,10 @@ is_allow_transfer_without_assimilation = {
 # event_target:potential_owner = country to which the leader would transfer
 is_allow_transfer_with_assimilation = {
 	optimize_memory
+	NOR = {
+		has_leader_flag = renowned_leader
+		has_leader_flag = legendary_leader
+	}
 	if = {
 		limit = { event_target:potential_owner = { is_machine_empire = yes } }
 		OR = {
