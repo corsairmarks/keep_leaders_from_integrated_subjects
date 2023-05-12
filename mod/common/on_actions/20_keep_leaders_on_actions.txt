@@ -26,10 +26,37 @@ on_leader_death_notify = {
 	}
 }
 
+# fired when a leader has died
+# this = country
+# from = leader
+on_leader_death = {
+	events = {
+		keep_leaders_bonus_traits.21
+	}
+}
+
+# fired when a leader has been fired
+# this = country
+# from = leader
+on_leader_fired = {
+	events = {
+		keep_leaders_bonus_traits.21
+	}
+}
+
+
 # fired when my custom code changes a leader's owner
 # this = leader (post-owner change)
 on_leader_owner_changed = {
 	events = {
+	}
+}
+
+# fired as new ruler has been set
+# this = country
+on_ruler_set = {
+	events = {
+		keep_leaders_bonus_traits.20
 	}
 }
 

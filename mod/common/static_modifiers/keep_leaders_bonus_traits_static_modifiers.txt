@@ -1,0 +1,15 @@
+former_ruler_admin_bonus = {
+	country_edict_fund_add = 3
+}
+
+former_heir_admin_bonus = {
+	country_edict_fund_add = 1.5
+}
+
+former_ruler_naval_bonus = {
+	country_naval_cap_add = 2
+}
+
+former_heir_naval_bonus = {
+	country_naval_cap_add = 1
+}

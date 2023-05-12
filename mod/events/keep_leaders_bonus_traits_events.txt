@@ -1,0 +1,156 @@
+namespace = keep_leaders_bonus_traits
+
+# fired when this mod adds one of these traits to a leader and by on_ruler_set
+# fired by keep_leaders_bonus_traits.21 which manually delays a day from leader firing/death
+# in order to update after the game removes them from the leader pool
+country_event = {
+	id = keep_leaders_bonus_traits.20
+	is_triggered_only = yes
+	hide_window = yes
+	trigger = {
+		should_recalculate_former_ruler_country_modifiers = yes
+	}
+	immediate = {
+		set_update_modifiers_batch = begin
+		erase_modifier = { MOD = former_ruler_admin_bonus }
+		erase_modifier = { MOD = former_heir_admin_bonus }
+		erase_modifier = { MOD = former_ruler_naval_bonus }
+		erase_modifier = { MOD = former_heir_naval_bonus }
+
+		set_variable = {
+			which = former_ruler_accumulator_governor
+			value = 0
+		}
+		set_variable = {
+			which = former_heir_accumulator_governor
+			value = 0
+		}
+		set_variable = {
+			which = former_ruler_accumulator_admiral
+			value = 0
+		}
+		set_variable = {
+			which = former_heir_accumulator_admiral
+			value = 0
+		}
+
+		every_owned_leader = {
+			if = {
+				limit = { leader_class = governor }
+				if = {
+					limit = { has_former_ruler_trait = yes }
+					prev = {
+						change_variable = {
+							which = former_ruler_accumulator_governor
+							value = prev.trigger:has_skill
+						}
+					}
+				}
+				else_if = {
+					limit = { has_former_heir_trait = yes }
+					prev = {
+						change_variable = {
+							which = former_heir_accumulator_governor
+							value = prev.trigger:has_skill
+						}
+					}
+				}
+			}
+			else_if = {
+				limit = { leader_class = admiral }
+				if = {
+					limit = { has_former_ruler_trait = yes }
+					prev = {
+						change_variable = {
+							which = former_ruler_accumulator_admiral
+							value = prev.trigger:has_skill
+						}
+					}
+				}
+				else_if = {
+					limit = { has_former_heir_trait = yes }
+					prev = {
+						change_variable = {
+							which = former_heir_accumulator_admiral
+							value = prev.trigger:has_skill
+						}
+					}
+				}
+			}
+		}
+
+		if = {
+			limit = {
+				check_variable = {
+					which = former_ruler_accumulator_governor
+					value > 0
+				}
+			}
+			add_modifier = {
+				modifier = former_ruler_admin_bonus
+				multiplier = former_ruler_accumulator_governor
+			}
+		}
+
+		if = {
+			limit = {
+				check_variable = {
+					which = former_heir_accumulator_governor
+					value > 0
+				}
+			}
+			add_modifier = {
+				modifier = former_heir_admin_bonus
+				multiplier = former_heir_accumulator_governor
+			}
+		}
+
+		if = {
+			limit = {
+				check_variable = {
+					which = former_ruler_accumulator_admiral
+					value > 0
+				}
+			}
+			add_modifier = {
+				modifier = former_ruler_naval_bonus
+				multiplier = former_ruler_accumulator_admiral
+			}
+		}
+
+		if = {
+			limit = {
+				check_variable = {
+					which = former_heir_accumulator_admiral
+					value > 0
+				}
+			}
+			add_modifier = {
+				modifier = former_heir_naval_bonus
+				multiplier = former_heir_accumulator_admiral
+			}
+		}
+
+		clear_variable = former_ruler_accumulator_governor
+		clear_variable = former_heir_accumulator_governor
+		clear_variable = former_ruler_accumulator_admiral
+		clear_variable = former_heir_accumulator_admiral
+
+		set_update_modifiers_batch = end
+	}
+}
+
+# shim event in order to update country-level leader bonuses after the game removes them from the leader pool
+# fired by on_leader_fired and on_leader_death 
+country_event = {
+	id = keep_leaders_bonus_traits.21
+	is_triggered_only = yes
+	hide_window = yes
+	trigger = { should_recalculate_former_ruler_country_modifiers = yes }
+	immediate = {
+		country_event = {
+			id = keep_leaders_bonus_traits.20
+			days = 1
+		}
+	}
+}

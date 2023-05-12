@@ -2426,6 +2426,16 @@ planet_event = {
 			}
 		}
 	}
+	after = {
+		hidden_effect = {
+			# recalculate former ruler country bonuses
+			owner = {
+				country_event = {
+					id = keep_leaders_bonus_traits.20
+				}
+			}
+		}
+	}
 }
 
 # transfer leaders to storage while the integrated subject country exists
@@ -2604,6 +2614,12 @@ country_event = {
 		}
 		set_update_modifiers_batch = end
 	}
+	after = {
+		# recalculate former ruler country bonuses
+		country_event = {
+			id = keep_leaders_bonus_traits.20
+		}
+	}
 }
 
 # keep organic only
@@ -2640,6 +2656,12 @@ country_event = {
 		}
 		set_update_modifiers_batch = end
 	}
+	after = {
+		# recalculate former ruler country bonuses
+		country_event = {
+			id = keep_leaders_bonus_traits.20
+		}
+	}
 }
 
 # keep same species only
@@ -2664,6 +2686,12 @@ country_event = {
 			destroy_country = yes
 		}
 		set_update_modifiers_batch = end
+	}
+	after = {
+		# recalculate former ruler country bonuses
+		country_event = {
+			id = keep_leaders_bonus_traits.20
+		}
 	}
 }
 
@@ -2704,6 +2732,12 @@ country_event = {
 		}
 		set_update_modifiers_batch = end
 	}
+	after = {
+		# recalculate former ruler country bonuses
+		country_event = {
+			id = keep_leaders_bonus_traits.20
+		}
+	}
 }
 
 # keep hive only
@@ -2732,6 +2766,12 @@ country_event = {
 			destroy_country = yes
 		}
 		set_update_modifiers_batch = end
+	}
+	after = {
+		# recalculate former ruler country bonuses
+		country_event = {
+			id = keep_leaders_bonus_traits.20
+		}
 	}
 }
 
@@ -2766,6 +2806,12 @@ country_event = {
 			destroy_country = yes
 		}
 		set_update_modifiers_batch = end
+	}
+	after = {
+		# recalculate former ruler country bonuses
+		country_event = {
+			id = keep_leaders_bonus_traits.20
+		}
 	}
 }
 
@@ -2813,6 +2859,12 @@ country_event = {
 			destroy_country = yes
 		}
 		set_update_modifiers_batch = end
+	}
+	after = {
+		# recalculate former ruler country bonuses
+		country_event = {
+			id = keep_leaders_bonus_traits.20
+		}
 	}
 }
 
@@ -2862,6 +2914,12 @@ country_event = {
 		}
 		set_update_modifiers_batch = end
 	}
+	after = {
+		# recalculate former ruler country bonuses
+		country_event = {
+			id = keep_leaders_bonus_traits.20
+		}
+	}
 }
 
 # assimilate: psionic assimilation before others (synthetic/unmachine won't fire if any biological assimilations took effect)
@@ -2910,6 +2968,12 @@ country_event = {
 		}
 		set_update_modifiers_batch = end
 	}
+	after = {
+		# recalculate former ruler country bonuses
+		country_event = {
+			id = keep_leaders_bonus_traits.20
+		}
+	}
 }
 
 # assimilate: genetic assimilation before others (synthetic/unmachine won't fire if any biological assimilations took effect)
@@ -2957,6 +3021,12 @@ country_event = {
 			destroy_country = yes
 		}
 		set_update_modifiers_batch = end
+	}
+	after = {
+		# recalculate former ruler country bonuses
+		country_event = {
+			id = keep_leaders_bonus_traits.20
+		}
 	}
 }
 
@@ -3051,6 +3121,12 @@ country_event = {
 			destroy_country = yes
 		}
 		set_update_modifiers_batch = end
+	}
+	after = {
+		# recalculate former ruler country bonuses
+		country_event = {
+			id = keep_leaders_bonus_traits.20
+		}
 	}
 }
 
@@ -3182,6 +3258,16 @@ planet_event = {
 		}
 		trigger = { from = { is_machine_empire = yes } }
 		hidden_effect = { event_target:storage_owner = { destroy_country = yes } }
+	}
+	after = {
+		hidden_effect = {
+			# recalculate former ruler country bonuses
+			from = {
+				country_event = {
+					id = keep_leaders_bonus_traits.20
+				}
+			}
+		}
 	}
 }
 
@@ -3387,6 +3473,16 @@ planet_event = {
 		}
 		hidden_effect = { event_target:storage_owner = { destroy_country = yes } }
 		ai_chance = { base = 0 }
+	}
+	after = {
+		hidden_effect = {
+			# recalculate former ruler country bonuses
+			from = {
+				country_event = {
+					id = keep_leaders_bonus_traits.20
+				}
+			}
+		}
 	}
 }
 
@@ -3637,6 +3733,16 @@ country_event = {
 			event_target:unexile_leader = {
 				recruitable = no
 				recruitable = yes
+			}
+		}
+	}
+	after = {
+		hidden_effect = {
+			# recalculate former ruler country bonuses
+			from = {
+				country_event = {
+					id = keep_leaders_bonus_traits.20
+				}
 			}
 		}
 	}
