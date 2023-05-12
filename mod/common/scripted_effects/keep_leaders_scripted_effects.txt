@@ -975,6 +975,7 @@ tag_leader_for_reassignment = {
 	optimize_memory
 	switch = {
 		trigger = leader_class
+		# it seems that governors have already been unassigned from their planets as integration completes
 		governor = {
 			if = {
 				limit = { exists = planet }
@@ -1003,6 +1004,7 @@ tag_leader_for_reassignment = {
 			}
 		}
 		# generals can't be reassigned because armies can't have their owners changed, and it's not possible to clone the transports before integration completes
+		# it seems that generals have also already been unassigned from their planets as integration completes
 		general = {
 			if = {
 				limit = { exists = fleet }
