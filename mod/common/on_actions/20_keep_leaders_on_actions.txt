@@ -44,7 +44,6 @@ on_leader_fired = {
 	}
 }
 
-
 # fired when my custom code changes a leader's owner
 # this = leader (post-owner change)
 on_leader_owner_changed = {
@@ -57,6 +56,15 @@ on_leader_owner_changed = {
 on_ruler_set = {
 	events = {
 		keep_leaders_bonus_traits.20
+	}
+}
+
+# fired when a ruler has been removed
+# this = country
+# from = leader, previous ruler
+on_ruler_removed = {
+	events = {
+		keep_leaders_bonus_traits.19
 	}
 }
 
