@@ -614,6 +614,7 @@ is_eligible_transfer_leader_from_storage = {
 # this = leader
 is_eligible_transfer_leader = {
 	optimize_memory
+	is_gestalt_node = no
 	NOT = { leader_class = envoy }
 	species = { is_sapient = yes }
 }
