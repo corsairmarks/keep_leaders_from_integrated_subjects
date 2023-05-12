@@ -91,7 +91,11 @@ create_leader_storage_and_transfer_leaders = {
 	# like unity or society research for empires that qualify
 	event_target:former_owner = {
 		every_owned_leader = {
-			limit = { is_eligible_transfer_leader = yes }
+			limit = {
+				is_eligible_transfer_leader = yes
+				is_ruler = no
+				is_heir = no
+			}
 			accumulate_leader = yes
 			tag_leader_for_reassignment = yes
 			transfer_leader_to_storage = yes
@@ -111,8 +115,7 @@ create_leader_storage_and_transfer_leaders = {
 			}
 			event_target:integrated_ruler = {
 				accumulate_leader = yes
-				set_former_gestalt_ruler_flag = yes
-				remove_gestalt_ruler_traits = yes
+				try_process_gestalt_ruler = yes
 				try_add_former_ruler_trait = yes
 				transfer_leader_to_storage = yes
 			}
@@ -174,15 +177,6 @@ transfer_leader_to_storage = {
 	set_leader_flag = potential_owner@event_target:potential_owner
 	unassign_leader = this
 	set_owner = event_target:storage_owner
-}
-
-# this = leader
-# event_target:former_owner = country that previously owned the leader
-# event_target:potential_owner = country for whom the leader is being stored
-set_leader_storage_flags = {
-	optimize_memory
-	set_leader_flag = former_owner@event_target:former_owner
-	set_leader_flag = potential_owner@event_target:potential_owner
 }
 
 # this = leader
@@ -757,28 +751,15 @@ set_citizenship_assimilation_and_living_standard_genetic = {
 }
 
 # this = leader
-set_former_gestalt_ruler_flag = {
+try_process_gestalt_ruler = {
 	optimize_memory
 	if = {
 		limit = {
-			OR = {
-				has_trait = leader_trait_ruler_machine_intelligence
-				has_trait = leader_trait_ruler_hive_mind
-			}
+			exists = owner
+			owner = { is_gestalt = yes }
 		}
 		set_leader_flag = former_gestalt_ruler
-	}
-}
-
-# this = leader
-remove_gestalt_ruler_traits = {
-	optimize_memory
-	if = {
-		limit = { has_trait = leader_trait_ruler_machine_intelligence }
 		remove_trait = leader_trait_ruler_machine_intelligence
-	}
-	if = {
-		limit = { has_trait = leader_trait_ruler_hive_mind }
 		remove_trait = leader_trait_ruler_hive_mind
 	}
 }
@@ -1319,7 +1300,6 @@ klfis_leader_transferred_match_gender_to_species = {
 	species = {
 		switch = {
 			trigger = species_gender
-			# if indeterminable, then nothing should change
 			female = {
 				prev = {
 					if = {
