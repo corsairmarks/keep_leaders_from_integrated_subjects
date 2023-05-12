@@ -614,10 +614,10 @@ country_event = {
 	}
 	option = {
 		name = keep_leaders.1.c.cyb
-		# icon = {
-		# 	icon = GFX_tr_cybernetics_transubstantiation_synthesis
-		# 	text = keep_leaders.1.cyb.icon.tooltip
-		# }
+		icon = {
+			icon = GFX_tr_cybernetics_transubstantiation_synthesis
+			text = keep_leaders.1.cyb.icon.tooltip
+		}
 		custom_tooltip = keep_leaders.1.c.cyb.tooltip
 		custom_tooltip_with_params = {
 			description = keep_leaders.1.tooltip
@@ -1409,10 +1409,10 @@ country_event = {
 	# assimilate: hive
 	option = {
 		name = keep_leaders.1.k.hive
-		# icon = {
-		# 	icon = GFX_ap_engineered_evolution
-		# 	text = keep_leaders.1.k.gene.icon.tooltip
-		# }
+		icon = {
+			icon = GFX_ap_engineered_evolution
+			text = keep_leaders.1.k.gene.icon.tooltip
+		}
 		custom_tooltip = keep_leaders.1.k.hive.tooltip
 		custom_tooltip_with_params = {
 			description = keep_leaders.1.k.hive.count.tooltip
@@ -1476,10 +1476,10 @@ country_event = {
 	# assimilate: unhive
 	option = {
 		name = keep_leaders.1.k.unhive
-		# icon = {
-		# 	icon = GFX_ap_engineered_evolution
-		# 	text = keep_leaders.1.k.gene.icon.tooltip
-		# }
+		icon = {
+			icon = GFX_ap_engineered_evolution
+			text = keep_leaders.1.k.gene.icon.tooltip
+		}
 		custom_tooltip = keep_leaders.1.k.unhive.tooltip
 		custom_tooltip_with_params = {
 			description = keep_leaders.1.k.unhive.count.tooltip
@@ -1546,10 +1546,10 @@ country_event = {
 	# assimilate: psionic
 	option = {
 		name = keep_leaders.1.k.psi
-		# icon = {
-		# 	icon = GFX_ap_mind_over_matter
-		# 	text = keep_leaders.1.k.psi.icon.tooltip
-		# }
+		icon = {
+			icon = GFX_ap_mind_over_matter
+			text = keep_leaders.1.k.psi.icon.tooltip
+		}
 		custom_tooltip = keep_leaders.1.k.psi.tooltip
 		custom_tooltip_with_params = {
 			description = keep_leaders.1.k.psi.count.tooltip
@@ -1618,10 +1618,10 @@ country_event = {
 	# assimilate: cybernetic (non-hive)
 	option = {
 		name = keep_leaders.1.k.cyb
-		# icon = {
-		# 	icon = GFX_ap_the_flesh_is_weak
-		# 	text = keep_leaders.1.k.cyb.icon.tooltip
-		# }
+		icon = {
+			icon = GFX_ap_the_flesh_is_weak
+			text = keep_leaders.1.k.cyb.icon.tooltip
+		}
 		custom_tooltip = keep_leaders.1.k.cyb.tooltip
 		custom_tooltip_with_params = {
 			description = keep_leaders.1.k.cyb.count.tooltip
@@ -1691,10 +1691,10 @@ country_event = {
 	# assimilate: cybernetic (hive)
 	option = {
 		name = keep_leaders.1.k.cyb.hive
-		# icon = {
-		# 	icon = GFX_ap_organo_machine_interfacing
-		# 	text = keep_leaders.1.k.cyb.hive.icon.tooltip
-		# }
+		icon = {
+			icon = GFX_ap_organo_machine_interfacing
+			text = keep_leaders.1.k.cyb.hive.icon.tooltip
+		}
 		custom_tooltip = keep_leaders.1.k.cyb.hive.tooltip
 		custom_tooltip_with_params = {
 			description = keep_leaders.1.k.cyb.count.tooltip
@@ -1758,10 +1758,10 @@ country_event = {
 	# assimilate: synthetic
 	option = {
 		name = keep_leaders.1.k.synth
-		# icon = {
-		# 	icon = GFX_ap_synthetic_evolution
-		# 	text = keep_leaders.1.k.synth.icon.tooltip
-		# }
+		icon = {
+			icon = GFX_ap_synthetic_evolution
+			text = keep_leaders.1.k.synth.icon.tooltip
+		}
 		custom_tooltip = keep_leaders.1.k.synth.tooltip
 		custom_tooltip_with_params = {
 			description = keep_leaders.1.k.synth.count.tooltip
@@ -1824,10 +1824,10 @@ country_event = {
 	# assimilate: synthetic (machine)
 	option = {
 		name = keep_leaders.1.k.synth.mach
-		# icon = {
-		# 	icon = GFX_ap_synthetic_age
-		# 	text = keep_leaders.1.k.synth.mach.icon.tooltip
-		# }
+		icon = {
+			icon = GFX_ap_synthetic_age
+			text = keep_leaders.1.k.synth.mach.icon.tooltip
+		}
 		if = {
 			limit = { NOT = { has_valid_civic = civic_machine_assimilator } }
 			custom_tooltip = keep_leaders.1.k.synth.mach.tooltip
@@ -1984,10 +1984,10 @@ country_event = {
 	# assimilate: unmachine
 	option = {
 		name = keep_leaders.1.k.unmach
-		# icon = {
-		# 	icon = GFX_icon_tech_sapient_ai_alternate
-		# 	text = keep_leaders.1.k.unmach.icon.tooltip
-		# }
+		icon = {
+			icon = GFX_icon_tech_sapient_ai_alternate
+			text = keep_leaders.1.k.unmach.icon.tooltip
+		}
 		custom_tooltip = keep_leaders.1.k.unmach.tooltip
 		custom_tooltip_with_params = {
 			description = keep_leaders.1.k.unmach.count.tooltip
@@ -2233,10 +2233,10 @@ country_event = {
 			text = keep_leaders.1.k.uncyb.zeal
 			trigger = { is_valid_organic_zealots = yes }
 		}
-		# icon = {
-		# 	icon = GFX_icon_tech_gene_banks_alternate
-		# 	text = keep_leaders.1.k.uncyb.icon.tooltip
-		# }
+		icon = {
+			icon = GFX_icon_tech_gene_banks_alternate
+			text = keep_leaders.1.k.uncyb.icon.tooltip
+		}
 		if = {
 			limit = { is_valid_organic_zealots = no }
 			custom_tooltip = keep_leaders.1.k.uncyb.tooltip
@@ -2527,11 +2527,6 @@ planet_event = {
 					fire_on_action = {
 						on_action = on_leader_species_changed
 						scopes = { from = event_target:original_species }
-					}
-					# make sure we get the correct species portrait even if the gender was swapped via clone
-					if = {
-						limit = { has_leader_flag = leader_replaced_by_clone@last_created_leader }
-						last_created_leader = { change_leader_portrait = event_target:original_species }
 					}
 					remove_leader_flag = infiltrator_retained_cover
 				}
