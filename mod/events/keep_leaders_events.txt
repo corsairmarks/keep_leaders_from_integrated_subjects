@@ -3256,6 +3256,10 @@ country_event = {
 						limit = { has_leader_flag = former_gestalt_ruler }
 						remove_leader_flag = former_gestalt_ruler
 					}
+					set_timed_leader_flag = {
+						flag = force_gender_match_species
+						days = 1
+					}
 					unassign_leader = this
 					set_owner = event_target:potential_owner
 					fire_on_action = { on_action = on_leader_owner_changed }
