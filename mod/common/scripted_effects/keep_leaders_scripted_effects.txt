@@ -975,12 +975,11 @@ tag_leader_for_reassignment = {
 	optimize_memory
 	switch = {
 		trigger = leader_class
-		# governors can't be reassigned because sectors are cleared and cannot be recreated by script
 		governor = {
 			if = {
-				limit = { exists = sector }
-				set_leader_flag = keep_leader_match_sector_capital_planet@this
-				sector.sector_capital = { set_planet_flag = keep_leader_match_sector_capital_planet@prev }
+				limit = { exists = planet }
+				set_leader_flag = keep_leader_match_planet@this
+				planet = { set_planet_flag = keep_leader_match_planet@prev }
 			}
 		}
 		scientist = {
@@ -1020,8 +1019,12 @@ tag_leader_for_reassignment = {
 					set_army_flag = keep_leader_match_army@leader
 				}
 			}
+			if = {
+				limit = { exists = planet }
+				set_leader_flag = keep_leader_match_planet@this
+				planet = { set_planet_flag = keep_leader_match_planet@prev }
+			}
 		}
-		# rulers have special handling
 	}
 }
 
@@ -1030,21 +1033,18 @@ try_assign_retained_leader_to_former_assignment = {
 	optimize_memory
 	switch = {
 		trigger = leader_class
-		# governors can't be reassigned because sectors are cleared and cannot be recreated by script
-		# governor = {
-		# 	if = {
-		# 		limit = { has_leader_flag = keep_leader_match_sector_capital_planet@this }
-		# 		owner = {
-		# 			random_owned_planet = {
-		# 				limit = {
-		# 					NOT = { exists = sector }
-		# 					has_planet_flag = keep_leader_match_sector_capital_planet@prevprev
-		# 				}
-		# 				log = "\\[PrevPrev.GetTitle] \\[PrevPrev.GetName] formerly governed a sector from \\[This.GetName]"
-		# 			}
-		# 		}
-		# 	}
-		# }
+		governor = {
+			if = {
+				limit = { has_leader_flag = keep_leader_match_planet@this }
+				owner = {
+					random_owned_planet = {
+						limit = { has_planet_flag = keep_leader_match_planet@prevprev }
+						assign_leader = prevprev
+						log = "\\[PrevPrev.GetTitle] \\[PrevPrev.GetName] resumed governing \\[This.GetName]"
+					}
+				}
+			}
+		}
 		scientist = {
 			if = {
 				limit = { has_leader_flag = keep_leader_match_fleet@this }
@@ -1075,36 +1075,45 @@ try_assign_retained_leader_to_former_assignment = {
 				}
 			}
 		}
-		# armies can't have their owners changed, an it's unclear how I could clone the transports before integration fires, which means there's nothing to which to reassign a general
-		# general = {
-		# 	if = {
-		# 		limit = { has_leader_flag = keep_leader_match_transport_fleet@this }
-		# 		owner = {
-		# 			random_controlled_fleet = {
-		# 				limit = {
-		# 					has_fleet_flag = keep_leader_match_transport_fleet@prevprev
-		# 					NOT = { exists = leader }
-		# 				}
-		# 				assign_leader = prevprev
-		# 				log = "\\[PrevPrev.GetTitle] \\[PrevPrev.GetName] resumed command of transport fleet \\[This.GetName]"
-		# 			}
-		# 		}
-		# 	}
-		# 	else_if = {
-		# 		limit = { has_leader_flag = keep_leader_match_army@this }
-		# 		owner = {
-		# 			random_owned_army = {
-		# 				limit = {
-		# 					has_army_flag = keep_leader_match_army@prevprev
-		# 					NOT = { exists = leader }
-		# 				}
-		# 				assign_leader = prevprev
-		# 				log = "\\[PrevPrev.GetTitle] \\[PrevPrev.GetName] resumed command of the army \\[This.GetName]"
-		# 			}
-		# 		}
-		# 	}
-		# }
-		# rulers have special handling
+		general = {
+			if = {
+				limit = { has_leader_flag = keep_leader_match_planet@this }
+				owner = {
+					random_owned_planet = {
+						limit = { has_planet_flag = keep_leader_match_planet@prevprev }
+						assign_leader = prevprev
+						log = "\\[PrevPrev.GetTitle] \\[PrevPrev.GetName] resumed command of the planetary defenses on \\[This.GetName]"
+					}
+				}
+			}
+			# armies can't have their owners changed, an it's unclear how I could clone the transports before integration fires, so generals can't resume command of armies directly
+			# if = {
+			# 	limit = { has_leader_flag = keep_leader_match_transport_fleet@this }
+			# 	owner = {
+			# 		random_controlled_fleet = {
+			# 			limit = {
+			# 				has_fleet_flag = keep_leader_match_transport_fleet@prevprev
+			# 				NOT = { exists = leader }
+			# 			}
+			# 			assign_leader = prevprev
+			# 			log = "\\[PrevPrev.GetTitle] \\[PrevPrev.GetName] resumed command of transport fleet \\[This.GetName]"
+			# 		}
+			# 	}
+			# }
+			# else_if = {
+			# 	limit = { has_leader_flag = keep_leader_match_army@this }
+			# 	owner = {
+			# 		random_owned_army = {
+			# 			limit = {
+			# 				has_army_flag = keep_leader_match_army@prevprev
+			# 				NOT = { exists = leader }
+			# 			}
+			# 			assign_leader = prevprev
+			# 			log = "\\[PrevPrev.GetTitle] \\[PrevPrev.GetName] resumed command of the army \\[This.GetName]"
+			# 		}
+			# 	}
+			# }
+		}
 	}
 }
 
