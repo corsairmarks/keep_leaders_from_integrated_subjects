@@ -5,7 +5,7 @@ try_add_former_ruler_trait = {
 	if = {
 		limit = { has_former_ruler_trait = no }
 		if = {
-			limit = { is_machine_species = yes }
+			limit = { owner = { is_machine_empire = yes }
 			if = {
 				limit = { owner = { has_government = gov_machine_research } }
 				set_leader_flag = gov_machine_research
@@ -28,7 +28,7 @@ try_add_former_ruler_trait = {
 			add_trait = leader_trait_former_ruler_machine_intelligence
 		}
 		else_if = {
-			limit = { is_hive_species = yes }
+			limit = { owner = { is_hive_empire = yes } }
 			add_trait = leader_trait_former_ruler_hive_mind
 		}
 		else = {
