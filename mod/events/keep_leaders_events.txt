@@ -2054,8 +2054,171 @@ country_event = {
 			}
 		}
 		hidden_effect = {
+			event_target:storage_owner = {
+				every_owned_leader = {
+					limit = {
+						is_eligible_transfer_leader_from_storage = yes
+						is_potential_for_unmachine_assimilation_species = yes
+					}
+					random_list = {
+						4 = {
+							modifier = {
+								factor = 2
+								root = { has_ethic = ethic_militarist }
+							}
+							modifier = {
+								factor = 4
+								root = { has_ethic = ethic_fanatic_militarist }
+							}
+							modifier = {
+								factor = 0.5
+								root = { has_ethic = ethic_pacifist }
+							}
+							modifier = {
+								factor = 0.25
+								root = { has_ethic = ethic_fanatic_pacifist }
+							}
+							change_background_ethic = ethic_militarist
+						}
+						4 = {
+							modifier = {
+								factor = 2
+								root = { has_ethic = ethic_xenophobe }
+							}
+							modifier = {
+								factor = 4
+								root = { has_ethic = ethic_fanatic_xenophobe }
+							}
+							modifier = {
+								factor = 0.5
+								root = { has_ethic = ethic_xenophile }
+							}
+							modifier = {
+								factor = 0.25
+								root = { has_ethic = ethic_fanatic_xenophile }
+							}
+							change_background_ethic = ethic_xenophobe
+						}
+						4 = {
+							modifier = {
+								factor = 2
+								root = { has_ethic = ethic_egalitarian }
+							}
+							modifier = {
+								factor = 4
+								root = { has_ethic = ethic_fanatic_egalitarian }
+							}
+							modifier = {
+								factor = 0.5
+								root = { has_ethic = ethic_authoritarian }
+							}
+							modifier = {
+								factor = 0.25
+								root = { has_ethic = ethic_fanatic_authoritarian }
+							}
+							change_background_ethic = ethic_egalitarian
+						}
+						4 = {
+							modifier = {
+								factor = 2
+								root = { has_ethic = ethic_materialist }
+							}
+							modifier = {
+								factor = 4
+								root = { has_ethic = ethic_fanatic_materialist }
+							}
+							modifier = {
+								factor = 0.5
+								root = { has_ethic = ethic_spiritualist }
+							}
+							modifier = {
+								factor = 0.25
+								root = { has_ethic = ethic_fanatic_spiritualist }
+							}
+							change_background_ethic = ethic_materialist
+						}
+						4 = {
+							modifier = {
+								factor = 2
+								root = { has_ethic = ethic_pacifist }
+							}
+							modifier = {
+								factor = 4
+								root = { has_ethic = ethic_fanatic_pacifist }
+							}
+							modifier = {
+								factor = 0.5
+								root = { has_ethic = ethic_militarist }
+							}
+							modifier = {
+								factor = 0.25
+								root = { has_ethic = ethic_fanatic_militarist }
+							}
+							change_background_ethic = ethic_pacifist
+						}
+						4 = {
+							modifier = {
+								factor = 2
+								root = { has_ethic = ethic_xenophile }
+							}
+							modifier = {
+								factor = 4
+								root = { has_ethic = ethic_fanatic_xenophile }
+							}
+							modifier = {
+								factor = 0.5
+								root = { has_ethic = ethic_xenophobe }
+							}
+							modifier = {
+								factor = 0.25
+								root = { has_ethic = ethic_fanatic_xenophobe }
+							}
+							change_background_ethic = ethic_xenophile
+						}
+						4 = {
+							modifier = {
+								factor = 2
+								root = { has_ethic = ethic_authoritarian }
+							}
+							modifier = {
+								factor = 4
+								root = { has_ethic = ethic_fanatic_authoritarian }
+							}
+							modifier = {
+								factor = 0.5
+								root = { has_ethic = ethic_egalitarian }
+							}
+							modifier = {
+								factor = 0.25
+								root = { has_ethic = ethic_fanatic_egalitarian }
+							}
+							change_background_ethic = ethic_authoritarian
+						}
+						4 = {
+							modifier = {
+								factor = 2
+								root = { has_ethic = ethic_spiritualist }
+							}
+							modifier = {
+								factor = 4
+								root = { has_ethic = ethic_fanatic_spiritualist }
+							}
+							modifier = {
+								factor = 0.5
+								root = { has_ethic = ethic_materialist }
+							}
+							modifier = {
+								factor = 0.25
+								root = { has_ethic = ethic_fanatic_materialist }
+							}
+							change_background_ethic = ethic_spiritualist
+						}
+					}
+					reroll_random = yes
+				}
+			}
 			country_event = {
-				id = keep_leaders.16 # TODO: for this one, need to randomly set the ethos away from gestalt!
+				id = keep_leaders.16
 				scopes = { from = event_target:storage_owner }
 			}
 		}
