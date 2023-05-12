@@ -113,8 +113,10 @@ Demoted rulers with very long names that also contain a period `.` may cause err
     * Replace most usage of Civic: Organic Zealots validation messages and instead consume the compatibility trigger `is_not_restricted_by_organic_zealots`
     * Remove dummy government `gov_bureaucratic_autocracy` and instead consume the compatibility trigger `has_government_bureaucratic_autocracy`
 * 9.0.0 Update for Stellaris version 3.8 "Gemini"
-    * Remove obsolete code for country modifiers to add leader production - leaders can produce resources directly now
-    * Simplify former ruler traits
+    * Remove obsolete code for cloning leaders - gender can be changed without workarounds as of 3.8 "Gemini" and rulers are already a normal leader class
+    * Remove obsolete code for country modifiers to add leader research production - leaders can produce resources directly now
+    * Improve former ruler edicts fund/naval cap production to scale based on the levels of the relevant leaders
+    * Simplify former ruler traits - one per former authority (hive, machine, regular)
     * Add all leader class versions of the former Hive Mind and Machine Intelligence traits
     * Add scripted_loc to still use the varying flavor text for former rulers
 
