@@ -5,7 +5,7 @@ try_add_former_ruler_trait = {
 	if = {
 		limit = { has_former_ruler_trait = no }
 		if = {
-			limit = { owner = { is_machine_empire = yes }
+			limit = { owner = { is_machine_empire = yes } }
 			if = {
 				limit = { owner = { has_government = gov_machine_research } }
 				set_leader_flag = gov_machine_research
