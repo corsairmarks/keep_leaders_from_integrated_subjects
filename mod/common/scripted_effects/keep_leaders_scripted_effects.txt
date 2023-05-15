@@ -1387,7 +1387,7 @@ try_apply_cyborg_assimilation = {
 			randomize_background_ethic = yes
 			reroll_random = yes
 		}
-		if = {
+		else_if = {
 			limit = {
 				is_gestalt = no
 				event_target:potential_owner = { is_gestalt = yes }

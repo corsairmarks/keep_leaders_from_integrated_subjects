@@ -3097,6 +3097,21 @@ country_event = {
 						flag = force_gender_match_species
 						days = 1
 					}
+					if = {
+						limit = {
+							is_gestalt = yes
+							event_target:potential_owner = { is_gestalt = no }
+						}
+						randomize_background_ethic = yes
+						reroll_random = yes
+					}
+					else_if = {
+						limit = {
+							is_gestalt = no
+							event_target:potential_owner = { is_gestalt = yes }
+						}
+						change_background_ethic = ethic_gestalt_consciousness
+					}
 					unassign_leader = this
 					set_owner = event_target:potential_owner
 					fire_on_action = { on_action = on_leader_owner_changed }
