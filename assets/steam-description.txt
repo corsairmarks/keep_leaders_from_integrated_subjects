@@ -29,13 +29,12 @@ This mod can be safely added to your savegame after the game has started. If you
 
 [h3]Recommended Companion Mods[/h3]
 [list]
-[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2553806265]Leader Traits: Enhanced Randomisation[/url] improves leader trait randomisation and toggles traits from biological to machine traits (and back) if a leader becomes a robot and/or returns to a biological form
 [*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2553812372]Deassimilate Machines[/url] allows non-hive, non-machine empires to "deassimilate" machine Pops into robots - specifically allows (with this mod) for machine deassimilation as a "leadership disposition" choice for integrated subjects (etc.) and the deassimilated leaders gain synth leader traits if you have the required technology
 [*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2908463208]Assimilate All the Pops[/url] allows empires to have multiple assimilation types, which enables this mod to apply all unlocked assimilation types simultaneously to your retained leaders
 [*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2488154830]Pre-FTL Conquest & Infiltration: Enhanced[/url] improves the pre-existing infrastructure when you conquer or otherwise acquire a planet that had previously been pre-FTL; pairs well with this mod's bonus leaders from conquered (etc.) pre-FTLs
 [*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2558494770]corsairmarks's Leader Traits MOD Chinese patch[/url] by Hua Zhang - Chinese localisation
 [/list]
-You might wonder - why are these separate mods? They override default gameplay options, so I thought it best to give players the choice on whether they want the original version or the reimagined version. Leader Traits: Enhanced Randomisation and Machine Deassimilation were developed alongside this mod.
+You might wonder - why are these separate mods? They override default gameplay options, so I thought it best to give players the choice on whether they want the original version or the reimagined version. Machine Deassimilation was developed alongside this mod.
 
 [h2]Known Issues[/h2]
 [h3]Stellaris Bugs[/h3]

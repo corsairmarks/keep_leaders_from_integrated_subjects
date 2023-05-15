@@ -34,13 +34,12 @@ This mod can be safely added to your savegame after the game has started. If you
 
 ### Recommended Companion Mods
 
-* [Leader Traits: Enhanced Randomisation](https://steamcommunity.com/sharedfiles/filedetails/?id=2553806265) improves leader trait randomisation (primarily from level up, but not exclusively) and toggles traits from the biological version to machine traits (and back) if a leader becomes a robot and/or returns to a biological form
 * [Deassimilate Machines](https://steamcommunity.com/sharedfiles/filedetails/?id=2553812372) allows non-hive, non-machine empires to "deassimilate" machine Pops into robots - specifically allows (with this mod) for machine deassimilation as a "leadership disposition" choice for integrated subjects (etc.) and the deassimilated leaders gain synth leader traits if you have the required technology
 * [Assimilate All the Pops](https://steamcommunity.com/sharedfiles/filedetails/?id=2908463208) allows empires to have multiple assimilation types, which enables this mod to apply all unlocked assimilation types simultaneously to your retained leaders
 * [Pre-FTL Conquest & Infiltration: Enhanced](https://steamcommunity.com/sharedfiles/filedetails/?id=2488154830) improves the pre-existing infrastructure when you conquer or otherwise acquire a planet that had previously been pre-FTL; pairs well with this mod's bonus leaders from conquered (etc.) pre-FTLs
 * [corsairmarks's Leader Traits MOD Chinese patch](https://steamcommunity.com/sharedfiles/filedetails/?id=2558494770) by Hua Zhang - Chinese localisation
 
-You might wonder - why are these separate mods? They override default gameplay options, so I thought it best to give players the choice on whether they want the original version or the reimagined version. Leader Traits: Enhanced Randomisation and Machine Deassimilation were developed alongside this mod.
+You might wonder - why are these separate mods? They override default gameplay options, so I thought it best to give players the choice on whether they want the original version or the reimagined version. Machine Deassimilation was developed alongside this mod.
 
 ### Additional Mods with Gameplay Interaction
 
