@@ -1379,6 +1379,21 @@ try_apply_cyborg_assimilation = {
 		}
 		species = { set_citizenship_assimilation_and_living_standard_cyborg = yes }
 		klfis_prepare_cyborg_species = yes
+		if = {
+			limit = {
+				is_gestalt = yes
+				event_target:potential_owner = { is_gestalt = no }
+			}
+			randomize_background_ethic = yes
+			reroll_random = yes
+		}
+		if = {
+			limit = {
+				is_gestalt = no
+				event_target:potential_owner = { is_gestalt = yes }
+			}
+			change_background_ethic = ethic_gestalt_consciousness
+		}
 		set_timed_leader_flag = {
 			flag = cybernetic_assimilation
 			days = 1
@@ -1430,6 +1445,11 @@ try_apply_unmachine_assimilation = {
 		species = { set_citizenship_assimilation_and_living_standard_unmachine = yes }
 		# weird scoping is to set prev and this as expected by the effect
 		event_target:potential_owner = { event_target:prepared_species = { dm_prepare_machine_to_mechanical_species = yes } }
+		if = {
+			limit = { is_gestalt = yes }
+			randomize_background_ethic = yes
+			reroll_random = yes
+		}
 		set_timed_leader_flag = {
 			flag = unmachine_assimilation
 			days = 1
@@ -1496,9 +1516,18 @@ try_apply_genetic_assimilation = {
 		if = {
 			limit = { is_hive_species = yes }
 			klfis_prepare_unhive_species = yes
+			if = {
+				limit = { is_gestalt = yes }
+				randomize_background_ethic = yes
+				reroll_random = yes
+			}
 		}
 		else = {
 			klfis_prepare_hive_species = yes
+			if = {
+				limit = { is_gestalt = no }
+				change_background_ethic = ethic_gestalt_consciousness
+			}
 		}
 		set_timed_leader_flag = {
 			flag = genetic_assimilation
@@ -1538,4 +1567,165 @@ complete_assimilation_and_take_ownership_of_leader = {
 		ensure_species_rights_and_take_ownership_of_leader = yes
 	}
 	clear_variable = assimilation_type_counter
+}
+
+# randomize the leader's background ethic, weighted based on the ethos of the event_target:potential_owner country
+# this = leader
+# event_target:potential_owner = country
+randomize_background_ethic = {
+	optimize_memory
+	random_list = {
+		4 = {
+			modifier = {
+				factor = 2
+				event_target:potential_owner = { has_ethic = ethic_militarist }
+			}
+			modifier = {
+				factor = 4
+				event_target:potential_owner = { has_ethic = ethic_fanatic_militarist }
+			}
+			modifier = {
+				factor = 0.5
+				event_target:potential_owner = { has_ethic = ethic_pacifist }
+			}
+			modifier = {
+				factor = 0.25
+				event_target:potential_owner = { has_ethic = ethic_fanatic_pacifist }
+			}
+			change_background_ethic = ethic_militarist
+		}
+		4 = {
+			modifier = {
+				factor = 2
+				event_target:potential_owner = { has_ethic = ethic_xenophobe }
+			}
+			modifier = {
+				factor = 4
+				event_target:potential_owner = { has_ethic = ethic_fanatic_xenophobe }
+			}
+			modifier = {
+				factor = 0.5
+				event_target:potential_owner = { has_ethic = ethic_xenophile }
+			}
+			modifier = {
+				factor = 0.25
+				event_target:potential_owner = { has_ethic = ethic_fanatic_xenophile }
+			}
+			change_background_ethic = ethic_xenophobe
+		}
+		4 = {
+			modifier = {
+				factor = 2
+				event_target:potential_owner = { has_ethic = ethic_egalitarian }
+			}
+			modifier = {
+				factor = 4
+				event_target:potential_owner = { has_ethic = ethic_fanatic_egalitarian }
+			}
+			modifier = {
+				factor = 0.5
+				event_target:potential_owner = { has_ethic = ethic_authoritarian }
+			}
+			modifier = {
+				factor = 0.25
+				event_target:potential_owner = { has_ethic = ethic_fanatic_authoritarian }
+			}
+			change_background_ethic = ethic_egalitarian
+		}
+		4 = {
+			modifier = {
+				factor = 2
+				event_target:potential_owner = { has_ethic = ethic_materialist }
+			}
+			modifier = {
+				factor = 4
+				event_target:potential_owner = { has_ethic = ethic_fanatic_materialist }
+			}
+			modifier = {
+				factor = 0.5
+				event_target:potential_owner = { has_ethic = ethic_spiritualist }
+			}
+			modifier = {
+				factor = 0.25
+				event_target:potential_owner = { has_ethic = ethic_fanatic_spiritualist }
+			}
+			change_background_ethic = ethic_materialist
+		}
+		4 = {
+			modifier = {
+				factor = 2
+				event_target:potential_owner = { has_ethic = ethic_pacifist }
+			}
+			modifier = {
+				factor = 4
+				event_target:potential_owner = { has_ethic = ethic_fanatic_pacifist }
+			}
+			modifier = {
+				factor = 0.5
+				event_target:potential_owner = { has_ethic = ethic_militarist }
+			}
+			modifier = {
+				factor = 0.25
+				event_target:potential_owner = { has_ethic = ethic_fanatic_militarist }
+			}
+			change_background_ethic = ethic_pacifist
+		}
+		4 = {
+			modifier = {
+				factor = 2
+				event_target:potential_owner = { has_ethic = ethic_xenophile }
+			}
+			modifier = {
+				factor = 4
+				event_target:potential_owner = { has_ethic = ethic_fanatic_xenophile }
+			}
+			modifier = {
+				factor = 0.5
+				event_target:potential_owner = { has_ethic = ethic_xenophobe }
+			}
+			modifier = {
+				factor = 0.25
+				event_target:potential_owner = { has_ethic = ethic_fanatic_xenophobe }
+			}
+			change_background_ethic = ethic_xenophile
+		}
+		4 = {
+			modifier = {
+				factor = 2
+				event_target:potential_owner = { has_ethic = ethic_authoritarian }
+			}
+			modifier = {
+				factor = 4
+				event_target:potential_owner = { has_ethic = ethic_fanatic_authoritarian }
+			}
+			modifier = {
+				factor = 0.5
+				event_target:potential_owner = { has_ethic = ethic_egalitarian }
+			}
+			modifier = {
+				factor = 0.25
+				event_target:potential_owner = { has_ethic = ethic_fanatic_egalitarian }
+			}
+			change_background_ethic = ethic_authoritarian
+		}
+		4 = {
+			modifier = {
+				factor = 2
+				event_target:potential_owner = { has_ethic = ethic_spiritualist }
+			}
+			modifier = {
+				factor = 4
+				event_target:potential_owner = { has_ethic = ethic_fanatic_spiritualist }
+			}
+			modifier = {
+				factor = 0.5
+				event_target:potential_owner = { has_ethic = ethic_materialist }
+			}
+			modifier = {
+				factor = 0.25
+				event_target:potential_owner = { has_ethic = ethic_fanatic_materialist }
+			}
+			change_background_ethic = ethic_spiritualist
+		}
+	}
 }
