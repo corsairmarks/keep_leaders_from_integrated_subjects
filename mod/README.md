@@ -118,7 +118,7 @@ Demoted rulers with very long names that also contain a period `.` may cause err
     * Simplify former ruler traits - one per former authority (hive, machine, regular)
     * Add all leader class versions of the former Hive Mind and Machine Intelligence traits
     * Add scripted_loc to still use the varying flavor text for former rulers
-* 9.1.0 Adjust leader background ethics when they transfer empires
+* 9.1.0 Adjust leader background ethics and jobs when they transfer empires
 
 ## Source Code
 
