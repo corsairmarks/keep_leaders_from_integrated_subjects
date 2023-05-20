@@ -1693,6 +1693,14 @@ try_adjust_background = {
 			reroll_random = yes
 		}
 	}
+	if = {
+		limit = { has_leader_flag = former_owner_hive }
+		remove_leader_flag = former_owner_hive
+	}
+	else_if = {
+		limit = { has_leader_flag = former_owner_machine }
+		remove_leader_flag = former_owner_machine
+	}
 }
 
 # randomize the leader's background ethic, weighted based on the ethos of their owner
