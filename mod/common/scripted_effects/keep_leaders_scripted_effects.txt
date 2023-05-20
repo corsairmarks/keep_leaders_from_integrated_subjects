@@ -1640,7 +1640,12 @@ try_adjust_background = {
 				}
 				admiral = {
 					if = {
-						limit = { owner = { is_gestalt = yes } }
+						limit = {
+							OR = {
+								has_leader_flag = former_owner_hive
+								has_leader_flag = former_owner_machine
+							}
+						}
 						random_list = {
 							1 = { change_background_job = warrior_drone }
 							1 = { change_background_job = patrol_drone }
@@ -1658,7 +1663,12 @@ try_adjust_background = {
 				}
 				general = {
 					if = {
-						limit = { owner = { is_gestalt = yes } }
+						limit = {
+							OR = {
+								has_leader_flag = former_owner_hive
+								has_leader_flag = former_owner_machine
+							}
+						}
 						random_list = {
 							1 = { change_background_job = warrior_drone }
 							1 = { change_background_job = patrol_drone }
