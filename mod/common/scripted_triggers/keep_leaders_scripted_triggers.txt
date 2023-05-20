@@ -738,7 +738,7 @@ has_leader_storage_from_country_to_planet_owner = {
 
 # this follows the game's default rules - does not account for Gender Nonbinary Leaders
 # this = leader, after species change
-klfis_leader_new_species_allows_current_gender = {
+klfis_leader_species_allows_current_gender = {
 	optimize_memory
 	switch = {
 		trigger = gender

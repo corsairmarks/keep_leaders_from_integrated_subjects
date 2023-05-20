@@ -2568,10 +2568,10 @@ leader_event = {
 		has_leader_flag = force_gender_match_species
 		exists = from
 		from = { is_scope_type = species }
-		klfis_leader_new_species_allows_current_gender = no
+		klfis_leader_species_allows_current_gender = no
 	}
 	immediate = {
-		klfis_leader_transferred_match_gender_to_species = yes
+		klfis_leader_match_gender_to_species = yes
 	}
 }
 
@@ -3088,26 +3088,26 @@ country_event = {
 							cooldown = no
 						}
 					}
-					# if you necrophage them, you lose the secret hive magic
 					if = {
 						limit = { has_leader_flag = former_gestalt_ruler }
+						# if you necrophage them, you lose the secret hive magic
 						remove_leader_flag = former_gestalt_ruler
 					}
 					set_timed_leader_flag = {
 						flag = force_gender_match_species
 						days = 1
 					}
-					unassign_leader = this
-					set_owner = event_target:potential_owner
-					fire_on_action = { on_action = on_leader_owner_changed }
 					change_species = event_target:potential_owner
 					change_leader_portrait = event_target:potential_owner
-					try_adjust_background_ethic = yes
-					try_assign_retained_leader_to_former_assignment = yes
 					fire_on_action = {
 						on_action = on_leader_species_changed
 						scopes = { from = event_target:former_species }
 					}
+					unassign_leader = this
+					set_owner = event_target:potential_owner
+					try_assign_retained_leader_to_former_assignment = yes
+					fire_on_action = { on_action = on_leader_owner_changed }
+					try_adjust_background_ethic = yes
 				}
 				else_if = {
 					limit = {

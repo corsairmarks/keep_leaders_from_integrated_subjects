@@ -173,10 +173,19 @@ prepare_for_primitive_planet_transferred = {
 # event_target:storage_owner = country in which to store leaders
 transfer_leader_to_storage = {
 	optimize_memory
+	if = {
+		limit = { owner = { is_hive_empire = yes } }
+		set_leader_flag = former_owner_hive
+	}
+	else_if = {
+		limit = { owner = { is_machine_empire = yes } }
+		set_leader_flag = former_owner_machine
+	}
 	set_leader_flag = former_owner@owner
 	set_leader_flag = potential_owner@event_target:potential_owner
 	unassign_leader = this
 	set_owner = event_target:storage_owner
+	# intentionally does not fire on_leader_owner_changed
 }
 
 # this = leader
@@ -204,6 +213,7 @@ ensure_species_rights_and_take_ownership_of_leader = {
 	set_owner = event_target:potential_owner
 	try_assign_retained_leader_to_former_assignment = yes
 	fire_on_action = { on_action = on_leader_owner_changed }
+	try_adjust_background_ethic = yes
 }
 
 # this = something with species
@@ -1306,7 +1316,7 @@ klfis_prepare_psionic_species = {
 # changes a gender's leader to match the norms for their species (possibly cloning and replacing them)
 # this = leader, with new species
 # from = species, previous
-klfis_leader_transferred_match_gender_to_species = {
+klfis_leader_match_gender_to_species = {
 	optimize_memory
 	species = {
 		switch = {
@@ -1536,35 +1546,10 @@ complete_assimilation_and_take_ownership_of_leader = {
 			}
 		}
 		ensure_species_rights_and_take_ownership_of_leader = yes
-		try_adjust_background_ethic = yes
 	}
 	else_if = {
 		limit = { is_allow_transfer_without_assimilation = yes }
 		ensure_species_rights_and_take_ownership_of_leader = yes
-		if = {
-			limit = {
-				OR = {
-					is_cyborg_species = yes
-					AND = {
-						owner = { is_hive_empire = no }
-						is_robotic_species = yes
-					}
-					AND = {
-						owner = {
-							OR = {
-								is_machine_empire = yes
-								AND = {
-									is_regular_empire = yes
-									has_technology = tech_sapient_ai
-								}
-							}
-						}
-						is_machine_species = yes
-					}
-				}
-			}
-			try_adjust_background_ethic = yes
-		}
 	}
 	clear_variable = assimilation_type_counter
 }
@@ -1587,6 +1572,113 @@ try_adjust_background_ethic = {
 			owner = { is_gestalt = yes }
 		}
 		change_background_ethic = ethic_gestalt_consciousness
+	}
+	if = {
+		limit = {
+			is_gestalt = no
+			NOT = { has_background_job = yes } # this can't be set to no or unemployed...
+		}
+		# intentionally does not have the same code as paragon_2.2125
+		if = {
+			limit = { has_leader_flag = former_ruler }
+			if = {
+				limit = { has_leader_flag = former_owner_hive }
+				change_background_job = hive_mind
+			}
+			else_if = {
+				limit = { has_leader_flag = former_owner_machine }
+				change_background_job = machine_intelligence
+			}
+			else = {
+				change_background_job = government_employee
+			}
+		}
+		else = {
+			switch = {
+				trigger = leader_class
+				governor = {
+					if = {
+						limit = { has_leader_flag = former_owner_hive }
+						change_background_job = synapse_drone
+					}
+					else_if = {
+						limit = { has_leader_flag = former_owner_machine }
+						random_list = {
+							2 = { change_background_job = coordinator }
+							1 = { change_background_job = evaluator }
+						}
+					}
+					else = {
+						random_list = {
+							1 = { change_background_job = politician }
+							2 = { change_background_job = bureaucrat }
+						}
+					}
+				}
+				scientist = {
+					if = {
+						limit = { has_leader_flag = former_owner_hive }
+						random_list = {
+							2 = { change_background_job = brain_drone }
+							1 = { change_background_job = archaeo_drone }
+						}
+					}
+					else_if = {
+						limit = { has_leader_flag = former_owner_machine }
+						random_list = {
+							2 = { change_background_job = calculator }
+							1 = { change_background_job = archaeo_unit }
+						}
+					}
+					else = {
+						random_list = {
+							3 = { change_background_job = head_researcher }
+							1 = { change_background_job = researcher }
+							1 = { change_background_job = archaeoengineers }
+						}
+					}
+				}
+				admiral = {
+					if = {
+						limit = { owner = { is_gestalt = yes } }
+						random_list = {
+							1 = { change_background_job = warrior_drone }
+							1 = { change_background_job = patrol_drone }
+						}
+					}
+					else = {
+						random_list = {
+							1 = { change_background_job = captain }
+							1 = { change_background_job = chief_navigator }
+							1 = { change_background_job = principal_pilot }
+							1 = { change_background_job = ship_weapons_officer }
+							1 = { change_background_job = ship_logistics_officer }
+						}
+					}
+				}
+				general = {
+					if = {
+						limit = { owner = { is_gestalt = yes } }
+						random_list = {
+							1 = { change_background_job = warrior_drone }
+							1 = { change_background_job = patrol_drone }
+						}
+					}
+					else = {
+						random_list = {
+							1 = { change_background_job = special_operations_commander }
+							1 = { change_background_job = commanding_officer }
+							1 = { change_background_job = chief_supply_officer }
+							1 = { change_background_job = intelligence_officer }
+							1 = { change_background_job = chief_security_officer }
+							1 = { change_background_job = enforcer }
+							1 = { change_background_job = soldier }
+						}
+					}
+				}
+			}
+			reroll_random = yes
+		}
 	}
 }
 
