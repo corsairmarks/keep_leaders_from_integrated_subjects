@@ -3107,7 +3107,7 @@ country_event = {
 					set_owner = event_target:potential_owner
 					try_assign_retained_leader_to_former_assignment = yes
 					fire_on_action = { on_action = on_leader_owner_changed }
-					try_adjust_background_ethic = yes
+					try_adjust_background = yes
 				}
 				else_if = {
 					limit = {

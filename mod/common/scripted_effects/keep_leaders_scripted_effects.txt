@@ -213,7 +213,7 @@ ensure_species_rights_and_take_ownership_of_leader = {
 	set_owner = event_target:potential_owner
 	try_assign_retained_leader_to_former_assignment = yes
 	fire_on_action = { on_action = on_leader_owner_changed }
-	try_adjust_background_ethic = yes
+	try_adjust_background = yes
 }
 
 # this = something with species
@@ -1554,9 +1554,9 @@ complete_assimilation_and_take_ownership_of_leader = {
 	clear_variable = assimilation_type_counter
 }
 
-# randomize a leader's background ethic if and only if they are gestalt and owner is not, or they are not gestalt and their owner is
+# change a leader's background ethic (randomize if formerly gestalt or conver to gestalt, if appropriate)
 # this = leader
-try_adjust_background_ethic = {
+try_adjust_background = {
 	optimize_memory
 	if = {
 		limit = {
