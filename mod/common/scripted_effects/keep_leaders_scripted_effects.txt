@@ -1571,7 +1571,7 @@ try_adjust_background = {
 			is_gestalt = no
 			AND = {
 				owner = { is_gestalt = yes }
-				species = { NOT = { has_species_flag = allow_military_leaders_honored_protectors@prev.owner } }
+				species = { NOT = { has_species_flag = allow_leaders_organic_advisors@prev.owner } }
 			}
 		}
 		change_background_ethic = ethic_gestalt_consciousness
