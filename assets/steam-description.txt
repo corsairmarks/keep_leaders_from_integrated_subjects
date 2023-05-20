@@ -34,7 +34,7 @@ This mod can be safely added to your savegame after the game has started. If you
 [*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2488154830]Pre-FTL Conquest & Infiltration: Enhanced[/url] improves the pre-existing infrastructure when you conquer or otherwise acquire a planet that had previously been pre-FTL; pairs well with this mod's bonus leaders from conquered (etc.) pre-FTLs
 [*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2558494770]corsairmarks's Leader Traits MOD Chinese patch[/url] by Hua Zhang - Chinese localisation
 [/list]
-You might wonder - why are these separate mods? They override default gameplay options, so I thought it best to give players the choice on whether they want the original version or the reimagined version. Machine Deassimilation was developed alongside this mod.
+You might wonder - why are these separate mods? They override default gameplay options, so I thought it best to give players the choice on whether they want the original version or the re-imagined version. Machine Deassimilation was developed alongside this mod.
 
 [h2]Known Issues[/h2]
 [h3]Stellaris Bugs[/h3]
