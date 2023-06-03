@@ -466,20 +466,6 @@ is_military_leader = {
 }
 
 # this = leader
-is_psionic_leader = {
-	optimize_memory
-	OR = {
-		has_psionic_species_trait = yes
-		has_trait = leader_trait_psionic
-		has_trait = leader_trait_chosen
-		has_trait = leader_trait_eater_chosen
-		has_trait = leader_trait_composer_chosen
-		has_trait = leader_trait_instrument_chosen
-		has_trait = leader_trait_whisperers_chosen
-	}
-}
-
-# this = leader
 is_cyborg_leader = {
 	optimize_memory
 	OR = {
@@ -665,7 +651,7 @@ any_stored_leaders_eligible_to_transfer_main_species_leader_restricted = {
 	optimize_memory
 	any_owned_leader = {
 		is_eligible_transfer_leader_from_storage = yes
-		[[TRIGGER] $TRIGGER$ = yes]
+		[[TRIGGER] $TRIGGER$ = yes ]
 		OR = {
 			is_same_species = event_target:potential_owner
 			is_bypass_leader_restriction_honored_protectors = yes
