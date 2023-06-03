@@ -1584,7 +1584,7 @@ try_adjust_background = {
 			is_gestalt = no
 			NOT = { has_background_job = yes } # this can't be set to no or unemployed...
 		}
-		# intentionally does not have the same code as paragon_2.2125
+		# intentionally does not have the same code as paragon_2.2125 or reuse the set_random_CLASS_background_effect effects
 		if = {
 			limit = { has_leader_flag = former_ruler }
 			if = {
@@ -1616,8 +1616,8 @@ try_adjust_background = {
 					}
 					else = {
 						random_list = {
-							1 = { change_background_job = politician }
-							2 = { change_background_job = bureaucrat }
+							2 = { change_background_job = politician }
+							1 = { change_background_job = bureaucrat }
 						}
 					}
 				}
@@ -1658,13 +1658,7 @@ try_adjust_background = {
 						}
 					}
 					else = {
-						random_list = {
-							1 = { change_background_job = captain }
-							1 = { change_background_job = chief_navigator }
-							1 = { change_background_job = principal_pilot }
-							1 = { change_background_job = ship_weapons_officer }
-							1 = { change_background_job = ship_logistics_officer }
-						}
+						set_random_admiral_background_effect = yes
 					}
 				}
 				general = {
@@ -1700,7 +1694,7 @@ try_adjust_background = {
 		limit = { has_leader_flag = former_owner_hive }
 		remove_leader_flag = former_owner_hive
 	}
-	else_if = {
+	if = {
 		limit = { has_leader_flag = former_owner_machine }
 		remove_leader_flag = former_owner_machine
 	}
