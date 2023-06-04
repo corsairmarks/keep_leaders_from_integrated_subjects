@@ -119,6 +119,9 @@ Demoted rulers with very long names that also contain a period `.` may cause err
     * Add all leader class versions of the former Hive Mind and Machine Intelligence traits
     * Add scripted_loc to still use the varying flavor text for former rulers
 * 9.1.0 Adjust leader background ethics and jobs when they transfer empires
+* 9.2.0 Convert "keep leader" events to use the new leader recruitment window style
+    * Ensure all former rulers/heirs lose the Imperial Heir trait from the base game (the Former Ruler traits provide the same bonus plus more)
+    * Updated post-infiltration "keep leaders" window
 
 ## Source Code
 
