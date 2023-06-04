@@ -117,7 +117,7 @@ country_event = {
 		from = {
 			save_event_target_as = former_owner
 			owner_species = { save_event_target_as = original_species }
-			fromfrom = { save_event_target_as = conquered_planet } # "argument" for localistation
+			fromfrom = { save_event_target_as = conquered_planet } # "argument" for localisation
 		}
 		# acquire leader and variable storage
 		random_country = {
@@ -2272,11 +2272,18 @@ planet_event = {
 	id = keep_leaders.3
 	title = keep_leaders.3.title
 	desc = keep_leaders.3.desc
-	picture = GFX_evt_diplomatic_visit
 	is_triggered_only = yes
-	pre_triggers = {
-		has_owner = yes
+	auto_opens = no
+	location = this
+	show_sound = event_espionage_concluded
+	picture = GFX_leader_recruitment_bg_renowned # GFX_evt_diplomatic_visit
+	event_window_type = leader_recruit
+	notification_event_icon = GFX_message_infiltration_leaders
+	picture_event_data = {
+		portrait = event_target:infiltrator_representative
+		room = ethic_spaceship_room
 	}
+	pre_triggers = { has_owner = yes }
 	trigger = {
 		has_modifier = infiltration_happiness
 		exists = from
@@ -2287,37 +2294,73 @@ planet_event = {
 		log = "primitive infiltration: [This.GetName] ([FromFrom.GetRealName]) infiltrated by [From.GetRealName]"
 		from = { set_country_flag = keeping_leaders_infiltration@fromfrom }
 		fromfrom = {
-			save_event_target_as = former_owner # "argument" for localistation and create_leader_storage_and_transfer_leaders
-			owner_species = { save_event_target_as = original_species } # "argument" for localistation
+			save_event_target_as = former_owner # "argument" for localisation and create_leader_storage_and_transfer_leaders
+			owner_species = { save_event_target_as = original_species } # "argument" for localisation
 		}
 		from = { save_event_target_as = potential_owner } # "argument" for create_leader_storage_and_transfer_leaders
 		create_leader_storage_and_transfer_leaders = yes
+		# choose a representative leader for the event window and prepare them in advance
+		event_target:storage_owner = {
+			random_owned_leader = {
+				limit = { is_eligible_transfer_leader_from_storage = yes }
+				weights = {
+					base = 1
+					modifier = {
+						factor = 10000
+						has_leader_flag = former_ruler
+					}
+					modifier = {
+						factor = 100
+						has_leader_flag = former_heir
+					}
+				}
+				prepare_to_retain_infiltration_leader = { RETAIN_COVER = yes }
+				save_event_target_as = infiltrator_representative
+			}
+		}
 	}
 	option = {
 		name = keep_leaders.3.a
-		custom_tooltip_with_params = {
-			description = keep_leaders.3.a.tooltip
-			description_parameters = {
-				VALUE = "[variable_storage.leader_accumulator]"
+		tag = hire_leader
+		if = {
+			limit = { event_target:infiltrator_representative = { NOT = { has_leader_flag = infiltrator_retain_cover } } }
+			custom_tooltip_with_params = {
+				description = keep_leaders.3.a.tooltip
+				description_parameters = {
+					VALUE = "[variable_storage.leader_accumulator]"
+				}
+			}
+		}
+		else = {
+			custom_tooltip_with_params = {
+				description = keep_leaders.3.a.retain.tooltip
+				description_parameters = {
+					VALUE = "[variable_storage.leader_accumulator]"
+				}
 			}
 		}
 		hidden_effect = {
+			event_target:infiltrator_representative = {
+				if = {
+					limit = { NOT = { has_leader_flag = infiltrator_retain_cover } }
+					change_leader_portrait = event_target:potential_owner # swap portrait to non-cover
+				}
+				take_ownership_of_leader = yes
+			}
 			event_target:storage_owner = {
 				every_owned_leader = {
-					limit = { is_eligible_transfer_leader_from_storage = yes }
-					set_leader_flag = infiltrator_retained
-					set_timed_leader_flag = {
-						flag = force_gender_match_species
-						days = 1
+					limit = {
+						NOT = { is_same_value = event_target:infiltrator_representative }
+						is_eligible_transfer_leader_from_storage = yes
 					}
-					set_owner = event_target:potential_owner
-					fire_on_action = { on_action = on_leader_owner_changed }
-					change_species = event_target:potential_owner
-					fire_on_action = {
-						on_action = on_leader_species_changed
-						scopes = { from = event_target:original_species }
+					if = {
+						limit = { NOT = { has_leader_flag = infiltrator_retain_cover } }
+						prepare_to_retain_infiltration_leader = { RETAIN_COVER = no }
 					}
-					remove_leader_flag = infiltrator_retained
+					else = {
+						prepare_to_retain_infiltration_leader = { RETAIN_COVER = yes }
+					}
+					take_ownership_of_leader = yes
 				}
 				destroy_country = yes
 			}
@@ -2326,7 +2369,12 @@ planet_event = {
 			base = 1
 			modifier = {
 				factor = 2
-				owner = { is_xenophobe = yes }
+				owner = {
+					OR = {
+						is_authoritarian = yes
+						has_valid_civic = civic_meritocracy
+					}
+				}
 			}
 			modifier = {
 				factor = 2
@@ -2334,47 +2382,10 @@ planet_event = {
 					has_valid_ai_personality = yes
 					OR = {
 						has_ai_personality_behaviour = displacer
+						has_ai_personality_behaviour = purger
 						has_ai_personality_behaviour = slaver
 					}
 				}
-			}
-		}
-	}
-	option = {
-		name = keep_leaders.3.b
-		custom_tooltip_with_params = {
-			description = keep_leaders.3.b.tooltip
-			description_parameters = {
-				VALUE = "[variable_storage.leader_accumulator]"
-			}
-		}
-		hidden_effect = {
-			event_target:storage_owner = {
-				every_owned_leader = {
-					limit = { is_eligible_transfer_leader_from_storage = yes }
-					set_leader_flag = infiltrator_retained_cover
-					set_timed_leader_flag = {
-						flag = force_gender_match_species
-						days = 1
-					}
-					set_owner = event_target:potential_owner
-					fire_on_action = { on_action = on_leader_owner_changed }
-					change_species = event_target:potential_owner
-					change_leader_portrait = event_target:original_species
-					fire_on_action = {
-						on_action = on_leader_species_changed
-						scopes = { from = event_target:original_species }
-					}
-					remove_leader_flag = infiltrator_retained_cover
-				}
-				destroy_country = yes
-			}
-		}
-		ai_chance = {
-			base = 1
-			modifier = {
-				factor = 2
-				owner = { is_authoritarian = yes }
 			}
 			modifier = {
 				factor = 2
@@ -2386,13 +2397,26 @@ planet_event = {
 		}
 	}
 	option = {
+		name = keep_leaders.3.b
+		allow = { event_target:infiltrator_representative = { NOT = { has_leader_flag = infiltrator_retain_cover } } }
+		response_text = keep_leaders.3.b.response
+		is_dialog_only = yes
+		event_target:infiltrator_representative = { set_leader_flag = infiltrator_retain_cover }
+	}
+	option = {
 		name = keep_leaders.3.c
+		allow = { event_target:infiltrator_representative = { has_leader_flag = infiltrator_retain_cover } }
+		response_text = keep_leaders.3.c.response
+		is_dialog_only = yes
+		event_target:infiltrator_representative = { remove_leader_flag = infiltrator_retain_cover }
+	}
+	option = {
+		name = keep_leaders.3.d
+		custom_tooltip = keep_leaders.3.d.tooltip
+		tag = dismiss_leader
 		hidden_effect = {
 			event_target:storage_owner = { destroy_country = yes }
-			if = {
-				limit = { has_modifier = kl_peerless_infiltration_agents }
-				remove_modifier = kl_peerless_infiltration_agents
-			}
+			erase_modifier = { MOD = kl_peerless_infiltration_agents }
 		}
 		owner = {
 			add_modifier = {

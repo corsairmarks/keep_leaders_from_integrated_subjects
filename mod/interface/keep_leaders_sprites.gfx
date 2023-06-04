@@ -11,4 +11,19 @@ spriteTypes = {
 		name = "GFX_klfis_event_icon_bg_blank"
 		texturefile = "gfx/interface/icons/situation_log/situations/approaches/klfis_event_icon_bg_blank.dds"
 	}
+	spriteType = {
+		name = "GFX_message_infiltration_leaders"
+		texturefile = "gfx/interface/icons/message/message_infiltration_leaders.dds"
+		effectFile = "gfx/FX/buttonstate_onlydisable.shader"
+	}
+	spriteType = {
+		name = "GFX_message_integration_leaders"
+		texturefile = "gfx/interface/icons/message/message_integration_leaders.dds"
+		effectFile = "gfx/FX/buttonstate_onlydisable.shader"
+	}
+	spriteType = {
+		name = "GFX_message_invasion_leaders"
+		texturefile = "gfx/interface/icons/message/message_invasion_leaders.dds"
+		effectFile = "gfx/FX/buttonstate_onlydisable.shader"
+	}
 }

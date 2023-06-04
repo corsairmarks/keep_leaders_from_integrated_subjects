@@ -190,6 +190,14 @@ transfer_leader_to_storage = {
 
 # this = leader
 # event_target:potential_owner = country to become the new owner and for which to set species rights
+take_ownership_of_leader = {
+	optimize_memory
+	set_owner = event_target:potential_owner
+	fire_on_action = { on_action = on_leader_owner_changed }
+}
+
+# this = leader
+# event_target:potential_owner = country to become the new owner and for which to set species rights
 ensure_species_rights_and_take_ownership_of_leader = {
 	optimize_memory
 	if = {
@@ -210,10 +218,9 @@ ensure_species_rights_and_take_ownership_of_leader = {
 	}
 	set_minimum_living_standard_species = yes
 	unassign_leader = this
-	set_owner = event_target:potential_owner
-	try_assign_retained_leader_to_former_assignment = yes
-	fire_on_action = { on_action = on_leader_owner_changed }
 	try_adjust_background = yes
+	take_ownership_of_leader = yes
+	try_assign_retained_leader_to_former_assignment = yes
 }
 
 # this = something with species
@@ -1556,12 +1563,13 @@ complete_assimilation_and_take_ownership_of_leader = {
 
 # change a leader's background ethic (randomize if formerly gestalt or conver to gestalt, if appropriate)
 # this = leader
+# event_target:potential_owner = country to become the new owner and for which to set species rights
 try_adjust_background = {
 	optimize_memory
 	if = {
 		limit = {
 			is_gestalt = yes
-			owner = { is_gestalt = no }
+			event_target:potential_owner = { is_gestalt = no }
 		}
 		randomize_background_ethic = yes
 		reroll_random = yes
@@ -1569,7 +1577,7 @@ try_adjust_background = {
 	else_if = {
 		limit = {
 			is_gestalt = no
-			owner = {
+			event_target:potential_owner = {
 				is_gestalt = yes
 				NAND = {
 					has_valid_civic = civic_machine_servitor
@@ -1702,160 +1710,180 @@ try_adjust_background = {
 
 # randomize the leader's background ethic, weighted based on the ethos of their owner
 # this = leader
+# event_target:potential_owner = country to become the new owner and for which to set species rights
 randomize_background_ethic = {
 	optimize_memory
 	random_list = {
 		4 = {
 			modifier = {
 				factor = 2
-				owner = { has_ethic = ethic_militarist }
+				event_target:potential_owner = { has_ethic = ethic_militarist }
 			}
 			modifier = {
 				factor = 4
-				owner = { has_ethic = ethic_fanatic_militarist }
+				event_target:potential_owner = { has_ethic = ethic_fanatic_militarist }
 			}
 			modifier = {
 				factor = 0.5
-				owner = { has_ethic = ethic_pacifist }
+				event_target:potential_owner = { has_ethic = ethic_pacifist }
 			}
 			modifier = {
 				factor = 0.25
-				owner = { has_ethic = ethic_fanatic_pacifist }
+				event_target:potential_owner = { has_ethic = ethic_fanatic_pacifist }
 			}
 			change_background_ethic = ethic_militarist
 		}
 		4 = {
 			modifier = {
 				factor = 2
-				owner = { has_ethic = ethic_xenophobe }
+				event_target:potential_owner = { has_ethic = ethic_xenophobe }
 			}
 			modifier = {
 				factor = 4
-				owner = { has_ethic = ethic_fanatic_xenophobe }
+				event_target:potential_owner = { has_ethic = ethic_fanatic_xenophobe }
 			}
 			modifier = {
 				factor = 0.5
-				owner = { has_ethic = ethic_xenophile }
+				event_target:potential_owner = { has_ethic = ethic_xenophile }
 			}
 			modifier = {
 				factor = 0.25
-				owner = { has_ethic = ethic_fanatic_xenophile }
+				event_target:potential_owner = { has_ethic = ethic_fanatic_xenophile }
 			}
 			change_background_ethic = ethic_xenophobe
 		}
 		4 = {
 			modifier = {
 				factor = 2
-				owner = { has_ethic = ethic_egalitarian }
+				event_target:potential_owner = { has_ethic = ethic_egalitarian }
 			}
 			modifier = {
 				factor = 4
-				owner = { has_ethic = ethic_fanatic_egalitarian }
+				event_target:potential_owner = { has_ethic = ethic_fanatic_egalitarian }
 			}
 			modifier = {
 				factor = 0.5
-				owner = { has_ethic = ethic_authoritarian }
+				event_target:potential_owner = { has_ethic = ethic_authoritarian }
 			}
 			modifier = {
 				factor = 0.25
-				owner = { has_ethic = ethic_fanatic_authoritarian }
+				event_target:potential_owner = { has_ethic = ethic_fanatic_authoritarian }
 			}
 			change_background_ethic = ethic_egalitarian
 		}
 		4 = {
 			modifier = {
 				factor = 2
-				owner = { has_ethic = ethic_materialist }
+				event_target:potential_owner = { has_ethic = ethic_materialist }
 			}
 			modifier = {
 				factor = 4
-				owner = { has_ethic = ethic_fanatic_materialist }
+				event_target:potential_owner = { has_ethic = ethic_fanatic_materialist }
 			}
 			modifier = {
 				factor = 0.5
-				owner = { has_ethic = ethic_spiritualist }
+				event_target:potential_owner = { has_ethic = ethic_spiritualist }
 			}
 			modifier = {
 				factor = 0.25
-				owner = { has_ethic = ethic_fanatic_spiritualist }
+				event_target:potential_owner = { has_ethic = ethic_fanatic_spiritualist }
 			}
 			change_background_ethic = ethic_materialist
 		}
 		4 = {
 			modifier = {
 				factor = 2
-				owner = { has_ethic = ethic_pacifist }
+				event_target:potential_owner = { has_ethic = ethic_pacifist }
 			}
 			modifier = {
 				factor = 4
-				owner = { has_ethic = ethic_fanatic_pacifist }
+				event_target:potential_owner = { has_ethic = ethic_fanatic_pacifist }
 			}
 			modifier = {
 				factor = 0.5
-				owner = { has_ethic = ethic_militarist }
+				event_target:potential_owner = { has_ethic = ethic_militarist }
 			}
 			modifier = {
 				factor = 0.25
-				owner = { has_ethic = ethic_fanatic_militarist }
+				event_target:potential_owner = { has_ethic = ethic_fanatic_militarist }
 			}
 			change_background_ethic = ethic_pacifist
 		}
 		4 = {
 			modifier = {
 				factor = 2
-				owner = { has_ethic = ethic_xenophile }
+				event_target:potential_owner = { has_ethic = ethic_xenophile }
 			}
 			modifier = {
 				factor = 4
-				owner = { has_ethic = ethic_fanatic_xenophile }
+				event_target:potential_owner = { has_ethic = ethic_fanatic_xenophile }
 			}
 			modifier = {
 				factor = 0.5
-				owner = { has_ethic = ethic_xenophobe }
+				event_target:potential_owner = { has_ethic = ethic_xenophobe }
 			}
 			modifier = {
 				factor = 0.25
-				owner = { has_ethic = ethic_fanatic_xenophobe }
+				event_target:potential_owner = { has_ethic = ethic_fanatic_xenophobe }
 			}
 			change_background_ethic = ethic_xenophile
 		}
 		4 = {
 			modifier = {
 				factor = 2
-				owner = { has_ethic = ethic_authoritarian }
+				event_target:potential_owner = { has_ethic = ethic_authoritarian }
 			}
 			modifier = {
 				factor = 4
-				owner = { has_ethic = ethic_fanatic_authoritarian }
+				event_target:potential_owner = { has_ethic = ethic_fanatic_authoritarian }
 			}
 			modifier = {
 				factor = 0.5
-				owner = { has_ethic = ethic_egalitarian }
+				event_target:potential_owner = { has_ethic = ethic_egalitarian }
 			}
 			modifier = {
 				factor = 0.25
-				owner = { has_ethic = ethic_fanatic_egalitarian }
+				event_target:potential_owner = { has_ethic = ethic_fanatic_egalitarian }
 			}
 			change_background_ethic = ethic_authoritarian
 		}
 		4 = {
 			modifier = {
 				factor = 2
-				owner = { has_ethic = ethic_spiritualist }
+				event_target:potential_owner = { has_ethic = ethic_spiritualist }
 			}
 			modifier = {
 				factor = 4
-				owner = { has_ethic = ethic_fanatic_spiritualist }
+				event_target:potential_owner = { has_ethic = ethic_fanatic_spiritualist }
 			}
 			modifier = {
 				factor = 0.5
-				owner = { has_ethic = ethic_materialist }
+				event_target:potential_owner = { has_ethic = ethic_materialist }
 			}
 			modifier = {
 				factor = 0.25
-				owner = { has_ethic = ethic_fanatic_materialist }
+				event_target:potential_owner = { has_ethic = ethic_fanatic_materialist }
 			}
 			change_background_ethic = ethic_spiritualist
 		}
 	}
+}
+
+# this = leader
+# $RETAIN_COVER$ = bool, whether the leader's portrait should be swapped to match the primitive species (default = no)
+# event_target:original_species = fromfrom.owner_species
+# event_target:potential_owner = country to become the new owner and for which to set species rights
+prepare_to_retain_infiltration_leader = {
+	optimize_memory
+	set_timed_leader_flag = {
+		flag = force_gender_match_species
+		days = 1
+	}
+	change_species = event_target:potential_owner
+	[[RETAIN_COVER] change_leader_portrait = event_target:original_species ]
+	fire_on_action = {
+		on_action = on_leader_species_changed
+		scopes = { from = event_target:original_species }
+	}
+	try_adjust_background = yes
 }
