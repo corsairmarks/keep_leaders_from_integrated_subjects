@@ -122,6 +122,7 @@ Demoted rulers with very long names that also contain a period `.` may cause err
 * 9.2.0 Convert "keep leader" events to use the new leader recruitment window style
     * Ensure all former rulers/heirs lose the Imperial Heir trait from the base game (the Former Ruler traits provide the same bonus plus more)
     * Updated post-infiltration "keep leaders" window
+    * Updated post Nanobot Diffuser and Necrophagic Spore Diffuser "keep leaders" windows
 
 ## Source Code
 
