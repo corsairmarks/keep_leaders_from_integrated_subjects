@@ -57,6 +57,10 @@ spriteTypes = {
 		texturefile = "gfx/interface/leaders/recruitment_bgs/leader_recruitment_bg_invasion.dds"
 	}
 	spriteType = {
+		name = "GFX_leader_recruitment_bg_necrophage"
+		texturefile = "gfx/interface/leaders/recruitment_bgs/leader_recruitment_bg_necrophage.dds"
+	}
+	spriteType = {
 		name = "GFX_leader_recruitment_bg_planet_destruction"
 		texturefile = "gfx/interface/leaders/recruitment_bgs/leader_recruitment_bg_planet_destruction.dds"
 	}
