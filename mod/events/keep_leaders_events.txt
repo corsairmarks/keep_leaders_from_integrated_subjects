@@ -137,12 +137,7 @@ country_event = {
 		}
 	}
 	event_window_type = leader_recruit
-	notification_event_icon = GFX_message_integration_leaders
-	# notification_event_icon = {
-	# 	trigger = { always = yes }
-	# 	notification_event_icon = GFX_message_integration_leaders
-	# }
-	# notification_event_icon = GFX_message_invasion_leaders
+	notification_event_icon = GFX_message_keep_leaders
 	picture_event_data = {
 		portrait = event_target:transfer_representative
 		room = ethic_spaceship_room
@@ -2327,7 +2322,7 @@ planet_event = {
 	show_sound = event_espionage_concluded
 	picture = GFX_leader_recruitment_bg_infiltration # GFX_evt_diplomatic_visit
 	event_window_type = leader_recruit
-	notification_event_icon = GFX_message_infiltration_leaders
+	notification_event_icon = GFX_message_keep_leaders
 	picture_event_data = {
 		portrait = event_target:transfer_representative
 		room = ethic_spaceship_room
@@ -3253,7 +3248,7 @@ planet_event = {
 	show_sound = event_machinery
 	picture = GFX_leader_recruitment_bg_planet_destruction # GFX_evt_gray_gooed_planet
 	event_window_type = leader_recruit
-	notification_event_icon = GFX_message_planet_destroyed_leaders
+	notification_event_icon = GFX_message_keep_leaders
 	picture_event_data = {
 		portrait = event_target:transfer_representative
 		room = ethic_spaceship_room
@@ -3402,7 +3397,7 @@ planet_event = {
 	show_sound = event_necrophage
 	picture = GFX_leader_recruitment_bg_necrophage # GFX_evt_gray_gooed_planet
 	event_window_type = leader_recruit
-	notification_event_icon = GFX_message_necrophage_leaders
+	notification_event_icon = GFX_message_keep_leaders
 	picture_event_data = {
 		portrait = event_target:transfer_representative
 		room = ethic_spaceship_room
@@ -3769,7 +3764,7 @@ country_event = {
 	# }
 	picture = GFX_leader_recruitment_bg_renowned
 	event_window_type = leader_recruit
-	notification_event_icon = GFX_message_leader_pool_refreshed
+	notification_event_icon = GFX_message_keep_leaders
 	picture_event_data = {
 		portrait = event_target:transfer_representative
 		room = ethic_spaceship_room

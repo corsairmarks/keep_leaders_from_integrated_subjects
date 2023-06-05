@@ -15,28 +15,8 @@ spriteTypes = {
 	}
 	# messages
 	spriteType = {
-		name = "GFX_message_infiltration_leaders"
-		texturefile = "gfx/interface/icons/message/message_infiltration_leaders.dds"
-		effectFile = "gfx/FX/buttonstate_onlydisable.shader"
-	}
-	spriteType = {
-		name = "GFX_message_integration_leaders"
-		texturefile = "gfx/interface/icons/message/message_integration_leaders.dds"
-		effectFile = "gfx/FX/buttonstate_onlydisable.shader"
-	}
-	spriteType = {
-		name = "GFX_message_invasion_leaders"
-		texturefile = "gfx/interface/icons/message/message_invasion_leaders.dds"
-		effectFile = "gfx/FX/buttonstate_onlydisable.shader"
-	}
-	spriteType = {
-		name = "GFX_message_necrophage_leaders"
-		texturefile = "gfx/interface/icons/message/message_necrophage_leaders.dds"
-		effectFile = "gfx/FX/buttonstate_onlydisable.shader"
-	}
-	spriteType = {
-		name = "GFX_message_planet_destroyed_leaders"
-		texturefile = "gfx/interface/icons/message/message_planet_destroyed_leaders.dds"
+		name = "GFX_message_keep_leaders"
+		texturefile = "gfx/interface/icons/message/message_keep_leaders.dds"
 		effectFile = "gfx/FX/buttonstate_onlydisable.shader"
 	}
 	# leader recruitment backgrounds
