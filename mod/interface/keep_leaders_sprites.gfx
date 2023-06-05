@@ -26,4 +26,14 @@ spriteTypes = {
 		texturefile = "gfx/interface/icons/message/message_invasion_leaders.dds"
 		effectFile = "gfx/FX/buttonstate_onlydisable.shader"
 	}
+	spriteType = {
+		name = "GFX_message_necrophage_leaders"
+		texturefile = "gfx/interface/icons/message/message_necrophage_leaders.dds"
+		effectFile = "gfx/FX/buttonstate_onlydisable.shader"
+	}
+	spriteType = {
+		name = "GFX_message_planet_destroyed_leaders"
+		texturefile = "gfx/interface/icons/message/message_planet_destroyed_leaders.dds"
+		effectFile = "gfx/FX/buttonstate_onlydisable.shader"
+	}
 }
