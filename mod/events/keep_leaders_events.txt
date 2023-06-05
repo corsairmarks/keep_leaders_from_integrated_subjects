@@ -7,54 +7,15 @@ namespace = keep_leaders
 # fromfrom = planet, primitive world (if available)
 country_event = {
 	id = keep_leaders.1
-	picture = {
-		picture = GFX_evt_intelligence_report
-		trigger = {
-			OR = {
-				has_country_flag = keeping_leaders_conquest@from
-				has_country_flag = keeping_leaders_integration@from
-			}
-		}
-	}
-	picture = {
-		picture = GFX_evt_planet_beam
-		trigger = {
-			exists = fromfrom
-			fromfrom = { is_scope_type = planet }
-			from = {
-				has_country_flag = colossus_transfer@fromfrom
-				OR = {
-					has_country_flag = orbitally_drenched@fromfrom
-					has_country_flag = divinely_enforced@fromfrom
-				}
-			}
-		}
-	}
-	picture = {
-		picture = GFX_evt_death_from_above
-		trigger = {
-			exists = fromfrom
-			fromfrom = { is_scope_type = planet }
-			from = {
-				has_country_flag = colossus_transfer@fromfrom
-				NOR = {
-					has_country_flag = orbitally_drenched@fromfrom
-					has_country_flag = divinely_enforced@fromfrom
-					has_country_flag = nanobot_assimilated@fromfrom
-					has_country_flag = orbitally_necrophaged@fromfrom
-				}
-			}
-		}
-	}
+	# TODO: icon should normally be the one for integration,
+	# but can be from invasion or colossus too
 	title = keep_leaders.1.title.scripted_loc
 	desc = {
 		trigger = { has_country_flag = keeping_leaders_conquest@from }
-		show_sound = event_vote
 		text = keep_leaders.1.desc.conquest
 	}
 	desc = {
 		trigger = { has_country_flag = keeping_leaders_integration@from }
-		show_sound = event_vote
 		text = keep_leaders.1.desc.integration
 	}
 	desc = {
@@ -66,7 +27,6 @@ country_event = {
 				has_country_flag = orbitally_drenched@fromfrom
 			}
 		}
-		show_sound = aqu_wep_colossus_planet_hit
 		text = keep_leaders.1.desc.planet_killer_deluge
 	}
 	desc = {
@@ -78,7 +38,6 @@ country_event = {
 				has_country_flag = divinely_enforced@fromfrom
 			}
 		}
-		show_sound = event_mystic_reveal
 		text = keep_leaders.1.desc.planet_killer_godray
 	}
 	desc = {
@@ -95,8 +54,98 @@ country_event = {
 				}
 			}
 		}
-		show_sound = event_red_alert
 		text = keep_leaders.1.desc.planet_killer_generic
+	}
+	auto_opens = no
+	# location = fromfrom # optional way to do this?
+	# despite show_sound being a valid part of a triggered desc, the game didn't seem to like it (as a guess, no fallback?)
+	show_sound = {
+		trigger = {
+			OR = {
+				has_country_flag = keeping_leaders_conquest@from
+				has_country_flag = keeping_leaders_integration@from
+			}
+		}
+		sound = event_vote
+	}
+	show_sound = {
+		trigger = {
+			exists = fromfrom
+			fromfrom = { is_scope_type = planet }
+			from = {
+				has_country_flag = colossus_transfer@fromfrom
+				has_country_flag = orbitally_drenched@fromfrom
+			}
+		}
+		sound = aqu_wep_colossus_planet_hit
+	}
+	show_sound = {
+		trigger = {
+			exists = fromfrom
+			fromfrom = { is_scope_type = planet }
+			from = {
+				has_country_flag = colossus_transfer@fromfrom
+				has_country_flag = divinely_enforced@fromfrom
+			}
+		}
+		sound = event_mystic_reveal
+	}
+	show_sound = {
+		trigger = {
+			exists = fromfrom
+			fromfrom = { is_scope_type = planet }
+			from = {
+				has_country_flag = colossus_transfer@fromfrom
+				NOR = {
+					has_country_flag = orbitally_drenched@fromfrom
+					has_country_flag = divinely_enforced@fromfrom
+					has_country_flag = nanobot_assimilated@fromfrom
+					has_country_flag = orbitally_necrophaged@fromfrom
+				}
+			}
+		}
+		sound = event_red_alert
+	}
+	picture = {
+		picture = GFX_leader_recruitment_bg_integration # GFX_evt_intelligence_report
+		trigger = { has_country_flag = keeping_leaders_integration@from }
+	}
+	picture = {
+		picture = GFX_leader_recruitment_bg_invasion # GFX_evt_intelligence_report
+		trigger = { has_country_flag = keeping_leaders_conquest@from }
+	}
+	picture = {
+		picture = GFX_leader_recruitment_bg_deluge # GFX_evt_planet_beam
+		trigger = {
+			exists = fromfrom
+			fromfrom = { is_scope_type = planet }
+			from = {
+				has_country_flag = colossus_transfer@fromfrom
+				has_country_flag = orbitally_drenched@fromfrom
+			}
+		}
+	}
+	picture = {
+		picture = GFX_leader_recruitment_bg_planet_destruction # GFX_evt_death_from_above
+		trigger = {
+			exists = fromfrom
+			fromfrom = { is_scope_type = planet }
+			from = {
+				has_country_flag = colossus_transfer@fromfrom
+				NOT = { has_country_flag = orbitally_drenched@fromfrom }
+			}
+		}
+	}
+	event_window_type = leader_recruit
+	notification_event_icon = GFX_message_integration_leaders
+	# notification_event_icon = {
+	# 	trigger = { always = yes }
+	# 	notification_event_icon = GFX_message_integration_leaders
+	# }
+	# notification_event_icon = GFX_message_invasion_leaders
+	picture_event_data = {
+		portrait = event_target:transfer_representative
+		room = ethic_spaceship_room
 	}
 	is_triggered_only = yes
 	trigger = {
@@ -128,6 +177,7 @@ country_event = {
 			save_event_target_as = storage_owner
 			save_event_target_as = variable_storage
 		}
+		choose_transfer_representative_leader = yes
 	}
 	# keep none
 	option = {
@@ -2272,17 +2322,17 @@ planet_event = {
 	id = keep_leaders.3
 	title = keep_leaders.3.title
 	desc = keep_leaders.3.desc
-	is_triggered_only = yes
 	auto_opens = no
 	location = this
 	show_sound = event_espionage_concluded
-	picture = GFX_leader_recruitment_bg_renowned # GFX_evt_diplomatic_visit
+	picture = GFX_leader_recruitment_bg_infiltration # GFX_evt_diplomatic_visit
 	event_window_type = leader_recruit
 	notification_event_icon = GFX_message_infiltration_leaders
 	picture_event_data = {
-		portrait = event_target:infiltrator_representative
+		portrait = event_target:transfer_representative
 		room = ethic_spaceship_room
 	}
+	is_triggered_only = yes
 	pre_triggers = { has_owner = yes }
 	trigger = {
 		has_modifier = infiltration_happiness
@@ -2299,31 +2349,15 @@ planet_event = {
 		}
 		from = { save_event_target_as = potential_owner } # "argument" for create_leader_storage_and_transfer_leaders
 		create_leader_storage_and_transfer_leaders = yes
-		# choose a representative leader for the event window and prepare them in advance
-		event_target:storage_owner = {
-			random_owned_leader = {
-				limit = { is_eligible_transfer_leader_from_storage = yes }
-				weights = {
-					base = 1
-					modifier = {
-						factor = 10000
-						has_leader_flag = former_ruler
-					}
-					modifier = {
-						factor = 100
-						has_leader_flag = former_heir
-					}
-				}
-				prepare_to_retain_infiltration_leader = { RETAIN_COVER = yes }
-				save_event_target_as = infiltrator_representative
-			}
-		}
+		choose_transfer_representative_leader = yes
+		# prepare the representative in advance
+		event_target:transfer_representative = { prepare_to_retain_infiltration_leader = { RETAIN_COVER = yes } }
 	}
 	option = {
-		name = keep_leaders.3.a
 		tag = hire_leader
+		name = keep_leaders.3.a
 		if = {
-			limit = { event_target:infiltrator_representative = { NOT = { has_leader_flag = infiltrator_retain_cover } } }
+			limit = { event_target:transfer_representative = { NOT = { has_leader_flag = infiltrator_retain_cover } } }
 			custom_tooltip_with_params = {
 				description = keep_leaders.3.a.tooltip
 				description_parameters = {
@@ -2340,7 +2374,7 @@ planet_event = {
 			}
 		}
 		hidden_effect = {
-			event_target:infiltrator_representative = {
+			event_target:transfer_representative = {
 				if = {
 					limit = { NOT = { has_leader_flag = infiltrator_retain_cover } }
 					change_leader_portrait = event_target:potential_owner # swap portrait to non-cover
@@ -2350,7 +2384,7 @@ planet_event = {
 			event_target:storage_owner = {
 				every_owned_leader = {
 					limit = {
-						NOT = { is_same_value = event_target:infiltrator_representative }
+						NOT = { is_same_value = event_target:transfer_representative }
 						is_eligible_transfer_leader_from_storage = yes
 					}
 					if = {
@@ -2398,22 +2432,22 @@ planet_event = {
 	}
 	option = {
 		name = keep_leaders.3.b
-		allow = { event_target:infiltrator_representative = { NOT = { has_leader_flag = infiltrator_retain_cover } } }
+		allow = { event_target:transfer_representative = { NOT = { has_leader_flag = infiltrator_retain_cover } } }
 		response_text = keep_leaders.3.b.response
 		is_dialog_only = yes
-		event_target:infiltrator_representative = { set_leader_flag = infiltrator_retain_cover }
+		event_target:transfer_representative = { set_leader_flag = infiltrator_retain_cover }
 	}
 	option = {
 		name = keep_leaders.3.c
-		allow = { event_target:infiltrator_representative = { has_leader_flag = infiltrator_retain_cover } }
+		allow = { event_target:transfer_representative = { has_leader_flag = infiltrator_retain_cover } }
 		response_text = keep_leaders.3.c.response
 		is_dialog_only = yes
-		event_target:infiltrator_representative = { remove_leader_flag = infiltrator_retain_cover }
+		event_target:transfer_representative = { remove_leader_flag = infiltrator_retain_cover }
 	}
 	option = {
+		tag = dismiss_leader
 		name = keep_leaders.3.d
 		custom_tooltip = keep_leaders.3.d.tooltip
-		tag = dismiss_leader
 		hidden_effect = {
 			event_target:storage_owner = { destroy_country = yes }
 			erase_modifier = { MOD = kl_peerless_infiltration_agents }
@@ -3214,12 +3248,18 @@ planet_event = {
 	id = keep_leaders.30
 	title = keep_leaders.30.title
 	desc = keep_leaders.30.desc
-	picture = GFX_evt_gray_gooed_planet
+	auto_opens = no
+	location = this
 	show_sound = event_machinery
-	is_triggered_only = yes
-	pre_triggers = {
-		has_owner = yes
+	picture = GFX_leader_recruitment_bg_planet_destruction # GFX_evt_gray_gooed_planet
+	event_window_type = leader_recruit
+	notification_event_icon = GFX_message_planet_destroyed_leaders
+	picture_event_data = {
+		portrait = event_target:transfer_representative
+		room = ethic_spaceship_room
 	}
+	is_triggered_only = yes
+	pre_triggers = { has_owner = yes }
 	trigger = {
 		has_synthethic_dawn = yes
 		exists = from
@@ -3233,9 +3273,11 @@ planet_event = {
 	}
 	immediate = {
 		prepare_for_primitive_planet_transferred = yes
+		choose_transfer_representative_leader = yes
 	}
 	# assimilate: assimilator
 	option = {
+		tag = hire_leader
 		name = keep_leaders.30.a
 		custom_tooltip_with_params = {
 			description = keep_leaders.1.tooltip
@@ -3270,6 +3312,7 @@ planet_event = {
 	}
 	# keep none (nice)
 	option = {
+		tag = dismiss_leader
 		name = keep_leaders.30.b
 		custom_tooltip = keep_leaders.30.b.tooltip
 		custom_tooltip_with_params = {
@@ -3278,7 +3321,6 @@ planet_event = {
 				TOTAL = "[variable_storage.leader_accumulator]"
 			}
 		}
-		trigger = { from = { is_machine_empire = yes } }
 		hidden_effect = { event_target:storage_owner = { destroy_country = yes } }
 	}
 	after = {
@@ -3355,12 +3397,18 @@ planet_event = {
 	id = keep_leaders.40
 	title = keep_leaders.40.title
 	desc = keep_leaders.40.desc
-	picture = GFX_evt_gray_gooed_planet
+	auto_opens = no
+	location = this
 	show_sound = event_necrophage
-	is_triggered_only = yes
-	pre_triggers = {
-		has_owner = yes
+	picture = GFX_leader_recruitment_bg_necrophage # GFX_evt_gray_gooed_planet
+	event_window_type = leader_recruit
+	notification_event_icon = GFX_message_necrophage_leaders
+	picture_event_data = {
+		portrait = event_target:transfer_representative
+		room = ethic_spaceship_room
 	}
+	is_triggered_only = yes
+	pre_triggers = { has_owner = yes }
 	trigger = {
 		has_necroids = yes
 		exists = from
@@ -3374,9 +3422,11 @@ planet_event = {
 	}
 	immediate = {
 		prepare_for_primitive_planet_transferred = yes
+		choose_transfer_representative_leader = yes
 	}
 	# necrophage
 	option = {
+		tag = hire_leader
 		name = keep_leaders.40.a
 		custom_tooltip_with_params = {
 			description = keep_leaders.1.tooltip
@@ -3440,6 +3490,7 @@ planet_event = {
 	}
 	# keep none (nice)
 	option = {
+		tag = dismiss_leader
 		name = {
 			text = keep_leaders.40.b
 			trigger = { from = { is_hive_empire = no } }
@@ -3459,14 +3510,6 @@ planet_event = {
 			description = keep_leaders.1.tooltip.none
 			description_parameters = {
 				TOTAL = "[variable_storage.leader_accumulator]"
-			}
-		}
-		trigger = {
-			from = {
-				OR = {
-					hidden_trigger = { is_regular_empire = yes }
-					is_hive_empire = yes
-				}
 			}
 		}
 		hidden_effect = { event_target:storage_owner = { destroy_country = yes } }
@@ -3706,14 +3749,8 @@ country_event = {
 		text = keep_leaders.101.desc.mach
 		trigger = { is_machine_empire = yes }
 	}
-	picture = {
-		trigger = { from = { is_robotic_species = no } }
-		picture = GFX_evt_hive_mind
-	}
-	picture = {
-		trigger = { from = { is_robotic_species = yes } }
-		picture = GFX_evt_machine_sapience
-	}
+	auto_opens = no
+	location = capital_scope
 	show_sound = {
 		trigger = { from = { is_robotic_species = no } }
 		sound = event_evolution_mastery
@@ -3722,6 +3759,21 @@ country_event = {
 		trigger = { from = { is_robotic_species = yes } }
 		sound = event_synthetic_evolution
 	}
+	# picture = {
+	# 	trigger = { from = { is_robotic_species = no } }
+	# 	picture = GFX_evt_hive_mind
+	# }
+	# picture = {
+	# 	trigger = { from = { is_robotic_species = yes } }
+	# 	picture = GFX_evt_machine_sapience
+	# }
+	picture = GFX_leader_recruitment_bg_renowned
+	event_window_type = leader_recruit
+	notification_event_icon = GFX_message_leader_pool_refreshed
+	picture_event_data = {
+		portrait = event_target:transfer_representative
+		room = ethic_spaceship_room
+	}
 	trigger = {
 		exists = from
 		from = { has_leader_flag = former_gestalt_ruler_clone }
@@ -3729,35 +3781,27 @@ country_event = {
 	}
 	immediate = {
 		log = "keep_leaders.101 former gestalt leader [From.GetFirstName] respawned"
-		from = { save_event_target_as = unexile_leader }
+		from = { save_event_target_as = transfer_representative }
 	}
 	option = {
+		tag = hire_leader
 		name = INCREDIBLE
 		custom_tooltip = keep_leaders.101.a.tooltip
+		hidden_effect = { event_target:transfer_representative = { klfis_unexile_leader = yes } }
+	}
+	option = {
+		tag = dismiss_leader
+		name = keep_leaders.101.b
+		custom_tooltip = keep_leaders.101.b.tooltip
 		hidden_effect = {
-			create_fleet = {
-				name = "unexile leader"
-				effect = {
-					set_owner = prev
-					create_ship = {
-						name = random
-						random_existing_design = science
-					}
-					set_leader = event_target:unexile_leader
-					save_event_target_as = unexile_fleet
-				}
-			}
-			delete_fleet = {
-				target = event_target:unexile_fleet
-				kill_leader = no
-				destroy_template = yes
-			}
-			event_target:unexile_leader = {
+			event_target:transfer_representative = {
+				klfis_unexile_leader = yes
 				recruitable = no
 				recruitable = yes
 			}
 		}
 	}
+	# TODO: some flavor options to ask the leader about stuff?
 	after = {
 		hidden_effect = {
 			# recalculate former ruler country bonuses
