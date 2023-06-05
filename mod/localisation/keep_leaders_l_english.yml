@@ -201,7 +201,7 @@
  keep_leaders.source_army_name: "[source_army.GetName]"
 
  keep_leaders.3.title: "Mission Report: Infiltration of [Root.GetName]"
- keep_leaders.3.desc: "§HAppearing via encrypted holo-link is the lead infiltrator from the mission to integrate [Root.GetName], still disguised as one of the §Y[original_species.GetNamePlural]§!.\n\n[infiltrator_representative.GetSubjectPronounCap] salute[infiltrator_representative.GetSXX] as crisply as [infiltrator_representative.GetPossPronoun] alien form allows.§!\n\n[From.GetRulerTitle], the mission to infiltrate and subsequently annex §Y[Root.GetName]§! concluded successfully. Now that the operation is complete, my infiltration unit and I are available reassignment. We are proud to serve the [From.GetName]."
+ keep_leaders.3.desc: "§HAppearing via encrypted holo-link is the lead infiltrator from the mission to integrate [Root.GetName], still disguised as one of the §Y[original_species.GetNamePlural]§!.\n\n[infiltrator_representative.GetSubjectPronounCap] salute[infiltrator_representative.GetSXX] as crisply as [infiltrator_representative.GetPossPronoun] alien form allows.§!\n\n[From.GetRulerTitle], the mission to infiltrate and subsequently annex §Y[Root.GetName]§! concluded successfully. Now that the operation is complete, my infiltration unit and I are available for reassignment. We are proud to serve the [From.GetName]."
  keep_leaders.3.a: "A §Ypromotion§! is in order."
  keep_leaders.3.a.tooltip: "Promote them to §Yleaders§!.\n\nGain $VALUE$ leader(s)."
  keep_leaders.3.a.retain.tooltip: "Promote them to §Yleaders§!, but maintain their cover identities.\n\nGain $VALUE$ leader(s), disguised as [original_species.GetNamePlural]."
