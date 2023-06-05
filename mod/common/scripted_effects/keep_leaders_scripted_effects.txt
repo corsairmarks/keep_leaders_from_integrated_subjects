@@ -1322,7 +1322,6 @@ klfis_prepare_psionic_species = {
 
 # changes a gender's leader to match the norms for their species (possibly cloning and replacing them)
 # this = leader, with new species
-# from = species, previous
 klfis_leader_match_gender_to_species = {
 	optimize_memory
 	species = {

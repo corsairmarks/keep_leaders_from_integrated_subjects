@@ -2590,8 +2590,6 @@ leader_event = {
 	is_triggered_only = yes
 	trigger = {
 		has_leader_flag = force_gender_match_species
-		exists = from
-		from = { is_scope_type = species }
 		klfis_leader_species_allows_current_gender = no
 	}
 	immediate = {
