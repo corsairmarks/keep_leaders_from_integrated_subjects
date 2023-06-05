@@ -1868,6 +1868,31 @@ randomize_background_ethic = {
 	}
 }
 
+# this = any
+# event_target:storage_owner = country in which leaders are stored
+# event_target:potential_owner = country to which the leaders would transfer
+choose_transfer_representative_leader = {
+	optimize_memory
+	event_target:storage_owner = {
+		random_owned_leader = {
+			limit = { is_eligible_transfer_leader_from_storage = yes }
+			weights = {
+				base = 0
+				add = trigger:has_skill
+				modifier = {
+					factor = 10000
+					has_leader_flag = former_ruler
+				}
+				modifier = {
+					factor = 100
+					has_leader_flag = former_heir
+				}
+			}
+			save_event_target_as = transfer_representative
+		}
+	}
+}
+
 # this = leader
 # $RETAIN_COVER$ = bool, whether the leader's portrait should be swapped to match the primitive species (default = no)
 # event_target:original_species = fromfrom.owner_species
@@ -1885,4 +1910,26 @@ prepare_to_retain_infiltration_leader = {
 		scopes = { from = event_target:original_species }
 	}
 	try_adjust_background = yes
+}
+
+# this = leader
+klfis_unexile_leader = {
+	optimize_memory
+	create_fleet = {
+		name = "unexile leader"
+		effect = {
+			set_owner = prev
+			create_ship = {
+				name = random
+				random_existing_design = science
+			}
+			set_leader = prev
+			save_event_target_as = unexile_fleet
+		}
+	}
+	delete_fleet = {
+		target = event_target:unexile_fleet
+		kill_leader = no
+		destroy_template = yes
+	}
 }
