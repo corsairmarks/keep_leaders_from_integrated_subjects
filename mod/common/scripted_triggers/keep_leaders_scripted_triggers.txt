@@ -605,7 +605,10 @@ is_eligible_transfer_leader_from_storage = {
 is_eligible_transfer_leader = {
 	optimize_memory
 	is_gestalt_node = no
-	NOT = { leader_class = envoy }
+	NOR = {
+		leader_class = envoy
+		has_leader_flag = klfis_exclude_leader_from_transfer
+	}
 	species = { is_sapient = yes }
 }
 
@@ -713,7 +716,6 @@ all_stored_leaders_hive = {
 has_leader_storage_from_country_to_planet_owner = {
 	optimize_memory
 	any_country = {
-		is_country_type = neutral_faction
 		has_country_flag = former_owner@fromfrom
 		any_owned_leader = {
 			has_leader_flag = former_owner@fromfrom

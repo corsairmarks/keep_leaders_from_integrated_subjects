@@ -7,8 +7,6 @@ namespace = keep_leaders
 # fromfrom = planet, primitive world (if available)
 country_event = {
 	id = keep_leaders.1
-	# TODO: icon should normally be the one for integration,
-	# but can be from invasion or colossus too
 	title = keep_leaders.1.title.scripted_loc
 	desc = {
 		trigger = { has_country_flag = keeping_leaders_conquest@from }
@@ -146,7 +144,6 @@ country_event = {
 	trigger = {
 		exists = from
 		any_country = {
-			is_country_type = neutral_faction
 			has_country_flag = former_owner@from
 			any_owned_leader = {
 				has_leader_flag = former_owner@from
@@ -156,7 +153,7 @@ country_event = {
 	}
 	immediate = {
 		log = "country [This.GetRealName] retaining leaders from [From.GetRealName]"
-		# "argument" for create_leader_storage_and_transfer_leaders
+		# "argument" for choose_transfer_representative_leader and others
 		save_event_target_as = potential_owner
 		from = {
 			save_event_target_as = former_owner
@@ -165,15 +162,17 @@ country_event = {
 		}
 		# acquire leader and variable storage
 		random_country = {
-			limit = {
-				is_country_type = neutral_faction
-				has_country_flag = former_owner@from
-			}
+			limit = { has_country_flag = former_owner@from }
 			save_event_target_as = storage_owner
 			save_event_target_as = variable_storage
 		}
 		choose_transfer_representative_leader = yes
 	}
+	# TODO: set hire_leader/dismiss_leader tags
+	# generally, choose the "keep all" and "keep none" options
+	# "keep all" will need _lots_ of conditionals to reflect exclusives/vs not exclusive
+	# "regular" exclusive options only show if there are alternatives
+
 	# keep none
 	option = {
 		name = keep_leaders.1.a
@@ -2391,7 +2390,7 @@ planet_event = {
 					}
 					take_ownership_of_leader = yes
 				}
-				destroy_country = yes
+				try_clean_up_leader_storage = yes
 			}
 		}
 		ai_chance = {
@@ -2444,7 +2443,7 @@ planet_event = {
 		name = keep_leaders.3.d
 		custom_tooltip = keep_leaders.3.d.tooltip
 		hidden_effect = {
-			event_target:storage_owner = { destroy_country = yes }
+			event_target:storage_owner = { try_clean_up_leader_storage = yes }
 			erase_modifier = { MOD = kl_peerless_infiltration_agents }
 		}
 		owner = {
@@ -2512,7 +2511,7 @@ country_event = {
 		create_leader_storage_and_transfer_leaders = yes
 		country_event = {
 			id = keep_leaders.1 # hooray for reuse!
-			scopes = { from = from }
+			scopes = { from = event_target:former_owner }
 		}
 	}
 }
@@ -2656,7 +2655,7 @@ country_event = {
 					ensure_species_rights_and_take_ownership_of_leader = yes
 				}
 			}
-			destroy_country = yes
+			try_clean_up_leader_storage = yes
 		}
 		set_update_modifiers_batch = end
 	}
@@ -2698,7 +2697,7 @@ country_event = {
 					ensure_species_rights_and_take_ownership_of_leader = yes
 				}
 			}
-			destroy_country = yes
+			try_clean_up_leader_storage = yes
 		}
 		set_update_modifiers_batch = end
 	}
@@ -2729,7 +2728,7 @@ country_event = {
 				}
 				ensure_species_rights_and_take_ownership_of_leader = yes
 			}
-			destroy_country = yes
+			try_clean_up_leader_storage = yes
 		}
 		set_update_modifiers_batch = end
 	}
@@ -2774,7 +2773,7 @@ country_event = {
 				try_apply_unmachine_assimilation = yes
 				complete_assimilation_and_take_ownership_of_leader = yes
 			}
-			destroy_country = yes
+			try_clean_up_leader_storage = yes
 		}
 		set_update_modifiers_batch = end
 	}
@@ -2809,7 +2808,7 @@ country_event = {
 				}
 				ensure_species_rights_and_take_ownership_of_leader = yes
 			}
-			destroy_country = yes
+			try_clean_up_leader_storage = yes
 		}
 		set_update_modifiers_batch = end
 	}
@@ -2849,7 +2848,7 @@ country_event = {
 				}
 				ensure_species_rights_and_take_ownership_of_leader = yes
 			}
-			destroy_country = yes
+			try_clean_up_leader_storage = yes
 		}
 		set_update_modifiers_batch = end
 	}
@@ -2902,7 +2901,7 @@ country_event = {
 				}
 				complete_assimilation_and_take_ownership_of_leader = yes
 			}
-			destroy_country = yes
+			try_clean_up_leader_storage = yes
 		}
 		set_update_modifiers_batch = end
 	}
@@ -2956,7 +2955,7 @@ country_event = {
 				}
 				complete_assimilation_and_take_ownership_of_leader = yes
 			}
-			destroy_country = yes
+			try_clean_up_leader_storage = yes
 		}
 		set_update_modifiers_batch = end
 	}
@@ -3010,7 +3009,7 @@ country_event = {
 				}
 				complete_assimilation_and_take_ownership_of_leader = yes
 			}
-			destroy_country = yes
+			try_clean_up_leader_storage = yes
 		}
 		set_update_modifiers_batch = end
 	}
@@ -3064,7 +3063,7 @@ country_event = {
 				}
 				complete_assimilation_and_take_ownership_of_leader = yes
 			}
-			destroy_country = yes
+			try_clean_up_leader_storage = yes
 		}
 		set_update_modifiers_batch = end
 	}
@@ -3169,7 +3168,7 @@ country_event = {
 					ensure_species_rights_and_take_ownership_of_leader = yes
 				}
 			}
-			destroy_country = yes
+			try_clean_up_leader_storage = yes
 		}
 		set_update_modifiers_batch = end
 	}
@@ -3669,12 +3668,10 @@ planet_event = {
 		has_leader_storage_from_country_to_planet_owner = yes
 	}
 	immediate = {
+		from = { save_event_target_as = potential_owner }
 		random_country = {
-			limit = {
-				is_country_type = neutral_faction
-				has_country_flag = former_owner@fromfrom
-			}
-			destroy_country = yes
+			limit = { has_country_flag = former_owner@fromfrom }
+			try_clean_up_leader_storage = yes
 		}
 	}
 }
@@ -3693,29 +3690,30 @@ country_event = {
 	}
 	immediate = {
 		log = "keep_leaders.100 former gestalt leader [From.GetName] death"
-		create_leader = {
-			name = random
-			class = random
-			species = from
-			effect = {
-				save_event_target_as = age_proxy
+		# event_target:former_owner_shell@from = {
+			create_leader = {
+				name = random
+				class = random
+				species = from
+				effect = { save_event_target_as = age_proxy }
 			}
-		}
-		clone_leader = {
-			target = from
-			effect = {
-				set_leader_flag = former_gestalt_ruler_clone
-				add_experience = event_target:leader_to_clone.trigger:has_experience # doesn't get copied implicitly when cloned
-				set_years_served = from
-				set_age = event_target:age_proxy.trigger:leader_age
-				event_target:age_proxy = { kill_leader = { show_notification = no } }
-				save_event_target_as = exiled_former_gestalt_ruler
-				exile_leader_as = exiled_former_gestalt_ruler@this
+			clone_leader = {
+				target = from
+				effect = {
+					set_leader_flag = former_gestalt_ruler_clone
+					copy_flags_and_variables_from = from
+					add_experience = from.trigger:has_experience # doesn't get copied implicitly when cloned
+					set_years_served = from
+					set_age = event_target:age_proxy.trigger:leader_age
+					event_target:age_proxy = { kill_leader = { show_notification = no } }
+					save_event_target_as = former_gestalt_ruler
+					exile_leader_as = exiled_former_gestalt_ruler
+				}
 			}
-		}
+		# }
 		country_event = {
 			id = keep_leaders.101
-			scopes = { from = event_target:exiled_former_gestalt_ruler }
+			scopes = { from = event_target:former_gestalt_ruler }
 			days = 30
 			random = 60
 		}
@@ -3782,7 +3780,13 @@ country_event = {
 		tag = hire_leader
 		name = INCREDIBLE
 		custom_tooltip = keep_leaders.101.a.tooltip
-		hidden_effect = { event_target:transfer_representative = { klfis_unexile_leader = yes } }
+		hidden_effect = {
+			event_target:transfer_representative = { klfis_unexile_leader = yes }
+			# recalculate former ruler country bonuses
+			country_event = {
+				id = keep_leaders_bonus_traits.20
+			}
+		}
 	}
 	option = {
 		tag = dismiss_leader
@@ -3797,14 +3801,54 @@ country_event = {
 		}
 	}
 	# TODO: some flavor options to ask the leader about stuff?
-	after = {
-		hidden_effect = {
-			# recalculate former ruler country bonuses
-			from = {
-				country_event = {
-					id = keep_leaders_bonus_traits.20
+	after = { hidden_effect = { event_target:transfer_representative = { remove_leader_flag = former_gestalt_ruler_clone } } }
+}
+
+# triggered by on_leader_death and on_leader_fired (not currently active)
+# attempt to clean up former_owner_shells when the relevant leaders die/get fired,
+# but not if there is another leader using the same shell
+# root = country
+# from = leader
+country_event = {
+	id = keep_leaders.110
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = {
+		exists = from
+		from = {
+			OR = {
+				has_leader_flag = former_ruler
+				has_leader_flag = former_heir
+			}
+		}
+		exists = event_target:former_owner_shell@from
+	}
+	immediate = {
+		event_target:former_owner_shell@from = {
+			# pretty sure things will get weird if I try to use a dynamic event_target as a suffix to another dynamic event_target - so save it locally
+			save_event_target_as = former_owner_shell
+		}
+		if = {
+			limit = {
+				event_target:former_owner_shell = { NOT = { any_owned_leader = { has_leader_flag = former_gestalt_ruler_clone } } }
+				# I doubt the leaders somehow got split up, but just in case check all the countries
+				count_country = {
+					count = all
+					limit = {
+						NOR = {
+							any_owned_leader = {
+								NOT = { is_same_value = from }
+								has_leader_flag = former_owner_shell@event_target:former_owner_shell
+							}
+							any_pool_leader = {
+								NOT = { is_same_value = from }
+								has_leader_flag = former_owner_shell@event_target:former_owner_shell
+							}
+						}
+					}
 				}
 			}
+			event_target:former_owner_shell = { destroy_country = yes }
 		}
 	}
 }
