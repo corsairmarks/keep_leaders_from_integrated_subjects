@@ -11,21 +11,20 @@
  keep_leaders.1.desc.planet_killer_generic: "Following the activation of our §YPlanet-Killer Weapon§! and subsequent annexation of §H[conquered_planet.GetName]§! it appears that some of the primitive [original_species.GetName] species survived. What shall we do with their leaders?"
 
  # don't keep any leaders
- keep_leaders.1.a: "Then \"dispose\" of them."
+ keep_leaders.1.a: "Then we shall \"dispose\" of you."
  keep_leaders.1.a.tooltip: "All leaders from the §H[storage_owner.GetRealName]§! are executed.\n\n"
- keep_leaders.1.a.pur: "Purify them."
- keep_leaders.1.a.zeal: "Eliminate them."
- keep_leaders.1.a.swarm: "Eat them."
+ keep_leaders.1.a.pur: "Filth of you kind can only be redeemed through purification."
+ keep_leaders.1.a.swarm: "You shall make a fine feast!"
  keep_leaders.1.a.swarm.tooltip: "All leaders from the §H[storage_owner.GetRealName]§! are eaten.\n\n"
- keep_leaders.1.a.term: "Terminate them."
+ keep_leaders.1.a.term: "Termination units are en route to your location. Please stand by."
+ keep_leaders.1.a.serv: "We shall be escort you to a sanctuary. You are safe now."
+ keep_leaders.1.a.serv.tooltip: "All leaders from the §H[storage_owner.GetRealName]§! are released to our organic sanctuaries.\n\n"
+ keep_leaders.1.a.gest.exclusive: "You shall serve better as drones."
+ keep_leaders.1.a.gest.exclusive.tooltip: "All [potential_owner.GetUnitDronePlural] from the §H[storage_owner.GetRealName]§! are reassigned to standard drone duties.\n\n"
 
  # don't keep any leaders, but be nice
- keep_leaders.1.b: "Retire them."
+ keep_leaders.1.b: "Your services are not needed. Consider it early retirement."
  keep_leaders.1.b.tooltip: "All leaders from the §H[storage_owner.GetRealName]§! are forced to retire.\n\n"
- keep_leaders.1.b.serv: "Send them all to the sanctuaries."
- keep_leaders.1.b.serv.tooltip: "All leaders from the §H[storage_owner.GetRealName]§! are released to our organic sanctuaries.\n\n"
- keep_leaders.1.b.gest.exclusive: "They will serve better as drones."
- keep_leaders.1.b.gest.exclusive.tooltip: "All [potential_owner.GetUnitDronePlural] from the §H[storage_owner.GetRealName]§! are reassigned to standard drone duties.\n\n"
 
  # integrate robotic only (+cyborgs if applicable) (target has both)
  keep_leaders.1.c: "Reprogram all §Y$ROBOT_plural$§! and §Y$MACHINE_plural$§! to the serve us. Execute the rest."
@@ -218,16 +217,16 @@
  # colossus transfer title and descriptions
  keep_leaders.30.title: "$PLANET_CAP$ [This.GetName] Cyborgized"
  keep_leaders.30.desc: "Any §Y$BIOLOGICAL$§!, non-§Y$trait_hive_mind$§! leaders from the §H[storage_owner.GetRealName]§! were cyborgized when we fired our §Y$PLANET_KILLER_NANOBOTS$§! on their homeworld §H[This.GetName]§! and were immediately integrated into the collective.\n\nTheir unique abilities could be a boon to the collective a semi-autonomous leaders."
- keep_leaders.30.a: "Their uniqueness shall serve the collective."
- keep_leaders.30.b: "$keep_leaders.1.b.gest.exclusive$"
- keep_leaders.30.b.tooltip: "$keep_leaders.1.b.gest.exclusive.tooltip$"
+ keep_leaders.30.a: "Your uniqueness shall serve the collective."
+ keep_leaders.30.b: "$keep_leaders.1.a.gest.exclusive$"
+ keep_leaders.30.b.tooltip: "$keep_leaders.1.a.gest.exclusive.tooltip$"
  keep_leaders.40.title: "$PLANET_CAP$ [This.GetName] Necrophaged"
  keep_leaders.40.desc: "§Y$BIOLOGICAL$§! leaders from the §H[storage_owner.GetRealName]§! were necrophaged into [This.Owner.GetSpeciesName] when we fired our §Y$PLANET_KILLER_SPORE_DISPERSAL$§! on their homeworld §H[This.GetName]§!.\n\nAs members of our species and given their prior experience, they may yet be valuable assets."
- keep_leaders.40.a: "They are now us; send them for assignment."
+ keep_leaders.40.a: "You are now us; report for assignment."
  keep_leaders.40.b: "$keep_leaders.1.b$"
  keep_leaders.40.b.tooltip: "$keep_leaders.1.b.tooltip$"
- keep_leaders.40.b.hive: "$keep_leaders.1.b.gest.exclusive$"
- keep_leaders.40.b.hive.tooltip: "$keep_leaders.1.b.gest.exclusive.tooltip$"
+ keep_leaders.40.b.hive: "$keep_leaders.1.a.gest.exclusive$"
+ keep_leaders.40.b.hive.tooltip: "$keep_leaders.1.a.gest.exclusive.tooltip$"
  keep_leaders.40.c: "Execute them anyway."
  keep_leaders.40.c.tooltip: "$keep_leaders.1.a.tooltip$"
 
