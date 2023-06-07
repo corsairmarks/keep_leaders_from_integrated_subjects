@@ -179,7 +179,7 @@ country_event = {
 # shim event in order to update country-level leader bonuses when a leader is hired
 # triggered by on_leader_hired
 # root = leader
-country_event = {
+leader_event = {
 	id = keep_leaders_bonus_traits.22
 	is_triggered_only = yes
 	hide_window = yes
@@ -210,7 +210,7 @@ country_event = {
 		random_owned_leader = {
 			limit = { has_leader_flag = former_ruler }
 			leader_event = {
-				id = keep_leaders.1001
+				id = keep_leaders_bonus_traits.1001
 			}
 		}
 	}
