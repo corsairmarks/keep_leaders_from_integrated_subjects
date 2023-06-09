@@ -2024,8 +2024,8 @@ retain_leaders_same_species_effect = {
 	custom_tooltip_with_params = {
 		description = keep_leaders.1.tooltip
 		description_parameters = {
-			VALUE = "[variable_storage.leader_same_species_accumulator]"
-			TOTAL = "[variable_storage.leader_accumulator]"
+			VALUE = "\\[variable_storage.leader_same_species_accumulator]"
+			TOTAL = "\\[variable_storage.leader_accumulator]"
 		}
 	}
 	klfis_try_generate_rewards_fanatic_purifiers = yes
@@ -2045,8 +2045,8 @@ retain_leaders_organic_only_effect = {
 	custom_tooltip_with_params = {
 		description = keep_leaders.1.tooltip
 		description_parameters = {
-			VALUE = "[variable_storage.leader_organic_accumulator]"
-			TOTAL = "[variable_storage.leader_accumulator]"
+			VALUE = "\\[variable_storage.leader_organic_accumulator]"
+			TOTAL = "\\[variable_storage.leader_accumulator]"
 		}
 	}
 	klfis_try_generate_rewards_organic_zealots = yes
@@ -2065,8 +2065,8 @@ retain_leaders_robotic_only_effect = {
 	custom_tooltip_with_params = {
 		description = keep_leaders.1.tooltip
 		description_parameters = {
-			VALUE = "[variable_storage.leader_robotic_accumulator]"
-			TOTAL = "[variable_storage.leader_accumulator]"
+			VALUE = "\\[variable_storage.leader_robotic_accumulator]"
+			TOTAL = "\\[variable_storage.leader_accumulator]"
 		}
 	}
 	klfis_try_generate_rewards_machine_terminator = yes
@@ -2085,8 +2085,8 @@ retain_leaders_hive_only_effect = {
 	custom_tooltip_with_params = {
 		description = keep_leaders.1.tooltip
 		description_parameters = {
-			VALUE = "[variable_storage.leader_hive_accumulator]"
-			TOTAL = "[variable_storage.leader_accumulator]"
+			VALUE = "\\[variable_storage.leader_hive_accumulator]"
+			TOTAL = "\\[variable_storage.leader_accumulator]"
 		}
 	}
 	hidden_effect = {
@@ -2104,8 +2104,8 @@ retain_leaders_all_non_assimilation_effect = {
 	custom_tooltip_with_params = {
 		description = keep_leaders.1.tooltip
 		description_parameters = {
-			VALUE = "[variable_storage.leader_transferable_accumulator]"
-			TOTAL = "[variable_storage.leader_accumulator]"
+			VALUE = "\\[variable_storage.leader_transferable_accumulator]"
+			TOTAL = "\\[variable_storage.leader_accumulator]"
 		}
 	}
 	hidden_effect = {
