@@ -13,7 +13,7 @@
  # don't keep any leaders
  keep_leaders.1.a: "Then we shall \"dispose\" of you."
  keep_leaders.1.a.tooltip: "All leaders from the §H[storage_owner.GetRealName]§! are executed.\n\n"
- keep_leaders.1.a.pur: "Filth of you kind can only be redeemed through purification."
+ keep_leaders.1.a.pur: "Filth of your kind can only be redeemed through purification."
  keep_leaders.1.a.swarm: "You shall make a fine feast!"
  keep_leaders.1.a.swarm.tooltip: "All leaders from the §H[storage_owner.GetRealName]§! are eaten.\n\n"
  keep_leaders.1.a.term: "Termination units are en route to your location. Please stand by."
@@ -49,7 +49,7 @@
  # keep organics only (target has both)
  keep_leaders.1.e: "The organics shall join us. Recycle any §Y$ROBOT_plural$§! or §Y$MACHINE_plural$§!."
  keep_leaders.1.e.tooltip: "§Y$BIOLOGICAL$§!, non-§Y$trait_hive_mind$§! leaders from the §H[storage_owner.GetRealName]§! are allowed to join our empire, but §Y$ROBOT$§! and §Y$MACHINE$§! leaders are recycled.\n\n"
- keep_leaders.1.e.spir: "Welcome the organics. Cleanse the abominable thinking machines."
+ keep_leaders.1.e.zeal: "Welcome the organics. Cleanse the abominable thinking machines."
  keep_leaders.1.e.ai: "The organics shall join us. Retire any §Y$ROBOT_plural$§! or §Y$MACHINE_plural$§!."
  keep_leaders.1.e.ai.tooltip: "§Y$BIOLOGICAL$§!, non-§Y$trait_hive_mind$§! leaders from the §H[storage_owner.GetRealName]§! are allowed to join our empire, but §Y$ROBOT$§! and §Y$MACHINE$§! leaders are forced to retire.\n\n"
  keep_leaders.1.e.serv: "Machine stewardship failed these organics; they shall advise us."
@@ -155,12 +155,13 @@
 
  # custom event fail text
  keep_leaders.1.serv.fail_text: "We would never harm organics!"
- keep_leaders.1.pur.fail_text: "Some of the leaders are foul §Yxenos§! that must be purged."
- keep_leaders.1.term.fail_text: "Some of the leaders are §Yorganics§! that must be terminated."
- keep_leaders.1.mach.fail_text: "Some of the leaders are independent §Yorganics§! that are incompatible with our society."
- keep_leaders.1.zeal.fail_text: "Some of the leaders are blasphemous §Ythinking machines§! that must be purged."
- keep_leaders.1.b.hive.fail_text: "Some of the leaders are not §Y$trait_hive_mind$§! - they are incompatible with our society."
- keep_leaders.1.swarm.fail_text: "We have no interest in allowing the Mind of prey weaken us."
+ keep_leaders.1.pur.fail_text: "All of the leaders are foul §Yxenos§! that must be purged."
+ keep_leaders.1.term.fail_text: "All of the leaders are §Yorganics§! that must be terminated."
+ keep_leaders.1.mach.fail_text: "All of the leaders are independent §Yorganics§! that are incompatible with our society."
+ keep_leaders.1.zeal.fail_text: "All of the leaders are blasphemous §Ythinking machines§! that must be purged."
+ keep_leaders.1.hive.fail_text: "All of the leaders are not §Y$trait_hive_mind$§! - they are incompatible with our society."
+ keep_leaders.1.swarm.fail_text: "All of the leaders are clever §Yprey§! - their intellects add to the savor."
+ keep_leaders.1.swarm.hive.fail_text: "We have no interest in allowing the Mind of prey weaken us."
  keep_leaders.1.j.fail_text: "There are no leaders eligible for reassignment."
  keep_leaders.1.k.bio.fail_text: "We lack the $tradition_genetics$ tradition §Y$tr_genetics_creation$§!."
  keep_leaders.1.k.psionic.fail_text: "We lack the $tradition_psionics$ tradition §Y$tr_psionics_psionic_assimilation$§!."
