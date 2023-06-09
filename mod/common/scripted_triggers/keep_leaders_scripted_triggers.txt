@@ -22,13 +22,7 @@ klfis_is_necrophage_empire = {
 # this = country
 empire_considers_cyborgs_robotic = {
 	optimize_memory
-	OR = {
-		has_valid_civic = civic_machine_assimilator
-		has_ascension_perk = ap_the_flesh_is_weak
-		has_country_flag = cyborg_empire
-		has_ascension_perk = ap_synthetic_evolution
-		has_country_flag = synthetic_empire
-	}
+	has_valid_civic = civic_machine_assimilator
 }
 
 # this = country
