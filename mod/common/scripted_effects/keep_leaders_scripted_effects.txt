@@ -1978,7 +1978,7 @@ klfis_unexile_leader = {
 }
 
 # this = country, which will become the owner the leaders
-# event_target:variable_storage = a scope with the leader-related variables (see create_leader_storage_and_transfer_leaders and accumulate_leader)
+# event_target:variable_storage = a scope with the leader-count-related variables (see effects create_leader_storage_and_transfer_leaders and accumulate_leader)
 retain_leaders_same_species_effect = {
 	optimize_memory
 	custom_tooltip_with_params = {
@@ -1999,7 +1999,7 @@ retain_leaders_same_species_effect = {
 }
 
 # this = country, which will become the owner the leaders
-# event_target:variable_storage = a scope with the leader-related variables (see create_leader_storage_and_transfer_leaders and accumulate_leader)
+# event_target:variable_storage = a scope with the leader-count-related variables (see effects create_leader_storage_and_transfer_leaders and accumulate_leader)
 retain_leaders_organic_only_effect = {
 	optimize_memory
 	custom_tooltip_with_params = {
@@ -2019,7 +2019,7 @@ retain_leaders_organic_only_effect = {
 }
 
 # this = country, which will become the owner the leaders
-# event_target:variable_storage = a scope with the leader-related variables (see create_leader_storage_and_transfer_leaders and accumulate_leader)
+# event_target:variable_storage = a scope with the leader-count-related variables (see effects create_leader_storage_and_transfer_leaders and accumulate_leader)
 retain_leaders_robotic_only_effect = {
 	optimize_memory
 	custom_tooltip_with_params = {
@@ -2039,7 +2039,7 @@ retain_leaders_robotic_only_effect = {
 }
 
 # this = country, which will become the owner the leaders
-# event_target:variable_storage = a scope with the leader-related variables (see create_leader_storage_and_transfer_leaders and accumulate_leader)
+# event_target:variable_storage = a scope with the leader-count-related variables (see effects create_leader_storage_and_transfer_leaders and accumulate_leader)
 retain_leaders_hive_only_effect = {
 	optimize_memory
 	custom_tooltip_with_params = {
@@ -2058,7 +2058,7 @@ retain_leaders_hive_only_effect = {
 }
 
 # this = country, which will become the owner the leaders
-# event_target:variable_storage = a scope with the leader-related variables (see create_leader_storage_and_transfer_leaders and accumulate_leader)
+# event_target:variable_storage = a scope with the leader-count-related variables (see effects create_leader_storage_and_transfer_leaders and accumulate_leader)
 retain_leaders_all_non_assimilation_effect = {
 	optimize_memory
 	custom_tooltip_with_params = {
@@ -2077,7 +2077,7 @@ retain_leaders_all_non_assimilation_effect = {
 }
 
 # this = country, which will become the owner the leaders
-# event_target:variable_storage = a scope with the leader-related variables (see create_leader_storage_and_transfer_leaders and accumulate_leader)
+# event_target:variable_storage = a scope with the leader-count-related variables (see effects create_leader_storage_and_transfer_leaders and accumulate_leader)
 klfis_try_generate_rewards_fanatic_purifiers = {
 	optimize_memory
 	if = {
@@ -2090,7 +2090,7 @@ klfis_try_generate_rewards_fanatic_purifiers = {
 }
 
 # this = country, which will become the owner the leaders
-# event_target:variable_storage = a scope with the leader-related variables (see create_leader_storage_and_transfer_leaders and accumulate_leader)
+# event_target:variable_storage = a scope with the leader-count-related variables (see effects create_leader_storage_and_transfer_leaders and accumulate_leader)
 klfis_try_generate_rewards_hive_devouring_swarm = {
 	optimize_memory
 	if = {
@@ -2103,7 +2103,7 @@ klfis_try_generate_rewards_hive_devouring_swarm = {
 }
 
 # this = country, which will become the owner the leaders
-# event_target:variable_storage = a scope with the leader-related variables (see create_leader_storage_and_transfer_leaders and accumulate_leader)
+# event_target:variable_storage = a scope with the leader-count-related variables (see effects create_leader_storage_and_transfer_leaders and accumulate_leader)
 klfis_try_generate_rewards_organic_zealots = {
 	optimize_memory
 	if = {
@@ -2116,7 +2116,7 @@ klfis_try_generate_rewards_organic_zealots = {
 }
 
 # this = country, which will become the owner the leaders
-# event_target:variable_storage = a scope with the leader-related variables (see create_leader_storage_and_transfer_leaders and accumulate_leader)
+# event_target:variable_storage = a scope with the leader-count-related variables (see effects create_leader_storage_and_transfer_leaders and accumulate_leader)
 klfis_try_generate_rewards_machine_assimilator = {
 	optimize_memory
 	if = {
@@ -2141,7 +2141,7 @@ klfis_try_generate_rewards_machine_assimilator = {
 }
 
 # this = country, which will become the owner the leaders
-# event_target:variable_storage = a scope with the leader-related variables (see create_leader_storage_and_transfer_leaders and accumulate_leader)
+# event_target:variable_storage = a scope with the leader-count-related variables (see effects create_leader_storage_and_transfer_leaders and accumulate_leader)
 klfis_try_generate_rewards_machine_terminator = {
 	optimize_memory
 	if = {
@@ -2154,7 +2154,7 @@ klfis_try_generate_rewards_machine_terminator = {
 }
 
 # this = country, which will become the owner the leaders
-# event_target:variable_storage = a scope with the leader-related variables (see create_leader_storage_and_transfer_leaders and accumulate_leader)
+# event_target:variable_storage = a scope with the leader-count-related variables (see effects create_leader_storage_and_transfer_leaders and accumulate_leader)
 klfis_try_generate_rewards_origin_necrophage = {
 	optimize_memory
 	if = {

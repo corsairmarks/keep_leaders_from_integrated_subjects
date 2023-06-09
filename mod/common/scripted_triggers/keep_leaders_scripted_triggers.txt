@@ -662,8 +662,7 @@ any_stored_leaders_eligible_to_transfer_main_species_leader_restricted = {
 	}
 }
 
-# this = country
-# event_target:potential_owner = country to which the leader would transfer
+# this = any, the scope must have the leader-count-related variables (see effects create_leader_storage_and_transfer_leaders and accumulate_leader)
 all_stored_leaders_same_species = {
 	optimize_memory
 	check_variable = {
@@ -672,8 +671,7 @@ all_stored_leaders_same_species = {
 	}
 }
 
-# this = country
-# event_target:potential_owner = country to which the leader would transfer
+# this = any, the scope must have the leader-count-related variables (see effects create_leader_storage_and_transfer_leaders and accumulate_leader)
 all_stored_leaders_organic = {
 	optimize_memory
 	check_variable = {
@@ -682,8 +680,18 @@ all_stored_leaders_organic = {
 	}
 }
 
-# this = country
-# event_target:potential_owner = country to which the leader would transfer
+# this = any, the scope must have the leader-count-related variables (see effects create_leader_storage_and_transfer_leaders and accumulate_leader)
+all_stored_leaders_organic_non_hive = {
+	optimize_memory
+	check_variable_arithmetic = {
+		which = leader_accumulator
+		subtract = leader_hive_accumulator
+		subtract = leader_robotic_accumulator
+		value = leader_organic_accumulator
+	}
+}
+
+# this = any, the scope must have the leader-count-related variables (see effects create_leader_storage_and_transfer_leaders and accumulate_leader)
 all_stored_leaders_robotic = {
 	optimize_memory
 	check_variable = {
@@ -692,8 +700,7 @@ all_stored_leaders_robotic = {
 	}
 }
 
-# this = country
-# event_target:potential_owner = country to which the leader would transfer
+# this = any, the scope must have the leader-count-related variables (see effects create_leader_storage_and_transfer_leaders and accumulate_leader)
 all_stored_leaders_hive = {
 	optimize_memory
 	check_variable = {
@@ -702,8 +709,7 @@ all_stored_leaders_hive = {
 	}
 }
 
-# this = country
-# event_target:potential_owner = country to which the leader would transfer
+# this = any, the scope must have the leader-count-related variables (see effects create_leader_storage_and_transfer_leaders and accumulate_leader)
 has_any_stored_leaders_same_species = {
 	optimize_memory
 	check_variable = {
@@ -712,8 +718,7 @@ has_any_stored_leaders_same_species = {
 	}
 }
 
-# this = country
-# event_target:potential_owner = country to which the leader would transfer
+# this = any, the scope must have the leader-count-related variables (see effects create_leader_storage_and_transfer_leaders and accumulate_leader)
 has_any_stored_leaders_organic = {
 	optimize_memory
 	check_variable = {
@@ -722,8 +727,18 @@ has_any_stored_leaders_organic = {
 	}
 }
 
-# this = country
-# event_target:potential_owner = country to which the leader would transfer
+# this = any, the scope must have the leader-count-related variables (see effects create_leader_storage_and_transfer_leaders and accumulate_leader)
+has_any_stored_leaders_organic_non_hive = {
+	optimize_memory
+	check_variable_arithmetic = {
+		which = leader_accumulator
+		subtract = leader_hive_accumulator
+		subtract = leader_robotic_accumulator
+		value > 0
+	}
+}
+
+# this = any, the scope must have the leader-count-related variables (see effects create_leader_storage_and_transfer_leaders and accumulate_leader)
 has_any_stored_leaders_robotic = {
 	optimize_memory
 	check_variable = {
@@ -732,16 +747,21 @@ has_any_stored_leaders_robotic = {
 	}
 }
 
-# this = country
-# event_target:potential_owner = country to which the leader would transfer
+# this = any, the scope must have the leader-count-related variables (see effects create_leader_storage_and_transfer_leaders and accumulate_leader)
 has_stored_leaders_both_robotic_and_organic = {
 	optimize_memory
 	has_any_stored_leaders_robotic = yes
 	has_any_stored_leaders_organic = yes
 }
 
-# this = country
-# event_target:potential_owner = country to which the leader would transfer
+# this = any, the scope must have the leader-count-related variables (see effects create_leader_storage_and_transfer_leaders and accumulate_leader)
+has_stored_leaders_both_robotic_and_organic_non_hive = {
+	optimize_memory
+	has_any_stored_leaders_robotic = yes
+	has_any_stored_leaders_organic_non_hive = yes
+}
+
+# this = any, the scope must have the leader-count-related variables (see effects create_leader_storage_and_transfer_leaders and accumulate_leader)
 has_any_stored_leaders_hive = {
 	optimize_memory
 	check_variable = {
@@ -750,8 +770,7 @@ has_any_stored_leaders_hive = {
 	}
 }
 
-# this = country
-# event_target:potential_owner = country to which the leader would transfer
+# this = any, the scope must have the leader-count-related variables (see effects create_leader_storage_and_transfer_leaders and accumulate_leader)
 has_any_stored_leaders_non_hive = {
 	optimize_memory
 	check_variable = {
