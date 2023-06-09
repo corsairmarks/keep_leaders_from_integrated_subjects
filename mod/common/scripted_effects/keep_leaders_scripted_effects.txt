@@ -847,7 +847,15 @@ try_process_gestalt_ruler = {
 accumulate_leader = {
 	optimize_memory
 	if = {
-		limit = { is_robotic_species = no }
+		limit = { is_robotic_species_lenient = yes }
+		event_target:variable_storage = {
+			change_variable = {
+				which = leader_robotic_accumulator
+				value = 1
+			}
+		}
+	}
+	else = {
 		event_target:variable_storage = {
 			change_variable = {
 				which = leader_organic_accumulator
@@ -865,17 +873,9 @@ accumulate_leader = {
 		}
 	}
 	if = {
-		limit = { is_robotic_species_lenient = yes }
-		event_target:variable_storage = {
-			change_variable = {
-				which = leader_robotic_accumulator
-				value = 1
-			}
-		}
-	}
-	else_if= {
 		limit = {
 			species = {
+				is_robotic = no
 				is_sapient = yes
 				NOR = {
 					is_same_species = event_target:potential_owner.owner_species
@@ -1974,5 +1974,200 @@ klfis_unexile_leader = {
 		target = event_target:unexile_fleet
 		kill_leader = no
 		destroy_template = yes
+	}
+}
+
+# this = country, which will become the owner the leaders
+# event_target:variable_storage = a scope with the leader-related variables (see create_leader_storage_and_transfer_leaders and accumulate_leader)
+retain_leaders_same_species_effect = {
+	optimize_memory
+	custom_tooltip_with_params = {
+		description = keep_leaders.1.tooltip
+		description_parameters = {
+			VALUE = "[variable_storage.leader_same_species_accumulator]"
+			TOTAL = "[variable_storage.leader_accumulator]"
+		}
+	}
+	klfis_try_generate_rewards_fanatic_purifiers = yes
+	klfis_try_generate_rewards_hive_devouring_swarm = yes
+	hidden_effect = {
+		country_event = {
+			id = keep_leaders.12
+			scopes = { from = event_target:storage_owner }
+		}
+	}
+}
+
+# this = country, which will become the owner the leaders
+# event_target:variable_storage = a scope with the leader-related variables (see create_leader_storage_and_transfer_leaders and accumulate_leader)
+retain_leaders_organic_only_effect = {
+	optimize_memory
+	custom_tooltip_with_params = {
+		description = keep_leaders.1.tooltip
+		description_parameters = {
+			VALUE = "[variable_storage.leader_organic_accumulator]"
+			TOTAL = "[variable_storage.leader_accumulator]"
+		}
+	}
+	klfis_try_generate_rewards_organic_zealots = yes
+	hidden_effect = {
+		country_event = {
+			id = keep_leaders.11
+			scopes = { from = event_target:storage_owner }
+		}
+	}
+}
+
+# this = country, which will become the owner the leaders
+# event_target:variable_storage = a scope with the leader-related variables (see create_leader_storage_and_transfer_leaders and accumulate_leader)
+retain_leaders_robotic_only_effect = {
+	optimize_memory
+	custom_tooltip_with_params = {
+		description = keep_leaders.1.tooltip
+		description_parameters = {
+			VALUE = "[variable_storage.leader_robotic_accumulator]"
+			TOTAL = "[variable_storage.leader_accumulator]"
+		}
+	}
+	klfis_try_generate_rewards_machine_terminator = yes
+	hidden_effect = {
+		country_event = {
+			id = keep_leaders.10
+			scopes = { from = event_target:storage_owner }
+		}
+	}
+}
+
+# this = country, which will become the owner the leaders
+# event_target:variable_storage = a scope with the leader-related variables (see create_leader_storage_and_transfer_leaders and accumulate_leader)
+retain_leaders_hive_only_effect = {
+	optimize_memory
+	custom_tooltip_with_params = {
+		description = keep_leaders.1.tooltip
+		description_parameters = {
+			VALUE = "[variable_storage.leader_hive_accumulator]"
+			TOTAL = "[variable_storage.leader_accumulator]"
+		}
+	}
+	hidden_effect = {
+		country_event = {
+			id = keep_leaders.14
+			scopes = { from = event_target:storage_owner }
+		}
+	}
+}
+
+# this = country, which will become the owner the leaders
+# event_target:variable_storage = a scope with the leader-related variables (see create_leader_storage_and_transfer_leaders and accumulate_leader)
+retain_leaders_all_non_assimilation_effect = {
+	optimize_memory
+	custom_tooltip_with_params = {
+		description = keep_leaders.1.tooltip
+		description_parameters = {
+			VALUE = "[variable_storage.leader_transferable_accumulator]"
+			TOTAL = "[variable_storage.leader_accumulator]"
+		}
+	}
+	hidden_effect = {
+		country_event = {
+			id = keep_leaders.15
+			scopes = { from = event_target:storage_owner }
+		}
+	}
+}
+
+# this = country, which will become the owner the leaders
+# event_target:variable_storage = a scope with the leader-related variables (see create_leader_storage_and_transfer_leaders and accumulate_leader)
+klfis_try_generate_rewards_fanatic_purifiers = {
+	optimize_memory
+	if = {
+		limit = { has_valid_civic = civic_fanatic_purifiers }
+		add_resource = {
+			unity = @keep_leaders_civic_reward_base
+			mult = event_target:variable_storage.leader_not_same_species_accumulator
+		}
+	}
+}
+
+# this = country, which will become the owner the leaders
+# event_target:variable_storage = a scope with the leader-related variables (see create_leader_storage_and_transfer_leaders and accumulate_leader)
+klfis_try_generate_rewards_hive_devouring_swarm = {
+	optimize_memory
+	if = {
+		limit = { has_valid_civic = civic_hive_devouring_swarm }
+		add_resource = {
+			society_research = @keep_leaders_civic_reward_base
+			mult = event_target:variable_storage.leader_organic_accumulator
+		}
+	}
+}
+
+# this = country, which will become the owner the leaders
+# event_target:variable_storage = a scope with the leader-related variables (see create_leader_storage_and_transfer_leaders and accumulate_leader)
+klfis_try_generate_rewards_organic_zealots = {
+	optimize_memory
+	if = {
+		limit = { is_valid_organic_zealots = yes }
+		add_resource = {
+			unity = @keep_leaders_civic_reward_base
+			mult = event_target:variable_storage.leader_robotic_accumulator
+		}
+	}
+}
+
+# this = country, which will become the owner the leaders
+# event_target:variable_storage = a scope with the leader-related variables (see create_leader_storage_and_transfer_leaders and accumulate_leader)
+klfis_try_generate_rewards_machine_assimilator = {
+	optimize_memory
+	if = {
+		limit = { has_valid_civic = civic_machine_assimilator }
+		if = {
+			limit = { NOT = { has_active_tradition = tr_cybernetics_assimilator_adopt } }
+			add_resource = {
+				unity = @keep_leaders_civic_reward_base
+				society_research = @keep_leaders_civic_reward_base
+				mult = event_target:variable_storage.leader_assimilation_cyborg_allowable_accumulator
+			}
+		}
+		else = {
+			add_resource = {
+				unity = @keep_leaders_civic_reward_base
+				society_research = @keep_leaders_civic_reward_base
+				engineering_research = @keep_leaders_civic_reward_base
+				mult = event_target:variable_storage.leader_assimilation_cyborg_allowable_accumulator_double
+			}
+		}
+	}
+}
+
+# this = country, which will become the owner the leaders
+# event_target:variable_storage = a scope with the leader-related variables (see create_leader_storage_and_transfer_leaders and accumulate_leader)
+klfis_try_generate_rewards_machine_terminator = {
+	optimize_memory
+	if = {
+		limit = { has_valid_civic = civic_machine_terminator }
+		add_resource = {
+			unity = @keep_leaders_civic_reward_base
+			mult = event_target:variable_storage.leader_organic_accumulator
+		}
+	}
+}
+
+# this = country, which will become the owner the leaders
+# event_target:variable_storage = a scope with the leader-related variables (see create_leader_storage_and_transfer_leaders and accumulate_leader)
+klfis_try_generate_rewards_origin_necrophage = {
+	optimize_memory
+	if = {
+		limit = {
+			klfis_is_necrophage_empire = yes
+			OR = {
+				has_active_tradition = tr_harmony_unity_of_self
+				has_active_tradition = tr_synchronicity_unity_of_mind
+			}
+		}
+		add_resource = {
+			unity = @keep_leaders_civic_reward_base
+			mult = event_target:variable_storage.leader_necrophagable_accumulator
+		}
 	}
 }

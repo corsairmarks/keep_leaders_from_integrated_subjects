@@ -13,7 +13,7 @@ is_regular_hive_empire = {
 }
 
 # this = country
-is_necrophage_empire = {
+klfis_is_necrophage_empire = {
 	optimize_memory
 	has_origin = origin_necrophage
 	has_trait = trait_necrophage
@@ -105,7 +105,7 @@ is_eligible_for_policy_full_citizenship_species = {
 			event_target:potential_owner = {
 				NOT = { has_valid_civic = civic_fanatic_purifiers }
 				is_xenophobe = no
-				is_necrophage_empire = no
+				klfis_is_necrophage_empire = no
 			}
 			is_smart_enough_for_leadership_species = yes
 			is_hive_species = no
@@ -147,7 +147,7 @@ is_eligible_for_policy_full_military_service_species = {
 				OR = {
 					AND = {
 						is_xenophobe = no
-						is_necrophage_empire = no
+						klfis_is_necrophage_empire = no
 					}
 					species = { has_species_flag = allow_military_leaders_honored_protectors@event_target:potential_owner }
 				}
@@ -632,7 +632,7 @@ is_regular_empire_ethics_allowable_leader_species = {
 	optimize_memory
 	OR = {
 		event_target:potential_owner = {
-			is_necrophage_empire = no
+			klfis_is_necrophage_empire = no
 			is_xenophobe = no
 		}
 		is_bypass_leader_restriction_honored_protectors = yes
@@ -666,35 +666,29 @@ any_stored_leaders_eligible_to_transfer_main_species_leader_restricted = {
 # event_target:potential_owner = country to which the leader would transfer
 all_stored_leaders_same_species = {
 	optimize_memory
-	NOT = {
-		any_owned_leader = {
-			is_eligible_transfer_leader_from_storage = yes
-			NOT = { is_same_species = event_target:potential_owner }
-		}
+	check_variable = {
+		which = leader_accumulator
+		value = leader_same_species_accumulator
 	}
 }
 
 # this = country
 # event_target:potential_owner = country to which the leader would transfer
-all_stored_leaders_robotic_strict = {
+all_stored_leaders_organic = {
 	optimize_memory
-	NOT = {
-		any_owned_leader = {
-			is_eligible_transfer_leader_from_storage = yes
-			is_robotic_species = no
-		}
+	check_variable = {
+		which = leader_accumulator
+		value = leader_organic_accumulator
 	}
 }
 
 # this = country
 # event_target:potential_owner = country to which the leader would transfer
-all_stored_leaders_robotic_lenient = {
+all_stored_leaders_robotic = {
 	optimize_memory
-	NOT = {
-		any_owned_leader = {
-			is_eligible_transfer_leader_from_storage = yes
-			is_robotic_species_lenient = no
-		}
+	check_variable = {
+		which = leader_accumulator
+		value = leader_robotic_accumulator
 	}
 }
 
@@ -702,11 +696,67 @@ all_stored_leaders_robotic_lenient = {
 # event_target:potential_owner = country to which the leader would transfer
 all_stored_leaders_hive = {
 	optimize_memory
-	NOT = {
-		any_owned_leader = {
-			is_eligible_transfer_leader_from_storage = yes
-			is_hive_species = no
-		}
+	check_variable = {
+		which = leader_accumulator
+		value = leader_hive_accumulator
+	}
+}
+
+# this = country
+# event_target:potential_owner = country to which the leader would transfer
+has_any_stored_leaders_same_species = {
+	optimize_memory
+	check_variable = {
+		which = leader_same_species_accumulator
+		value > 0
+	}
+}
+
+# this = country
+# event_target:potential_owner = country to which the leader would transfer
+has_any_stored_leaders_organic = {
+	optimize_memory
+	check_variable = {
+		which = leader_organic_accumulator
+		value > 0
+	}
+}
+
+# this = country
+# event_target:potential_owner = country to which the leader would transfer
+has_any_stored_leaders_robotic = {
+	optimize_memory
+	check_variable = {
+		which = leader_robotic_accumulator
+		value > 0
+	}
+}
+
+# this = country
+# event_target:potential_owner = country to which the leader would transfer
+has_stored_leaders_both_robotic_and_organic = {
+	optimize_memory
+	has_any_stored_leaders_robotic = yes
+	has_any_stored_leaders_organic = yes
+}
+
+# this = country
+# event_target:potential_owner = country to which the leader would transfer
+has_any_stored_leaders_hive = {
+	optimize_memory
+	check_variable = {
+		which = leader_hive_accumulator
+		value > 0
+	}
+}
+
+# this = country
+# event_target:potential_owner = country to which the leader would transfer
+has_any_stored_leaders_non_hive = {
+	optimize_memory
+	check_variable = {
+		which = leader_hive_accumulator
+		value < leader_accumulator
 	}
 }
 
