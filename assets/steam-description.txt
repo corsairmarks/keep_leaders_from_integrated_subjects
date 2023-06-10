@@ -29,17 +29,13 @@ This mod can be safely added to your savegame after the game has started. If you
 
 [h3]Recommended Companion Mods[/h3]
 [list]
-[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2553812372]Deassimilate Machines[/url] allows non-hive, non-machine empires to "deassimilate" machine Pops into robots - specifically allows (with this mod) for machine deassimilation as a "leadership disposition" choice for integrated subjects (etc.) and the deassimilated leaders gain synth leader traits if you have the required technology
-[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2908463208]Assimilate All the Pops[/url] allows empires to have multiple assimilation types, which enables this mod to apply all unlocked assimilation types simultaneously to your retained leaders
-[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2488154830]Pre-FTL Conquest & Infiltration: Enhanced[/url] improves the pre-existing infrastructure when you conquer or otherwise acquire a planet that had previously been pre-FTL; pairs well with this mod's bonus leaders from conquered (etc.) pre-FTLs
-[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2558494770]corsairmarks's Leader Traits MOD Chinese patch[/url] by Hua Zhang - Chinese localisation
+[*][Assimilate All the Pops](https://steamcommunity.com/sharedfiles/filedetails/?id=2908463208) allows empires to have multiple assimilation types, which enables this mod to apply all unlocked assimilation types simultaneously to your retained leaders
+[*][Deassimilate Machines](https://steamcommunity.com/sharedfiles/filedetails/?id=2553812372) allows non-hive, non-machine empires to "deassimilate" machine Pops into robots - specifically allows (with this mod) for machine deassimilation as a "leadership disposition" choice for integrated subjects (etc.) and the deassimilated leaders gain synth leader traits if you have the required technology
+[*][Pre-FTL Conquest & Infiltration: Enhanced](https://steamcommunity.com/sharedfiles/filedetails/?id=2488154830) improves the pre-existing infrastructure when you conquer or otherwise acquire a planet that had previously been pre-FTL; pairs well with this mod's bonus leaders from conquered (etc.) pre-FTLs
+[*][Special Leadership Privileges for Battle Thralls & Bio-Trophies](https://steamcommunity.com/sharedfiles/filedetails/?id=2496357447) - interacts with special leadership privileges: a) you will keep military leaders from species set to Battle Thralls but also Full Military Service, b) respects species flagged for allowing military leaders despite the empire being xenophobic and/or a necrophage, and c) allows Rogue Servitors to choose to retain organic leaders as Organic Advisors
+[*][Civic: Organic Zealots](https://steamcommunity.com/sharedfiles/filedetails/?id=2920668465) adds a new assimilation type to remove the Cybernetic species trait, which becomes an option when retaining leaders
+[*][corsairmarks's Leader Traits MOD Chinese patch](https://steamcommunity.com/sharedfiles/filedetails/?id=2558494770) by Hua Zhang - Chinese localisation
 [/list]
-You might wonder - why are these separate mods? They override default gameplay options, so I thought it best to give players the choice on whether they want the original version or the re-imagined version. Machine Deassimilation was developed alongside this mod.
-
-[h2]Known Issues[/h2]
-[h3]Stellaris Bugs[/h3]
-Demoted rulers with very long names with a period may cause error logs when the Leader screen is open. Don't leave the Leader window open for long periods of time or you will generate a very large error log file.
-
 [h2]Changelog[/h2]
 See [url=https://steamcommunity.com/sharedfiles/filedetails/changelog/2553818684]Change Notes[/url]
 

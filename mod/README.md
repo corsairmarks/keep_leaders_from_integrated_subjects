@@ -32,25 +32,14 @@ This mod can be safely added to your savegame after the game has started. If you
 
 [Leader Traits: All Eligible Species Traits](https://steamcommunity.com/sharedfiles/filedetails/?id=2499031295) ensures your leaders get all their species-based traits when being assimilated (such as Cybernetic, Psionic, or Erudite).
 
-### Recommended Companion Mods
+### Recommended Companion Mods (with Gameplay Interaction)
 
-* [Deassimilate Machines](https://steamcommunity.com/sharedfiles/filedetails/?id=2553812372) allows non-hive, non-machine empires to "deassimilate" machine Pops into robots - specifically allows (with this mod) for machine deassimilation as a "leadership disposition" choice for integrated subjects (etc.) and the deassimilated leaders gain synth leader traits if you have the required technology
 * [Assimilate All the Pops](https://steamcommunity.com/sharedfiles/filedetails/?id=2908463208) allows empires to have multiple assimilation types, which enables this mod to apply all unlocked assimilation types simultaneously to your retained leaders
+* [Deassimilate Machines](https://steamcommunity.com/sharedfiles/filedetails/?id=2553812372) allows non-hive, non-machine empires to "deassimilate" machine Pops into robots - specifically allows (with this mod) for machine deassimilation as a "leadership disposition" choice for integrated subjects (etc.) and the deassimilated leaders gain synth leader traits if you have the required technology
 * [Pre-FTL Conquest & Infiltration: Enhanced](https://steamcommunity.com/sharedfiles/filedetails/?id=2488154830) improves the pre-existing infrastructure when you conquer or otherwise acquire a planet that had previously been pre-FTL; pairs well with this mod's bonus leaders from conquered (etc.) pre-FTLs
-* [corsairmarks's Leader Traits MOD Chinese patch](https://steamcommunity.com/sharedfiles/filedetails/?id=2558494770) by Hua Zhang - Chinese localisation
-
-You might wonder - why are these separate mods? They override default gameplay options, so I thought it best to give players the choice on whether they want the original version or the re-imagined version. Machine Deassimilation was developed alongside this mod.
-
-### Additional Mods with Gameplay Interaction
-
-* [Eldanær Stellar Authority](https://steamcommunity.com/sharedfiles/filedetails/?id=2496360535) - if you integrate them, their former ruler and heir are guaranteed to be Governors
 * [Special Leadership Privileges for Battle Thralls & Bio-Trophies](https://steamcommunity.com/sharedfiles/filedetails/?id=2496357447) - interacts with special leadership privileges: a) you will keep military leaders from species set to Battle Thralls but also Full Military Service, b) respects species flagged for allowing military leaders despite the empire being xenophobic and/or a necrophage, and c) allows Rogue Servitors to choose to retain organic leaders as Organic Advisors
-
-## Known Issues
-
-### Stellaris Bugs
-
-Demoted rulers with very long names that also contain a period `.` may cause error logs when the Leader screen is open.  It seems related to the font re-coloring in the "former ruler" name affix.  Don't leave the Leader window open for long periods of time or you will generate a very large error log file.
+* [Civic: Organic Zealots](https://steamcommunity.com/sharedfiles/filedetails/?id=2920668465) adds a new assimilation type to remove the Cybernetic species trait, which becomes an option when retaining leaders
+* [corsairmarks's Leader Traits MOD Chinese patch](https://steamcommunity.com/sharedfiles/filedetails/?id=2558494770) by Hua Zhang - Chinese localisation
 
 ## Changelog
 
