@@ -28,13 +28,6 @@ has_deassimilate_machines_active = {
 	always = no
 }
 
-# supports features from my mod Corsair's Custom Empires: Eldanær Stellar Authority
-# this = any
-has_eldanaer_active = {
-	optimize_memory
-	always = no
-}
-
 # supports features from my mod Gender Nonbinary Leaders
 # this = any
 has_nonbinary_leaders_active = {
