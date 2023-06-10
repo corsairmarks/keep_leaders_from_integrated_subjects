@@ -182,19 +182,13 @@ country_event = {
 						}
 						event_target:storage_owner = { all_stored_leaders_same_species = yes }
 					}
-					# AND = {
-					# 	event_target:storage_owner = {
-					# 		any_owned_leader = {
-					# 			is_eligible_transfer_leader_from_storage = yes
-					# 			is_same_species = prev
-					# 			is_hive_species = yes
-					# 		}
-					# 	}
-					# }
-					# TODO: zealots need exclusion from this option and flavor text
+					AND = {
+						is_valid_organic_zealots = yes
+						event_target:storage_owner = { all_stored_leaders_robotic = yes }
+					}
 					AND = {
 						has_valid_civic = civic_machine_terminator
-						event_target:storage_owner = { all_stored_leaders_robotic = no }
+						event_target:storage_owner = { all_stored_leaders_organic = yes }
 					}
 					AND = {
 						has_valid_civic = civic_machine_servitor
@@ -214,7 +208,7 @@ country_event = {
 			}
 		}
 		name = { # pacifist/xenophile nice option
-			text = keep_leaders.1.b
+			text = keep_leaders.1.b.short
 			trigger = {
 				OR = {
 					is_pacifist = yes
@@ -236,11 +230,18 @@ country_event = {
 				event_target:storage_owner = { has_any_stored_leaders_same_species = no }
 			}
 		}
+		name = { # civic_organic_zealots
+			text = keep_leaders.1.a.zeal
+			trigger = {
+				is_valid_organic_zealots = yes
+				event_target:storage_owner = { all_stored_leaders_robotic = yes }
+			}
+		}
 		name = { # civic_machine_terminator
 			text = keep_leaders.1.a.term.short
 			trigger = {
 				has_valid_civic = civic_machine_terminator
-				event_target:storage_owner = { all_stored_leaders_robotic = no }
+				event_target:storage_owner = { all_stored_leaders_organic = yes }
 			}
 		}
 		name = { # civic_machine_servitor + any non-hive bio
