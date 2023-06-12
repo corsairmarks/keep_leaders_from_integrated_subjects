@@ -427,7 +427,7 @@ country_event = {
 		trigger = {
 			hidden_trigger = {
 				is_regular_empire = yes
-				NOT = { has_valid_civic = civic_organic_zealots }
+				NOT = { has_valid_civic = civic_fanatic_purifiers }
 				is_valid_organic_zealots = no
 			}
 		}
