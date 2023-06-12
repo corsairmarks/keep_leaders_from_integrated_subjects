@@ -235,6 +235,10 @@ transfer_leader_to_storage = {
 # event_target:potential_owner = country to become the new owner and for which to set species rights
 take_ownership_of_leader = {
 	optimize_memory
+	if = {
+		limit = { has_leader_flag = is_in_recruit_window }
+		remove_leader_flag = is_in_recruit_window
+	}
 	set_owner = event_target:potential_owner
 	fire_on_action = { on_action = on_leader_owner_changed }
 }
@@ -1971,6 +1975,7 @@ choose_transfer_representative_leader = {
 					is_robotic_species = no
 				}
 			}
+			set_leader_flag = is_in_recruit_window
 			save_event_target_as = transfer_representative
 		}
 	}
