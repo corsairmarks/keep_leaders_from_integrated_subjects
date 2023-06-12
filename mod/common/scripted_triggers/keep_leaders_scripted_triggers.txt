@@ -725,9 +725,8 @@ has_any_stored_leaders_organic = {
 has_any_stored_leaders_organic_non_hive = {
 	optimize_memory
 	check_variable_arithmetic = {
-		which = leader_accumulator
+		which = leader_organic_accumulator
 		subtract = leader_hive_accumulator
-		subtract = leader_robotic_accumulator
 		value > 0
 	}
 }

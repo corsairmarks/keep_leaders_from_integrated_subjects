@@ -3076,20 +3076,7 @@ planet_event = {
 		log = "colossus fired: [This.GetName] ([FromFrom.GetRealName]) assimilated via nanobots by [From.GetRealName]"
 		prepare_for_primitive_planet_transferred = yes
 		if = {
-			limit = {
-				event_target:variable_storage = {
-					OR = {
-						check_variable = {
-							which = leader_organic_accumulator
-							value > 0
-						}
-						check_variable = {
-							which = leader_robotic_accumulator
-							value > 0
-						}
-					}
-				}
-			}
+			limit = { event_target:variable_storage = { has_stored_leaders_both_robotic_and_organic_non_hive = yes } }
 			fromfrom = { set_country_flag = colossus_transfer_handled@prev }
 			planet_event = {
 				id = keep_leaders.30
@@ -3314,15 +3301,7 @@ planet_event = {
 	immediate = {
 		log = "colossus fired: [This.GetName] ([FromFrom.GetRealName]) had divine belief enforced by [From.GetRealName]"
 		if = {
-			limit = {
-				event_target:variable_storage = {
-					check_variable_arithmetic = {
-						which = leader_organic_accumulator
-						subtract = leader_hive_accumulator
-						value > 0
-					}
-				}
-			}
+			limit = { event_target:variable_storage = { has_any_stored_leaders_organic_non_hive = yes } }
 			fromfrom = { set_country_flag = colossus_transfer_handled@prev }
 			event_target:storage_owner = {
 				every_owned_leader = {
