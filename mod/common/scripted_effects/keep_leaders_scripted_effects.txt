@@ -2218,103 +2218,117 @@ klfis_try_generate_rewards_origin_necrophage = {
 }
 
 # this = leader
-# event_target:cloned_leader = leader, clone (output)
-clone_leader_with_appropriate_catch_phrase = {
+create_message_leader_recruited_with_appropriate_catch_phrase = {
 	optimize_memory
-	switch = {
-		trigger = has_ethic
-		ethic_authoritarian = { clone_leader_with_ethic_appropriate_catch_phrase = { ETHIC = authoritarian } }
-		ethic_egalitarian = { clone_leader_with_ethic_appropriate_catch_phrase = { ETHIC = egalitarian } }
-		ethic_militarist = { clone_leader_with_ethic_appropriate_catch_phrase = { ETHIC = militarist } }
-		ethic_pacifist = { clone_leader_with_ethic_appropriate_catch_phrase = { ETHIC = pacifist } }
-		ethic_spiritualist = { clone_leader_with_ethic_appropriate_catch_phrase = { ETHIC = spiritualist } }
-		ethic_materialist = { clone_leader_with_ethic_appropriate_catch_phrase = { ETHIC = materialist } }
-		ethic_xenophile = { clone_leader_with_ethic_appropriate_catch_phrase = { ETHIC = xenophile } }
-		ethic_xenophobe = { clone_leader_with_ethic_appropriate_catch_phrase = { ETHIC = xenophobe } }
-		default = { clone_leader_with_default_catch_phrase = yes }
+	if = {
+		limit = {
+			NOR = {
+				has_leader_flag = legendary_leader
+				has_leader_flag = renowned_leader
+				has_leader_flag = klfis_suppress_ethic_class_catch_phrase # tag your leader(s) with this if you set your own custom catch-phrases
+			}
+		}
+		switch = {
+			trigger = has_ethic
+			ethic_authoritarian = { create_message_leader_recruited_with_ethic_appropriate_catch_phrase = { ETHIC = authoritarian } }
+			ethic_egalitarian = { create_message_leader_recruited_with_ethic_appropriate_catch_phrase = { ETHIC = egalitarian } }
+			ethic_militarist = { create_message_leader_recruited_with_ethic_appropriate_catch_phrase = { ETHIC = militarist } }
+			ethic_pacifist = { create_message_leader_recruited_with_ethic_appropriate_catch_phrase = { ETHIC = pacifist } }
+			ethic_spiritualist = { create_message_leader_recruited_with_ethic_appropriate_catch_phrase = { ETHIC = spiritualist } }
+			ethic_materialist = { create_message_leader_recruited_with_ethic_appropriate_catch_phrase = { ETHIC = materialist } }
+			ethic_xenophile = { create_message_leader_recruited_with_ethic_appropriate_catch_phrase = { ETHIC = xenophile } }
+			ethic_xenophobe = { create_message_leader_recruited_with_ethic_appropriate_catch_phrase = { ETHIC = xenophobe } }
+			default = { create_message_leader_recruited_with_default_catch_phrase = yes }
+		}
+	}
+	else = {
+		create_message_leader_recruited_with_default_catch_phrase = yes
 	}
 }
 
 # this = leader, to be cloned
 # $ETHIC$ = string, the leader's non-gestalt ethic
-# event_target:cloned_leader = leader, clone (output)
-clone_leader_with_ethic_appropriate_catch_phrase = {
+create_message_leader_recruited_with_ethic_appropriate_catch_phrase = {
 	optimize_memory
 	switch = {
 		trigger = leader_class
 		governor = {
-			clone_leader_with_ethic_and_class_appropriate_catch_phrase = {
+			create_message_leader_recruited_with_ethic_and_class_appropriate_catch_phrase = {
 				ETHIC = $ETHIC$
 				CLASS = governor
 			}
 		}
 		scientist = {
-			clone_leader_with_ethic_and_class_appropriate_catch_phrase = {
+			create_message_leader_recruited_with_ethic_and_class_appropriate_catch_phrase = {
 				ETHIC = $ETHIC$
 				CLASS = scientist
 			}
 		}
 		admiral = {
-			clone_leader_with_ethic_and_class_appropriate_catch_phrase = {
+			create_message_leader_recruited_with_ethic_and_class_appropriate_catch_phrase = {
 				ETHIC = $ETHIC$
 				CLASS = admiral
 			}
 		}
 		general = {
-			clone_leader_with_ethic_and_class_appropriate_catch_phrase = {
+			create_message_leader_recruited_with_ethic_and_class_appropriate_catch_phrase = {
 				ETHIC = $ETHIC$
 				CLASS = general
 			}
 		}
-		default = { clone_leader_with_default_catch_phrase = yes }
+		default = { create_message_leader_recruited_with_default_catch_phrase = yes }
 	}
 }
 
-# this = leader, to be cloned
+# this = leader
 # $ETHIC$ = string, the leader's non-gestalt ethic
 # $CLASS$ = string, the leader's class
-# event_target:cloned_leader = leader, clone (output)
-clone_leader_with_ethic_and_class_appropriate_catch_phrase = {
+create_message_leader_recruited_with_ethic_and_class_appropriate_catch_phrase = {
 	optimize_memory
-	clone_leader_with_parameterized_catch_phrase = { CATCH_PHRASE = $ETHIC$_$CLASS$ }
+	create_message_leader_recruited_with_parameterized_catch_phrase = { CATCH_PHRASE = $ETHIC$_$CLASS$ }
 }
 
-# this = leader, to be cloned
-# event_target:cloned_leader = leader, clone (output)
-clone_leader_with_default_catch_phrase = {
+# this = leader
+create_message_leader_recruited_with_default_catch_phrase = {
 	optimize_memory
-	if = {
-		limit = {
-			exists = owner
-			owner = { is_hive_empire = yes }
+	create_message = {
+		type = MESSAGE_RECRUITED_LEADER
+		localization =  MESSAGE_RECRUITED_LEADER_DESC
+		days = @toast_message_days
+		target = this
+		variable = {
+			type = name
+			localization = LEADER
+			scope = this
 		}
-		clone_leader_with_parameterized_catch_phrase = { CATCH_PHRASE = hive_greeting }
-	}
-	else_if = {
-		limit = {
-			exists = owner
-			owner = { is_machine_empire = yes }
+		variable = {
+			key = border
+			value = GFX_invisible
 		}
-		clone_leader_with_parameterized_catch_phrase = { CATCH_PHRASE = machine_greeting }
-	}
-	else = {
-		clone_leader_with_parameterized_catch_phrase = { CATCH_PHRASE = default_greeting }
 	}
 }
 
-# this = leader, to be cloned
+# this = leader
 # CATCH_PHRASE = localisation, the catch phrase
-# event_target:cloned_leader = leader, clone (output)
-clone_leader_with_parameterized_catch_phrase = {
+create_message_leader_recruited_with_parameterized_catch_phrase = {
 	optimize_memory
-	creator = {
-		clone_leader = {
-			target = prev
-			custom_catch_phrase = $CATCH_PHRASE$
-			effect = {
-				exile_leader_as = paragon_450_catch_phrase_clone
-				save_event_target_as = cloned_leader
-			}
+	# custome message_type MESSAGE_RETAINED_LEADER instead of MESSAGE_RECRUITED_LEADER
+	# in order to not get the custome leader window - looks identitcal due to using custom_toast_content_
+	create_message = {
+		type = MESSAGE_RETAINED_LEADER
+		localization =  MESSAGE_RECRUITED_LEADER_DESC
+		days = @toast_message_days
+		target = this
+		custom_toast_content_icon = GFX_icon_leader
+		custom_toast_content_text = $CATCH_PHRASE$
+		variable = {
+			type = name
+			localization = LEADER
+			scope = this
+		}
+		variable = {
+			key = border
+			value = GFX_invisible
 		}
 	}
 }

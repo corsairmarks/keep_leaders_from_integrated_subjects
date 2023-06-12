@@ -9,48 +9,6 @@ leader_event = {
 	hide_window = yes
 	is_triggered_only = yes
 	immediate = {
-		if = {
-			limit = {
-				NOR = {
-					has_leader_flag = legendary_leader
-					has_leader_flag = renowned_leader
-					has_leader_flag = klfis_suppress_custom_catch_phrase_clone # tag your leader(s) with this if you set your own custom catch-phrases
-				}
-			}
-			clone_leader_with_appropriate_catch_phrase = yes
-			create_message = {
-				type = MESSAGE_RECRUITED_LEADER
-				localization =  MESSAGE_RECRUITED_LEADER_DESC
-				days = @toast_message_days
-				target = event_target:cloned_leader
-				variable = {
-					type = name
-					localization = LEADER
-					scope = event_target:cloned_leader
-				}
-				variable = {
-					key = border
-					value = GFX_invisible
-				}
-			}
-			event_target:cloned_leader = { kill_leader = { show_notification = no } }
-		}
-		else = {
-			create_message = {
-				type = MESSAGE_RECRUITED_LEADER
-				localization =  MESSAGE_RECRUITED_LEADER_DESC
-				days = @toast_message_days
-				target = this
-				variable = {
-					type = name
-					localization = LEADER
-					scope = this
-				}
-				variable = {
-					key = border
-					value = GFX_invisible
-				}
-			}
-		}
+		create_message_leader_recruited_with_appropriate_catch_phrase = yes
 	}
 }

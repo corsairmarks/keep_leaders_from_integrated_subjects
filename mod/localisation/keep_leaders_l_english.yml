@@ -244,5 +244,7 @@
  job_machine_intelligence_plural: ""
  job_machine_intelligence_desc: ""
 
+ MESSAGE_RETAINED_LEADER_TITLE: "Leader Retained"
+
  # modifiers unlocalised in the base game
  mod_op_cat_infiltration_speed_mult: "$MOD_ESPIONAGE_OPERATION_SPEED_MULT$ ($op_cat_infiltration$)"
