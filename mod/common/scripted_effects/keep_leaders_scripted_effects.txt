@@ -2211,3 +2211,105 @@ klfis_try_generate_rewards_origin_necrophage = {
 		}
 	}
 }
+
+# this = leader
+# event_target:cloned_leader = leader, clone (output)
+clone_leader_with_appropriate_catch_phrase = {
+	optimize_memory
+	switch = {
+		trigger = has_ethic
+		ethic_authoritarian = { clone_leader_with_ethic_appropriate_catch_phrase = { ETHIC = authoritarian } }
+		ethic_egalitarian = { clone_leader_with_ethic_appropriate_catch_phrase = { ETHIC = egalitarian } }
+		ethic_militarist = { clone_leader_with_ethic_appropriate_catch_phrase = { ETHIC = militarist } }
+		ethic_pacifist = { clone_leader_with_ethic_appropriate_catch_phrase = { ETHIC = pacifist } }
+		ethic_spiritualist = { clone_leader_with_ethic_appropriate_catch_phrase = { ETHIC = spiritualist } }
+		ethic_materialist = { clone_leader_with_ethic_appropriate_catch_phrase = { ETHIC = materialist } }
+		ethic_xenophile = { clone_leader_with_ethic_appropriate_catch_phrase = { ETHIC = xenophile } }
+		ethic_xenophobe = { clone_leader_with_ethic_appropriate_catch_phrase = { ETHIC = xenophobe } }
+		default = { clone_leader_with_default_catch_phrase = yes }
+	}
+}
+
+# this = leader, to be cloned
+# $ETHIC$ = string, the leader's non-gestalt ethic
+# event_target:cloned_leader = leader, clone (output)
+clone_leader_with_ethic_appropriate_catch_phrase = {
+	optimize_memory
+	switch = {
+		trigger = leader_class
+		governor = {
+			clone_leader_with_ethic_and_class_appropriate_catch_phrase = {
+				ETHIC = $ETHIC$
+				CLASS = governor
+			}
+		}
+		scientist = {
+			clone_leader_with_ethic_and_class_appropriate_catch_phrase = {
+				ETHIC = $ETHIC$
+				CLASS = scientist
+			}
+		}
+		admiral = {
+			clone_leader_with_ethic_and_class_appropriate_catch_phrase = {
+				ETHIC = $ETHIC$
+				CLASS = admiral
+			}
+		}
+		general = {
+			clone_leader_with_ethic_and_class_appropriate_catch_phrase = {
+				ETHIC = $ETHIC$
+				CLASS = general
+			}
+		}
+		default = { clone_leader_with_default_catch_phrase = yes }
+	}
+}
+
+# this = leader, to be cloned
+# $ETHIC$ = string, the leader's non-gestalt ethic
+# $CLASS$ = string, the leader's class
+# event_target:cloned_leader = leader, clone (output)
+clone_leader_with_ethic_and_class_appropriate_catch_phrase = {
+	optimize_memory
+	clone_leader_with_parameterized_catch_phrase = { CATCH_PHRASE = $ETHIC$_$CLASS$ }
+}
+
+# this = leader, to be cloned
+# event_target:cloned_leader = leader, clone (output)
+clone_leader_with_default_catch_phrase = {
+	optimize_memory
+	if = {
+		limit = {
+			exists = owner
+			owner = { is_hive_empire = yes }
+		}
+		clone_leader_with_parameterized_catch_phrase = { CATCH_PHRASE = hive_greeting }
+	}
+	else_if = {
+		limit = {
+			exists = owner
+			owner = { is_machine_empire = yes }
+		}
+		clone_leader_with_parameterized_catch_phrase = { CATCH_PHRASE = machine_greeting }
+	}
+	else = {
+		clone_leader_with_parameterized_catch_phrase = { CATCH_PHRASE = default_greeting }
+	}
+}
+
+# this = leader, to be cloned
+# CATCH_PHRASE = localisation, the catch phrase
+# event_target:cloned_leader = leader, clone (output)
+clone_leader_with_parameterized_catch_phrase = {
+	optimize_memory
+	creator = {
+		clone_leader = {
+			target = prev
+			custom_catch_phrase = $CATCH_PHRASE$
+			effect = {
+				exile_leader_as = paragon_450_catch_phrase_clone
+				save_event_target_as = cloned_leader
+			}
+		}
+	}
+}

@@ -1,0 +1,30 @@
+namespace = paragon
+
+# Modified:
+# * create clone of the hired leader
+# * clone uses the ethic-specific catch-phrase as its toast message
+# * purge the clone
+leader_event = {
+	id = paragon.450
+	hide_window = yes
+	is_triggered_only = yes
+	immediate = {
+		clone_leader_with_appropriate_catch_phrase = yes
+		create_message = {
+			type = MESSAGE_RECRUITED_LEADER
+			localization =  MESSAGE_RECRUITED_LEADER_DESC
+			days = @toast_message_days
+			target = event_target:cloned_leader
+			variable = {
+				type = name
+				localization = LEADER
+				scope = event_target:cloned_leader
+			}
+			variable = {
+				key = border
+				value = GFX_invisible
+			}
+		}
+		event_target:cloned_leader = { kill_leader = { show_notification = no } }
+	}
+}
