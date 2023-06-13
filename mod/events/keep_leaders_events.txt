@@ -8,14 +8,48 @@ namespace = keep_leaders
 country_event = {
 	id = keep_leaders.1
 	title = keep_leaders.1.title.scripted_loc
-	desc = {
-		trigger = { has_country_flag = keeping_leaders_conquest@from }
-		text = keep_leaders.1.desc.conquest
-	}
+	# TODO: more flavors for integration
 	desc = {
 		trigger = { has_country_flag = keeping_leaders_integration@from }
 		text = keep_leaders.1.desc.integration
 	}
+	desc = {
+		trigger = {
+			exists = from
+			has_country_flag = keeping_leaders_conquest@from
+			is_gestalt = no
+			from = { is_regular_empire = yes }
+		}
+		text = keep_leaders.1.desc.conquest.regular_by_regular
+	}
+	desc = {
+		trigger = {
+			exists = from
+			has_country_flag = keeping_leaders_conquest@from
+			is_gestalt = yes
+			from = { is_regular_empire = yes }
+		}
+		text = keep_leaders.1.desc.conquest.regular_by_gestalt
+	}
+	desc = {
+		trigger = {
+			exists = from
+			has_country_flag = keeping_leaders_conquest@from
+			is_gestalt = no
+			from = { is_hive_empire = yes }
+		}
+		text = keep_leaders.1.desc.conquest.hive_by_regular
+	}
+	desc = {
+		trigger = {
+			exists = from
+			has_country_flag = keeping_leaders_conquest@from
+			is_gestalt = yes
+			from = { is_hive_empire = yes }
+		}
+		text = keep_leaders.1.desc.conquest.hive_by_gestalt
+	}
+	# note: if/when machine pre-FTLs are added, this event will need additional descriptions for conquest
 	desc = {
 		trigger = {
 			exists = fromfrom
@@ -3097,7 +3131,20 @@ planet_event = {
 planet_event = {
 	id = keep_leaders.40
 	title = keep_leaders.40.title
-	desc = keep_leaders.40.desc
+	desc = {
+		trigger = {
+			exists = from
+			from = { is_hive_empire = no }
+		}
+		text = keep_leaders.40.desc
+	}
+	desc = {
+		trigger = {
+			exists = from
+			from = { is_hive_empire = yes }
+		}
+		text = keep_leaders.40.desc.hive
+	}
 	auto_opens = no
 	location = this
 	show_sound = event_necrophage

@@ -4,10 +4,17 @@
  keep_leaders.1.title.planet_killer_deluge: "$PLANET_CAP$ [conquered_planet.GetName] Drenched"
  keep_leaders.1.title.planet_killer_godray: "$PLANET_CAP$ [conquered_planet.GetName] Made to Believe"
  keep_leaders.1.title.planet_killer_generic: "$PLANET_CAP$ [conquered_planet.GetName] Annexed"
- keep_leaders.1.desc.integration: "Following the successful integration of the §H[storage_owner.GetRealName]§! into our empire, their leadership is at our disposal. What shall we do with them?"
- keep_leaders.1.desc.conquest: "Following our successful conquest of the primitives on §H[conquered_planet.GetName]§!, their leadership is at our disposal. What shall we do with them?"
+ keep_leaders.1.desc.integration: "§HFollowing the widely-broadcast signing of the Treaty of Dissolution, the former political leaders of the [storage_owner.GetRealName] have been gathered for review. They may yet be of service to the [Root.GetName].§!\n\nGreetings, [Root.GetRulerTitle] [Root.GetRulerName]. As your agents \"suggested,\" we have guided the [storage_owner.GetRealName] into complete submission to your nation.\n\n" # TODO in return, we desire the opportunity to continue // if I phrase this as political, I need an alternative for gestalt x regular
+ # TODO: variety of integration situations (machine to machine, hive to hive, machine to reg, machine to hive, hive to non-hive)?
+ # this mod allows keeping machine leaders even if all the machines will be purged
+ keep_leaders.1.desc.conquest.regular_by_regular: "Following our successful conquest of the primitives on §H[conquered_planet.GetName]§!, their leadership is at our disposal. What shall we do with them?"
+ keep_leaders.1.desc.conquest.regular_by_gestalt: "Following our successful conquest of the primitives on §H[conquered_planet.GetName]§!, their leadership is at our disposal. What shall we do with them?"
+ keep_leaders.1.desc.conquest.hive_by_regular: "Following our successful conquest of the primitives on §H[conquered_planet.GetName]§!, their leadership is at our disposal. What shall we do with them?"
+ keep_leaders.1.desc.conquest.hive_by_gestalt: "Following our successful conquest of the primitives on §H[conquered_planet.GetName]§!, their leadership is at our disposal. What shall we do with them?"
+ # conquest - reg to reg, hive to reg, reg to hive, hive to hive
  keep_leaders.1.desc.planet_killer_deluge: "Following the activation of our §Y$PLANET_KILLER_DELUGE$§!, it appears that some of the primitive [original_species.GetName] species survived the conversion process of §H[conquered_planet.GetName]§! into an §Y$pc_ocean_adj$§! world. What shall we do with their leaders?"
  keep_leaders.1.desc.planet_killer_godray: "Following the activation of our §Y$PLANET_KILLER_GODRAY$§!, the newly-pious leaders of §H[conquered_planet.GetName]§! have approached us to offer their continued service, should it please the divine. What shall we do with them?"
+ # godray only reg - all the hive+machine ones die
  keep_leaders.1.desc.planet_killer_generic: "Following the activation of our §YPlanet-Killer Weapon§! and subsequent annexation of §H[conquered_planet.GetName]§! it appears that some of the primitive [original_species.GetName] species survived. What shall we do with their leaders?"
 
  # don't keep any leaders
@@ -209,7 +216,7 @@
  keep_leaders.source_army_name: "[source_army.GetName]"
 
  keep_leaders.3.title: "Mission Report: Infiltration of [Root.GetName]"
- keep_leaders.3.desc: "§HAppearing via encrypted holo-link is the lead infiltrator from the mission to integrate [Root.GetName], still disguised as one of the §Y[original_species.GetNamePlural]§!.\n\n[transfer_representative.GetSubjectPronounCap] salute[transfer_representative.GetSXX] as crisply as [transfer_representative.GetPossPronoun] alien form allows.§!\n\n[From.GetRulerTitle], the mission to infiltrate and subsequently annex §Y[Root.GetName]§! concluded successfully. Now that the operation is complete, my infiltration unit and I are available for reassignment. We are proud to serve the [From.GetName]."
+ keep_leaders.3.desc: "§HAppearing via encrypted holo-link is the lead infiltrator from the mission to integrate [Root.GetName], still disguised as one of the §Y[original_species.GetNamePlural]§!.\n\n[transfer_representative.GetSubjectPronounCap] salute[transfer_representative.GetSXX] as crisply as [transfer_representative.GetPossPronoun] alien form allows.§!\n\n[From.GetRulerTitle], the mission to infiltrate and subsequently annex §Y[Root.GetName]§! concluded successfully. Now that the operation is complete, my infiltration unit and I are available for reassignment. We are proud to serve the [From.GetName]." # TODO: version for without appearance-changing tech (where the leader is _not_ changed for the dialog), maybe also machine/hive versions
  keep_leaders.3.a: "A §Ypromotion§! is in order."
  keep_leaders.3.a.tooltip: "Promote them to §Yleaders§!.\n\nGain $VALUE$ leader(s)."
  keep_leaders.3.a.retain.tooltip: "Promote them to §Yleaders§!, but maintain their cover identities.\n\nGain $VALUE$ leader(s), disguised as [original_species.GetNamePlural]."
@@ -223,13 +230,14 @@
 
  # colossus transfer title and descriptions
  keep_leaders.30.title: "$PLANET_CAP$ [This.GetName] Cyborgized"
- keep_leaders.30.desc: "Any §Y$BIOLOGICAL$§!, non-§Y$trait_hive_mind$§! leaders from the §H[storage_owner.GetRealName]§! were cyborgized when we fired our §Y$PLANET_KILLER_NANOBOTS$§! on their homeworld §H[This.GetName]§! and were immediately integrated into the collective.\n\nTheir unique abilities could be a boon to the collective a semi-autonomous leaders."
- keep_leaders.30.a: "Your uniqueness shall serve the collective."
+ keep_leaders.30.desc: "§HFollowing the successful deployment of our assimilation nanobots on §Y[This.GetName]§! via our §Y$PLANET_KILLER_NANOBOTS$§!, we open our eyes and see ourselves and are seen by ourselves. Planetary activities resume with smooth coordination and unified purpose. Some of our new selves have useful skills that could further the collective.§!\n\nUnit [transfer_representative.GetName] online, secure connection to the [From.GetRulerTitle] established.\n\nThis unit represents all prominent semi-autonomous units originating from [This.GetName]. The biological components of these units contain useful knowledge and experience. All units are prepared to serve to collective in the capacity determined most efficient."
+ keep_leaders.30.a: "Uniqueness serves the collective."
  keep_leaders.30.b: "$keep_leaders.1.a.gest.exclusive$"
  keep_leaders.30.b.tooltip: "$keep_leaders.1.a.gest.exclusive.tooltip$"
  keep_leaders.40.title: "$PLANET_CAP$ [This.GetName] Necrophaged"
- keep_leaders.40.desc: "§Y$BIOLOGICAL$§! leaders from the §H[storage_owner.GetRealName]§! were necrophaged into [This.Owner.GetSpeciesName] when we fired our §Y$PLANET_KILLER_SPORE_DISPERSAL$§! on their homeworld §H[This.GetName]§!.\n\nAs members of our species and given their prior experience, they may yet be valuable assets."
- keep_leaders.40.a: "You are now us; report for assignment."
+ keep_leaders.40.desc: "§HThe air on §Y[This.GetName]§! is rich with our necrophagic spores following the successful activation of our §Y$PLANET_KILLER_SPORE_DISPERSAL$§!. All sapient, §Y$BIOLOGICAL$§! life has been reborn as us, as [From.GetSpeciesName]. We are receiving a transmission from the planetary capital.§!\n\nSalutations, this is [transfer_representative.GetName] representing the former government of [This.GetName]. After our... conversion to [From.GetSpeciesName], our minds have been opened to the advantages of [From.GetAdjective] society.\n\nWe wish to continue our leadership roles - given our prior experience, we may yet be valuable assets."
+ keep_leaders.40.desc.hive: "§HThe air on §Y[This.GetName]§! is rich with our necrophagic spores following the successful activation of our §Y$PLANET_KILLER_SPORE_DISPERSAL$§!. All sapient, organic life has been reborn as us, as [From.GetSpeciesName]. There is a fresh flurry of thoughts as the new drones experience their first connections to our Mind. Some thoughts are more focused - predictably from drones who performed leadership functions pre-conversion. A thought-stream becomes clear...§!\n\nThis drone is designated [transfer_representative.GetName] and has experience as [transfer_representative.Class_A_An] [transfer_representative.GetClass]. There are also other experienced with leadership functions. Should it serve the hive, we shall continue in supervisory roles."
+ keep_leaders.40.a: "You are now us - welcome."
  keep_leaders.40.b: "$keep_leaders.1.b$"
  keep_leaders.40.b.tooltip: "$keep_leaders.1.b.tooltip$"
  keep_leaders.40.b.hive: "$keep_leaders.1.a.gest.exclusive$"
