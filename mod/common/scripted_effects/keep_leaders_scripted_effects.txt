@@ -1047,14 +1047,14 @@ tag_leader_for_reassignment = {
 				planet = { set_planet_flag = keep_leader_match_planet@prev }
 			}
 			else_if = {
-				limit = { is_ruler = yes }
-				set_leader_flag = keep_leader_ruler_match_planet@this
-				owner.capital_scope = { set_planet_flag = keep_leader_ruler_match_planet@prev }
-			}
-			else_if = {
 				limit = { is_heir = yes }
 				set_leader_flag = keep_leader_heir_match_planet@this
 				owner.capital_scope = { set_planet_flag = keep_leader_heir_match_planet@prev }
+			}
+			else_if = {
+				limit = { is_ruler = yes }
+				set_leader_flag = keep_leader_ruler_match_planet@this
+				owner.capital_scope = { set_planet_flag = keep_leader_ruler_match_planet@prev }
 			}
 		}
 		scientist = {
@@ -1092,14 +1092,14 @@ tag_leader_for_reassignment = {
 				planet = { set_planet_flag = keep_leader_match_planet@prev }
 			}
 			else_if = {
-				limit = { is_ruler = yes }
-				set_leader_flag = keep_leader_ruler_match_planet@this
-				owner.capital_scope = { set_planet_flag = keep_leader_ruler_match_planet@prev }
-			}
-			else_if = {
 				limit = { is_heir = yes }
 				set_leader_flag = keep_leader_heir_match_planet@this
 				owner.capital_scope = { set_planet_flag = keep_leader_heir_match_planet@prev }
+			}
+			else_if = {
+				limit = { is_ruler = yes }
+				set_leader_flag = keep_leader_ruler_match_planet@this
+				owner.capital_scope = { set_planet_flag = keep_leader_ruler_match_planet@prev }
 			}
 			owner = {
 				random_owned_army = {
