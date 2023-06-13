@@ -1,3 +1,4 @@
-﻿# scripted_loc does not currently find the dynamic, global event_target correctly
-# l_english:
-#  LEADER_CLASS_TEXT: "[Root.ClassPrefix][Root.GetClass][Root.GetClassSuffixFormerOwner]§!"
+﻿l_english:
+ marauder.703.desc: "§HA [marauder_neighbor_species.GetName] escape pod drifted into our space recently, after a particularly violent clash between two warring clans of the §Y[marauder_neighbor.GetName]§!. Border patrol units intercepted the pod and opened it, revealing a grateful [marauder_neighbor_species.GetName] flag officer.§!\n\nHail, [This.GetRulerTitle] [This.GetRulerName]. Your forces rescuing me from a slow, certain death by oxygen deprivation. As repayment, I, §Y[.GetName]§!, pledge to serve the [Root.GetName] until death.\n\nFrothing disease to your enemies!"
+ # scripted_loc does not currently find the dynamic, global event_target correctly
+ # LEADER_CLASS_TEXT: "[Root.ClassPrefix][Root.GetClass][Root.GetClassSuffixFormerOwner]§!"

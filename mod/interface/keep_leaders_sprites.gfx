@@ -25,6 +25,14 @@ spriteTypes = {
 		texturefile = "gfx/interface/leaders/recruitment_bgs/leader_recruitment_bg_deluge.dds"
 	}
 	spriteType = {
+		name = "GFX_leader_recruitment_bg_federation_fleet"
+		texturefile = "gfx/interface/leaders/recruitment_bgs/leader_recruitment_bg_federation_fleet.dds"
+	}
+	spriteType = {
+		name = "GFX_leader_recruitment_bg_hangar_bay"
+		texturefile = "gfx/interface/leaders/recruitment_bgs/leader_recruitment_bg_hangar_bay.dds"
+	}
+	spriteType = {
 		name = "GFX_leader_recruitment_bg_infiltration"
 		texturefile = "gfx/interface/leaders/recruitment_bgs/leader_recruitment_bg_infiltration.dds"
 	}
