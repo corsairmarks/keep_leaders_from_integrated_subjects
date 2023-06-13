@@ -108,10 +108,15 @@ This mod can be safely added to your savegame after the game has started. If you
     * Add all leader class versions of the former Hive Mind and Machine Intelligence traits
     * Add scripted_loc to still use the varying flavor text for former rulers
 * 9.1.0 Adjust leader background ethics and jobs when they transfer empires
-* 9.2.0 Convert "keep leader" events to use the new leader recruitment window style
+* 9.2.0 Convert "keep leader" events to use the new leader recruitment window
     * Ensure all former rulers/heirs lose the Imperial Heir trait from the base game (the Former Ruler traits provide the same bonus plus more)
-    * Updated post-infiltration "keep leaders" window
-    * Updated post Nanobot Diffuser and Necrophagic Spore Diffuser "keep leaders" windows
+    * Update the post-infiltration "keep leaders" window
+    * Update the post-Nanobot Diffuser and post-Necrophagic Spore Diffuser "keep leaders" windows
+    * Update the main post-pre-FTL-conquest and post-integration "keep leaders" window
+    * Fire the "Leader Acquired" toast when keeping leaders
+    * Enhance the "Leader Acquired" toast to use the already-existing ethic/class-specific recruitment text
+    * Enhance the "Promising Officer" event (`leader.1`) to use the new leader recruitment window
+    * Enhance the "Marauder Escape Pod" event (`marauder.703`) to use the new leader recruitment window
 
 ## Source Code
 
