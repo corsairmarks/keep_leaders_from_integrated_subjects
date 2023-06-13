@@ -123,7 +123,6 @@ create_leader_storage_and_transfer_leaders = {
 				is_heir = no
 			}
 			accumulate_leader = yes
-			tag_leader_for_reassignment = yes
 			transfer_leader_to_storage = yes
 		}
 		if = {
@@ -850,6 +849,7 @@ try_process_gestalt_ruler = {
 # * leader_aquatic_accumulator
 accumulate_leader = {
 	optimize_memory
+	tag_leader_for_reassignment = yes
 	if = {
 		limit = { is_robotic_species_lenient = yes }
 		event_target:variable_storage = {
@@ -1046,6 +1046,16 @@ tag_leader_for_reassignment = {
 				set_leader_flag = keep_leader_match_planet@this
 				planet = { set_planet_flag = keep_leader_match_planet@prev }
 			}
+			else_if = {
+				limit = { is_ruler = yes }
+				set_leader_flag = keep_leader_ruler_match_planet@this
+				owner.capital_scope = { set_planet_flag = keep_leader_ruler_match_planet@prev }
+			}
+			else_if = {
+				limit = { is_heir = yes }
+				set_leader_flag = keep_leader_heir_match_planet@this
+				owner.capital_scope = { set_planet_flag = keep_leader_heir_match_planet@prev }
+			}
 		}
 		scientist = {
 			if = {
@@ -1053,12 +1063,13 @@ tag_leader_for_reassignment = {
 				set_leader_flag = keep_leader_match_fleet@this
 				fleet = { set_fleet_flag = keep_leader_match_fleet@prev }
 			}
-			switch = {
-				trigger = is_researching_area
-				physics = { set_leader_flag = keep_leader_research_physics }
-				society = { set_leader_flag = keep_leader_research_society }
-				engineering = { set_leader_flag = keep_leader_research_engineering }
-			}
+			# leaders no longer research specific areas
+			# switch = {
+			# 	trigger = is_researching_area
+			# 	physics = { set_leader_flag = keep_leader_research_physics }
+			# 	society = { set_leader_flag = keep_leader_research_society }
+			# 	engineering = { set_leader_flag = keep_leader_research_engineering }
+			# }
 		}
 		admiral = {
 			if = {
@@ -1075,6 +1086,21 @@ tag_leader_for_reassignment = {
 				set_leader_flag = keep_leader_match_transport_fleet@this
 				fleet = { set_fleet_flag = keep_leader_match_transport_fleet@prev }
 			}
+			else_if = {
+				limit = { exists = planet }
+				set_leader_flag = keep_leader_match_planet@this
+				planet = { set_planet_flag = keep_leader_match_planet@prev }
+			}
+			else_if = {
+				limit = { is_ruler = yes }
+				set_leader_flag = keep_leader_ruler_match_planet@this
+				owner.capital_scope = { set_planet_flag = keep_leader_ruler_match_planet@prev }
+			}
+			else_if = {
+				limit = { is_heir = yes }
+				set_leader_flag = keep_leader_heir_match_planet@this
+				owner.capital_scope = { set_planet_flag = keep_leader_heir_match_planet@prev }
+			}
 			owner = {
 				random_owned_army = {
 					limit = {
@@ -1084,11 +1110,6 @@ tag_leader_for_reassignment = {
 					leader = { set_leader_flag = keep_leader_match_army@this }
 					set_army_flag = keep_leader_match_army@leader
 				}
-			}
-			if = {
-				limit = { exists = planet }
-				set_leader_flag = keep_leader_match_planet@this
-				planet = { set_planet_flag = keep_leader_match_planet@prev }
 			}
 		}
 	}
@@ -1594,9 +1615,7 @@ complete_assimilation_and_take_ownership_of_leader = {
 		change_species = event_target:prepared_species
 		fire_on_action = {
 			on_action = on_leader_species_changed
-			scopes = {
-				from = event_target:former_species
-			}
+			scopes = { from = event_target:former_species }
 		}
 		ensure_species_rights_and_take_ownership_of_leader = yes
 	}
