@@ -35,7 +35,8 @@ country_event = {
 		trigger = {
 			exists = from
 			has_country_flag = keeping_leaders_conquest@from
-			is_gestalt = no
+			is_hive_empire = no
+			is_machine_empire = no
 			from = { is_hive_empire = yes }
 		}
 		text = keep_leaders.1.desc.conquest.hive_by_regular
@@ -44,10 +45,19 @@ country_event = {
 		trigger = {
 			exists = from
 			has_country_flag = keeping_leaders_conquest@from
-			is_gestalt = yes
+			is_hive_empire = yes
 			from = { is_hive_empire = yes }
 		}
-		text = keep_leaders.1.desc.conquest.hive_by_gestalt
+		text = keep_leaders.1.desc.conquest.hive_by_hive
+	}
+	desc = {
+		trigger = {
+			exists = from
+			has_country_flag = keeping_leaders_conquest@from
+			is_machine_empire = yes
+			from = { is_hive_empire = yes }
+		}
+		text = keep_leaders.1.desc.conquest.hive_by_machine
 	}
 	# note: if/when machine pre-FTLs are added, this event will need additional descriptions for conquest
 	desc = {
@@ -279,7 +289,7 @@ country_event = {
 			}
 		}
 		name = { # civic_machine_servitor + any non-hive bio
-			text = keep_leaders.1.a.serv
+			text = keep_leaders.1.a.serv.short
 			trigger = {
 				has_valid_civic = civic_machine_servitor
 				event_target:storage_owner = { has_any_stored_leaders_organic_non_hive = yes }
