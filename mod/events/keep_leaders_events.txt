@@ -8,17 +8,64 @@ namespace = keep_leaders
 country_event = {
 	id = keep_leaders.1
 	title = keep_leaders.1.title.scripted_loc
+	desc = {
+		trigger = {
+			exists = from
+			has_country_flag = keeping_leaders_integration@from
+			is_hive_empire = no
+			is_machine_empire = no
+			from = { is_regular_empire_or_primitive = yes }
+		}
+		text = keep_leaders.1.desc.integration.regular_by_regular
+	}
 	# TODO: more flavors for integration
 	desc = {
-		trigger = { has_country_flag = keeping_leaders_integration@from }
+		trigger = {
+			exists = from
+			has_country_flag = keeping_leaders_integration@from
+			is_hive_empire = no
+			is_machine_empire = no
+			from = { is_regular_empire_or_primitive = yes }
+		}
 		text = keep_leaders.1.desc.integration
 	}
 	desc = {
 		trigger = {
 			exists = from
+			has_country_flag = keeping_leaders_integration@from
+			is_hive_empire = no
+			is_machine_empire = no
+			from = { is_regular_empire_or_primitive = yes }
+		}
+		text = keep_leaders.1.desc.integration
+	}
+	desc = {
+		trigger = {
+			exists = from
+			has_country_flag = keeping_leaders_integration@from
+			is_hive_empire = no
+			is_machine_empire = no
+			from = { is_regular_empire_or_primitive = yes }
+		}
+		text = keep_leaders.1.desc.integration
+	}
+	desc = {
+		trigger = {
+			exists = from
+			has_country_flag = keeping_leaders_integration@from
+			is_hive_empire = no
+			is_machine_empire = no
+			from = { is_regular_empire_or_primitive = yes }
+		}
+		text = keep_leaders.1.desc.integration
+	}
+
+	desc = {
+		trigger = {
+			exists = from
 			has_country_flag = keeping_leaders_conquest@from
 			is_gestalt = no
-			from = { is_regular_empire = yes }
+			from = { is_regular_empire_or_primitive = yes }
 		}
 		text = keep_leaders.1.desc.conquest.regular_by_regular
 	}
@@ -27,7 +74,7 @@ country_event = {
 			exists = from
 			has_country_flag = keeping_leaders_conquest@from
 			is_gestalt = yes
-			from = { is_regular_empire = yes }
+			from = { is_regular_empire_or_primitive = yes }
 		}
 		text = keep_leaders.1.desc.conquest.regular_by_gestalt
 	}
@@ -2051,7 +2098,7 @@ country_event = {
 		any_playable_country = { is_country = prev }
 		exists = from
 		from = {
-			is_country_type = primitive
+			is_primitive = yes
 			OR = {
 				exists = ruler
 				exists = heir
@@ -2115,7 +2162,7 @@ planet_event = {
 		exists = fromfrom
 		fromfrom = {
 			is_scope_type = country
-			is_country_type = primitive
+			is_primitive = yes
 		}
 	}
 	immediate = {
@@ -3289,7 +3336,7 @@ planet_event = {
 				TOTAL = "[variable_storage.leader_accumulator]"
 			}
 		}
-		trigger = { hidden_trigger = { from = { is_regular_empire = yes } } }
+		trigger = { hidden_trigger = { from = { is_regular_empire_or_primitive = yes } } }
 		allow = {
 			custom_tooltip = {
 				fail_text = empire_is_xenophile_no_x

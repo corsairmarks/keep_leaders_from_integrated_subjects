@@ -174,7 +174,7 @@ defined_text = {
 defined_text = {
 	name = GetFormerRulerLeaderTitle
 	# someday, when exists works on global event targets...
-	# exists seems to work in the event_target is country_type = primitive, but not others
+	# exists seems to work in the event_target is_primitive = yes, but not others
 	text = {
 		trigger = { exists = event_target:former_owner_shell@this }
 		localization_key = keep_leaders_bonus_traits.former_ruler_title.specific
@@ -186,7 +186,7 @@ defined_text = {
 defined_text = {
 	name = GetFormerHeirLeaderTitle
 	# someday, when exists works on global event targets...
-	# exists seems to work in the event_target is country_type = primitive, but not others
+	# exists seems to work in the event_target is_primitive = yes, but not others
 	text = {
 		trigger = { exists = event_target:former_owner_shell@this }
 		localization_key = keep_leaders_bonus_traits.former_heir_title.specific

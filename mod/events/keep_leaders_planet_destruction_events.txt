@@ -22,7 +22,7 @@ planet_event = {
 	}
 	trigger = {
 		num_pops > 0
-		owner = { is_country_type = primitive }
+		owner = { is_primitive = yes }
 	}
 	immediate = {
 		owner = {
@@ -44,7 +44,7 @@ planet_event = {
 	}
 	trigger = {
 		num_pops > 0
-		owner = { is_country_type = primitive }
+		owner = { is_primitive = yes }
 	}
 	immediate = {
 		owner = {
@@ -66,7 +66,7 @@ planet_event = {
 	}
 	trigger = {
 		num_pops > 0
-		owner = { is_country_type = primitive }
+		owner = { is_primitive = yes }
 	}
 	immediate = {
 		owner = {
@@ -88,7 +88,7 @@ planet_event = {
 	}
 	trigger = {
 		num_pops > 0
-		owner = { is_country_type = primitive }
+		owner = { is_primitive = yes }
 		any_owned_species = { has_trait = trait_aquatic }
 	}
 	immediate = {
