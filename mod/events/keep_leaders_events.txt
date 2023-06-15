@@ -2083,7 +2083,20 @@ country_event = {
 planet_event = {
 	id = keep_leaders.3
 	title = keep_leaders.3.title
-	desc = keep_leaders.3.desc
+	desc = {
+		trigger = {
+			exists = from
+			from = { has_appearance_modding_technology = no }
+		}
+		text = keep_leaders.3.desc
+	}
+	desc = {
+		trigger = {
+			exists = from
+			from = { has_appearance_modding_technology = yes }
+		}
+		text = keep_leaders.3.desc.appearance_mod
+	}
 	auto_opens = no
 	location = this
 	show_sound = event_espionage_concluded
@@ -2100,7 +2113,10 @@ planet_event = {
 		has_modifier = infiltration_happiness
 		exists = from
 		exists = fromfrom
-		fromfrom = { is_country_type = primitive }
+		fromfrom = {
+			is_scope_type = country
+			is_country_type = primitive
+		}
 	}
 	immediate = {
 		log = "primitive infiltration: [This.GetName] ([FromFrom.GetRealName]) infiltrated by [From.GetRealName]"
@@ -2112,8 +2128,11 @@ planet_event = {
 		from = { save_event_target_as = potential_owner } # "argument" for create_leader_storage_and_transfer_leaders
 		create_leader_storage_and_transfer_leaders = yes
 		choose_transfer_representative_leader = yes
-		# prepare the representative in advance
-		event_target:transfer_representative = { prepare_to_retain_infiltration_leader = { RETAIN_COVER = yes } }
+		if = {
+			limit= { from = { has_appearance_modding_technology = yes } }
+			# prepare the representative in advance; infiltrator_retain_cover intentionally not set
+			event_target:transfer_representative = { prepare_to_retain_infiltration_leader = { RETAIN_COVER = yes } }
+		}
 	}
 	option = {
 		tag = hire_leader
@@ -2138,7 +2157,10 @@ planet_event = {
 		hidden_effect = {
 			event_target:transfer_representative = {
 				if = {
-					limit = { NOT = { has_leader_flag = infiltrator_retain_cover } }
+					limit = {
+						from = { has_appearance_modding_technology = yes }
+						NOT = { has_leader_flag = infiltrator_retain_cover }
+					}
 					change_leader_portrait = event_target:potential_owner # swap portrait to non-cover
 				}
 				take_ownership_of_leader = yes
@@ -2194,6 +2216,7 @@ planet_event = {
 	}
 	option = {
 		name = keep_leaders.3.b
+		trigger = { from = { has_appearance_modding_technology = yes } }
 		allow = { event_target:transfer_representative = { NOT = { has_leader_flag = infiltrator_retain_cover } } }
 		response_text = keep_leaders.3.b.response
 		is_dialog_only = yes
@@ -2201,6 +2224,7 @@ planet_event = {
 	}
 	option = {
 		name = keep_leaders.3.c
+		trigger = { from = { has_appearance_modding_technology = yes } }
 		allow = { event_target:transfer_representative = { has_leader_flag = infiltrator_retain_cover } }
 		response_text = keep_leaders.3.c.response
 		is_dialog_only = yes
