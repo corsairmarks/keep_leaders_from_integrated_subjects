@@ -616,7 +616,7 @@ country_event = {
 			text = keep_leaders.1.c.mach
 			trigger = {
 				is_machine_empire = yes
-				NOT = {
+				NOR = {
 					has_valid_civic = civic_machine_servitor
 					has_valid_civic = civic_machine_terminator
 				}
@@ -678,7 +678,7 @@ country_event = {
 					limit = { has_battle_thrall_military_leaders_active = no }
 					custom_tooltip = keep_leaders.1.d.serv.tooltip
 				}
-				else_if = {
+				else = {
 					custom_tooltip = keep_leaders.1.j.serv.tooltip
 				}
 			}
@@ -3361,13 +3361,25 @@ planet_event = {
 			fromfrom = { set_country_flag = colossus_transfer_handled@prev }
 			event_target:storage_owner = {
 				every_owned_leader = {
-					limit = {
-						OR = {
-							is_robotic_species = yes
-							is_hive_species = yes
+					limit = { is_eligible_transfer_leader = yes }
+					if = {
+						limit = {
+							OR = {
+								is_robotic_species = yes
+								is_hive_species = yes
+							}
 						}
+						kill_leader = { show_notification = no }
 					}
-					kill_leader = { show_notification = no }
+					else_if = {
+						limit = {
+							NOR = {
+								has_leader_flag = legendary_leader
+								has_leader_flag = renowned_leader
+							}
+						}
+						change_background_ethic = ethic_spiritualist
+					}
 				}
 			}
 			from = {
