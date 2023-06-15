@@ -12,22 +12,19 @@ country_event = {
 		trigger = {
 			exists = from
 			has_country_flag = keeping_leaders_integration@from
-			is_hive_empire = no
-			is_machine_empire = no
+			is_gestalt = no
 			from = { is_regular_empire_or_primitive = yes }
 		}
 		text = keep_leaders.1.desc.integration.regular_by_regular
 	}
-	# TODO: more flavors for integration
 	desc = {
 		trigger = {
 			exists = from
 			has_country_flag = keeping_leaders_integration@from
-			is_hive_empire = no
-			is_machine_empire = no
+			is_gestalt = yes
 			from = { is_regular_empire_or_primitive = yes }
 		}
-		text = keep_leaders.1.desc.integration
+		text = keep_leaders.1.desc.integration.regular_by_gestalt
 	}
 	desc = {
 		trigger = {
@@ -35,9 +32,27 @@ country_event = {
 			has_country_flag = keeping_leaders_integration@from
 			is_hive_empire = no
 			is_machine_empire = no
-			from = { is_regular_empire_or_primitive = yes }
+			from = { is_hive_empire = yes }
 		}
-		text = keep_leaders.1.desc.integration
+		text = keep_leaders.1.desc.integration.hive_by_regular
+	}
+	desc = {
+		trigger = {
+			exists = from
+			has_country_flag = keeping_leaders_integration@from
+			is_hive_empire = yes
+			from = { is_hive_empire = yes }
+		}
+		text = keep_leaders.1.desc.integration.hive_by_hive
+	}
+	desc = {
+		trigger = {
+			exists = from
+			has_country_flag = keeping_leaders_integration@from
+			is_machine_empire = yes
+			from = { is_hive_empire = yes }
+		}
+		text = keep_leaders.1.desc.integration.hive_by_machine
 	}
 	desc = {
 		trigger = {
@@ -45,20 +60,32 @@ country_event = {
 			has_country_flag = keeping_leaders_integration@from
 			is_hive_empire = no
 			is_machine_empire = no
-			from = { is_regular_empire_or_primitive = yes }
+			from = { is_machine_empire = yes }
 		}
-		text = keep_leaders.1.desc.integration
+		text = keep_leaders.1.desc.integration.machine_by_regular
 	}
 	desc = {
 		trigger = {
 			exists = from
 			has_country_flag = keeping_leaders_integration@from
-			is_hive_empire = no
-			is_machine_empire = no
-			from = { is_regular_empire_or_primitive = yes }
+			is_hive_empire = yes
+			from = { is_machine_empire = yes }
 		}
-		text = keep_leaders.1.desc.integration
+		text = keep_leaders.1.desc.integration.machine_by_hive
 	}
+	desc = {
+		trigger = {
+			exists = from
+			has_country_flag = keeping_leaders_integration@from
+			is_machine_empire = yes
+			from = { is_machine_empire = yes }
+		}
+		text = keep_leaders.1.desc.integration.machine_by_machine
+	}
+	# TODO: clean space once done with options
+
+
+
 
 	desc = {
 		trigger = {
