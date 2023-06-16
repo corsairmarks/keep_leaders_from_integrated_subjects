@@ -3,6 +3,7 @@ namespace = marauder
 # Modified:
 # * use new leader_recruit window
 # * location is the border system (event_target:border_system)
+# * mercenary admiral created in the mercenary country, to have the correct homeworld and creator
 # * mercenary admiral is created with the merc background
 # * mercenary admiral has fleg set to not count against leader cap
 country_event = {
@@ -23,23 +24,26 @@ country_event = {
 	trigger = { NOT = { has_country_flag = marauder_neighbor_event_3 } }
 	immediate = {
 		set_country_flag = marauder_neighbor_event_3
-		create_leader = {
-			class = admiral
-			species = event_target:marauder_neighbor_species
-			name = random
-			skill = 4
-			leader_age_min = 25
-			leader_age_max = 45
-			background_ethic = ethic_militarist
-			skip_background_generation = yes
-			custom_description = "custom_mercenary_admiral_desc"
-			traits = {
-				0 = leader_trait_mercenary_warrior
-			}
-			effect = {
-				set_leader_flag = marauder_merc_leader
-				save_event_target_as = marauder_admiral
-				exile_leader_as = marauder_703_admiral
+		event_target:marauder_neighbor = {
+			create_leader = {
+				class = admiral
+				species = event_target:marauder_neighbor_species
+				name = random
+				skill = 4
+				leader_age_min = 25
+				leader_age_max = 45
+				background_ethic = ethic_militarist
+				skip_background_generation = yes
+				custom_description = "custom_mercenary_admiral_desc"
+				traits = {
+					0 = leader_trait_mercenary_warrior
+				}
+				effect = {
+					set_leader_flag = marauder_merc_leader
+					save_event_target_as = marauder_admiral
+					exile_leader_as = marauder_703_admiral
+					set_owner = prevprev
+				}
 			}
 		}
 	}
