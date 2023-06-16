@@ -59,6 +59,8 @@ on_leader_fired = {
 on_leader_owner_changed = {
 	events = {
 		paragon.450
+		keep_leaders.164
+		keep_leaders.246
 	}
 }
 

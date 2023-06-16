@@ -3700,3 +3700,47 @@ country_event = {
 		}
 	}
 }
+
+# triggered by on_leader_owner_changed
+# gestalts gain the warform trait for their node upon gaining the warform
+# this = leader
+leader_event = {
+	id = keep_leaders.164
+	hide_window = yes
+	is_triggered_only = yes
+	pre_triggers = { has_owner = yes }
+	trigger = {
+		has_trait = leader_trait_admiral_warform
+		owner = { is_gestalt = yes }
+	}
+	immediate = {
+		owner = {
+			random_owned_leader = {
+				limit = { is_councilor_type = councilor_gestalt_admiral }
+				add_trait = leader_trait_admiral_warform_node
+			}
+		}
+	}
+}
+
+# triggered by on_leader_owner_changed
+# gestalts gain the caretaker trait for their node upon gaining the caretaker
+# this = leader
+leader_event = {
+	id = keep_leaders.246
+	hide_window = yes
+	is_triggered_only = yes
+	pre_triggers = { has_owner = yes }
+	trigger = {
+		has_trait = leader_trait_govenor_caretaker
+		owner = { is_gestalt = yes }
+	}
+	immediate = {
+		owner = {
+			random_owned_leader = {
+				limit = { is_councilor_type = councilor_gestalt_governor }
+				add_trait = leader_trait_govenor_caretaker_node
+			}
+		}
+	}
+}
