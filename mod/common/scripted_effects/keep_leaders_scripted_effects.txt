@@ -2318,19 +2318,57 @@ create_message_leader_recruited_with_ethic_and_class_appropriate_catch_phrase = 
 # this = leader
 create_message_leader_recruited_with_default_catch_phrase = {
 	optimize_memory
-	create_message = {
-		type = MESSAGE_RECRUITED_LEADER
-		localization =  MESSAGE_RECRUITED_LEADER_DESC
-		days = @toast_message_days
-		target = this
-		variable = {
-			type = name
-			localization = LEADER
-			scope = this
+	if = {
+		limit = { has_leader_flag = renowned_leader }
+		create_message = {
+			type = MESSAGE_RECRUITED_LEADER
+			localization =  MESSAGE_RECRUITED_LEADER_DESC
+			days = @toast_message_days
+			target = this
+			variable = {
+				type = name
+				localization = LEADER
+				scope = this
+			}
+			variable = {
+				key = border
+				value = GFX_border_veteran
+			}
 		}
-		variable = {
-			key = border
-			value = GFX_invisible
+	}
+	else_if = {
+		limit = { has_leader_flag = legendary_leader }
+		create_message = {
+			type = MESSAGE_RECRUITED_LEADER
+			localization =  MESSAGE_RECRUITED_LEADER_DESC
+			days = @toast_message_days
+			target = this
+			variable = {
+				type = name
+				localization = LEADER
+				scope = this
+			}
+			variable = {
+				key = border
+				value = GFX_border_legendary
+			}
+		}
+	}
+	else = {
+		create_message = {
+			type = MESSAGE_RECRUITED_LEADER
+			localization =  MESSAGE_RECRUITED_LEADER_DESC
+			days = @toast_message_days
+			target = this
+			variable = {
+				type = name
+				localization = LEADER
+				scope = this
+			}
+			variable = {
+				key = border
+				value = GFX_invisible
+			}
 		}
 	}
 }
@@ -2341,21 +2379,63 @@ create_message_leader_recruited_with_parameterized_catch_phrase = {
 	optimize_memory
 	# custome message_type MESSAGE_RETAINED_LEADER instead of MESSAGE_RECRUITED_LEADER
 	# in order to not get the custome leader window - looks identitcal due to using custom_toast_content_
-	create_message = {
-		type = MESSAGE_RETAINED_LEADER
-		localization =  MESSAGE_RECRUITED_LEADER_DESC
-		days = @toast_message_days
-		target = this
-		custom_toast_content_icon = GFX_icon_leader
-		custom_toast_content_text = $CATCH_PHRASE$
-		variable = {
-			type = name
-			localization = LEADER
-			scope = this
+	if = {
+		limit = { has_leader_flag = renowned_leader }
+		create_message = {
+			type = MESSAGE_RETAINED_LEADER
+			localization =  MESSAGE_RECRUITED_LEADER_DESC
+			days = @toast_message_days
+			target = this
+			custom_toast_content_icon = GFX_icon_leader
+			custom_toast_content_text = $CATCH_PHRASE$
+			variable = {
+				type = name
+				localization = LEADER
+				scope = this
+			}
+			variable = {
+				key = border
+				value = GFX_border_veteran
+			}
 		}
-		variable = {
-			key = border
-			value = GFX_invisible
+	}
+	else_if = {
+		limit = { has_leader_flag = legendary_leader }
+		create_message = {
+			type = MESSAGE_RETAINED_LEADER
+			localization =  MESSAGE_RECRUITED_LEADER_DESC
+			days = @toast_message_days
+			target = this
+			custom_toast_content_icon = GFX_icon_leader
+			custom_toast_content_text = $CATCH_PHRASE$
+			variable = {
+				type = name
+				localization = LEADER
+				scope = this
+			}
+			variable = {
+				key = border
+				value = GFX_border_legendary
+			}
+		}
+	}
+	else = {
+		create_message = {
+			type = MESSAGE_RETAINED_LEADER
+			localization =  MESSAGE_RECRUITED_LEADER_DESC
+			days = @toast_message_days
+			target = this
+			custom_toast_content_icon = GFX_icon_leader
+			custom_toast_content_text = $CATCH_PHRASE$
+			variable = {
+				type = name
+				localization = LEADER
+				scope = this
+			}
+			variable = {
+				key = border
+				value = GFX_invisible
+			}
 		}
 	}
 }
