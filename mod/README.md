@@ -117,6 +117,8 @@ This mod can be safely added to your savegame after the game has started. If you
     * Enhance the "Leader Acquired" toast to use the already-existing ethic/class-specific recruitment text
     * Enhance the "Promising Officer" event (`leader.1`) to use the new leader recruitment window
     * Enhance the "Marauder Escape Pod" event (`marauder.703`) to use the new leader recruitment window
+    * Memory Vault empires that acquire high-level leaders via "keep leaders" events gain charges for their vault immediately
+    * Gestalt empires that acquire the Caretaker or Warform via "keep leaders" events gain the corresponding node councilor trait
 
 ## Source Code
 
