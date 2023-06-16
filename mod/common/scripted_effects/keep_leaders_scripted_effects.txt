@@ -1633,134 +1633,142 @@ try_adjust_background = {
 	optimize_memory
 	if = {
 		limit = {
-			is_gestalt = yes
-			event_target:potential_owner = { is_gestalt = no }
+			NOR = {
+				has_leader_flag = renowned_leader
+				has_leader_flag = legendary_leader
+			}
 		}
-		randomize_background_ethic = yes
-		reroll_random = yes
-	}
-	else_if = {
-		limit = {
-			is_gestalt = no
-			event_target:potential_owner = {
+		if = {
+			limit = {
 				is_gestalt = yes
-				NAND = {
-					has_valid_civic = civic_machine_servitor
-					prev = { is_robotic_species = no }
+				event_target:potential_owner = { is_gestalt = no }
+			}
+			randomize_background_ethic = yes
+			reroll_random = yes
+		}
+		else_if = {
+			limit = {
+				is_gestalt = no
+				event_target:potential_owner = {
+					is_gestalt = yes
+					NAND = {
+						has_valid_civic = civic_machine_servitor
+						prev = { is_robotic_species = no }
+					}
 				}
 			}
+			change_background_ethic = ethic_gestalt_consciousness
 		}
-		change_background_ethic = ethic_gestalt_consciousness
-	}
-	if = {
-		limit = {
-			is_gestalt = no
-			NOT = { has_background_job = yes } # this can't be set to no or unemployed...
-		}
-		# intentionally does not have the same code as paragon_2.2125 or reuse the set_random_CLASS_background_effect effects
 		if = {
-			limit = { has_leader_flag = former_ruler }
-			if = {
-				limit = { has_leader_flag = former_owner_hive }
-				change_background_job = hive_mind
+			limit = {
+				is_gestalt = no
+				NOT = { has_background_job = yes } # this can't be set to no or unemployed...
 			}
-			else_if = {
-				limit = { has_leader_flag = former_owner_machine }
-				change_background_job = machine_intelligence
+			# intentionally does not have the same code as paragon_2.2125 or reuse the set_random_CLASS_background_effect effects
+			if = {
+				limit = { has_leader_flag = former_ruler }
+				if = {
+					limit = { has_leader_flag = former_owner_hive }
+					change_background_job = hive_mind
+				}
+				else_if = {
+					limit = { has_leader_flag = former_owner_machine }
+					change_background_job = machine_intelligence
+				}
+				else = {
+					change_background_job = government_employee
+				}
 			}
 			else = {
-				change_background_job = government_employee
-			}
-		}
-		else = {
-			switch = {
-				trigger = leader_class
-				governor = {
-					if = {
-						limit = { has_leader_flag = former_owner_hive }
-						change_background_job = synapse_drone
-					}
-					else_if = {
-						limit = { has_leader_flag = former_owner_machine }
-						random_list = {
-							2 = { change_background_job = coordinator }
-							1 = { change_background_job = evaluator }
+				switch = {
+					trigger = leader_class
+					governor = {
+						if = {
+							limit = { has_leader_flag = former_owner_hive }
+							change_background_job = synapse_drone
 						}
-					}
-					else = {
-						random_list = {
-							2 = { change_background_job = politician }
-							1 = { change_background_job = bureaucrat }
-						}
-					}
-				}
-				scientist = {
-					if = {
-						limit = { has_leader_flag = former_owner_hive }
-						random_list = {
-							2 = { change_background_job = brain_drone }
-							1 = { change_background_job = archaeo_drone }
-						}
-					}
-					else_if = {
-						limit = { has_leader_flag = former_owner_machine }
-						random_list = {
-							2 = { change_background_job = calculator }
-							1 = { change_background_job = archaeo_unit }
-						}
-					}
-					else = {
-						random_list = {
-							3 = { change_background_job = head_researcher }
-							1 = { change_background_job = researcher }
-							1 = { change_background_job = archaeoengineers }
-						}
-					}
-				}
-				admiral = {
-					if = {
-						limit = {
-							OR = {
-								has_leader_flag = former_owner_hive
-								has_leader_flag = former_owner_machine
+						else_if = {
+							limit = { has_leader_flag = former_owner_machine }
+							random_list = {
+								2 = { change_background_job = coordinator }
+								1 = { change_background_job = evaluator }
 							}
 						}
-						random_list = {
-							1 = { change_background_job = warrior_drone }
-							1 = { change_background_job = patrol_drone }
-						}
-					}
-					else = {
-						set_random_admiral_background_effect = yes
-					}
-				}
-				general = {
-					if = {
-						limit = {
-							OR = {
-								has_leader_flag = former_owner_hive
-								has_leader_flag = former_owner_machine
+						else = {
+							random_list = {
+								2 = { change_background_job = politician }
+								1 = { change_background_job = bureaucrat }
 							}
 						}
-						random_list = {
-							1 = { change_background_job = warrior_drone }
-							1 = { change_background_job = patrol_drone }
+					}
+					scientist = {
+						if = {
+							limit = { has_leader_flag = former_owner_hive }
+							random_list = {
+								2 = { change_background_job = brain_drone }
+								1 = { change_background_job = archaeo_drone }
+							}
+						}
+						else_if = {
+							limit = { has_leader_flag = former_owner_machine }
+							random_list = {
+								2 = { change_background_job = calculator }
+								1 = { change_background_job = archaeo_unit }
+							}
+						}
+						else = {
+							random_list = {
+								3 = { change_background_job = head_researcher }
+								1 = { change_background_job = researcher }
+								1 = { change_background_job = archaeoengineers }
+							}
 						}
 					}
-					else = {
-						random_list = {
-							1 = { change_background_job = special_operations_commander }
-							1 = { change_background_job = commanding_officer }
-							1 = { change_background_job = chief_supply_officer }
-							1 = { change_background_job = intelligence_officer }
-							1 = { change_background_job = chief_security_officer }
-							1 = { change_background_job = enforcer }
-							1 = { change_background_job = soldier }
+					admiral = {
+						if = {
+							limit = {
+								OR = {
+									has_leader_flag = former_owner_hive
+									has_leader_flag = former_owner_machine
+								}
+							}
+							random_list = {
+								1 = { change_background_job = warrior_drone }
+								1 = { change_background_job = patrol_drone }
+							}
+						}
+						else = {
+							set_random_admiral_background_effect = yes
+						}
+					}
+					general = {
+						if = {
+							limit = {
+								OR = {
+									has_leader_flag = former_owner_hive
+									has_leader_flag = former_owner_machine
+								}
+							}
+							random_list = {
+								1 = { change_background_job = warrior_drone }
+								1 = { change_background_job = patrol_drone }
+							}
+						}
+						else = {
+							random_list = {
+								1 = { change_background_job = special_operations_commander }
+								1 = { change_background_job = commanding_officer }
+								1 = { change_background_job = chief_supply_officer }
+								1 = { change_background_job = intelligence_officer }
+								1 = { change_background_job = chief_security_officer }
+								1 = { change_background_job = enforcer }
+								1 = { change_background_job = soldier }
+							}
 						}
 					}
 				}
+				reroll_random = yes
 			}
-			reroll_random = yes
 		}
 	}
 	if = {
