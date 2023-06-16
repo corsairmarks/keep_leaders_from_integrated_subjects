@@ -3703,7 +3703,6 @@ country_event = {
 
 # triggered by on_leader_owner_changed
 # gestalts gain the warform trait for their node upon gaining the warform
-# this = leader
 leader_event = {
 	id = keep_leaders.164
 	hide_window = yes
@@ -3725,7 +3724,6 @@ leader_event = {
 
 # triggered by on_leader_owner_changed
 # gestalts gain the caretaker trait for their node upon gaining the caretaker
-# this = leader
 leader_event = {
 	id = keep_leaders.246
 	hide_window = yes
@@ -3741,6 +3739,52 @@ leader_event = {
 				limit = { is_councilor_type = councilor_gestalt_governor }
 				add_trait = leader_trait_govenor_caretaker_node
 			}
+		}
+	}
+}
+
+# triggered by on_leader_owner_changed
+# remove the memory value lockout - the leader can contribute to a new vault
+# ideally PDX would use a dynamic flag memory_vault_contributed@owner so it would be possible to identify whose vault(s) to which the leader has contributed
+leader_event = {
+	id = keep_leaders.2044
+	hide_window = yes
+	is_triggered_only = yes
+	pre_triggers = { has_owner = yes }
+	trigger = { has_leader_flag = memory_vault_contributed }
+	immediate = { remove_leader_flag = memory_vault_contributed }
+}
+
+# triggered by on_leader_owner_changed
+# memory vaults empires gain a charge for every qualifying leader
+leader_event = {
+	id = keep_leaders.2045
+	hide_window = yes
+	is_triggered_only = yes
+	pre_triggers = { has_owner = yes }
+	trigger = {
+		NOT = { has_leader_flag = memory_vault_contributed }
+		owner = { is_memory_vault_empire = yes }
+	}
+	immediate = {
+		if = {
+			limit = {
+				OR = {
+					has_leader_flag = renowned_leader
+					has_leader_flag = legendary_leader
+					has_skill >= 8
+				}
+			}
+			owner = {
+				random_owned_planet = {
+					limit = { is_variable_set = paragon_memory_vault }
+					change_variable = {
+						which = paragon_memory_vault
+						value = 1
+					}
+				}
+			}
+			set_leader_flag = memory_vault_contributed
 		}
 	}
 }
