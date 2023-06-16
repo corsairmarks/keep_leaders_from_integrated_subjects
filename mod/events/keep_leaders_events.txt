@@ -2151,7 +2151,7 @@ country_event = {
 
 # window with options to potentially keep the stored leaders from infiltration
 # triggered by on_planet_transfer
-# this = planet (after new owner set)
+# root = planet (after new owner set)
 # from = country (new owner)
 # fromfrom = country (former owner, if any)
 planet_event = {
@@ -3047,7 +3047,7 @@ country_event = {
 
 # gatekeeper to potentially keep aquatic stored leaders after being drenched by the Deluge Machine
 # triggered by on_planet_transfer
-# this = planet (after new owner set)
+# root = planet (after new owner set)
 # from = country (new owner)
 # fromfrom = country (former owner, if any)
 planet_event = {
@@ -3100,7 +3100,7 @@ planet_event = {
 
 # window with options to potentially keep the stored leaders after being cyborgized by the Nanobot Diffuser
 # triggered by keep_leaders.31
-# this = planet (after new owner set)
+# root = planet (after new owner set)
 # from = country (new owner)
 # fromfrom = country (former owner, if any)
 planet_event = {
@@ -3192,7 +3192,7 @@ planet_event = {
 
 # gatekeeper to potentially keep stored leaders after being cyborgized by the Nanobot Diffuser
 # triggered by on_planet_transfer
-# this = planet (after new owner set)
+# root = planet (after new owner set)
 # from = country (new owner)
 # fromfrom = country (former owner, if any)
 planet_event = {
@@ -3232,7 +3232,7 @@ planet_event = {
 
 # window with options to potentially keep the stored leaders after being necrophaged by the Necrophagic Spore Diffuser
 # triggered by keep_leaders.41
-# this = planet (after new owner set)
+# root = planet (after new owner set)
 # from = country (new owner)
 # fromfrom = country (former owner, if any)
 planet_event = {
@@ -3435,7 +3435,7 @@ planet_event = {
 
 # gatekeeper to potentially keep stored leaders after being made believers by the Divine Enforcer
 # triggered by on_planet_transfer
-# this = planet (after new owner set)
+# root = planet (after new owner set)
 # from = country (new owner)
 # fromfrom = country (former owner, if any)
 planet_event = {
@@ -3495,7 +3495,7 @@ planet_event = {
 
 # this event is intended to run after all other on_planet_transfer handlers and deletes the container country if it wasn't flagged as handled
 # triggered by on_planet_transfer
-# this = planet (after new owner set)
+# root = planet (after new owner set)
 # from = country (new owner)
 # fromfrom = country (former owner, if any)
 planet_event = {
@@ -3525,7 +3525,7 @@ planet_event = {
 }
 
 # triggered by on_leader_death_notify
-# this = country
+# root = country
 # from = leader
 country_event = {
 	id = keep_leaders.100
@@ -3569,7 +3569,7 @@ country_event = {
 }
 
 # the "dead" gestalt leader re-emerges 1-3 months after keep_leaders.100
-# this = country
+# root = country
 # from = the exiled leader
 country_event = {
 	id = keep_leaders.101

@@ -11,7 +11,7 @@ namespace = keep_leaders_planet_destruction
 # .900 devolution
 
 # fired by on_destroy_planet_with_PLANET_KILLER_GODRAY
-# this = planet that has been fired upon
+# root = planet that has been fired upon
 # from = fleet that fired
 planet_event = {
 	id = keep_leaders_planet_destruction.400
@@ -33,7 +33,7 @@ planet_event = {
 }
 
 # fired by on_destroy_planet_with_PLANET_KILLER_NANOBOT
-# this = planet that has been fired upon
+# root = planet that has been fired upon
 # from = fleet that fired
 planet_event = {
 	id = keep_leaders_planet_destruction.500
@@ -55,7 +55,7 @@ planet_event = {
 }
 
 # fired by on_destroy_planet_with_PLANET_KILLER_SPORE_DISPERSAL
-# this = planet that has been fired upon
+# root = planet that has been fired upon
 # from = fleet that fired
 planet_event = {
 	id = keep_leaders_planet_destruction.501
@@ -77,7 +77,7 @@ planet_event = {
 }
 
 # fired by on_destroy_planet_with_PLANET_KILLER_DELUGE
-# this = planet that has been fired upon
+# root = planet that has been fired upon
 # from = fleet that fired
 planet_event = {
 	id = keep_leaders_planet_destruction.700

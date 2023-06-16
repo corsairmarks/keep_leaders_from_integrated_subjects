@@ -8,7 +8,7 @@ namespace = leader
 # * assign the leader to the fleet if it does not have a leader
 # * random leader 1 gets Skirmisher (common trait) instead of Gale Speed (Aggressor subclass trait)
 # triggered by on_fleet_destroyed_perp
-# this = country, owner of fleet 1 (combatant)
+# root = country, owner of fleet 1 (combatant)
 # from = country, owner of fleet 2 (destroyed)
 # fromfrom = fleet 2, combatant
 # fromfromfrom = fleet 2, destroyed
