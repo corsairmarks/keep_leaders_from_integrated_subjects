@@ -3629,7 +3629,7 @@ country_event = {
 		name = INCREDIBLE
 		custom_tooltip = keep_leaders.101.a.tooltip
 		hidden_effect = {
-			event_target:transfer_representative = { klfis_unexile_leader = yes }
+			hire_event_leader_effect = { LEADER = transfer_representative }
 			# recalculate former ruler country bonuses
 			country_event = {
 				id = keep_leaders_bonus_traits.20

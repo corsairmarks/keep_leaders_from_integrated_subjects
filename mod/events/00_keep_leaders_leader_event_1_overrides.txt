@@ -93,14 +93,11 @@ country_event = {
 		name = HIRE
 		custom_tooltip = new_admiral
 		hidden_effect = {
+			hire_event_leader_effect = { LEADER = officer }
 			if = {
-				limit = { exists = fromfrom.leader }
-				event_target:officer = { klfis_unexile_leader = yes }
-			}
-			else = {
+				limit = { NOT = { exists = fromfrom.leader } }
 				fromfrom = { set_leader = event_target:officer }
 			}
-			event_target:officer = { create_message_leader_recruited_with_appropriate_catch_phrase = yes }
 		}
 	}
 	option = {

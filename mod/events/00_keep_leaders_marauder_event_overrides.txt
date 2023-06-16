@@ -59,10 +59,7 @@ country_event = {
 			}
 		}
 		hidden_effect = {
-			event_target:marauder_admiral = {
-				klfis_unexile_leader = yes
-				create_message_leader_recruited_with_appropriate_catch_phrase = yes
-			}
+			hire_event_leader_effect = { LEADER = marauder_admiral }
 		}
 	}
 	option = {
