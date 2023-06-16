@@ -2027,17 +2027,15 @@ prepare_to_retain_infiltration_leader = {
 	try_adjust_background = yes
 }
 
+# unexiling implicitly sets the owner to prev, since it is the owner of the fake fleet
 # this = leader
+# prev = country
 klfis_unexile_leader = {
 	optimize_memory
 	create_fleet = {
 		name = "unexile leader"
 		effect = {
-			set_owner = prev.owner
-			create_ship = {
-				name = random
-				random_existing_design = science
-			}
+			set_owner = prevprev
 			set_leader = prev
 			save_event_target_as = unexile_fleet
 		}

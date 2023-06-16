@@ -38,7 +38,7 @@ ethic_leader_creator = {
 		}
 	}
 	create_country = {
-		name = $NAME$
+		name = UNKNOWN
 		type = faction
 		species = event_target:leader_species
 		auto_delete = yes
@@ -59,7 +59,6 @@ ethic_leader_creator = {
 			}
 		}
 		effect = {
-			save_event_target_as = leader_country
 			create_leader = {
 				class = $CLASS$
 				species = event_target:leader_species
@@ -83,7 +82,7 @@ ethic_leader_creator = {
 						which = leader_pending_negative_traits_unmodified
 						value = 1
 					}
-					# This is a hack to make the leader not be added to player country.
+					# Using a temporary country is a hack to make the leader not be added to player country
 					# We must call ethic_leader_hire on the hire event
 					# We must call ethic_leader_kill on the dismiss event
 					exile_leader_as = ethic_leader_exile
