@@ -2209,6 +2209,57 @@ planet_event = {
 		}
 	}
 	option = {
+		tag = dismiss_leader
+		name = keep_leaders.3.d
+		custom_tooltip = keep_leaders.3.d.tooltip
+		hidden_effect = {
+			event_target:storage_owner = { try_clean_up_leader_storage = yes }
+			erase_modifier = { MOD = kl_peerless_infiltration_agents }
+		}
+		owner = {
+			add_modifier = {
+				modifier = kl_peerless_infiltration_agents
+				years = 20
+			}
+		}
+		ai_chance = {
+			base = 1
+			modifier = {
+				factor = 2
+				owner = {
+					has_valid_ai_personality = yes
+					OR = {
+						has_ai_personality_behaviour = multispecies
+						has_ai_personality = hegemonic_imperialists
+					}
+				}
+			}
+			modifier = {
+				factor = 0
+				owner = {
+					has_valid_ai_personality = yes
+					has_ai_personality = honorbound_warriors
+				}
+			}
+		}
+	}
+	option = {
+		name = keep_leaders.3.b
+		trigger = { from = { has_appearance_modding_technology = yes } }
+		allow = { event_target:transfer_representative = { NOT = { has_leader_flag = infiltrator_retain_cover } } }
+		response_text = keep_leaders.3.b.response
+		is_dialog_only = yes
+		event_target:transfer_representative = { set_leader_flag = infiltrator_retain_cover }
+	}
+	option = {
+		name = keep_leaders.3.c
+		trigger = { from = { has_appearance_modding_technology = yes } }
+		allow = { event_target:transfer_representative = { has_leader_flag = infiltrator_retain_cover } }
+		response_text = keep_leaders.3.c.response
+		is_dialog_only = yes
+		event_target:transfer_representative = { remove_leader_flag = infiltrator_retain_cover }
+	}
+	option = {
 		tag = hire_leader
 		name = keep_leaders.3.a
 		if = {
@@ -2284,57 +2335,6 @@ planet_event = {
 				owner = {
 					has_valid_ai_personality = yes
 					has_ai_personality_behaviour = infiltrator
-				}
-			}
-		}
-	}
-	option = {
-		name = keep_leaders.3.b
-		trigger = { from = { has_appearance_modding_technology = yes } }
-		allow = { event_target:transfer_representative = { NOT = { has_leader_flag = infiltrator_retain_cover } } }
-		response_text = keep_leaders.3.b.response
-		is_dialog_only = yes
-		event_target:transfer_representative = { set_leader_flag = infiltrator_retain_cover }
-	}
-	option = {
-		name = keep_leaders.3.c
-		trigger = { from = { has_appearance_modding_technology = yes } }
-		allow = { event_target:transfer_representative = { has_leader_flag = infiltrator_retain_cover } }
-		response_text = keep_leaders.3.c.response
-		is_dialog_only = yes
-		event_target:transfer_representative = { remove_leader_flag = infiltrator_retain_cover }
-	}
-	option = {
-		tag = dismiss_leader
-		name = keep_leaders.3.d
-		custom_tooltip = keep_leaders.3.d.tooltip
-		hidden_effect = {
-			event_target:storage_owner = { try_clean_up_leader_storage = yes }
-			erase_modifier = { MOD = kl_peerless_infiltration_agents }
-		}
-		owner = {
-			add_modifier = {
-				modifier = kl_peerless_infiltration_agents
-				years = 20
-			}
-		}
-		ai_chance = {
-			base = 1
-			modifier = {
-				factor = 2
-				owner = {
-					has_valid_ai_personality = yes
-					OR = {
-						has_ai_personality_behaviour = multispecies
-						has_ai_personality = hegemonic_imperialists
-					}
-				}
-			}
-			modifier = {
-				factor = 0
-				owner = {
-					has_valid_ai_personality = yes
-					has_ai_personality = honorbound_warriors
 				}
 			}
 		}
@@ -3134,6 +3134,19 @@ planet_event = {
 		prepare_for_primitive_planet_transferred = yes
 		choose_transfer_representative_leader = yes
 	}
+	# keep none (nice)
+	option = {
+		tag = dismiss_leader
+		name = keep_leaders.30.b
+		custom_tooltip = keep_leaders.30.b.tooltip
+		custom_tooltip_with_params = {
+			description = keep_leaders.1.tooltip.none
+			description_parameters = {
+				TOTAL = "[variable_storage.leader_accumulator]"
+			}
+		}
+		hidden_effect = { event_target:storage_owner = { destroy_country = yes } }
+	}
 	# assimilate: assimilator
 	option = {
 		tag = hire_leader
@@ -3164,19 +3177,6 @@ planet_event = {
 				}
 			}
 		}
-	}
-	# keep none (nice)
-	option = {
-		tag = dismiss_leader
-		name = keep_leaders.30.b
-		custom_tooltip = keep_leaders.30.b.tooltip
-		custom_tooltip_with_params = {
-			description = keep_leaders.1.tooltip.none
-			description_parameters = {
-				TOTAL = "[variable_storage.leader_accumulator]"
-			}
-		}
-		hidden_effect = { event_target:storage_owner = { destroy_country = yes } }
 	}
 	after = {
 		hidden_effect = {
@@ -3279,53 +3279,6 @@ planet_event = {
 		prepare_for_primitive_planet_transferred = yes
 		choose_transfer_representative_leader = yes
 	}
-	# necrophage
-	option = {
-		tag = hire_leader
-		name = keep_leaders.40.a
-		custom_tooltip_with_params = {
-			description = keep_leaders.1.tooltip
-			description_parameters = {
-				VALUE = "[variable_storage.leader_necrophagable_accumulator]"
-				TOTAL = "[variable_storage.leader_accumulator]"
-			}
-		}
-		trigger = {
-			hidden_trigger = { has_necroids = yes }
-			from = { klfis_is_necrophage_empire = yes }
-		}
-		allow = {
-			custom_tooltip = {
-				fail_text = NECROPHAGE_NONE_ELIGIBLE_NO_X
-				event_target:variable_storage = {
-					check_variable = {
-						which = leader_necrophagable_accumulator
-						value > 0
-					}
-				}
-			}
-			custom_tooltip = {
-				fail_text = CANNOT_NECROPHAGE_MACHINES_NO_X
-				event_target:storage_owner = { all_stored_leaders_robotic = no }
-			}
-		}
-		ai_chance = {
-			base = 10
-			modifier = {
-				factor = 2
-				from = { has_policy_flag = purge_allowed }
-			}
-		}
-		from = {
-			klfis_try_generate_rewards_origin_necrophage = yes
-			hidden_effect = {
-				country_event = {
-					id = keep_leaders.20
-					scopes = { from = event_target:storage_owner }
-				}
-			}
-		}
-	}
 	# keep none (nice)
 	option = {
 		tag = dismiss_leader
@@ -3376,6 +3329,53 @@ planet_event = {
 		}
 		hidden_effect = { event_target:storage_owner = { destroy_country = yes } }
 		ai_chance = { base = 0 }
+	}
+	# necrophage
+	option = {
+		tag = hire_leader
+		name = keep_leaders.40.a
+		custom_tooltip_with_params = {
+			description = keep_leaders.1.tooltip
+			description_parameters = {
+				VALUE = "[variable_storage.leader_necrophagable_accumulator]"
+				TOTAL = "[variable_storage.leader_accumulator]"
+			}
+		}
+		trigger = {
+			hidden_trigger = { has_necroids = yes }
+			from = { klfis_is_necrophage_empire = yes }
+		}
+		allow = {
+			custom_tooltip = {
+				fail_text = NECROPHAGE_NONE_ELIGIBLE_NO_X
+				event_target:variable_storage = {
+					check_variable = {
+						which = leader_necrophagable_accumulator
+						value > 0
+					}
+				}
+			}
+			custom_tooltip = {
+				fail_text = CANNOT_NECROPHAGE_MACHINES_NO_X
+				event_target:storage_owner = { all_stored_leaders_robotic = no }
+			}
+		}
+		ai_chance = {
+			base = 10
+			modifier = {
+				factor = 2
+				from = { has_policy_flag = purge_allowed }
+			}
+		}
+		from = {
+			klfis_try_generate_rewards_origin_necrophage = yes
+			hidden_effect = {
+				country_event = {
+					id = keep_leaders.20
+					scopes = { from = event_target:storage_owner }
+				}
+			}
+		}
 	}
 	after = {
 		hidden_effect = {
@@ -3622,18 +3622,9 @@ country_event = {
 	}
 	immediate = {
 		log = "keep_leaders.101 former gestalt leader [From.GetFirstName] respawned"
-		from = { save_event_target_as = transfer_representative }
-	}
-	option = {
-		tag = hire_leader
-		name = INCREDIBLE
-		custom_tooltip = keep_leaders.101.a.tooltip
-		hidden_effect = {
-			hire_event_leader_effect = { LEADER = transfer_representative }
-			# recalculate former ruler country bonuses
-			country_event = {
-				id = keep_leaders_bonus_traits.20
-			}
+		from = {
+			set_leader_flag = is_in_recruit_window
+			save_event_target_as = transfer_representative
 		}
 	}
 	option = {
@@ -3649,7 +3640,29 @@ country_event = {
 		}
 	}
 	# TODO: some flavor options to ask the leader about stuff?
-	after = { hidden_effect = { event_target:transfer_representative = { remove_leader_flag = former_gestalt_ruler_clone } } }
+	option = {
+		tag = hire_leader
+		name = INCREDIBLE
+		custom_tooltip = keep_leaders.101.a.tooltip
+		hidden_effect = {
+			hire_event_leader_effect = { LEADER = transfer_representative }
+			# recalculate former ruler country bonuses
+			country_event = {
+				id = keep_leaders_bonus_traits.20
+			}
+		}
+	}
+	after = {
+		hidden_effect = {
+			event_target:transfer_representative = {
+				remove_leader_flag = is_in_recruit_window
+				if = {
+					limit = { has_leader_flag = former_gestalt_ruler_clone }
+					remove_leader_flag = former_gestalt_ruler_clone
+				}
+			}
+		}
+	}
 }
 
 # triggered by on_leader_death and on_leader_fired (not currently active)

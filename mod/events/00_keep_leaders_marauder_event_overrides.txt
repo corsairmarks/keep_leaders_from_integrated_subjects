@@ -48,21 +48,6 @@ country_event = {
 		}
 	}
 	option = {
-		tag = hire_leader
-		name = "marauder.703.a"
-		custom_tooltip = "gain_marauder_admiral"
-		allow = {
-			NOR = {
-				has_valid_civic = civic_machine_terminator
-				has_valid_civic = civic_hive_devouring_swarm
-				has_valid_civic = civic_fanatic_purifiers
-			}
-		}
-		hidden_effect = {
-			hire_event_leader_effect = { LEADER = marauder_admiral }
-		}
-	}
-	option = {
 		tag = dismiss_leader
 		name = DECLINE
 		custom_tooltip = "marauder.703.b"
@@ -101,5 +86,20 @@ country_event = {
 		trigger = { has_valid_civic = civic_fanatic_purifiers }
 		add_resource = { influence = 50 }
 		hidden_effect = { event_target:marauder_admiral = { kill_leader = { show_notification = no } } }
+	}
+	option = {
+		tag = hire_leader
+		name = "marauder.703.a"
+		custom_tooltip = "gain_marauder_admiral"
+		allow = {
+			NOR = {
+				has_valid_civic = civic_machine_terminator
+				has_valid_civic = civic_hive_devouring_swarm
+				has_valid_civic = civic_fanatic_purifiers
+			}
+		}
+		hidden_effect = {
+			hire_event_leader_effect = { LEADER = marauder_admiral }
+		}
 	}
 }

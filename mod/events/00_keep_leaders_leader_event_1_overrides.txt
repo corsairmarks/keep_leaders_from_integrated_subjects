@@ -97,7 +97,12 @@ country_event = {
 			}
 		}
 	}
-
+	option = {
+		tag = dismiss_leader
+		name = DISMISS
+		trigger = { always = no }
+		hidden_effect = { event_target:officer = { kill_leader = { show_notification = no } } }
+	}
 	option = {
 		tag = hire_leader
 		name = HIRE
@@ -109,11 +114,5 @@ country_event = {
 				fromfrom = { set_leader = event_target:officer }
 			}
 		}
-	}
-	option = {
-		tag = dismiss_leader
-		name = DISMISS
-		trigger = { always = no }
-		hidden_effect = { event_target:officer = { kill_leader = { show_notification = no } } }
 	}
 }
