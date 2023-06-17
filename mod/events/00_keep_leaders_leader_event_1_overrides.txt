@@ -6,7 +6,9 @@ namespace = leader
 # * leader can be any species that has full military service
 # * location is the fleet (fromfrom)
 # * assign the leader to the fleet if it does not have a leader
-# * random leader 1 gets Skirmisher (common trait) instead of Gale Speed (Aggressor subclass trait)
+# * random leader variant 1 gets Skirmisher (common trait) instead of Gale Speed (Aggressor subclass trait)
+# * prevent gestalts from receiving the variant with Skirmisher
+# * add new leader variant with Unyielding + Aggressive
 # triggered by on_fleet_destroyed_perp
 # root = country, owner of fleet 1 (combatant)
 # from = country, owner of fleet 2 (destroyed)
@@ -65,19 +67,27 @@ country_event = {
 			}
 			effect = {
 				random_list = {
-					25 = {
-						add_trait_no_notify = leader_trait_skirmisher
+					20 = {
+						modifier = {
+							factor = 0
+							owner = { is_gestalt = yes }
+						}
+						add_trait_no_notify = leader_trait_skirmisher # note: councilor trait
 						add_trait_no_notify = leader_trait_aggressive
 					}
-					25 = {
+					20 = {
+						add_trait_no_notify = leader_trait_unyielding
+						add_trait_no_notify = leader_trait_aggressive
+					}
+					20 = {
 						add_trait_no_notify = leader_trait_engineer
 						add_trait_no_notify = leader_trait_aggressive
 					}
-					25 = {
-						add_trait_no_notify = leader_trait_fleet_logistician # note: this trait is normally not available if Galactic Paragons is active
+					20 = {
+						add_trait_no_notify = leader_trait_fleet_logistician # note: this trait is normally not available when Galactic Paragons is active
 						add_trait_no_notify = leader_trait_cautious
 					}
-					25 = {
+					20 = {
 						add_trait_no_notify = leader_trait_scout
 						add_trait_no_notify = leader_trait_trickster
 					}
