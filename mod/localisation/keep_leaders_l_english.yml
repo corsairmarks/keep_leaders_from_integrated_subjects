@@ -263,5 +263,8 @@
 
  MESSAGE_RETAINED_LEADER_TITLE: "Leader Retained"
 
+ leader.1.a: "What are the details of your command?"
+ leader.1.a.response: "I command the §Y[ship.GetName]§!, a [ship.GetDesignName]-class §Y[ship.GetShipSizeName]§! currently attached to the §Y[ship.GetFleetName]§!."
+
  # modifiers unlocalised in the base game
  mod_op_cat_infiltration_speed_mult: "$MOD_ESPIONAGE_OPERATION_SPEED_MULT$ ($op_cat_infiltration$)"

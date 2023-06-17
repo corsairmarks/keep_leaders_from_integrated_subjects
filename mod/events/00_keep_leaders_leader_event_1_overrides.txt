@@ -111,6 +111,11 @@ country_event = {
 		hidden_effect = { event_target:officer = { kill_leader = { show_notification = no } } }
 	}
 	option = {
+		name = leader.1.a
+		response_text = leader.1.a.response
+		is_dialog_only = yes
+	}
+	option = {
 		tag = hire_leader
 		name = HIRE
 		custom_tooltip = new_admiral
