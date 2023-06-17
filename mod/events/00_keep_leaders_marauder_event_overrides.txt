@@ -43,7 +43,6 @@ country_event = {
 					set_leader_flag = is_in_recruit_window
 					save_event_target_as = marauder_admiral
 					exile_leader_as = marauder_703_admiral
-					set_owner = prevprev
 				}
 			}
 		}
