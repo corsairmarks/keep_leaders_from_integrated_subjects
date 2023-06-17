@@ -234,6 +234,8 @@
  keep_leaders.3.d: "That will be all."
  keep_leaders.3.d.tooltip: "Retain them as agents - we have need of their subterfuge."
  kl_peerless_infiltration_agents: "Peerless Infiltration"
+ kl_exemplary_captain: "Exemplary Captain"
+ kl_exemplary_captain_desc: "The captain of the [This.GetName] cultivates a finely-drilled crew who embody the ideals of our naval academies."
 
  # colossus transfer title and descriptions
  keep_leaders.30.title: "$PLANET_CAP$ [This.GetName] Cyborgized"

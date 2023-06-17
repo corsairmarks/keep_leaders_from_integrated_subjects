@@ -66,6 +66,7 @@ country_event = {
 				trait = leader_trait_eager_2
 			}
 			effect = {
+				set_leader_flag = is_in_recruit_window
 				random_list = {
 					20 = {
 						modifier = {
@@ -100,6 +101,13 @@ country_event = {
 	option = {
 		tag = dismiss_leader
 		name = DISMISS
+		event_target:ship = {
+			hidden_effect = { erase_modifier = { MOD = kl_exemplary_captain } }
+			add_modifier = {
+				modifier = kl_exemplary_captain
+				days = 7200
+			}
+		}
 		hidden_effect = { event_target:officer = { kill_leader = { show_notification = no } } }
 	}
 	option = {
