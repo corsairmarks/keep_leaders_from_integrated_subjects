@@ -111,6 +111,10 @@ ethic_leader_hire_effect = {
 	}
 	lower_leader_chance = yes
 	event_target:ethic_leader = {
+		if = {
+			limit = { has_leader_flag = is_in_recruit_window }
+			remove_leader_flag = is_in_recruit_window
+		}
 		klfis_unexile_leader = yes
 		save_global_event_target_as = $GLOBAL_EVENT_TARGET$
 		set_leader_flag = $GLOBAL_EVENT_TARGET$
@@ -125,6 +129,10 @@ ethic_leader_hire_effect = {
 # $LEADER$ = string, the name of the event target at which the leader is saved
 hire_event_leader_effect = {
 	event_target:$LEADER$ = {
+		if = {
+			limit = { has_leader_flag = is_in_recruit_window }
+			remove_leader_flag = is_in_recruit_window
+		}
 		klfis_unexile_leader = yes
 		create_message_leader_recruited_with_appropriate_catch_phrase = yes
 	}
