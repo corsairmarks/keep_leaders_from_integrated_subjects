@@ -69,7 +69,7 @@ This mod can be safely added to your savegame after the game has started. If you
 * 3.0.0 Update for compatibility with Stellaris 3.2 "Herbert"
     * Ensure necrophaged (and otherwise changed) leaders match the gender of their new species ("Gender Nonbinary Leaders" disables this change)
     * Integrates with "Special Leadership Privileges for Battle Thralls & Bio-Trophies" and "Gender Nonbinary Leaders" to avoid duplicate cloning
-    * If using a colossus weapon on a primitive empire that results in the transfer of control of their planet to your empire, you can choose what happens to the leaders
+    * If using a colossus weapon on a pre-FTL empire that results in the transfer of control of their planet to your empire, you can choose what happens to the leaders
     * Supports these colossus weapons by default: Nanobot Diffuser, Deluge Machine, Necrophagic Spore Diffuser (from Eldanær Stellar Authority)
 * 3.1.0 Allow Rogue Servitors to choose to keep organic leaders as advisors when "Special Leadership Privileges for Battle Thralls & Bio-Trophies" is also installed
 * 4.0.0 Update for compatibility with Stellaris 3.3 "Libra" - Zombies are not smart enough to be leaders

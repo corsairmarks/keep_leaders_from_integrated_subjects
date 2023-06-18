@@ -1,6 +1,6 @@
 # creates a country to store leaders and variables counting them, then transfers and counts them
 # event_target:potential_owner = country, overlord/infiltrator/planet-killer
-# event_target:former_owner = country, integrated subject/primitives/victims
+# event_target:former_owner = country, integrated subject/pre-FTLs/victims
 create_leader_storage_and_transfer_leaders = {
 	optimize_memory
 	# "arguments" for transfer_leader_to_storage
@@ -14,7 +14,7 @@ create_leader_storage_and_transfer_leaders = {
 		# ignore_initial_colony_error = yes # required only if country_type has needs_colony = yes (the default)
 		authority = event_target:former_owner
 		ethos = event_target:former_owner
-		# civics = event_target:former_owner # breaks because primitive civics are restricted to the primitive country_type
+		# civics = event_target:former_owner # breaks because pre-FTL civics are restricted to the primitive country_type
 		ship_prefix = event_target:former_owner
 		effect = {
 			# TODO - if I get persistent shells to work, clean up any former shells here (i.e. a ruler/heir transferred before)
@@ -190,8 +190,8 @@ try_clean_up_leader_storage = {
 # event_target:potential_owner = from
 # event_target:former_owner = fromfrom
 # event_target:original_species = fromfrom.owner_species
-# event_target:storage_owner = country, primitive leader storage
-# event_target:variable_storage = country, primitive leader variable storage
+# event_target:storage_owner = country, pre-FTL leader storage
+# event_target:variable_storage = country, pre-FTL leader variable storage
 # this = planet (after new owner set)
 # from = country (new owner)
 # fromfrom = country (former owner, if any)
@@ -2009,7 +2009,7 @@ choose_transfer_representative_leader = {
 }
 
 # this = leader
-# $RETAIN_COVER$ = bool, whether the leader's portrait should be swapped to match the primitive species (default = no)
+# $RETAIN_COVER$ = bool, whether the leader's portrait should be swapped to match the pre-FTL species (default = no)
 # event_target:original_species = fromfrom.owner_species
 # event_target:potential_owner = country to become the new owner and for which to set species rights
 prepare_to_retain_infiltration_leader = {

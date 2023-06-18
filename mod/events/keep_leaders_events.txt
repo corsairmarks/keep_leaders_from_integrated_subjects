@@ -1,10 +1,10 @@
 namespace = keep_leaders
 
 # triggered by keep_leaders.2, keep_leaders.5, keep_leaders.21, keep_leaders.51
-# window with options to potentially keep the stored leaders from integration/primitive conquest/colossus weapon
+# window with options to potentially keep the stored leaders from integration/pre-FTL conquest/colossus weapon
 # root = country, overlord
-# from = country, integrated subject or conquered/colossus'd primitives
-# fromfrom = planet, primitive world (if available)
+# from = country, integrated subject or conquered/colossus'd pre-FTLs
+# fromfrom = planet, pre-FTL world (if available)
 country_event = {
 	id = keep_leaders.1
 	title = keep_leaders.1.title.scripted_loc
@@ -2113,7 +2113,7 @@ country_event = {
 	}
 }
 
-# triggered by on_planet_attackers_win (same on_action as primitive planet conquest action.14)
+# triggered by on_planet_attackers_win (same on_action as pre-FTL planet conquest action.14)
 # root = country, leader attacker
 # from = country, planet owner
 # fromfrom = planet
@@ -2134,7 +2134,7 @@ country_event = {
 		}
 	}
 	immediate = {
-		log = "primitive conquest: [FromFrom.GetName] ([From.GetRealName]) conquered by [This.GetRealName]"
+		log = "pre-FTL conquest: [FromFrom.GetName] ([From.GetRealName]) conquered by [This.GetRealName]"
 		set_country_flag = keeping_leaders_conquest@from
 		save_event_target_as = potential_owner # "argument" for create_leader_storage_and_transfer_leaders
 		from = { save_event_target_as = former_owner } # "argument" for create_leader_storage_and_transfer_leaders
@@ -2193,7 +2193,7 @@ planet_event = {
 		}
 	}
 	immediate = {
-		log = "primitive infiltration: [This.GetName] ([FromFrom.GetRealName]) infiltrated by [From.GetRealName]"
+		log = "pre-FTL infiltration: [This.GetName] ([FromFrom.GetRealName]) infiltrated by [From.GetRealName]"
 		from = { set_country_flag = keeping_leaders_infiltration@fromfrom }
 		fromfrom = {
 			save_event_target_as = former_owner # "argument" for localisation and create_leader_storage_and_transfer_leaders
