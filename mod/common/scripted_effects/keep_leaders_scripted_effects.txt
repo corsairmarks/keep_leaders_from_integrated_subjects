@@ -61,6 +61,7 @@ create_leader_storage_and_transfer_leaders = {
 			# }
 			set_country_flag = former_owner_shell
 			set_country_flag = former_owner@event_target:former_owner
+			set_country_flag = potential_owner@event_target:potential_owner
 			save_event_target_as = storage_owner
 			save_event_target_as = variable_storage
 			# variables for the counts from accumulate_leader
@@ -139,7 +140,7 @@ create_leader_storage_and_transfer_leaders = {
 	event_target:former_owner = {
 		every_owned_leader = {
 			limit = {
-				is_eligible_transfer_leader = yes
+				is_eligible_transfer_leader_from_storage = yes
 				is_ruler = no
 				is_heir = no
 			}
@@ -244,6 +245,7 @@ transfer_leader_to_storage = {
 		limit = { owner = { is_machine_empire = yes } }
 		set_leader_flag = former_owner_machine
 	}
+	set_leader_flag = stored_leader
 	set_leader_flag = former_owner@owner
 	set_leader_flag = potential_owner@event_target:potential_owner
 	unassign_leader = this

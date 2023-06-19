@@ -1,0 +1,17 @@
+# used to provide leader counts for use by scripted_loc
+# this = country
+# event_target:potential_owner = country, the country to which leaders would transfer
+# value:klfis_count_owned_leader|LEADER_CLASS|scientist|
+klfis_count_owned_leader = {
+	base = 0
+	complex_trigger_modifier = {
+		trigger = count_owned_leader
+		parameters = {
+			limit = {
+				is_eligible_transfer_leader_from_storage = yes
+				[[LEADER_CLASS] leader_class = $LEADER_CLASS$ ]
+			}
+		}
+		mode = add
+	}
+}

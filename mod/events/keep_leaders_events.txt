@@ -250,10 +250,7 @@ country_event = {
 		exists = from
 		any_country = {
 			has_country_flag = former_owner@from
-			any_owned_leader = {
-				has_leader_flag = former_owner@from
-				has_leader_flag = potential_owner@prevprev
-			}
+			has_country_flag = potential_owner@prev
 		}
 	}
 	immediate = {
@@ -492,65 +489,6 @@ country_event = {
 			modifier = {
 				factor = 100
 				has_valid_civic = civic_inwards_perfection
-			}
-		}
-	}
-	option = { # none (nice option for non-pacifists/non-xenophiles, swapped to mean text for pacifists/xenophiles and disallowed)
-		name = {
-			text = keep_leaders.1.b
-			trigger = {
-				is_pacifist = no
-				is_xenophile = no
-			}
-		}
-		name = {
-			text = keep_leaders.1.a
-			trigger = {
-				OR = {
-					is_pacifist = yes
-					is_xenophile = yes
-				}
-			}
-		}
-		if = {
-			limit = {
-				is_pacifist = no
-				is_xenophile = no
-			}
-			custom_tooltip = keep_leaders.1.b.tooltip
-		}
-		else = {
-			custom_tooltip = keep_leaders.1.a.tooltip
-		}
-		custom_tooltip_with_params = {
-			description = keep_leaders.1.tooltip.none
-			description_parameters = {
-				TOTAL = "[variable_storage.leader_accumulator]"
-			}
-		}
-		hidden_effect = { event_target:storage_owner = { destroy_country = yes } }
-		trigger = {
-			hidden_trigger = {
-				is_regular_empire = yes
-				NOT = { has_valid_civic = civic_fanatic_purifiers }
-				is_valid_organic_zealots = no
-			}
-		}
-		allow = {
-			custom_tooltip = {
-				fail_text = empire_is_pacifist_no_x
-				is_pacifist = no
-			}
-			custom_tooltip = {
-				fail_text = empire_is_xenophile_no_x
-				is_xenophile = no
-			}
-		}
-		ai_chance = {
-			base = 1
-			modifier = {
-				factor = 2
-				klfis_is_necrophage_empire = yes
 			}
 		}
 	}
@@ -994,6 +932,71 @@ country_event = {
 			modifier = {
 				factor = 10
 				has_valid_civic = civic_machine_servitor
+			}
+		}
+	}
+	option = { # flavor: how many leaders?
+		name = keep_leaders.1.l
+		response_text = keep_leaders.1.l.response
+		is_dialog_only = yes
+	}
+	# TODO: more flavor options?
+	option = { # none (nice option for non-pacifists/non-xenophiles, swapped to mean text for pacifists/xenophiles and disallowed)
+		name = {
+			text = keep_leaders.1.b
+			trigger = {
+				is_pacifist = no
+				is_xenophile = no
+			}
+		}
+		name = {
+			text = keep_leaders.1.a
+			trigger = {
+				OR = {
+					is_pacifist = yes
+					is_xenophile = yes
+				}
+			}
+		}
+		if = {
+			limit = {
+				is_pacifist = no
+				is_xenophile = no
+			}
+			custom_tooltip = keep_leaders.1.b.tooltip
+		}
+		else = {
+			custom_tooltip = keep_leaders.1.a.tooltip
+		}
+		custom_tooltip_with_params = {
+			description = keep_leaders.1.tooltip.none
+			description_parameters = {
+				TOTAL = "[variable_storage.leader_accumulator]"
+			}
+		}
+		hidden_effect = { event_target:storage_owner = { destroy_country = yes } }
+		trigger = {
+			hidden_trigger = {
+				is_regular_empire = yes
+				NOT = { has_valid_civic = civic_fanatic_purifiers }
+				is_valid_organic_zealots = no
+			}
+		}
+		allow = {
+			custom_tooltip = {
+				fail_text = empire_is_pacifist_no_x
+				is_pacifist = no
+			}
+			custom_tooltip = {
+				fail_text = empire_is_xenophile_no_x
+				is_xenophile = no
+			}
+		}
+		ai_chance = {
+			base = 1
+			modifier = {
+				factor = 2
+				klfis_is_necrophage_empire = yes
 			}
 		}
 	}
@@ -2116,7 +2119,7 @@ country_event = {
 			OR = {
 				exists = ruler
 				exists = heir
-				any_owned_leader = { is_eligible_transfer_leader = yes }
+				any_owned_leader = { is_eligible_transfer_leader_from_storage = yes }
 			}
 		}
 	}
@@ -2236,7 +2239,7 @@ planet_event = {
 		allow = { event_target:transfer_representative = { NOT = { has_leader_flag = infiltrator_retain_cover } } }
 		response_text = keep_leaders.3.b.response
 		is_dialog_only = yes
-		event_target:transfer_representative = { set_leader_flag = infiltrator_retain_cover }
+		hidden_effect = { event_target:transfer_representative = { set_leader_flag = infiltrator_retain_cover } }
 	}
 	option = {
 		name = keep_leaders.3.c
@@ -2244,7 +2247,7 @@ planet_event = {
 		allow = { event_target:transfer_representative = { has_leader_flag = infiltrator_retain_cover } }
 		response_text = keep_leaders.3.c.response
 		is_dialog_only = yes
-		event_target:transfer_representative = { remove_leader_flag = infiltrator_retain_cover }
+		hidden_effect = { event_target:transfer_representative = { remove_leader_flag = infiltrator_retain_cover } }
 	}
 	option = {
 		tag = hire_leader
@@ -2352,7 +2355,7 @@ country_event = {
 			OR = {
 				exists = ruler
 				exists = heir
-				any_owned_leader = { is_eligible_transfer_leader = yes }
+				any_owned_leader = { is_eligible_transfer_leader_from_storage = yes }
 			}
 		}
 	}
@@ -3446,7 +3449,7 @@ planet_event = {
 			fromfrom = { set_country_flag = colossus_transfer_handled@prev }
 			event_target:storage_owner = {
 				every_owned_leader = {
-					limit = { is_eligible_transfer_leader = yes }
+					limit = { is_eligible_transfer_leader_from_storage = yes }
 					if = {
 						limit = {
 							OR = {

@@ -63,3 +63,178 @@ defined_text = {
 	}
 	default = keep_leaders.1.title
 }
+
+# this = country, leader storage
+# event_target:potential_owner = country, the country to which leaders would transfer
+defined_text = {
+	name = GetStoredLeaderText
+	text = {
+		trigger = {
+			count_owned_leader = {
+				count > 1
+				limit = { is_eligible_transfer_leader_from_storage = yes }
+			}
+		}
+		localization_key = keep_leaders.1.l.response.multiple
+	}
+	default = keep_leaders.1.l.response.singular
+}
+
+# this = country, leader storage
+# event_target:potential_owner = country, the country to which leaders would transfer
+defined_text = {
+	name = GetStoredLeaderCount
+	value = value:klfis_count_owned_leader
+}
+
+# this = country, leader storage
+# event_target:potential_owner = country, the country to which leaders would transfer
+defined_text = {
+	name = GetStoredGovernorText
+	text = {
+		trigger = {
+			count_owned_leader = {
+				count = 1
+				limit = {
+					is_eligible_transfer_leader_from_storage = yes
+					leader_class = governor
+				}
+			}
+		}
+		localization_key = keep_leaders.1.l.governor
+	}
+	text = {
+		trigger = {
+			count_owned_leader = {
+				count > 1
+				limit = {
+					is_eligible_transfer_leader_from_storage = yes
+					leader_class = governor
+				}
+			}
+		}
+		localization_key = keep_leaders.1.l.governor_plural
+	}
+	default = BLANK_STRING
+}
+
+# this = country, leader storage
+# event_target:potential_owner = country, the country to which leaders would transfer
+defined_text = {
+	name = GetStoredGovernorCount
+	value = value:klfis_count_owned_leader|LEADER_CLASS|governor|
+}
+
+# this = country, leader storage
+# event_target:potential_owner = country, the country to which leaders would transfer
+defined_text = {
+	name = GetStoredScientistText
+	text = {
+		trigger = {
+			count_owned_leader = {
+				count = 1
+				limit = {
+					is_eligible_transfer_leader_from_storage = yes
+					leader_class = scientist
+				}
+			}
+		}
+		localization_key = keep_leaders.1.l.scientist
+	}
+	text = {
+		trigger = {
+			count_owned_leader = {
+				count > 1
+				limit = {
+					is_eligible_transfer_leader_from_storage = yes
+					leader_class = scientist
+				}
+			}
+		}
+		localization_key = keep_leaders.1.l.scientist_plural
+	}
+	default = BLANK_STRING
+}
+
+# this = country, leader storage
+# event_target:potential_owner = country, the country to which leaders would transfer
+defined_text = {
+	name = GetStoredScientistCount
+	value = value:klfis_count_owned_leader|LEADER_CLASS|scientist|
+}
+
+# this = country, leader storage
+# event_target:potential_owner = country, the country to which leaders would transfer
+defined_text = {
+	name = GetStoredAdmiralText
+	text = {
+		trigger = {
+			count_owned_leader = {
+				count = 1
+				limit = {
+					is_eligible_transfer_leader_from_storage = yes
+					leader_class = admiral
+				}
+			}
+		}
+		localization_key = keep_leaders.1.l.admiral
+	}
+	text = {
+		trigger = {
+			count_owned_leader = {
+				count > 1
+				limit = {
+					is_eligible_transfer_leader_from_storage = yes
+					leader_class = admiral
+				}
+			}
+		}
+		localization_key = keep_leaders.1.l.admiral_plural
+	}
+	default = BLANK_STRING
+}
+
+# this = country, leader storage
+# event_target:potential_owner = country, the country to which leaders would transfer
+defined_text = {
+	name = GetStoredAdmiralCount
+	value = value:klfis_count_owned_leader|LEADER_CLASS|admiral|
+}
+
+# this = country, leader storage
+# event_target:potential_owner = country, the country to which leaders would transfer
+defined_text = {
+	name = GetStoredGeneralText
+	text = {
+		trigger = {
+			count_owned_leader = {
+				count = 1
+				limit = {
+					is_eligible_transfer_leader_from_storage = yes
+					leader_class = general
+				}
+			}
+		}
+		localization_key = keep_leaders.1.l.general
+	}
+	text = {
+		trigger = {
+			count_owned_leader = {
+				count > 1
+				limit = {
+					is_eligible_transfer_leader_from_storage = yes
+					leader_class = general
+				}
+			}
+		}
+		localization_key = keep_leaders.1.l.general_plural
+	}
+	default = BLANK_STRING
+}
+
+# this = country, leader storage
+# event_target:potential_owner = country, the country to which leaders would transfer
+defined_text = {
+	name = GetStoredGeneralCount
+	value = value:klfis_count_owned_leader|LEADER_CLASS|general|
+}
