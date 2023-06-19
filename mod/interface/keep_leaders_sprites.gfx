@@ -21,6 +21,10 @@ spriteTypes = {
 	}
 	# leader recruitment backgrounds
 	spriteType = {
+		name = "GFX_leader_recruitment_bg_council_default"
+		texturefile = "gfx/interface/leaders/recruitment_bgs/leader_recruitment_bg_council_default.dds"
+	}
+	spriteType = {
 		name = "GFX_leader_recruitment_bg_deluge"
 		texturefile = "gfx/interface/leaders/recruitment_bgs/leader_recruitment_bg_deluge.dds"
 	}
