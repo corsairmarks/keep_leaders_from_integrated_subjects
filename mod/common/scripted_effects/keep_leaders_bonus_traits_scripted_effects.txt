@@ -45,7 +45,7 @@ try_add_former_heir_trait = {
 	if = {
 		limit = {
 			has_former_ruler_trait = no
-			has_trait = leader_trait_former_heir
+			NOT = { has_trait = leader_trait_former_heir }
 		}
 		add_trait = leader_trait_former_heir
 	}
