@@ -10,75 +10,67 @@ country_event = {
 	title = keep_leaders.1.title.scripted_loc
 	desc = {
 		trigger = {
-			exists = from
-			has_country_flag = keeping_leaders_integration@from
+			has_country_flag = keeping_leaders_integration@event_target:storage_owner
 			is_gestalt = no
-			from = { is_regular_empire_or_primitive = yes }
+			event_target:storage_owner = { has_country_flag = regular_empire_or_primitive_storage_owner }
 		}
 		text = keep_leaders.1.desc.integration.regular_by_regular
 	}
 	desc = {
 		trigger = {
-			exists = from
-			has_country_flag = keeping_leaders_integration@from
+			has_country_flag = keeping_leaders_integration@event_target:storage_owner
 			is_gestalt = yes
-			from = { is_regular_empire_or_primitive = yes }
+			event_target:storage_owner = { has_country_flag = regular_empire_or_primitive_storage_owner }
 		}
 		text = keep_leaders.1.desc.integration.regular_by_gestalt
 	}
 	desc = {
 		trigger = {
-			exists = from
-			has_country_flag = keeping_leaders_integration@from
+			has_country_flag = keeping_leaders_integration@event_target:storage_owner
 			is_hive_empire = no
 			is_machine_empire = no
-			from = { is_hive_empire = yes }
+			event_target:storage_owner = { has_country_flag = hive_empire_storage_owner }
 		}
 		text = keep_leaders.1.desc.integration.hive_by_regular
 	}
 	desc = {
 		trigger = {
-			exists = from
-			has_country_flag = keeping_leaders_integration@from
+			has_country_flag = keeping_leaders_integration@event_target:storage_owner
 			is_hive_empire = yes
-			from = { is_hive_empire = yes }
+			event_target:storage_owner = { has_country_flag = hive_empire_storage_owner }
 		}
 		text = keep_leaders.1.desc.integration.hive_by_hive
 	}
 	desc = {
 		trigger = {
-			exists = from
-			has_country_flag = keeping_leaders_integration@from
+			has_country_flag = keeping_leaders_integration@event_target:storage_owner
 			is_machine_empire = yes
-			from = { is_hive_empire = yes }
+			event_target:storage_owner = { has_country_flag = hive_empire_storage_owner }
 		}
 		text = keep_leaders.1.desc.integration.hive_by_machine
 	}
 	desc = {
 		trigger = {
-			exists = from
-			has_country_flag = keeping_leaders_integration@from
+			has_country_flag = keeping_leaders_integration@event_target:storage_owner
 			is_hive_empire = no
 			is_machine_empire = no
-			from = { is_machine_empire = yes }
+			event_target:storage_owner = { has_country_flag = machine_empire_storage_owner }
 		}
 		text = keep_leaders.1.desc.integration.machine_by_regular
 	}
 	desc = {
 		trigger = {
-			exists = from
-			has_country_flag = keeping_leaders_integration@from
+			has_country_flag = keeping_leaders_integration@event_target:storage_owner
 			is_hive_empire = yes
-			from = { is_machine_empire = yes }
+			event_target:storage_owner = { has_country_flag = machine_empire_storage_owner }
 		}
 		text = keep_leaders.1.desc.integration.machine_by_hive
 	}
 	desc = {
 		trigger = {
-			exists = from
-			has_country_flag = keeping_leaders_integration@from
+			has_country_flag = keeping_leaders_integration@event_target:storage_owner
 			is_machine_empire = yes
-			from = { is_machine_empire = yes }
+			event_target:storage_owner = { has_country_flag = machine_empire_storage_owner }
 		}
 		text = keep_leaders.1.desc.integration.machine_by_machine
 	}
@@ -89,47 +81,42 @@ country_event = {
 
 	desc = {
 		trigger = {
-			exists = from
-			has_country_flag = keeping_leaders_conquest@from
+			has_country_flag = keeping_leaders_conquest@event_target:storage_owner
 			is_gestalt = no
-			from = { is_regular_empire_or_primitive = yes }
+			event_target:storage_owner = { has_country_flag = regular_empire_or_primitive_storage_owner }
 		}
 		text = keep_leaders.1.desc.conquest.regular_by_regular
 	}
 	desc = {
 		trigger = {
-			exists = from
-			has_country_flag = keeping_leaders_conquest@from
+			has_country_flag = keeping_leaders_conquest@event_target:storage_owner
 			is_gestalt = yes
-			from = { is_regular_empire_or_primitive = yes }
+			event_target:storage_owner = { has_country_flag = regular_empire_or_primitive_storage_owner }
 		}
 		text = keep_leaders.1.desc.conquest.regular_by_gestalt
 	}
 	desc = {
 		trigger = {
-			exists = from
-			has_country_flag = keeping_leaders_conquest@from
+			has_country_flag = keeping_leaders_conquest@event_target:storage_owner
 			is_hive_empire = no
 			is_machine_empire = no
-			from = { is_hive_empire = yes }
+			event_target:storage_owner = { has_country_flag = hive_empire_storage_owner }
 		}
 		text = keep_leaders.1.desc.conquest.hive_by_regular
 	}
 	desc = {
 		trigger = {
-			exists = from
-			has_country_flag = keeping_leaders_conquest@from
+			has_country_flag = keeping_leaders_conquest@event_target:storage_owner
 			is_hive_empire = yes
-			from = { is_hive_empire = yes }
+			event_target:storage_owner = { has_country_flag = hive_empire_storage_owner }
 		}
 		text = keep_leaders.1.desc.conquest.hive_by_hive
 	}
 	desc = {
 		trigger = {
-			exists = from
-			has_country_flag = keeping_leaders_conquest@from
+			has_country_flag = keeping_leaders_conquest@event_target:storage_owner
 			is_machine_empire = yes
-			from = { is_hive_empire = yes }
+			event_target:storage_owner = { has_country_flag = hive_empire_storage_owner }
 		}
 		text = keep_leaders.1.desc.conquest.hive_by_machine
 	}
@@ -138,7 +125,7 @@ country_event = {
 		trigger = {
 			exists = fromfrom
 			fromfrom = { is_scope_type = planet }
-			from = {
+			event_target:storage_owner = {
 				has_country_flag = colossus_transfer@fromfrom
 				has_country_flag = orbitally_drenched@fromfrom
 			}
@@ -149,7 +136,7 @@ country_event = {
 		trigger = {
 			exists = fromfrom
 			fromfrom = { is_scope_type = planet }
-			from = {
+			event_target:storage_owner = {
 				has_country_flag = colossus_transfer@fromfrom
 				has_country_flag = divinely_enforced@fromfrom
 			}
@@ -160,7 +147,7 @@ country_event = {
 		trigger = {
 			exists = fromfrom
 			fromfrom = { is_scope_type = planet }
-			from = {
+			event_target:storage_owner = {
 				has_country_flag = colossus_transfer@fromfrom
 				NOR = {
 					has_country_flag = orbitally_drenched@fromfrom
@@ -178,8 +165,8 @@ country_event = {
 	show_sound = {
 		trigger = {
 			OR = {
-				has_country_flag = keeping_leaders_conquest@from
-				has_country_flag = keeping_leaders_integration@from
+				has_country_flag = keeping_leaders_conquest@event_target:storage_owner
+				has_country_flag = keeping_leaders_integration@event_target:storage_owner
 			}
 		}
 		sound = event_radio_chatter
@@ -188,7 +175,7 @@ country_event = {
 		trigger = {
 			exists = fromfrom
 			fromfrom = { is_scope_type = planet }
-			from = {
+			event_target:storage_owner = {
 				has_country_flag = colossus_transfer@fromfrom
 				has_country_flag = orbitally_drenched@fromfrom
 			}
@@ -199,7 +186,7 @@ country_event = {
 		trigger = {
 			exists = fromfrom
 			fromfrom = { is_scope_type = planet }
-			from = {
+			event_target:storage_owner = {
 				has_country_flag = colossus_transfer@fromfrom
 				has_country_flag = divinely_enforced@fromfrom
 			}
@@ -210,7 +197,7 @@ country_event = {
 		trigger = {
 			exists = fromfrom
 			fromfrom = { is_scope_type = planet }
-			from = {
+			event_target:storage_owner = {
 				has_country_flag = colossus_transfer@fromfrom
 				NOR = {
 					has_country_flag = orbitally_drenched@fromfrom
@@ -224,18 +211,18 @@ country_event = {
 	}
 	picture = {
 		picture = GFX_leader_recruitment_bg_integration # GFX_evt_intelligence_report
-		trigger = { has_country_flag = keeping_leaders_integration@from }
+		trigger = { has_country_flag = keeping_leaders_integration@event_target:storage_owner }
 	}
 	picture = {
 		picture = GFX_leader_recruitment_bg_invasion # GFX_evt_intelligence_report
-		trigger = { has_country_flag = keeping_leaders_conquest@from }
+		trigger = { has_country_flag = keeping_leaders_conquest@event_target:storage_owner }
 	}
 	picture = {
 		picture = GFX_leader_recruitment_bg_deluge # GFX_evt_planet_beam
 		trigger = {
 			exists = fromfrom
 			fromfrom = { is_scope_type = planet }
-			from = {
+			event_target:storage_owner = {
 				has_country_flag = colossus_transfer@fromfrom
 				has_country_flag = orbitally_drenched@fromfrom
 			}
@@ -246,7 +233,7 @@ country_event = {
 		trigger = {
 			exists = fromfrom
 			fromfrom = { is_scope_type = planet }
-			from = {
+			event_target:storage_owner = {
 				has_country_flag = colossus_transfer@fromfrom
 				NOT = { has_country_flag = orbitally_drenched@fromfrom }
 			}
@@ -2135,10 +2122,10 @@ country_event = {
 	}
 	immediate = {
 		log = "pre-FTL conquest: [FromFrom.GetName] ([From.GetRealName]) conquered by [This.GetRealName]"
-		set_country_flag = keeping_leaders_conquest@from
 		save_event_target_as = potential_owner # "argument" for create_leader_storage_and_transfer_leaders
 		from = { save_event_target_as = former_owner } # "argument" for create_leader_storage_and_transfer_leaders
 		create_leader_storage_and_transfer_leaders = yes
+		set_country_flag = keeping_leaders_conquest@event_target:storage_owner
 		country_event = {
 			id = keep_leaders.1 # hooray for reuse!
 			scopes = {
@@ -2371,10 +2358,10 @@ country_event = {
 	}
 	immediate = {
 		log = "subject integration: [From.GetRealName] integrated by [This.GetRealName]"
-		set_country_flag = keeping_leaders_integration@from
 		save_event_target_as = potential_owner # "argument" for create_leader_storage_and_transfer_leaders
 		from = { save_event_target_as = former_owner } # "argument" for create_leader_storage_and_transfer_leaders
 		create_leader_storage_and_transfer_leaders = yes
+		set_country_flag = keeping_leaders_integration@event_target:storage_owner
 		country_event = {
 			id = keep_leaders.1 # hooray for reuse!
 			scopes = { from = event_target:former_owner }
@@ -3241,14 +3228,14 @@ planet_event = {
 	desc = {
 		trigger = {
 			exists = from
-			from = { is_hive_empire = no }
+			NOT = { event_target:storage_owner = { has_country_flag = hive_empire_storage_owner } }
 		}
 		text = keep_leaders.40.desc
 	}
 	desc = {
 		trigger = {
 			exists = from
-			from = { is_hive_empire = yes }
+			event_target:storage_owner = { has_country_flag = hive_empire_storage_owner }
 		}
 		text = keep_leaders.40.desc.hive
 	}
@@ -3284,14 +3271,14 @@ planet_event = {
 		tag = dismiss_leader
 		name = {
 			text = keep_leaders.40.b
-			trigger = { from = { is_hive_empire = no } }
+			trigger = { NOT = { event_target:storage_owner = { has_country_flag = hive_empire_storage_owner } } }
 		}
 		name = {
 			text = keep_leaders.40.b.hive
-			trigger = { from = { is_hive_empire = yes } }
+			trigger = { event_target:storage_owner = { has_country_flag = hive_empire_storage_owner } }
 		}
 		if = {
-			limit = { from = { is_hive_empire = no } }
+			limit = { NOT = { event_target:storage_owner = { has_country_flag = hive_empire_storage_owner } } }
 			custom_tooltip = keep_leaders.40.b.tooltip
 		}
 		else = {
@@ -3316,7 +3303,7 @@ planet_event = {
 				TOTAL = "[variable_storage.leader_accumulator]"
 			}
 		}
-		trigger = { hidden_trigger = { from = { is_regular_empire_or_primitive = yes } } }
+		trigger = { hidden_trigger = { event_target:storage_owner = { has_country_flag = regular_empire_or_primitive_storage_owner } } }
 		allow = {
 			custom_tooltip = {
 				fail_text = empire_is_xenophile_no_x
