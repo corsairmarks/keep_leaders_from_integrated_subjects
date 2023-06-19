@@ -8,6 +8,7 @@ namespace = keep_leaders
 country_event = {
 	id = keep_leaders.1
 	title = keep_leaders.1.title.scripted_loc
+	# integration
 	desc = {
 		trigger = {
 			has_country_flag = keeping_leaders_integration@event_target:storage_owner
@@ -74,11 +75,7 @@ country_event = {
 		}
 		text = keep_leaders.1.desc.integration.machine_by_machine
 	}
-	# TODO: clean space once done with options
-
-
-
-
+	# conquest
 	desc = {
 		trigger = {
 			has_country_flag = keeping_leaders_conquest@event_target:storage_owner
@@ -121,6 +118,7 @@ country_event = {
 		text = keep_leaders.1.desc.conquest.hive_by_machine
 	}
 	# note: if/when machine pre-FTLs are added, this event will need additional descriptions for conquest
+	# planet_killer
 	desc = {
 		trigger = {
 			exists = fromfrom
