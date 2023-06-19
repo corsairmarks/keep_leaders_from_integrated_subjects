@@ -3747,6 +3747,26 @@ leader_event = {
 }
 
 # triggered by on_leader_owner_changed
+# anyone who gains Gray establishes communications with his country and is flagged as the Gray owner
+leader_event = {
+	id = keep_leaders.499
+	hide_window = yes
+	is_triggered_only = yes
+	pre_triggers = { has_owner = yes }
+	trigger = {
+		exists = event_target:gray_governor
+		is_same_value = event_target:gray_governor
+	}
+	immediate = {
+		establish_communications_no_message = event_target:gray_country
+		owner = {
+			save_global_event_target_as = gray_owner
+			set_country_flag = gray_governor_active
+		}
+	}
+}
+
+# triggered by on_leader_owner_changed
 # remove the memory value lockout - the leader can contribute to a new vault
 # ideally PDX would use a dynamic flag memory_vault_contributed@owner so it would be possible to identify whose vault(s) to which the leader has contributed
 leader_event = {
