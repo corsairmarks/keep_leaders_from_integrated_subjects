@@ -1971,60 +1971,10 @@ randomize_background_ethic = {
 choose_transfer_representative_leader = {
 	optimize_memory
 	event_target:storage_owner = {
-		random_owned_leader = {
+		ordered_owned_leader = {
 			limit = { is_eligible_transfer_leader_from_storage = yes }
-			weights = {
-				base = 0
-				add = trigger:has_skill
-				modifier = {
-					factor = 1000
-					has_leader_flag = former_ruler
-				}
-				modifier = {
-					factor = 100
-					has_leader_flag = former_heir
-				}
-				modifier = {
-					factor = 10
-					event_target:potential_owner = { owner_species = { has_psionic_species_trait = yes } }
-					has_psionic_species_trait = yes
-				}
-				modifier = {
-					factor = 10
-					event_target:potential_owner = { is_cyborg_empire = yes }
-					is_cyborg_species = yes
-				}
-				modifier = {
-					factor = 10
-					event_target:potential_owner = { is_robot_empire = yes }
-					is_robotic_species = yes
-				}
-				modifier = {
-					factor = 10
-					event_target:potential_owner = { is_hive_empire = yes }
-					is_hive_species = yes
-				}
-				modifier = {
-					factor = 0.01
-					event_target:potential_owner = {
-						OR = {
-							has_valid_civic = civic_fanatic_purifiers
-							has_valid_civic = civic_hive_devouring_swarm
-						}
-					}
-					species = { NOT = { is_same_species = event_target:potential_owner.owner_species } }
-				}
-				modifier = {
-					factor = 0.01
-					event_target:potential_owner = { allows_ai_leaders = no }
-					is_robotic_species = yes
-				}
-				modifier = {
-					factor = 0.01
-					event_target:potential_owner = { has_valid_civic = civic_machine_terminator }
-					is_robotic_species = no
-				}
-			}
+			position = 0
+			order_by = value:transfer_representative_leader_weight
 			set_leader_flag = is_in_recruit_window
 			save_event_target_as = transfer_representative
 		}
