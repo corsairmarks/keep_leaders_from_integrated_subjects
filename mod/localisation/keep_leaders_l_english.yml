@@ -1,5 +1,5 @@
 ﻿l_english:
- keep_leaders.1.title.scripted_loc: "[From.GetKeepLeadersEventTitle]"
+ keep_leaders.1.title.scripted_loc: "[storage_owner.GetKeepLeadersEventTitle]"
  keep_leaders.1.title: "Leadership from the [This.GetRealName]"
  keep_leaders.1.title.planet_killer_deluge: "$PLANET_CAP$ [conquered_planet.GetName] Drenched"
  keep_leaders.1.title.planet_killer_godray: "$PLANET_CAP$ [conquered_planet.GetName] Made to Believe"

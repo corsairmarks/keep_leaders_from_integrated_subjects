@@ -29,30 +29,34 @@ defined_text = { # scope with species
 }
 
 # this = country
-# from = country
+# fromfrom = planet
 defined_text = {
 	name = GetKeepLeadersEventTitle
 	text = {
 		trigger = {
-			has_country_flag = colossus_transfer@capital_scope
-			has_country_flag = orbitally_drenched@capital_scope
+			exists = fromfrom
+			has_country_flag = colossus_transfer@fromfrom
+			has_country_flag = orbitally_drenched@fromfrom
 		}
 		localization_key = keep_leaders.1.title.planet_killer_deluge
 	}
 	text = {
 		trigger = {
-			has_country_flag = colossus_transfer@capital_scope
-			has_country_flag = divinely_enforced@capital_scope
+			exists = fromfrom
+			has_country_flag = colossus_transfer@fromfrom
+			has_country_flag = divinely_enforced@fromfrom
 		}
 		localization_key = keep_leaders.1.title.planet_killer_godray
 	}
 	text = {
 		trigger = {
-			has_country_flag = colossus_transfer@capital_scope
+			exists = fromfrom
+			has_country_flag = colossus_transfer@fromfrom
 			NOR = {
-				has_country_flag = orbitally_drenched@capital_scope
-				has_country_flag = nanobot_assimilated@capital_scope
-				has_country_flag = orbitally_necrophaged@capital_scope
+				has_country_flag = orbitally_drenched@fromfrom
+				has_country_flag = divinely_enforced@fromfrom
+				has_country_flag = nanobot_assimilated@fromfrom
+				has_country_flag = orbitally_necrophaged@fromfrom
 			}
 		}
 		localization_key = keep_leaders.1.title.planet_killer_generic
