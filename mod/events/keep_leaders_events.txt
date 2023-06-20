@@ -73,8 +73,11 @@ country_event = {
 		trigger = {
 			has_country_flag = keeping_leaders_integration@event_target:storage_owner
 			is_hive_empire = yes
-			NOT = { has_tradition = tr_cybernetics_transubstantiation_synthesis }
 			event_target:storage_owner = { has_country_flag = machine_empire_storage_owner }
+			NAND = {
+				has_tradition = tr_cybernetics_transubstantiation_synthesis
+				event_target:storage_owner = { has_valid_civic = civic_machine_assimilator }
+			}
 		}
 		text = keep_leaders.1.desc.integration.machine_by_hive
 	}
@@ -83,7 +86,10 @@ country_event = {
 			has_country_flag = keeping_leaders_integration@event_target:storage_owner
 			is_hive_empire = yes
 			has_tradition = tr_cybernetics_transubstantiation_synthesis
-			event_target:storage_owner = { has_country_flag = machine_empire_storage_owner }
+			event_target:storage_owner = {
+				has_country_flag = machine_empire_storage_owner
+				has_valid_civic = civic_machine_assimilator
+			}
 		}
 		text = keep_leaders.1.desc.integration.machine_by_hive.cyb
 	}
