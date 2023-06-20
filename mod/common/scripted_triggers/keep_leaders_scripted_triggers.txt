@@ -500,7 +500,7 @@ is_allow_transfer_without_assimilation = {
 				}
 				has_leader_flag = legendary_leader # Gray is fully free-agent
 			}
-			event_target:potential_owner = { # existing gestalt leaders are all "mechanitcal," so OZ want nothing to do with them
+			event_target:potential_owner = { # existing gestalt leaders are all "mechanical," so OZ want nothing to do with them
 				has_civic_organic_zealots_active = yes
 				is_valid_organic_zealots = yes
 			}
