@@ -91,7 +91,7 @@ is_eligible_for_policy_full_citizenship_species = {
 			limit = { event_target:potential_owner = { is_regular_hive_empire = yes } }
 			OR = {
 				is_hive_species = yes
-				event_target:potential_owner = { has_active_tradition = tr_genetics_creation }
+				event_target:potential_owner = { has_tradition = tr_genetics_creation }
 			}
 		}
 		else_if = {
@@ -131,7 +131,7 @@ is_eligible_for_policy_full_military_service_species = {
 			limit = { event_target:potential_owner = { is_regular_hive_empire = yes } }
 			OR = {
 				is_hive_species = yes
-				event_target:potential_owner = { has_active_tradition = tr_genetics_creation }
+				event_target:potential_owner = { has_tradition = tr_genetics_creation }
 			}
 		}
 		else_if = {
@@ -201,7 +201,7 @@ is_potential_for_machine_cyborg_assimilation_species = {
 			is_hive_species = no
 		}
 		AND = {
-			event_target:potential_owner = { has_active_tradition = tr_cybernetics_assimilator_inevitable_assimilation }
+			event_target:potential_owner = { has_tradition = tr_cybernetics_assimilator_inevitable_assimilation }
 			is_hive_species = yes
 		}
 	}
@@ -218,7 +218,7 @@ is_potential_for_hive_assimilation_species = {
 # this = country
 is_potential_for_genetic_assimilation_country = {
 	optimize_memory
-	has_active_tradition = tr_genetics_creation
+	has_tradition = tr_genetics_creation
 }
 
 # could this species potentially be converted from a machine to a robot? (machine)
@@ -263,7 +263,7 @@ is_potential_for_cyborg_assimilation_country = {
 	optimize_memory
 	OR = {
 		has_civic = civic_machine_assimilator
-		has_active_tradition = tr_cybernetics_transubstantiation_synthesis
+		has_tradition = tr_cybernetics_transubstantiation_synthesis
 	}
 }
 
@@ -564,7 +564,7 @@ is_allow_transfer_with_assimilation = {
 				is_potential_for_hive_assimilation_species = yes
 			}
 			AND = {
-				event_target:potential_owner = { has_active_tradition = tr_cybernetics_transubstantiation_synthesis }
+				event_target:potential_owner = { has_tradition = tr_cybernetics_transubstantiation_synthesis }
 				is_potential_for_hive_cyborg_assimilation_species = yes
 			}
 		}
@@ -578,19 +578,19 @@ is_allow_transfer_with_assimilation = {
 				is_potential_for_regular_synthetic_assimilation_species = yes
 			}
 			AND = {
-				event_target:potential_owner = { has_active_tradition = tr_cybernetics_transubstantiation_synthesis }
+				event_target:potential_owner = { has_tradition = tr_cybernetics_transubstantiation_synthesis }
 				is_potential_for_regular_cyborg_assimilation_species = yes
 				is_smart_enough_for_leadership_species = yes
 				is_regular_empire_ethics_allowable_leader_species = yes
 			}
 			AND = {
-				event_target:potential_owner = { has_active_tradition = tr_psionics_psionic_assimilation }
+				event_target:potential_owner = { has_tradition = tr_psionics_psionic_assimilation }
 				is_potential_for_psionic_assimilation_species = yes
 				is_smart_enough_for_leadership_species = yes
 				is_regular_empire_ethics_allowable_leader_species = yes
 			}
 			AND = {
-				event_target:potential_owner = { has_active_tradition = tr_genetics_creation }
+				event_target:potential_owner = { has_tradition = tr_genetics_creation }
 				is_potential_for_unhive_assimilation_species = yes
 				is_smart_enough_for_leadership_species = yes
 				is_regular_empire_ethics_allowable_leader_species = yes
