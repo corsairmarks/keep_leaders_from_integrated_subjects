@@ -137,3 +137,12 @@ hire_event_leader_effect = {
 		create_message_leader_recruited_with_appropriate_catch_phrase = yes
 	}
 }
+
+# Modified: use my shared effect to create the notification message
+# this = country
+# $LEADER$ = string, the name of the event target at which the leader is saved
+hire_event_leader_message = {
+	event_target:$LEADER$ = {
+		create_message_leader_recruited_with_appropriate_catch_phrase = yes
+	}
+}
