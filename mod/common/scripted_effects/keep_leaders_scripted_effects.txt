@@ -2223,6 +2223,7 @@ create_message_leader_recruited_with_appropriate_catch_phrase = {
 			NOR = {
 				has_leader_flag = legendary_leader
 				has_leader_flag = renowned_leader
+				has_leader_flag = event_leader
 				has_leader_flag = klfis_suppress_ethic_class_catch_phrase # tag your leader(s) with this if you set your own custom catch-phrases
 			}
 		}
@@ -2290,7 +2291,12 @@ create_message_leader_recruited_with_ethic_and_class_appropriate_catch_phrase = 
 create_message_leader_recruited_with_default_catch_phrase = {
 	optimize_memory
 	if = {
-		limit = { has_leader_flag = renowned_leader }
+		limit = {
+			OR = {
+				has_leader_flag = event_leader
+				has_leader_flag = renowned_leader
+			}
+		}
 		create_message = {
 			type = MESSAGE_RECRUITED_LEADER
 			localization =  MESSAGE_RECRUITED_LEADER_DESC
@@ -2351,7 +2357,12 @@ create_message_leader_recruited_with_parameterized_catch_phrase = {
 	# custome message_type MESSAGE_RETAINED_LEADER instead of MESSAGE_RECRUITED_LEADER
 	# in order to not get the custome leader window - looks identitcal due to using custom_toast_content_
 	if = {
-		limit = { has_leader_flag = renowned_leader }
+		limit = {
+			OR = {
+				has_leader_flag = event_leader
+				has_leader_flag = renowned_leader
+			}
+		}
 		create_message = {
 			type = MESSAGE_RETAINED_LEADER
 			localization =  MESSAGE_RECRUITED_LEADER_DESC
