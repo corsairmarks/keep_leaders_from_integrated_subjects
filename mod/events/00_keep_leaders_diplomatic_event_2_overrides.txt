@@ -1,56 +1,29 @@
-namespace = leader
+namespace = diplomatic
 
-# Modified:
-# * use triggers
-# * use new leader_recruit window
-# * leader can be any species that has full military service
-# * location is the fleet (fromfrom)
-# * assign the leader to the fleet if it does not have a leader
-# * random leader variant 1 gets Skirmisher (common trait) instead of Gale Speed (Aggressor subclass trait)
-# * prevent gestalts from receiving the variant with Skirmisher
-# * add new leader variant with Unyielding + Aggressive
-# triggered by on_fleet_destroyed_perp
-# root = country, owner of fleet 1 (combatant)
-# from = country, owner of fleet 2 (destroyed)
-# fromfrom = fleet 2, combatant
-# fromfromfrom = fleet 2, destroyed
+# Modified: effectively the same as the override for leader.1
 country_event = {
-	id = leader.1
-	title = "leader.1.name"
-	desc = {
-		trigger = { is_hive_empire = yes }
-		text = "leader.1.desc.hive"
-	}
-	desc = {
-		trigger = { is_machine_empire = yes }
-		text = "leader.1.desc.machine"
-	}
-	desc = {
-		trigger = {
-			is_hive_empire = no
-			is_machine_empire = no
-		}
-		text = "leader.1.desc"
-	}
+	id = diplomatic.1013
+	title = "diplomatic.1013.name"
+	desc = "diplomatic.1013.desc"
 	auto_opens = no
-	show_sound = event_ship_bridge
-	picture = GFX_leader_recruitment_bg_federation_fleet
+	show_sound = event_sensor_ping
+	picture = GFX_leader_recruitment_bg_federation_fleet # GFX_evt_unknown_ships
 	event_window_type = leader_recruit
 	notification_event_icon = GFX_message_keep_leaders
 	picture_event_data = {
 		portrait = event_target:officer
 		room = ethic_spaceship_room
 	}
-	location = fromfrom
+	location = event_target:officer_fleet
 	is_triggered_only = yes
-	trigger = {
-		any_playable_country = { is_country = root }
-		any_owned_leader = { leader_class = admiral }
-	}
 	immediate = {
-		fromfrom = {
-			solar_system = { save_event_target_as = system }
-			random_controlled_ship = { save_event_target_as = ship }
+		random_controlled_fleet = {
+			limit = {
+				exists = orbit
+				orbit = { is_same_value = event_target:exercise_location }
+			}
+			save_event_target_as = officer_fleet
+			random_controlled_ship = { save_event_target_as = officer_ship }
 		}
 		random_owned_pop = {
 			limit = { can_be_military_leader = yes }
@@ -93,8 +66,8 @@ country_event = {
 						add_trait_no_notify = leader_trait_trickster
 					}
 				}
-				save_event_target_as = officer
-				exile_leader_as = leader_1_promoted_officer
+				save_event_target_as = exercise_officer
+				exile_leader_as = diplomatic_1013_promoted_officer
 			}
 		}
 	}
@@ -108,7 +81,7 @@ country_event = {
 				days = 7200
 			}
 		}
-		hidden_effect = { event_target:officer = { kill_leader = { show_notification = no } } }
+		hidden_effect = { event_target:exercise_officer = { kill_leader = { show_notification = no } } }
 	}
 	option = {
 		name = leader.1.a
@@ -118,13 +91,13 @@ country_event = {
 	option = {
 		tag = hire_leader
 		name = HIRE
-		custom_tooltip = new_admiral
+		custom_tooltip = "diplomatic.1013.a"
 		hidden_effect = {
-			hire_event_leader_effect = { LEADER = officer }
-			fromfrom = {
+			hire_event_leader_effect = { LEADER = exercise_officer }
+			event_target:officer_fleet = {
 				if = {
 					limit = { NOT = { exists = leader } }
-					set_leader = event_target:officer
+					set_leader = event_target:exercise_officer
 				}
 			}
 		}
