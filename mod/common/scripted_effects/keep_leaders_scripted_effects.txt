@@ -2223,7 +2223,6 @@ create_message_leader_recruited_with_appropriate_catch_phrase = {
 			NOR = {
 				has_leader_flag = legendary_leader
 				has_leader_flag = renowned_leader
-				has_leader_flag = event_leader
 				has_leader_flag = klfis_suppress_ethic_class_catch_phrase # tag your leader(s) with this if you set your own custom catch-phrases
 			}
 		}
