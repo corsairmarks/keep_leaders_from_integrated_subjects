@@ -6,14 +6,14 @@ country_event = {
 	title = "diplomatic.1013.name"
 	desc = "diplomatic.1013.desc"
 	auto_opens = no
-	show_sound = event_sensor_ping
-	picture = GFX_leader_recruitment_bg_federation_fleet # GFX_evt_unknown_ships
 	event_window_type = leader_recruit
 	notification_event_icon = GFX_message_keep_leaders
+	picture = GFX_leader_recruitment_bg_federation_fleet # GFX_evt_unknown_ships
 	picture_event_data = {
 		portrait = event_target:officer
 		room = ethic_spaceship_room
 	}
+	show_sound = event_sensor_ping
 	location = event_target:officer_fleet
 	is_triggered_only = yes
 	immediate = {

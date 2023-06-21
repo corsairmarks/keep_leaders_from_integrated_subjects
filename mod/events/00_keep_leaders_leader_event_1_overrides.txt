@@ -34,9 +34,9 @@ country_event = {
 	}
 	auto_opens = no
 	show_sound = event_ship_bridge
-	picture = GFX_leader_recruitment_bg_federation_fleet
 	event_window_type = leader_recruit
 	notification_event_icon = GFX_message_keep_leaders
+	picture = GFX_leader_recruitment_bg_federation_fleet
 	picture_event_data = {
 		portrait = event_target:officer
 		room = ethic_spaceship_room

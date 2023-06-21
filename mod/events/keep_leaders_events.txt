@@ -184,7 +184,42 @@ country_event = {
 		text = keep_leaders.1.desc.planet_killer_generic
 	}
 	auto_opens = no
-	# location = fromfrom # optional way to do this?
+	event_window_type = leader_recruit
+	notification_event_icon = GFX_message_keep_leaders
+	picture = {
+		picture = GFX_leader_recruitment_bg_integration # GFX_evt_intelligence_report
+		trigger = { has_country_flag = keeping_leaders_integration@event_target:storage_owner }
+	}
+	picture = {
+		picture = GFX_leader_recruitment_bg_invasion # GFX_evt_intelligence_report
+		trigger = { has_country_flag = keeping_leaders_conquest@event_target:storage_owner }
+	}
+	picture = {
+		picture = GFX_leader_recruitment_bg_deluge # GFX_evt_planet_beam
+		trigger = {
+			exists = fromfrom
+			fromfrom = { is_scope_type = planet }
+			event_target:storage_owner = {
+				has_country_flag = colossus_transfer@fromfrom
+				has_country_flag = orbitally_drenched@fromfrom
+			}
+		}
+	}
+	picture = {
+		picture = GFX_leader_recruitment_bg_planet_destruction # GFX_evt_death_from_above
+		trigger = {
+			exists = fromfrom
+			fromfrom = { is_scope_type = planet }
+			event_target:storage_owner = {
+				has_country_flag = colossus_transfer@fromfrom
+				NOT = { has_country_flag = orbitally_drenched@fromfrom }
+			}
+		}
+	}
+	picture_event_data = {
+		portrait = event_target:transfer_representative
+		room = ethic_spaceship_room
+	}
 	# despite show_sound being a valid part of a triggered desc, the game didn't seem to like it (as a guess, no fallback?)
 	show_sound = {
 		trigger = {
@@ -233,42 +268,7 @@ country_event = {
 		}
 		sound = event_red_alert
 	}
-	picture = {
-		picture = GFX_leader_recruitment_bg_integration # GFX_evt_intelligence_report
-		trigger = { has_country_flag = keeping_leaders_integration@event_target:storage_owner }
-	}
-	picture = {
-		picture = GFX_leader_recruitment_bg_invasion # GFX_evt_intelligence_report
-		trigger = { has_country_flag = keeping_leaders_conquest@event_target:storage_owner }
-	}
-	picture = {
-		picture = GFX_leader_recruitment_bg_deluge # GFX_evt_planet_beam
-		trigger = {
-			exists = fromfrom
-			fromfrom = { is_scope_type = planet }
-			event_target:storage_owner = {
-				has_country_flag = colossus_transfer@fromfrom
-				has_country_flag = orbitally_drenched@fromfrom
-			}
-		}
-	}
-	picture = {
-		picture = GFX_leader_recruitment_bg_planet_destruction # GFX_evt_death_from_above
-		trigger = {
-			exists = fromfrom
-			fromfrom = { is_scope_type = planet }
-			event_target:storage_owner = {
-				has_country_flag = colossus_transfer@fromfrom
-				NOT = { has_country_flag = orbitally_drenched@fromfrom }
-			}
-		}
-	}
-	event_window_type = leader_recruit
-	notification_event_icon = GFX_message_keep_leaders
-	picture_event_data = {
-		portrait = event_target:transfer_representative
-		room = ethic_spaceship_room
-	}
+	# location = fromfrom # optional way to do this?
 	is_triggered_only = yes
 	trigger = {
 		exists = from
@@ -2191,15 +2191,15 @@ planet_event = {
 		text = keep_leaders.3.desc.appearance_mod
 	}
 	auto_opens = no
-	location = this
-	show_sound = event_espionage_concluded
-	picture = GFX_leader_recruitment_bg_infiltration # GFX_evt_diplomatic_visit
 	event_window_type = leader_recruit
 	notification_event_icon = GFX_message_keep_leaders
+	picture = GFX_leader_recruitment_bg_infiltration # GFX_evt_diplomatic_visit
 	picture_event_data = {
 		portrait = event_target:transfer_representative
 		room = ethic_spaceship_room
 	}
+	show_sound = event_espionage_concluded
+	location = this
 	is_triggered_only = yes
 	pre_triggers = { has_owner = yes }
 	trigger = {
@@ -3127,15 +3127,15 @@ planet_event = {
 	title = keep_leaders.30.title
 	desc = keep_leaders.30.desc
 	auto_opens = no
-	location = this
-	show_sound = event_machinery
-	picture = GFX_leader_recruitment_bg_planet_destruction # GFX_evt_gray_gooed_planet
 	event_window_type = leader_recruit
 	notification_event_icon = GFX_message_keep_leaders
+	picture = GFX_leader_recruitment_bg_planet_destruction # GFX_evt_gray_gooed_planet
 	picture_event_data = {
 		portrait = event_target:transfer_representative
 		room = ethic_spaceship_room
 	}
+	show_sound = event_machinery
+	location = this
 	is_triggered_only = yes
 	pre_triggers = { has_owner = yes }
 	trigger = {
@@ -3272,15 +3272,15 @@ planet_event = {
 		text = keep_leaders.40.desc.hive
 	}
 	auto_opens = no
-	location = this
-	show_sound = event_necrophage
-	picture = GFX_leader_recruitment_bg_necrophage # GFX_evt_gray_gooed_planet
 	event_window_type = leader_recruit
 	notification_event_icon = GFX_message_keep_leaders
+	picture = GFX_leader_recruitment_bg_necrophage # GFX_evt_gray_gooed_planet
 	picture_event_data = {
 		portrait = event_target:transfer_representative
 		room = ethic_spaceship_room
 	}
+	show_sound = event_necrophage
+	location = this
 	is_triggered_only = yes
 	pre_triggers = { has_owner = yes }
 	trigger = {
@@ -3592,7 +3592,6 @@ country_event = {
 # from = the exiled leader
 country_event = {
 	id = keep_leaders.101
-	is_triggered_only = yes
 	title = keep_leaders.101.title
 	desc = {
 		text = keep_leaders.101.desc
@@ -3610,15 +3609,8 @@ country_event = {
 		trigger = { is_machine_empire = yes }
 	}
 	auto_opens = no
-	location = capital_scope
-	show_sound = {
-		trigger = { from = { is_robotic_species = no } }
-		sound = event_evolution_mastery
-	}
-	show_sound = {
-		trigger = { from = { is_robotic_species = yes } }
-		sound = event_synthetic_evolution
-	}
+	event_window_type = leader_recruit
+	notification_event_icon = GFX_message_keep_leaders
 	# picture = {
 	# 	trigger = { from = { is_robotic_species = no } }
 	# 	picture = GFX_evt_hive_mind
@@ -3628,12 +3620,20 @@ country_event = {
 	# 	picture = GFX_evt_machine_sapience
 	# }
 	picture = GFX_leader_recruitment_bg_renowned
-	event_window_type = leader_recruit
-	notification_event_icon = GFX_message_keep_leaders
 	picture_event_data = {
 		portrait = event_target:transfer_representative
 		room = ethic_spaceship_room
 	}
+	show_sound = {
+		trigger = { from = { is_robotic_species = no } }
+		sound = event_evolution_mastery
+	}
+	show_sound = {
+		trigger = { from = { is_robotic_species = yes } }
+		sound = event_synthetic_evolution
+	}
+	location = capital_scope
+	is_triggered_only = yes
 	trigger = {
 		exists = from
 		from = { has_leader_flag = former_gestalt_ruler_clone }

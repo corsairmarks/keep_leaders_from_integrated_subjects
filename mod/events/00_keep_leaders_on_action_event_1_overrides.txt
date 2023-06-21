@@ -8,14 +8,6 @@ country_event = {
 	id = action.2
 	title = action.1.name
 	message_desc = action.1.message
-	location = event_target:contact_empire.capital_scope
-	picture_event_data = {
-		portrait = event_target:contact_empire.ruler
-		planet_background = event_target:contact_empire
-		graphical_culture = event_target:contact_empire
-		city_level = event_target:contact_empire
-		room = event_target:contact_empire.ruler
-	}
 	### Custom First Contact system flavour
 	desc = {
 		text = action.2.desc_01
@@ -92,6 +84,14 @@ country_event = {
 		}
 	}
 	diplomatic = yes
+	picture_event_data = {
+		portrait = event_target:contact_empire.ruler
+		planet_background = event_target:contact_empire
+		graphical_culture = event_target:contact_empire
+		city_level = event_target:contact_empire
+		room = event_target:contact_empire.ruler
+	}
+	location = event_target:contact_empire.capital_scope
 	is_triggered_only = yes
 	trigger = {
 		is_ai = no

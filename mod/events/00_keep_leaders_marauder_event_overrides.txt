@@ -11,14 +11,14 @@ country_event = {
 	title = "marauder.703.name"
 	desc = "marauder.703.desc"
 	auto_opens = no
-	show_sound = event_radio_chatter
-	picture = GFX_leader_recruitment_bg_hangar_bay
 	event_window_type = leader_recruit
 	notification_event_icon = GFX_message_keep_leaders
+	picture = GFX_leader_recruitment_bg_hangar_bay
 	picture_event_data = {
 		portrait = event_target:marauder_admiral
 		room = ethic_spaceship_room
 	}
+	show_sound = event_radio_chatter
 	location = event_target:border_system
 	is_triggered_only = yes
 	trigger = { NOT = { has_country_flag = marauder_neighbor_event_3 } }
