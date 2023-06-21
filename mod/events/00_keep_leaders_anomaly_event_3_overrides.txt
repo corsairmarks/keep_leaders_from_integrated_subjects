@@ -1,0 +1,156 @@
+namespace = anomaly
+
+# Modified:
+# * use new leader_recruit window
+# * leader starts with Eager II
+ship_event = {
+	id = anomaly.4031
+	title = PROJECT_COMPLETE
+	desc = "anomaly.4031.desc"
+	auto_opens = no
+	show_sound = event_sensor_ping
+	picture = GFX_evt_glitchy_matrix # TODO
+	event_window_type = leader_recruit
+	notification_event_icon = GFX_message_keep_leaders
+	picture_event_data = {
+		portrait = event_target:event_leader
+		room = ethic_spaceship_room
+	}
+	location = fromfromfrom
+	is_triggered_only = yes
+	immediate = {
+		create_species = {
+			name = NAME_AI
+			class = ROBOT
+			portrait = random
+			traits = { trait = trait_robot_learning_algorithms }
+			effect = { save_event_target_as = leader_species }
+		}
+		create_country = {
+			name = UNKNOWN
+			type = faction
+			species = event_target:leader_species
+			auto_delete = yes
+			flag = {
+				icon = {
+					category = "special"
+					file = "unknown.dds"
+				}
+				background = {
+					category = "backgrounds"
+					file = "00_solid.dds"
+				}
+				colors = {
+					"red"
+					"red"
+					"null"
+					"null"
+				}
+			}
+			effect = {
+				set_custom_capital_location = fromfromfrom
+				create_leader = {
+					class = admiral
+					species = event_target:leader_species
+					name = NAME_0101010111
+					skill = 3
+					set_age = 1
+					event_leader = yes
+					background_ethic = ethic_gestalt_consciousness
+					traits = {
+						trait = leader_trait_eager_2
+						trait = leader_trait_aggressive
+						trait = leader_trait_fleet_logistician
+					}
+					effect = {
+						set_leader_flag = is_in_recruit_window
+						set_leader_flag = event_leader
+						save_event_target_as = event_leader
+						exile_leader_as = event_leader_exile
+					}
+				}
+			}
+		}
+	}
+	option = {
+		tag = dismiss_leader
+		name = DISMISS
+		hidden_effect = { event_target:event_leader = { kill_leader = { show_notification = no } } }
+	}
+	option = {
+		tag = hire_leader
+		name = EXCELLENT
+		hidden_effect = { hire_event_leader_effect = { LEADER = event_leader } }
+	}
+}
+
+# Modified:
+# * use new leader_recruit window
+# * scientist can be any species with full citizenship
+ship_event = {
+	id = anomaly.4055
+	title = "anomaly.4055.name"
+	desc = "anomaly.4055.desc"
+	auto_opens = no
+	show_sound = event_laboratory_sound
+	picture = GFX_evt_physics_research # TODO
+	event_window_type = leader_recruit
+	notification_event_icon = GFX_message_keep_leaders
+	picture_event_data = {
+		portrait = event_target:event_leader
+		room = ethic_spaceship_room
+	}
+	location = from
+	is_triggered_only = yes
+	immediate = {
+		from = {
+			if = {
+				limit = { has_deposit_for = shipclass_research_station }
+				clear_deposits = yes
+			}
+			add_deposit = d_minerals_6
+		}
+		owner = {
+			random_owned_pop = {
+				limit = { has_citizenship_rights = yes }
+				species = { save_event_target_as = leader_species }
+			}
+			create_leader = {
+				class = scientist
+				species = event_target:leader_species
+				name = random
+				skill = 1
+				traits = {
+					trait = leader_trait_eager_2
+					trait = leader_trait_spark_of_genius
+				}
+				effect = {
+					add_experience = 200
+					set_leader_flag = is_in_recruit_window
+					set_leader_flag = event_leader
+					save_event_target_as = event_leader
+					exile_leader_as = event_leader_exile
+				}
+			}
+		}
+	}
+	option = {
+		tag = dismiss_leader
+		name = "anomaly.4055.b.short"
+		custom_tooltip = "anomaly.4055.b"
+		# removed custom tooltip because all it did was repeat info about the deposit
+		add_modifier = {
+			modifier = protege_onboard
+			days = 7200
+		}
+		hidden_effect = { event_target:event_leader = { kill_leader = { show_notification = no } } }
+	}
+	option = {
+		tag = hire_leader
+		name = HIRE
+		custom_tooltip = "anomaly.4055.a"
+		custom_tooltip = "anomaly.4055.a.tooltip"
+		hidden_effect = { hire_event_leader_effect = { LEADER = event_leader } }
+	}
+	after = { tooltip = { from = { add_deposit = d_minerals_6 } } }
+}
