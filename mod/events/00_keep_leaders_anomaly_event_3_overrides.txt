@@ -310,6 +310,7 @@ country_event = {
 	}
 	event_window_type = leader_recruit
 	location = event_target:HomePlanet
+	show_sound = event_default
 	picture = GFX_leader_recruitment_bg_integration
 	picture_event_data = {
 		portrait = event_target:AlienWarrior
@@ -435,6 +436,7 @@ country_event = {
 	desc = "anomaly.4160.desc"
 	event_window_type = leader_recruit
 	location = event_target:HomePlanet
+	show_sound = event_mystic_reveal
 	picture = GFX_leader_recruitment_bg_integration
 	picture_event_data = {
 		portrait = event_target:AlienWarrior
