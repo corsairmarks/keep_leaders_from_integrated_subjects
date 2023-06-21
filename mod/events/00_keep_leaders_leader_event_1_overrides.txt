@@ -100,7 +100,7 @@ country_event = {
 	}
 	option = {
 		tag = dismiss_leader
-		name = DISMISS
+		name = DECLINE
 		event_target:ship = {
 			hidden_effect = { erase_modifier = { MOD = kl_exemplary_captain } }
 			add_modifier = {

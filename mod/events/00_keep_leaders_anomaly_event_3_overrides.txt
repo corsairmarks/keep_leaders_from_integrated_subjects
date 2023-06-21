@@ -22,6 +22,7 @@ ship_event = {
 		create_species = {
 			name = NAME_AI
 			class = ROBOT
+			namelist = MACHINE3
 			portrait = random
 			homeworld = fromfromfrom
 			traits = { trait = trait_robot_learning_algorithms }
@@ -52,7 +53,7 @@ ship_event = {
 				set_custom_capital_location = fromfromfrom
 				create_leader = {
 					class = admiral
-					species = event_target:leader_species
+					species = owner_species
 					name = NAME_0101010111
 					skill = 3
 					set_age = 1
@@ -76,7 +77,8 @@ ship_event = {
 	}
 	option = {
 		tag = dismiss_leader
-		name = DISMISS
+		name = DECLINE
+		custom_tooltip = DECLINE.tt
 		hidden_effect = { event_target:event_leader = { kill_leader = { show_notification = no } } }
 	}
 	option = {
@@ -227,7 +229,7 @@ country_event = {
 				set_custom_capital_location = event_target:WarriorHomePlanet
 				create_leader = {
 					class = general
-					species = event_target:AlienWarriorSpecies
+					species = owner_species
 					name = NAME_Majula_the_Bearer
 					gender = female
 					skill = 5
@@ -449,12 +451,14 @@ country_event = {
 	}
 	option = {
 		tag = dismiss_leader
-		name = DISMISS
+		name = DECLINE
+		custom_tooltip = DECLINE.tt
 		hidden_effect = { event_target:AlienWarrior = { kill_leader = { show_notification = no } } }
 	}
 	option = {
 		tag = hire_leader
 		name = HIRE
+		custom_tooltip = HIRE.tt
 		hidden_effect = { hire_event_leader_effect = { LEADER = AlienWarrior } }
 	}
 }
