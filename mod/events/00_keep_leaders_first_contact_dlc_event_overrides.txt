@@ -109,6 +109,7 @@ first_contact_event = {
 	title = "fircon.1212.name"
 	desc = "fircon.1213.desc"
 	event_window_type = leader_recruit
+	picture = GFX_leader_recruitment_bg_renowned
 	picture_event_data = {
 		portrait = event_target:guest_scientist
 		room = ethic_spaceship_room
