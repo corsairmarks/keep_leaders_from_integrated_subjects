@@ -317,7 +317,11 @@ country_event = {
 
 # Modified:
 # * convert to the new leader_story window instead of first_contact
+# * manually set first contact stage in option a
+# * non-pacifists don't automatically get the mean option a text
+# * only allow purging for empires which can have option b text (instead of all empires!)
 # * DA option cyborgizes the stored leader's species and the leader, rather than creating a new one
+# * ensure players can't double-dip with the event popup and first contact stage showing the same options
 first_contact_event = {
 	id = first_contact.3000
 	title = "first_contact.3000.name"
@@ -367,7 +371,6 @@ first_contact_event = {
 					OR = {
 						is_unfriendly = yes
 						is_xenophobe = yes
-						is_pacifist = no
 					}
 				}
 			}
@@ -378,9 +381,14 @@ first_contact_event = {
 				NOT = { has_valid_civic = civic_machine_assimilator }
 			}
 		}
-		set_first_contact_starting_stage = yes
+		allow = { NOT = { has_first_contact_flag = first_contact_3000_option_selected } }
+		custom_tooltip = start_jaunting_traveler_communications_study
+		hidden_effect = {
+			 set_first_contact_stage = jaunting_traveler_stage_1
+			 set_first_contact_flag = jaunting_traveler_first_contact
+		}
 	}
-	option = { # Kill/sacrifice (xenophobes, purifiers and death cults)
+	option = { # Kill/sacrifice (xenophobes, purifiers, and death cults)
 		name = {
 			text = "first_contact.3000.b.execution"
 			trigger = {
@@ -397,6 +405,17 @@ first_contact_event = {
 			text = "first_contact.3000.b.sacrifice"
 			trigger = { owner = { is_death_cult_empire = yes } }
 		}
+		trigger = {
+			owner = {
+				OR = {
+					has_valid_civic = civic_machine_terminator
+					has_valid_civic = civic_fanatic_purifiers
+					is_xenophobe = yes
+					is_death_cult_empire = yes
+				}
+			}
+		}
+		allow = { NOT = { has_first_contact_flag = first_contact_3000_option_selected } }
 		owner = {
 			add_monthly_resource_mult = {
 				resource = unity
@@ -405,12 +424,7 @@ first_contact_event = {
 				max = @tier2unitymax
 			}
 		}
-		hidden_effect = {
-			contact_country = {
-				establish_communications_no_message = root.owner
-				destroy_country = yes
-			}
-		}
+		hidden_effect = { contact_country = { destroy_country = yes } }
 	}
 	option = { # Eat (hiveminds and necrophages)
 		name = "first_contact.3000.c.hive"
@@ -422,6 +436,7 @@ first_contact_event = {
 				}
 			}
 		}
+		allow = { NOT = { has_first_contact_flag = first_contact_3000_option_selected } }
 		owner = {
 			add_monthly_resource_mult = {
 				resource = food
@@ -430,18 +445,13 @@ first_contact_event = {
 				max = @tier2materialmin
 			}
 		}
-		hidden_effect = {
-			contact_country = {
-				establish_communications_no_message = root.owner
-				destroy_country = yes
-			}
-		}
+		hidden_effect = { contact_country = { destroy_country = yes } }
 	}
-	# Assimilate (Driven Assimilators only)
-	option = {
+	option = { # Assimilate (Driven Assimilators only)
 		name = "first_contact.3000.d.assimilator"
 		custom_tooltip = "first_contact.3000.d.assimilator.tooltip"
 		trigger = { owner = { has_valid_civic = civic_machine_assimilator } }
+		allow = { NOT = { has_first_contact_flag = first_contact_3000_option_selected } }
 		hidden_effect = {
 			owner = {
 				event_target:guest_scientist = {
@@ -455,15 +465,14 @@ first_contact_event = {
 				}
 				hire_event_leader_effect = { LEADER = guest_scientist }
 			}
-			contact_country = {
-				establish_communications_no_message = root.owner
-				destroy_country = yes
-			}
+			contact_country = { destroy_country = yes }
 		}
 	}
+	abort_trigger = { has_first_contact_flag = first_contact_3000_option_selected }
 	after = {
 		# set_site_progress_locked = no
 		hidden_effect = {
+			set_first_contact_flag = first_contact_3000_option_selected
 			fire_on_action = {
 				on_action = on_first_contact_started
 			}
