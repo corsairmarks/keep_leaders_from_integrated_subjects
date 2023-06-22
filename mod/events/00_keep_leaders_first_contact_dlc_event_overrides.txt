@@ -87,8 +87,6 @@ first_contact_event = {
 			contact_country = { save_event_target_as = jaunting_traveler_country }
 			first_contact_event = {
 				id = fircon.1213
-				days = 1800
-				random = 360
 			}
 		}
 	}
