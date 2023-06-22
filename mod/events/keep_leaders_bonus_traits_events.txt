@@ -201,36 +201,36 @@ leader_event = {
 	}
 }
 
-# test event
-country_event = {
-	id = keep_leaders_bonus_traits.1000
-	hide_window = yes
-	is_triggered_only = yes
-	immediate = {
-		random_owned_leader = {
-			limit = { has_leader_flag = former_ruler }
-			leader_event = {
-				id = keep_leaders_bonus_traits.1001
-			}
-		}
-	}
-}
+# # test event
+# country_event = {
+# 	id = keep_leaders_bonus_traits.1000
+# 	hide_window = yes
+# 	is_triggered_only = yes
+# 	immediate = {
+# 		random_owned_leader = {
+# 			limit = { has_leader_flag = former_ruler }
+# 			leader_event = {
+# 				id = keep_leaders_bonus_traits.1001
+# 			}
+# 		}
+# 	}
+# }
 
-# test event
-leader_event = {
-	id = keep_leaders_bonus_traits.1001
-	title = foo
-	desc = bar
-	show_sound = event_vote
-	picture = GFX_evt_acquire_asset
-	is_triggered_only = yes
-	immediate = {
-		event_target:former_owner_shell@this = {
-			prev = { set_leader_flag = shell@prev }
-			log = "name [This.GetName] title [This.GetRulerTitle]"
-		}
-	}
-	option = {
-		name = LEADER_CLASS_TEXT
-	}
-}
+# # test event
+# leader_event = {
+# 	id = keep_leaders_bonus_traits.1001
+# 	title = foo
+# 	desc = bar
+# 	show_sound = event_vote
+# 	picture = GFX_evt_acquire_asset
+# 	is_triggered_only = yes
+# 	immediate = {
+# 		event_target:former_owner_shell@this = {
+# 			prev = { set_leader_flag = shell@prev }
+# 			log = "name [This.GetName] title [This.GetRulerTitle]"
+# 		}
+# 	}
+# 	option = {
+# 		name = LEADER_CLASS_TEXT
+# 	}
+# }
