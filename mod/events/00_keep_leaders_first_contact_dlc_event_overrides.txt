@@ -70,6 +70,7 @@ first_contact_event = {
 	first_contact = yes
 	picture = GFX_evt_shroudwalker_enclave
 	location = owner.capital_scope
+	show_sound = event_mystic_reveal
 	is_triggered_only = yes
 	immediate = {
 		set_site_progress_locked = yes
@@ -84,12 +85,10 @@ first_contact_event = {
 		name = "ancrel.4035.a"
 		hidden_effect = {
 			contact_country = { save_event_target_as = jaunting_traveler_country }
-			owner = {
-				country_event = {
-					id = fircon.1213
-					days = 1800
-					random = 360
-				}
+			first_contact_event = {
+				id = fircon.1213
+				days = 1800
+				random = 360
 			}
 		}
 	}
@@ -109,7 +108,6 @@ first_contact_event = {
 	id = fircon.1213
 	title = "fircon.1212.name"
 	desc = "fircon.1213.desc"
-	auto_open = no
 	event_window_type = leader_recruit
 	picture_event_data = {
 		portrait = event_target:guest_scientist
@@ -204,7 +202,6 @@ first_contact_event = {
 	}
 	after = { hidden_effect = { event_target:jaunting_traveler_country = { destroy_country = yes } } }
 }
-
 
 # Modified: convert to the new leader_story window
 country_event = {
@@ -331,7 +328,6 @@ first_contact_event = {
 		trigger = { owner = { is_gestalt = no } }
 		text = "first_contact.3000.desc"
 	}
-	auto_open = no
 	first_contact = yes
 	diplomatic_title = "first_contact.3000.name" # overrides the leader name when specified
 	event_window_type = leader_story
@@ -408,7 +404,12 @@ first_contact_event = {
 				max = @tier2unitymax
 			}
 		}
-		hidden_effect = { contact_country = { destroy_country = yes } }
+		hidden_effect = {
+			contact_country = {
+				establish_communications_no_message = root.owner
+				destroy_country = yes
+			}
+		}
 	}
 	option = { # Eat (hiveminds and necrophages)
 		name = "first_contact.3000.c.hive"
@@ -428,7 +429,12 @@ first_contact_event = {
 				max = @tier2materialmin
 			}
 		}
-		hidden_effect = { contact_country = { destroy_country = yes } }
+		hidden_effect = {
+			contact_country = {
+				establish_communications_no_message = root.owner
+				destroy_country = yes
+			}
+		}
 	}
 	# Assimilate (Driven Assimilators only)
 	option = {
@@ -438,13 +444,20 @@ first_contact_event = {
 		hidden_effect = {
 			owner = {
 				event_target:guest_scientist = {
+					if = {
+						limit = { has_leader_species_traits_active = no }
+						remove_trait = leader_trait_psionic
+					}
 					species = { change_species_characteristics = { add_trait = trait_cybernetic } }
 					add_trait = leader_trait_cyborg
 					change_background_ethic = ethic_gestalt_consciousness
 				}
 				hire_event_leader_effect = { LEADER = guest_scientist }
 			}
-			contact_country = { destroy_country = yes }
+			contact_country = {
+				establish_communications_no_message = root.owner
+				destroy_country = yes
+			}
 		}
 	}
 	after = {
