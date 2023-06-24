@@ -2370,6 +2370,29 @@ planet_event = {
 	}
 }
 
+# transfer leaders to storage while the colossus'd country exists
+# triggered by on_planet_transfer
+# root = planet (after new owner set)
+# from = country (new owner)
+# fromfrom = country (former owner, if any)
+planet_event = {
+	id = keep_leaders.4
+	hide_window = yes
+	is_triggered_only = yes
+	pre_triggers = { has_owner = yes }
+	trigger = {
+		exists = from
+		exists = fromfrom
+		fromfrom = { has_country_flag = colossus_transfer@prev }
+	}
+	immediate = {
+		log = "pre-FTL colossus'd: [This.GetName] ([FromFrom.GetRealName]) colossus'd by [From.GetRealName]"
+		from = { save_event_target_as = potential_owner } # "argument" for create_leader_storage_and_transfer_leaders
+		fromfrom = { save_event_target_as = former_owner } # "argument" for create_leader_storage_and_transfer_leaders
+		create_leader_storage_and_transfer_leaders = yes
+	}
+}
+
 # transfer leaders to storage while the integrated subject country exists
 # triggered by on_subject_integrated
 # root = country, overlord
@@ -3073,9 +3096,7 @@ planet_event = {
 	id = keep_leaders.21
 	hide_window = yes
 	is_triggered_only = yes
-	pre_triggers = {
-		has_owner = yes
-	}
+	pre_triggers = { has_owner = yes }
 	trigger = {
 		exists = from
 		exists = fromfrom
@@ -3142,7 +3163,6 @@ planet_event = {
 		has_synthethic_dawn = yes
 		exists = from
 		exists = fromfrom
-		from = { has_valid_civic = civic_machine_assimilator }
 		fromfrom = {
 			has_country_flag = colossus_transfer@prev
 			has_country_flag = nanobot_assimilated@prev
@@ -3152,6 +3172,41 @@ planet_event = {
 	immediate = {
 		prepare_for_primitive_planet_transferred = yes
 		choose_transfer_representative_leader = yes
+		event_target:transfer_representative = { # pre-assimilate the representative so it looks right in the leader_recruit window
+			species = { save_event_target_as = former_species }
+			set_variable = {
+				which = assimilation_type_counter
+				value = 0
+			}
+			species = { save_event_target_as = prepared_species }
+			try_apply_cyborg_assimilation = yes
+			try_apply_genetic_assimilation = yes
+			try_apply_psionic_assimilation = yes
+			if = {
+				limit = {
+					NOR = {
+						has_leader_flag = cybernetic_assimilation
+						has_leader_flag = genetic_assimilation
+						has_leader_flag = psionic_assimilation
+					}
+				}
+				try_apply_synthetic_assimilation = yes
+				try_apply_unmachine_assimilation = yes
+			}
+			if = {
+				limit = {
+					check_variable = {
+						which = assimilation_type_counter
+						value > 0
+					}
+				}
+				change_species = event_target:prepared_species
+				fire_on_action = {
+					on_action = on_leader_species_changed
+					scopes = { from = event_target:former_species }
+				}
+			}
+		}
 	}
 	option = { # keep none (nice)
 		tag = dismiss_leader
@@ -3183,7 +3238,6 @@ planet_event = {
 				}
 			}
 		}
-		allow = { from = { has_valid_civic = civic_machine_assimilator } }
 		ai_chance = { base = 20 }
 		from = {
 			klfis_try_generate_rewards_machine_assimilator = yes
@@ -3221,14 +3275,11 @@ planet_event = {
 	id = keep_leaders.31
 	hide_window = yes
 	is_triggered_only = yes
-	pre_triggers = {
-		has_owner = yes
-	}
+	pre_triggers = { has_owner = yes }
 	trigger = {
 		has_synthethic_dawn = yes
 		exists = from
 		exists = fromfrom
-		from = { has_valid_civic = civic_machine_assimilator }
 		fromfrom = {
 			has_country_flag = colossus_transfer@prev
 			has_country_flag = nanobot_assimilated@prev
@@ -3239,7 +3290,14 @@ planet_event = {
 		log = "colossus fired: [This.GetName] ([FromFrom.GetRealName]) assimilated via nanobots by [From.GetRealName]"
 		prepare_for_primitive_planet_transferred = yes
 		if = {
-			limit = { event_target:variable_storage = { has_stored_leaders_both_robotic_and_organic_non_hive = yes } }
+			limit = {
+				event_target:variable_storage = {
+					OR = {
+						has_any_stored_leaders_robotic = yes
+						has_any_stored_leaders_organic_non_hive = yes
+					}
+				}
+			}
 			fromfrom = { set_country_flag = colossus_transfer_handled@prev }
 			planet_event = {
 				id = keep_leaders.30
@@ -3290,7 +3348,6 @@ planet_event = {
 		has_necroids = yes
 		exists = from
 		exists = fromfrom
-		from = { klfis_is_necrophage_empire = yes }
 		fromfrom = {
 			has_country_flag = colossus_transfer@prev
 			has_country_flag = orbitally_necrophaged@prev
@@ -3300,6 +3357,37 @@ planet_event = {
 	immediate = {
 		prepare_for_primitive_planet_transferred = yes
 		choose_transfer_representative_leader = yes
+		event_target:transfer_representative = { # pre-necrophage the representative so it looks right in the leader_recruit window
+			if = {
+				limit = { has_leader_flag = former_gestalt_ruler }
+				# if you necrophage them, you lose the secret hive magic
+				remove_leader_flag = former_gestalt_ruler
+			}
+			set_timed_leader_flag = {
+				flag = force_gender_match_species
+				days = 1
+			}
+			change_species = event_target:potential_owner
+			change_leader_portrait = event_target:potential_owner
+			fire_on_action = {
+				on_action = on_leader_species_changed
+				scopes = { from = event_target:former_species }
+			}
+			try_adjust_background = yes
+			if = {
+				limit = {
+					check_variable = {
+						which = assimilation_type_counter
+						value > 0
+					}
+				}
+				change_species = event_target:prepared_species
+				fire_on_action = {
+					on_action = on_leader_species_changed
+					scopes = { from = event_target:former_species }
+				}
+			}
+		}
 	}
 	option = { # keep none (nice)
 		tag = dismiss_leader
@@ -3426,7 +3514,6 @@ planet_event = {
 		has_necroids = yes
 		exists = from
 		exists = fromfrom
-		from = { klfis_is_necrophage_empire = yes }
 		fromfrom = {
 			has_country_flag = colossus_transfer@prev
 			has_country_flag = orbitally_necrophaged@prev
@@ -3526,9 +3613,7 @@ planet_event = {
 	id = keep_leaders.99
 	hide_window = yes
 	is_triggered_only = yes
-	pre_triggers = {
-		has_owner = yes
-	}
+	pre_triggers = { has_owner = yes }
 	trigger = {
 		exists = from
 		exists = fromfrom

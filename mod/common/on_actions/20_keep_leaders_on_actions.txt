@@ -91,6 +91,7 @@ on_ruler_removed = {
 on_planet_transfer = {
 	events = {
 		keep_leaders.3
+		keep_leaders.4
 		keep_leaders.21
 		keep_leaders.31
 		keep_leaders.41

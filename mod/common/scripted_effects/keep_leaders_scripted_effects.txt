@@ -226,7 +226,10 @@ prepare_for_primitive_planet_transferred = {
 	}
 	# acquire leader and variable storage
 	random_country = {
-		limit = { has_country_flag = former_owner@fromfrom }
+		limit = {
+			has_country_flag = former_owner@fromfrom
+			has_country_flag = potential_owner@from
+		}
 		save_event_target_as = storage_owner
 		save_event_target_as = variable_storage
 	}
@@ -1653,7 +1656,7 @@ complete_assimilation_and_take_ownership_of_leader = {
 	clear_variable = assimilation_type_counter
 }
 
-# change a leader's background ethic (randomize if formerly gestalt or conver to gestalt, if appropriate)
+# change a leader's background ethic (randomize if formerly gestalt or convert to gestalt, if appropriate)
 # this = leader
 # event_target:potential_owner = country to become the new owner and for which to set species rights
 try_adjust_background = {
@@ -1810,7 +1813,7 @@ try_adjust_background = {
 
 # randomize the leader's background ethic, weighted based on the ethos of their owner
 # this = leader
-# event_target:potential_owner = country to become the new owner and for which to set species rights
+# event_target:potential_owner = country to become the new owner
 randomize_background_ethic = {
 	optimize_memory
 	random_list = {

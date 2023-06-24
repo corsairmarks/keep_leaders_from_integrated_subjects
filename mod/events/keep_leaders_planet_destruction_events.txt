@@ -17,9 +17,7 @@ planet_event = {
 	id = keep_leaders_planet_destruction.400
 	hide_window = yes
 	is_triggered_only = yes
-	pre_triggers = {
-		has_owner = yes
-	}
+	pre_triggers = { has_owner = yes }
 	trigger = {
 		num_pops > 0
 		owner = { is_primitive = yes }
@@ -39,9 +37,7 @@ planet_event = {
 	id = keep_leaders_planet_destruction.500
 	hide_window = yes
 	is_triggered_only = yes
-	pre_triggers = {
-		has_owner = yes
-	}
+	pre_triggers = { has_owner = yes }
 	trigger = {
 		num_pops > 0
 		owner = { is_primitive = yes }
@@ -61,9 +57,7 @@ planet_event = {
 	id = keep_leaders_planet_destruction.501
 	hide_window = yes
 	is_triggered_only = yes
-	pre_triggers = {
-		has_owner = yes
-	}
+	pre_triggers = { has_owner = yes }
 	trigger = {
 		num_pops > 0
 		owner = { is_primitive = yes }
@@ -83,9 +77,7 @@ planet_event = {
 	id = keep_leaders_planet_destruction.700
 	hide_window = yes
 	is_triggered_only = yes
-	pre_triggers = {
-		has_owner = yes
-	}
+	pre_triggers = { has_owner = yes }
 	trigger = {
 		num_pops > 0
 		owner = { is_primitive = yes }
