@@ -2221,10 +2221,15 @@ planet_event = {
 		from = { save_event_target_as = potential_owner } # "argument" for create_leader_storage_and_transfer_leaders
 		create_leader_storage_and_transfer_leaders = yes
 		choose_transfer_representative_leader = yes
-		if = {
-			limit= { from = { has_appearance_modding_technology = yes } }
-			# prepare the representative in advance; infiltrator_retain_cover intentionally not set
-			event_target:transfer_representative = { prepare_to_retain_infiltration_leader = { RETAIN_COVER = yes } }
+		# prepare the representative in advance; infiltrator_retain_cover intentionally not set
+		event_target:transfer_representative = { 
+			if = {
+				limit= { from = { has_appearance_modding_technology = no } }
+				prepare_to_retain_infiltration_leader = { RETAIN_COVER = no }
+			}
+			else = {
+				prepare_to_retain_infiltration_leader = { RETAIN_COVER = yes }
+			}
 		}
 	}
 	option = {
@@ -3206,6 +3211,7 @@ planet_event = {
 					scopes = { from = event_target:former_species }
 				}
 			}
+			try_adjust_background = yes
 		}
 	}
 	option = { # keep none (nice)
@@ -3374,19 +3380,6 @@ planet_event = {
 				scopes = { from = event_target:former_species }
 			}
 			try_adjust_background = yes
-			if = {
-				limit = {
-					check_variable = {
-						which = assimilation_type_counter
-						value > 0
-					}
-				}
-				change_species = event_target:prepared_species
-				fire_on_action = {
-					on_action = on_leader_species_changed
-					scopes = { from = event_target:former_species }
-				}
-			}
 		}
 	}
 	option = { # keep none (nice)

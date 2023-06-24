@@ -35,7 +35,7 @@
  keep_leaders.1.a.serv: "We shall be escort you to a sanctuary. You are safe now."
  keep_leaders.1.a.serv.short: "Sanctuary awaits."
  keep_leaders.1.a.serv.tooltip: "All leaders from the §H[storage_owner.GetRealName]§! are released to our organic sanctuaries.\n\n"
- keep_leaders.1.a.gest.exclusive: "Leadership discontinued."
+ keep_leaders.1.a.gest.exclusive: "Halt leadership."
  keep_leaders.1.a.gest.exclusive.tooltip: "All [potential_owner.GetUnitDronePlural] from the §H[storage_owner.GetRealName]§! are reassigned to standard drone duties.\n\n"
 
  # don't keep any leaders, but be nice
