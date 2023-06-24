@@ -261,6 +261,10 @@ take_ownership_of_leader = {
 		limit = { has_leader_flag = is_in_recruit_window }
 		remove_leader_flag = is_in_recruit_window
 	}
+	if = {
+		limit = { has_leader_flag = stored_leader }
+		remove_leader_flag = stored_leader
+	}
 	set_owner = event_target:potential_owner
 	fire_on_action = { on_action = on_leader_owner_changed }
 }
