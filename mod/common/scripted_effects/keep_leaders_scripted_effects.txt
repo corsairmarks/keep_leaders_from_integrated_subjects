@@ -1999,11 +1999,11 @@ prepare_to_retain_infiltration_leader = {
 		days = 1
 	}
 	change_species = event_target:potential_owner
-	[[RETAIN_COVER] change_leader_portrait = event_target:original_species ]
 	fire_on_action = {
 		on_action = on_leader_species_changed
 		scopes = { from = event_target:original_species }
 	}
+	[[RETAIN_COVER] change_leader_portrait = event_target:original_species ]
 	try_adjust_background = yes
 }
 
