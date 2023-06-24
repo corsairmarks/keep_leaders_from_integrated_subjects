@@ -3153,8 +3153,7 @@ planet_event = {
 		prepare_for_primitive_planet_transferred = yes
 		choose_transfer_representative_leader = yes
 	}
-	# keep none (nice)
-	option = {
+	option = { # keep none (nice)
 		tag = dismiss_leader
 		name = keep_leaders.30.b
 		custom_tooltip = keep_leaders.30.b.tooltip
@@ -3166,8 +3165,7 @@ planet_event = {
 		}
 		hidden_effect = { event_target:storage_owner = { destroy_country = yes } }
 	}
-	# assimilate: assimilator
-	option = {
+	option = { # assimilate: assimilator
 		tag = hire_leader
 		name = keep_leaders.30.a
 		custom_tooltip_with_params = {
@@ -3196,6 +3194,11 @@ planet_event = {
 				}
 			}
 		}
+	}
+	option = { # flavor: how many leaders?
+		name = keep_leaders.1.l
+		response_text = keep_leaders.1.l.response
+		is_dialog_only = yes
 	}
 	after = {
 		hidden_effect = {
@@ -3298,8 +3301,7 @@ planet_event = {
 		prepare_for_primitive_planet_transferred = yes
 		choose_transfer_representative_leader = yes
 	}
-	# keep none (nice)
-	option = {
+	option = { # keep none (nice)
 		tag = dismiss_leader
 		name = {
 			text = keep_leaders.40.b
@@ -3325,32 +3327,7 @@ planet_event = {
 		hidden_effect = { event_target:storage_owner = { destroy_country = yes } }
 		ai_chance = { base = 2 }
 	}
-	# keep none
-	option = {
-		name = keep_leaders.40.c
-		custom_tooltip = keep_leaders.40.c.tooltip
-		custom_tooltip_with_params = {
-			description = keep_leaders.1.tooltip.none
-			description_parameters = {
-				TOTAL = "[variable_storage.leader_accumulator]"
-			}
-		}
-		trigger = { hidden_trigger = { event_target:storage_owner = { has_country_flag = regular_empire_or_primitive_storage_owner } } }
-		allow = {
-			custom_tooltip = {
-				fail_text = empire_is_xenophile_no_x
-				from = { is_xenophile = no }
-			}
-			custom_tooltip = {
-				fail_text = empire_is_pacifist_no_x
-				from = { is_pacifist = no }
-			}
-		}
-		hidden_effect = { event_target:storage_owner = { destroy_country = yes } }
-		ai_chance = { base = 0 }
-	}
-	# necrophage
-	option = {
+	option = { # necrophage
 		tag = hire_leader
 		name = keep_leaders.40.a
 		custom_tooltip_with_params = {
@@ -3395,6 +3372,34 @@ planet_event = {
 				}
 			}
 		}
+	}
+	option = { # flavor: how many leaders?
+		name = keep_leaders.1.l
+		response_text = keep_leaders.1.l.response
+		is_dialog_only = yes
+	}
+	option = { # keep none
+		name = keep_leaders.40.c
+		custom_tooltip = keep_leaders.40.c.tooltip
+		custom_tooltip_with_params = {
+			description = keep_leaders.1.tooltip.none
+			description_parameters = {
+				TOTAL = "[variable_storage.leader_accumulator]"
+			}
+		}
+		trigger = { hidden_trigger = { event_target:storage_owner = { has_country_flag = regular_empire_or_primitive_storage_owner } } }
+		allow = {
+			custom_tooltip = {
+				fail_text = empire_is_xenophile_no_x
+				from = { is_xenophile = no }
+			}
+			custom_tooltip = {
+				fail_text = empire_is_pacifist_no_x
+				from = { is_pacifist = no }
+			}
+		}
+		hidden_effect = { event_target:storage_owner = { destroy_country = yes } }
+		ai_chance = { base = 0 }
 	}
 	after = {
 		hidden_effect = {
@@ -3658,7 +3663,6 @@ country_event = {
 			}
 		}
 	}
-	# TODO: some flavor options to ask the leader about stuff?
 	option = {
 		tag = hire_leader
 		name = INCREDIBLE
@@ -3671,6 +3675,7 @@ country_event = {
 			}
 		}
 	}
+	# TODO: some flavor options to ask the leader about stuff?
 	after = {
 		hidden_effect = {
 			event_target:transfer_representative = {
