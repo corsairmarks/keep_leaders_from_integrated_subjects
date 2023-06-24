@@ -613,15 +613,22 @@ is_allow_transfer_with_assimilation = {
 
 # this = leader
 # event_target:potential_owner = country to which the leader would transfer
-is_eligible_transfer_leader_from_storage = {
+is_eligible_transfer_leader = {
 	optimize_memory
 	is_gestalt_node = no
 	NOR = {
 		leader_class = envoy
 		has_leader_flag = klfis_exclude_leader_from_transfer
 	}
-	has_leader_flag = stored_leader
 	is_smart_enough_for_leadership_species = yes
+}
+
+# this = leader
+# event_target:potential_owner = country to which the leader would transfer
+is_eligible_transfer_leader_from_storage = {
+	optimize_memory
+	has_leader_flag = stored_leader
+	is_eligible_transfer_leader = yes
 }
 
 # allows cyborgs to be considered robotic if the potential owner considers them to be robotic

@@ -2148,7 +2148,7 @@ country_event = {
 			OR = {
 				exists = ruler
 				exists = heir
-				any_owned_leader = { is_eligible_transfer_leader_from_storage = yes }
+				any_owned_leader = { is_eligible_transfer_leader = yes }
 			}
 		}
 	}
@@ -2384,7 +2384,7 @@ country_event = {
 			OR = {
 				exists = ruler
 				exists = heir
-				any_owned_leader = { is_eligible_transfer_leader_from_storage = yes }
+				any_owned_leader = { is_eligible_transfer_leader = yes }
 			}
 		}
 	}

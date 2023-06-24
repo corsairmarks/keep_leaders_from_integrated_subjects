@@ -140,7 +140,7 @@ create_leader_storage_and_transfer_leaders = {
 	event_target:former_owner = {
 		every_owned_leader = {
 			limit = {
-				is_eligible_transfer_leader_from_storage = yes
+				is_eligible_transfer_leader = yes
 				is_ruler = no
 				is_heir = no
 			}
