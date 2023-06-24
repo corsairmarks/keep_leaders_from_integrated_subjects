@@ -482,7 +482,7 @@ is_allow_transfer_without_assimilation = {
 	optimize_memory
 	OR = {
 		AND = { # gestalt renowned/legendary leaders will work for anyone (Oracle, Warform, Caretaker, Gray)
-			# The Beholder should _probably_ be spiritualist, but it has no ethic when initially created, then it picks one of the hirer's ethics when cloned
+			# The Beholder should _probably_ be xenophilic or spiritualist, but it has no ethic when initially created, then it picks one of the hirer's ethics when cloned
 			is_gestalt = yes
 			OR = {
 				AND = {
@@ -491,18 +491,16 @@ is_allow_transfer_without_assimilation = {
 						NOR = {
 							has_civic = civic_fanatic_purifiers
 							has_civic = civic_hive_devouring_swarm
-							AND = {
-								has_civic_organic_zealots_active = yes
-								is_valid_organic_zealots = yes
-							}
 						}
 					}
 				}
 				has_leader_flag = legendary_leader # Gray is fully free-agent
 			}
 			event_target:potential_owner = { # existing gestalt leaders are all "mechanical," so OZ want nothing to do with them
-				has_civic_organic_zealots_active = yes
-				is_valid_organic_zealots = yes
+				OR = {
+					has_civic_organic_zealots_active = no
+					is_valid_organic_zealots = no
+				}
 			}
 		}
 		species = { is_same_species = event_target:potential_owner.owner_species }
