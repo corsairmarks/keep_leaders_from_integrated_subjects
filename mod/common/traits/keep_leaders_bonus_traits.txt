@@ -24,10 +24,7 @@ leader_trait_former_ruler_machine_intelligence = {
 		planet_building_build_speed_mult = 0.05
 	}
 	triggered_desc = {
-		trigger = {
-			is_ruler = no
-			leader_class = governor
-		}
+		trigger = { leader_class = governor }
 		text = leader_trait_former_ruler_admin_bonus_desc
 	}
 	triggered_modifier = {
@@ -57,10 +54,7 @@ leader_trait_former_ruler_machine_intelligence = {
 		ship_speed_mult = 0.05
 	}
 	triggered_desc = {
-		trigger = {
-			is_ruler = no
-			leader_class = admiral
-		}
+		trigger = { leader_class = admiral }
 		text = leader_trait_former_ruler_naval_bonus_desc
 	}
 	triggered_modifier = {
@@ -144,10 +138,7 @@ leader_trait_former_ruler_hive_mind = {
 		planet_jobs_worker_produces_mult = 0.05
 	}
 	triggered_desc = {
-		trigger = {
-			is_ruler = no
-			leader_class = governor
-		}
+		trigger = { leader_class = governor }
 		text = leader_trait_former_ruler_admin_bonus_desc
 	}
 	triggered_modifier = {
@@ -177,10 +168,7 @@ leader_trait_former_ruler_hive_mind = {
 		ship_speed_mult = 0.05
 	}
 	triggered_desc = {
-		trigger = {
-			is_ruler = no
-			leader_class = admiral
-		}
+		trigger = { leader_class = admiral }
 		text = leader_trait_former_ruler_naval_bonus_desc
 	}
 	triggered_modifier = {
@@ -238,10 +226,7 @@ leader_trait_former_ruler = {
 		planet_building_build_speed_mult = 0.05
 	}
 	triggered_desc = {
-		trigger = {
-			is_ruler = no
-			leader_class = governor
-		}
+		trigger = { leader_class = governor }
 		text = leader_trait_former_ruler_admin_bonus_desc
 	}
 	triggered_modifier = {
@@ -270,10 +255,7 @@ leader_trait_former_ruler = {
 		ship_speed_mult = 0.05
 	}
 	triggered_desc = {
-		trigger = {
-			is_ruler = no
-			leader_class = admiral
-		}
+		trigger = { leader_class = admiral }
 		text = leader_trait_former_ruler_naval_bonus_desc
 	}
 	triggered_modifier = {
@@ -355,10 +337,7 @@ leader_trait_former_heir = {
 		planet_building_build_speed_mult = 0.025
 	}
 	triggered_desc = {
-		trigger = {
-			is_ruler = no
-			leader_class = governor
-		}
+		trigger = { leader_class = governor }
 		text = leader_trait_former_heir_admin_bonus_desc
 	}
 	triggered_modifier = {
@@ -387,10 +366,7 @@ leader_trait_former_heir = {
 		ship_speed_mult = 0.025
 	}
 	triggered_desc = {
-		trigger = {
-			is_ruler = no
-			leader_class = admiral
-		}
+		trigger = { leader_class = admiral }
 		text = leader_trait_former_heir_naval_bonus_desc
 	}
 	triggered_modifier = {
