@@ -210,7 +210,7 @@ leader_trait_former_ruler_hive_mind = {
 		country_ruler_influence_produces_add = 1
 		planet_buildings_cost_mult = -0.05
 		planet_districts_cost_mult = -0.05
-		planet_building_build_speed_mult = 0.5
+		planet_building_build_speed_mult = 0.05
 	}
 	triggered_self_modifier = {
 		potential = { has_paragon_dlc = yes }
