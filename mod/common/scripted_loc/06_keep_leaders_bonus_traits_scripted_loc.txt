@@ -155,41 +155,23 @@ defined_text = {
 # note: the below scripted_loc relies on being able to consistently detect global dynamic event targets, and localisation being able to ready from them
 # it does not work correctly as of 3.8.3
 
+# root = leader
 # this = leader
 defined_text = {
 	name = GetClassSuffixFormerOwner
 	random = no
 	text = {
+		 # event_target:something_global = { any_owned_leader = {} } does not seem to work here! (specifically, any_owned_leader with a dynamic flag)
+		trigger = { has_leader_flag = has_class_suffix }
+		localization_key = keep_leaders.class_suffix
+	}
+	text = {
 		trigger = { has_leader_flag = former_ruler }
-		localization_key = keep_leaders_bonus_traits.former_ruler_title.suffix
+		localization_key = keep_leaders.former_ruler_title.class_suffix
 	}
 	text = {
 		trigger = { has_leader_flag = former_heir }
-		localization_key = keep_leaders_bonus_traits.former_heir_title.suffix
+		localization_key = keep_leaders.former_heir_title.class_suffix
 	}
 	default = BLANK_STRING
-}
-
-# this = leader
-defined_text = {
-	name = GetFormerRulerLeaderTitle
-	# someday, when exists works on global event targets...
-	# exists seems to work in the event_target is_primitive = yes, but not others
-	text = {
-		trigger = { exists = event_target:former_owner_shell@this }
-		localization_key = keep_leaders_bonus_traits.former_ruler_title.specific
-	}
-	default = keep_leaders_bonus_traits.former_ruler_title.specific
-}
-
-# this = leader
-defined_text = {
-	name = GetFormerHeirLeaderTitle
-	# someday, when exists works on global event targets...
-	# exists seems to work in the event_target is_primitive = yes, but not others
-	text = {
-		trigger = { exists = event_target:former_owner_shell@this }
-		localization_key = keep_leaders_bonus_traits.former_heir_title.specific
-	}
-	default = keep_leaders_bonus_traits.former_heir_title.generic
 }

@@ -228,7 +228,12 @@
 
  # former ruler name formatting
  keep_leaders.former_ruler_name: "[This.GetRegnalName], §LFormer [former_owner.GetRulerTitle] of the [former_owner.GetName]§!"
+ keep_leaders.former_ruler_title: "Former [former_owner.GetRulerTitle] of the [former_owner.GetName]"
+ keep_leaders.former_ruler_title.class_suffix: ", §L$leader_trait_former_ruler$§!"
  keep_leaders.former_heir_name: "[This.GetName], §LFormer Heir to the [former_owner.GetName]§!"
+ keep_leaders.former_heir_title: "Former Heir of the [former_owner.GetName]"
+ keep_leaders.former_heir_title.class_suffix: ", §L$leader_trait_former_heir$§!"
+ keep_leaders.class_suffix: ", §L[event_target:class_suffix@@this.GetName]§!"
  keep_leaders.source_fleet_name: "[source_fleet.GetName]"
  keep_leaders.source_ship_name: "[source_ship.GetName]"
  keep_leaders.source_army_name: "[source_army.GetName]"
