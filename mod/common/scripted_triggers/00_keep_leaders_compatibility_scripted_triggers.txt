@@ -35,13 +35,6 @@ has_leader_species_traits_active = {
 	always = no
 }
 
-# supports features from my mod Gender Nonbinary Leaders
-# this = any
-has_nonbinary_leaders_active = {
-	optimize_memory
-	always = no
-}
-
 ### Civic: Organic Zealots ###
 
 # this = country
