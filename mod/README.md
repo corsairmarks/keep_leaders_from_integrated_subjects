@@ -2,7 +2,7 @@
 
 Have you ever wondered what happened to the former leaders of your subject after you integrated them? Or perhaps where that pre-FTL leader went after you annexed their planet? Wonder no more! With this mod you will be prompted to choose what to do with the now-unemployed leaders whenever you integrate a subject, conquer a pre-FTL planet, "allow" pre-FTLs to join you via covert infiltration, or convert then via a colossus weapon.
 
-Demoted rulers you acquire through integration/conquest/etc. will (in most cases) preserve their existing ruler traits in case they somehow become the ruler of your empire. Rulers demoted for any reason such as being integrated or even losing an election benefit by gaining the same former ruler traits. They may not have won the hearts and minds of voters, but they still rose to the occasion and developed new skills. This will applies when being demoted from ruler for any reason, such as gameplay from another mod.
+Rulers demoted for any reason such as being integrated or even losing an election benefit by gaining the same former ruler traits. They may not have won the hearts and minds of voters, but they still rose to the occasion and developed new skills. This will applies when being demoted from ruler for any reason, such as gameplay from another mod.
 
 Regular (non-machine and non-hive) empires can retain leaders from an integrated Machine Intelligence subject if they have full AI rights. The leaders in a Machine Intelligence have enough capacity to act as independent agents, even if the rest of the Pops don't.
 
