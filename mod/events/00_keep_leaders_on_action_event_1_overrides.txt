@@ -222,7 +222,12 @@ planet_event = {
 			}
 		}
 		if = {
-			limit = { NOT = { event_target:former_planet_owner = { any_owned_planet = { NOT = { is_planet = root } } } } }
+			limit = {
+				event_target:former_planet_owner = {
+					has_country_flag = primitives_can_into_space
+					NOT = { any_owned_planet = { NOT = { is_planet = root } } }
+				}
+			}
 			event_target:new_planet_owner = {
 				log = "pre-FTL starbase not ceded: [Root.GetName] ([former_planet_owner.GetRealName]) force-integrated by [This.GetRealName]"
 				save_event_target_as = potential_owner # "argument" for create_leader_storage_and_transfer_leaders
