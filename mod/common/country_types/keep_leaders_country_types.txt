@@ -4,7 +4,6 @@
 keep_leaders_container = {
 	share_communications = no
 	default_ships = no
-	government = yes # seems required for some asset selectors to understand the authority
 	randomize_ethos = yes # seems required in order to have ethos
 	uses_origins = yes
 	observable = no

@@ -50,6 +50,10 @@ create_leader_storage_and_transfer_leaders = {
 		}
 	}
 	event_target:storage_owner = { # set up additional "arguments" for accumulate_leader and transfer_leader_to_storage
+		if = {
+			limit = { event_target:former_owner = { exists = capital_scope } }
+			set_custom_capital_location = event_target:former_owner.capital_scope
+		}
 		copy_flags_and_variables_from = event_target:former_owner
 		if = {
 			limit = { event_target:former_owner = { is_regular_empire_or_primitive = yes } }
