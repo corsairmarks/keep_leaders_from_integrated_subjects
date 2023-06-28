@@ -1,6 +1,6 @@
 namespace = keep_leaders
 
-# triggered by keep_leaders.2, keep_leaders.5, keep_leaders.21, keep_leaders.51
+# triggered by keep_leaders.2, keep_leaders.5, keep_leaders.21, keep_leaders.51, action.86 (override)
 # window with options to potentially keep the stored leaders from integration/pre-FTL conquest/colossus weapon
 # root = country, overlord
 # from = country, integrated subject or conquered/colossus'd pre-FTLs
