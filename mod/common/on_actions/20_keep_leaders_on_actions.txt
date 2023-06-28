@@ -103,6 +103,6 @@ on_planet_transfer = {
 # from = country, destroyer (optional)
 on_country_destroyed = {
 	events = {
-		keep_leaders.8
+		# keep_leaders.8 # disabled while considering potential restrictions and story content
 	}
 }
