@@ -188,6 +188,7 @@ create_leader_storage_and_transfer_leaders = {
 			}
 		}
 	}
+	set_country_flag = leader_storage_created
 }
 
 # this = country, leader storage
