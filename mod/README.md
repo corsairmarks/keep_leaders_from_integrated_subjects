@@ -119,6 +119,7 @@ This mod can be safely added to your savegame after the game has started. If you
     * Enhance the "Marauder Escape Pod" event (`marauder.703`) to use the new leader recruitment window
     * Memory Vault empires that acquire high-level leaders via "keep leaders" events gain charges for their vault immediately
     * Gestalt empires that acquire the Caretaker or Warform via "keep leaders" events gain the corresponding node councilor trait
+* 9.3.0 Fire the "keep leaders" logic when a primitive empire's final planet is absorbed by a system's starbase owner (as if it was an integration)
 
 ## Source Code
 
